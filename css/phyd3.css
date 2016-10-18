@@ -1,0 +1,85 @@
+/**
+ * phyd3.css
+ * Stylesheet for the phyD3 viewer
+ *
+ * Copyright (c) Lukasz Kreft, VIB 2016.
+ *  
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *  
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *  
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+*/
+
+#phyd3 {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+.phyd3-controls { 
+    font-family: "Open Sans", Helvetica, sans-serif; 
+    font-size: 12px;
+}
+.phyd3-controls hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.phyd3-controls .checkbox {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.phyd3-controls .checkbox label {
+    min-height: 10px;
+}
+.phyd3-controls .form-group {
+    margin-bottom: 0px;
+}
+.phyd3-controls .hover-visible:hover {
+    opacity: 0.5
+}
+.phyd3-controls .popup {
+    padding: 10px;
+    border-radius: 5px;    
+    border: 2px solid grey;
+    text-align: left;
+    width: 400px;
+    z-index: 1000;            
+}
+.phyd3-controls .panel-title {
+    font-size: 12px;
+}
+.phyd3-controls .panel-body .table {
+    margin-bottom: 0px;
+}
+.phyd3-controls .panel-group {
+    margin-bottom: 0px;
+}
+.phyd3-controls .form-control{
+    font-size: 12px;
+    padding: 0px 10px;
+    height: 25px;
+}
+.phyd3-controls .left-dropdown {
+    padding-right: 0px;
+}
+.phyd3-controls .right-dropdown {
+    padding-left: 0px;
+}
+.phyd3-controls .no-padding {
+    padding:0px 5px;
+}
+.phyd3-controls .middle-padding {
+    padding-top: 3px;
+}
