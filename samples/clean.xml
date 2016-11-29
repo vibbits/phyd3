@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phyloxml xmlns="http://www.phyloxml.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.00/phyloxml.xsd">
+   <phylogeny rooted="true" id="HOM03D000802">
+   <clade>
+      <branch_length>0.06203</branch_length>
+      <confidence type="bootstrap">89.0</confidence>
+      <clade>
+         <branch_length>5.5E-4</branch_length>
+         <confidence type="bootstrap">76.0</confidence>
+         <clade>
+            <branch_length>0.00723</branch_length>
+            <confidence type="bootstrap">73.0</confidence>
+            <clade>
+               <branch_length>0.03469</branch_length>
+               <confidence type="bootstrap">88.0</confidence>
+               <clade>
+                  <name>BV1G04700</name><!--here-->
+                  <branch_length>0.13638</branch_length>
+                  <taxonomy>
+                     <code>bvu</code>
+                  </taxonomy>
+                  <sequence>
+                     <domain_architecture length="124">
+                        <domain confidence="9.548" from="66" to="101">IPR002048</domain>
+                        <domain confidence="9.4E-9" from="14" to="97">IPR011992</domain>
+                     </domain_architecture>
+                  </sequence>
+                  <id>147</id>
+               </clade>
+               <clade>
+                  <name>CP02176G00020</name>
+                  <branch_length>0.06558</branch_length>
+                  <taxonomy>
+                     <code>cpa</code>
+                  </taxonomy>
+                  <sequence>
+                     <domain_architecture length="127">
+                        <domain confidence="5.2E-10" from="17" to="100">IPR011992</domain>
+                        <domain confidence="9.994" from="69" to="104">IPR002048</domain>
+                     </domain_architecture>
+                  </sequence>
+                  <id>148</id>
+               </clade>
+               <id>146</id>
+            </clade>
+            <clade>
+               <branch_length>0.02642</branch_length>
+               <confidence type="bootstrap">81.0</confidence>
+               <clade>
+                  <branch_length>0.04143</branch_length>
+                  <confidence type="bootstrap">78.0</confidence>
+                  <clade>
+                     <name>MD07G013420</name>
+                     <branch_length>0.02442</branch_length>
+                     <taxonomy>
+                        <code>mdo</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="129">
+                           <domain confidence="2.3E-9" from="17" to="100">IPR011992</domain>
+                           <domain confidence="10.273" from="69" to="104">IPR002048</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>151</id>
+                  </clade>
+                  <clade>
+                     <name>FV7G04970</name>
+                     <branch_length>0.01582</branch_length>
+                     <taxonomy>
+                        <code>fve</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="227">
+                           <domain confidence="2.2E-12" from="10" to="102">IPR004910</domain>
+                           <domain confidence="10.273" from="171" to="206">IPR002048</domain>
+                           <domain confidence="3.4E-9" from="119" to="202">IPR011992</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>152</id>
+                  </clade>
+                  <id>150</id>
+               </clade>
+               <clade>
+                  <branch_length>0.02852</branch_length>
+                  <confidence type="bootstrap">46.0</confidence>
+                  <clade>
+                     <name>TC0001G33590</name>
+                     <branch_length>0.04457</branch_length>
+                     <taxonomy>
+                        <code>tca</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="127">
+                           <domain confidence="9.66" from="69" to="104">IPR002048</domain>
+                           <domain confidence="4.2E-10" from="17" to="100">IPR011992</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>154</id>
+                  </clade>
+                  <clade>
+                     <name>GR08G12710</name>
+                     <branch_length>0.09337</branch_length>
+                     <taxonomy>
+                        <code>gra</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="124">
+                           <domain confidence="7.3E-11" from="13" to="96">IPR011992</domain>
+                           <domain confidence="10.19" from="65" to="100">IPR002048</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>155</id>
+                  </clade>
+                  <id>153</id>
+               </clade>
+               <id>149</id>
+            </clade>
+            <id>145</id>
+         </clade>
+         <clade>
+            <branch_length>0.01125</branch_length>
+            <confidence type="bootstrap">71.0</confidence>
+            <clade>
+               <branch_length>0.06335</branch_length>
+               <confidence type="bootstrap">97.0</confidence>
+               <clade>
+                  <branch_length>0.0196</branch_length>
+                  <confidence type="bootstrap">76.0</confidence>
+                  <clade>
+                     <branch_length>0.0401</branch_length>
+                     <confidence type="bootstrap">87.0</confidence>
+                     <clade>
+                        <branch_length>0.07277</branch_length>
+                        <confidence type="bootstrap">97.0</confidence>
+                        <clade>
+                           <name>GM19G44710</name>
+                           <branch_length>0.03405</branch_length>
+                           <taxonomy>
+                              <code>gma</code>
+                           </taxonomy>
+                           <sequence>
+                              <domain_architecture length="127">
+                                 <domain confidence="2.5E-10" from="17" to="100">IPR011992</domain>
+                                 <domain confidence="10.831" from="69" to="104">IPR002048</domain>
+                              </domain_architecture>
+                           </sequence>
+                           <id>161</id>
+                        </clade>
+                        <clade>
+                           <name>GM03G42010</name>
+                           <branch_length>0.00469</branch_length>
+                           <taxonomy>
+                              <code>gma</code>
+                           </taxonomy>
+                           <sequence>
+                              <domain_architecture length="127">
+                                 <domain confidence="10.831" from="69" to="104">IPR002048</domain>
+                                 <domain confidence="1.6E-10" from="17" to="100">IPR011992</domain>
+                              </domain_architecture>
+                           </sequence>
+                           <id>162</id>
+                        </clade>
+                        <id>160</id>
+                     </clade>
+                     <clade>
+                        <name>LJ3G034830</name>
+                        <branch_length>0.07935</branch_length>
+                        <taxonomy>
+                           <code>lja</code>
+                        </taxonomy>
+                        <sequence>
+                           <domain_architecture length="127">
+                              <domain confidence="1.7E-5" from="5" to="28">IPR011992</domain>
+                              <domain confidence="10.831" from="69" to="104">IPR002048</domain>
+                              <domain confidence="1.7E-5" from="84" to="101">IPR011992</domain>
+                              <domain confidence="4.9E-6" from="35" to="83">IPR011992</domain>
+                           </domain_architecture>
+                        </sequence>
+                        <id>163</id>
+                     </clade>
+                     <id>159</id>
+                  </clade>
+                  <clade>
+                     <name>MT8G027180</name>
+                     <branch_length>0.06397</branch_length>
+                     <taxonomy>
+                        <code>mtr</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="126">
+                           <domain confidence="11.026" from="71" to="106">IPR002048</domain>
+                           <domain confidence="8.7E-12" from="19" to="102">IPR011992</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>164</id>
+                  </clade>
+                  <id>158</id>
+               </clade>
+               <clade>
+                  <branch_length>0.02227</branch_length>
+                  <confidence type="bootstrap">87.0</confidence>
+                  <clade>
+                     <name>GM07G05910</name>
+                     <branch_length>5.6E-4</branch_length>
+                     <taxonomy>
+                        <code>gma</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="126">
+                           <domain confidence="10.999" from="68" to="103">IPR002048</domain>
+                           <domain confidence="3.4E-11" from="16" to="99">IPR011992</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>166</id>
+                  </clade>
+                  <clade>
+                     <name>GM16G02511</name>
+                     <branch_length>0.00926</branch_length>
+                     <taxonomy>
+                        <code>gma</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="126">
+                           <domain confidence="10.887" from="68" to="103">IPR002048</domain>
+                           <domain confidence="2.9E-11" from="16" to="99">IPR011992</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>167</id>
+                  </clade>
+                  <id>165</id>
+               </clade>
+               <id>157</id>
+            </clade>
+            <clade>
+               <name>CS00001G04680</name>
+               <branch_length>0.15469</branch_length>
+               <taxonomy>
+                  <code>csi</code>
+               </taxonomy>
+               <sequence>
+                  <domain_architecture length="129">
+                     <domain confidence="10.469" from="75" to="110">IPR002048</domain>
+                     <domain confidence="3.1E-10" from="21" to="106">IPR011992</domain>
+                  </domain_architecture>
+               </sequence>
+               <id>168</id>
+            </clade>
+            <id>156</id>
+         </clade>
+         <id>144</id>
+      </clade>
+      <clade>
+         <branch_length>0.01801</branch_length>
+         <confidence type="bootstrap">74.0</confidence>
+         <clade>
+            <branch_length>5.5E-4</branch_length>
+            <confidence type="bootstrap">87.0</confidence>
+            <clade>
+               <branch_length>0.01849</branch_length>
+               <confidence type="bootstrap">79.0</confidence>
+               <clade>
+                  <branch_length>0.0193</branch_length>
+                  <confidence type="bootstrap">65.0</confidence>
+                  <clade>
+                     <branch_length>5.4E-4</branch_length>
+                     <confidence type="bootstrap">54.0</confidence>
+                     <clade>
+                        <name>PT02G17490</name>
+                        <branch_length>0.08712</branch_length>
+                        <taxonomy>
+                           <code>ptr</code>
+                        </taxonomy>
+                        <sequence>
+                           <domain_architecture length="143">
+                              <domain confidence="11.584" from="90" to="125">IPR002048</domain>
+                              <domain confidence="8.3E-12" from="38" to="123">IPR011992</domain>
+                           </domain_architecture>
+                        </sequence>
+                        <id>174</id>
+                     </clade>
+                     <clade>
+                        <name>PT14G10170</name>
+                        <branch_length>0.04429</branch_length>
+                        <taxonomy>
+                           <code>ptr</code>
+                        </taxonomy>
+                        <sequence>
+                           <domain_architecture length="126">
+                              <domain confidence="11.166" from="68" to="103">IPR002048</domain>
+                              <domain confidence="1.4E-10" from="16" to="100">IPR011992</domain>
+                           </domain_architecture>
+                        </sequence>
+                        <id>175</id>
+                     </clade>
+                     <id>173</id>
+                  </clade>
+                  <clade>
+                     <name>SL10G009340</name>
+                     <branch_length>0.15917</branch_length>
+                     <taxonomy>
+                        <code>sly</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="124">
+                           <domain confidence="8.9E-10" from="13" to="97">IPR011992</domain>
+                           <domain confidence="10.608" from="65" to="100">IPR002048</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>176</id>
+                  </clade>
+                  <id>172</id>
+               </clade>
+               <clade>
+                  <name>EG0004G19800</name>
+                  <branch_length>0.18791</branch_length>
+                  <taxonomy>
+                     <code>egr</code>
+                  </taxonomy>
+                  <sequence>
+                     <domain_architecture length="127">
+                        <domain confidence="10.413" from="54" to="89">IPR002048</domain>
+                        <domain confidence="1.9E-10" from="18" to="86">IPR011992</domain>
+                     </domain_architecture>
+                  </sequence>
+                  <id>177</id>
+               </clade>
+               <id>171</id>
+            </clade>
+            <clade>
+               <branch_length>0.01958</branch_length>
+               <confidence type="bootstrap">75.0</confidence>
+               <clade>
+                  <name>ME02658G00040</name>
+                  <branch_length>0.125</branch_length>
+                  <taxonomy>
+                     <code>mes</code>
+                  </taxonomy>
+                  <sequence>
+                     <domain_architecture length="123">
+                        <domain confidence="1.2E-10" from="13" to="97">IPR011992</domain>
+                        <domain confidence="11.054" from="65" to="100">IPR002048</domain>
+                     </domain_architecture>
+                  </sequence>
+                  <id>179</id>
+               </clade>
+               <clade>
+                  <name>RC29742G00080</name>
+                  <branch_length>0.0565</branch_length>
+                  <taxonomy>
+                     <code>rco</code>
+                  </taxonomy>
+                  <sequence>
+                     <domain_architecture length="126">
+                        <domain confidence="2.4E-9" from="17" to="100">IPR011992</domain>
+                        <domain confidence="10.803" from="68" to="103">IPR002048</domain>
+                     </domain_architecture>
+                  </sequence>
+                  <id>180</id>
+               </clade>
+               <id>178</id>
+            </clade>
+            <id>170</id>
+         </clade>
+         <clade>
+            <branch_length>0.1988</branch_length>
+            <confidence type="bootstrap">100.0</confidence>
+            <clade>
+               <branch_length>5.4E-4</branch_length>
+               <confidence type="bootstrap">0.0</confidence>
+               <clade>
+                  <branch_length>0.00941</branch_length>
+                  <confidence type="bootstrap">74.0</confidence>
+                  <clade>
+                     <name>TP4G28650</name>
+                     <branch_length>0.02815</branch_length>
+                     <taxonomy>
+                        <code>tpa</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="138">
+                           <domain confidence="2.1E-10" from="24" to="108">IPR011992</domain>
+                           <domain confidence="10.385" from="76" to="111">IPR002048</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>184</id>
+                  </clade>
+                  <clade>
+                     <name>BR05G01160</name>
+                     <branch_length>0.05924</branch_length>
+                     <taxonomy>
+                        <code>bra</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="110">
+                           <domain confidence="9.911" from="57" to="92">IPR002048</domain>
+                           <domain confidence="3.9E-10" from="5" to="90">IPR011992</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>185</id>
+                  </clade>
+                  <id>183</id>
+               </clade>
+               <clade>
+                  <branch_length>0.00892</branch_length>
+                  <confidence type="bootstrap">74.0</confidence>
+                  <clade>
+                     <branch_length>0.02889</branch_length>
+                     <confidence type="bootstrap">91.0</confidence>
+                     <clade>
+                        <branch_length>0.00911</branch_length>
+                        <confidence type="bootstrap">76.0</confidence>
+                        <clade>
+                           <name>CRU_004G28250</name>
+                           <branch_length>0.0473</branch_length>
+                           <taxonomy>
+                              <code>cru</code>
+                           </taxonomy>
+                           <sequence>
+                              <domain_architecture length="134">
+                                 <domain confidence="10.385" from="72" to="107">IPR002048</domain>
+                                 <domain confidence="1.1E-9" from="20" to="104">IPR011992</domain>
+                              </domain_architecture>
+                           </sequence>
+                           <id>189</id>
+                        </clade>
+                        <clade>
+                           <name>AL4G34740</name>
+                           <branch_length>0.00935</branch_length>
+                           <taxonomy>
+                              <code>aly</code>
+                           </taxonomy>
+                           <sequence>
+                              <domain_architecture length="136">
+                                 <domain confidence="1.5E-9" from="22" to="106">IPR011992</domain>
+                                 <domain confidence="10.329" from="74" to="109">IPR002048</domain>
+                              </domain_architecture>
+                           </sequence>
+                           <id>190</id>
+                        </clade>
+                        <id>188</id>
+                     </clade>
+                     <clade>
+                        <name>AT2G46600</name>
+                        <branch_length>0.00951</branch_length>
+                        <taxonomy>
+                           <code>ath</code>
+                        </taxonomy>
+                        <sequence>
+                           <domain_architecture length="136">
+                              <domain confidence="10.329" from="74" to="109">IPR002048</domain>
+                              <domain confidence="4.6E-10" from="22" to="106">IPR011992</domain>
+                           </domain_architecture>
+                        </sequence>
+                        <id>191</id>
+                     </clade>
+                     <id>187</id>
+                  </clade>
+                  <clade>
+                     <name>BR04G27710</name>
+                     <branch_length>0.03705</branch_length>
+                     <taxonomy>
+                        <code>bra</code>
+                     </taxonomy>
+                     <sequence>
+                        <domain_architecture length="134">
+                           <domain confidence="2.1E-11" from="20" to="104">IPR011992</domain>
+                           <domain confidence="10.329" from="72" to="107">IPR002048</domain>
+                        </domain_architecture>
+                     </sequence>
+                     <id>192</id>
+                  </clade>
+                  <id>186</id>
+               </clade>
+               <id>182</id>
+            </clade>
+            <clade>
+               <name>BR03G22780</name><!--here-->
+               <branch_length>0.05765</branch_length>
+               <taxonomy>
+                  <code>bra</code>
+               </taxonomy>
+               <sequence>
+                  <domain_architecture length="119">
+                     <domain confidence="9.1E-11" from="5" to="89">IPR011992</domain>
+                     <domain confidence="10.692" from="57" to="92">IPR002048</domain>
+                  </domain_architecture>
+               </sequence>
+               <id>193</id>
+            </clade>
+            <id>181</id>
+         </clade>
+         <id>169</id>
+      </clade>
+      <id>143</id>
+   </clade>
+   </phylogeny>
+</phyloxml>

@@ -1,5 +1,4 @@
-# phyd3
-PhyD3, phylogenetic tree viewer based on D3.js
+phyD3, phylogenetic tree viewer based on D3.js
 http://phyd3.bits.vib.be
 Copyright (c) BITS VIB 2016
 

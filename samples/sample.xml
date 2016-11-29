@@ -3196,7 +3196,7 @@
    <graphs>
       <graph type="multibar">
          <name>Multibar test graph</name>
-         <legend show="0">
+         <legend show="1">
             <field>
                <name>bar1</name>
                <color>0x8986BF</color>
@@ -4904,7 +4904,7 @@
       </graph>
       <graph type="heatmap">
          <name>Heatmap test graph with fields</name>
-         <legend show="0">
+         <legend show="1">
             <field>
                <name>heat1</name>
             </field>

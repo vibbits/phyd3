@@ -2877,7 +2877,7 @@
         <field>
            <name>Consistency score</name>
            <color>0xFF0000</color>
-           <background>0xAA8855</background>
+           <background>0x00FF00</background>
         </field>         
      </legend>
      <data tag="property" ref="duplication consistency score:">

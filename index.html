@@ -2,273 +2,130 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta content="text/html;charset=UTF-8" http-equiv="content-type">
-    <title>Plaza</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/dataTables.bootstrap.css" />
+    <title>PhyD3</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-material-design.min.css" />
+    <link rel="stylesheet" href="css/dropzone.css">
     <link rel="stylesheet" href="css/phyd3.css" />
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap.js"></script>
-    <script src="js/d3.v3.min.js" type="text/javascript"></script>
-    <script src="js/colorbrewer.js" type="text/javascript"></script>
-    <script src="js/Blob.js" type="text/javascript"></script>
-    <script src="js/canvas-toBlob.js" type="text/javascript"></script>
-    <script src="js/canvg.js" type="text/javascript"></script>
-    <script src="js/FileSaver.js" type="text/javascript"></script>
-    <script src="js/phyd3.phyloXML.js" type="text/javascript"></script>
-    <script src="js/phyd3.phylogram.js" type="text/javascript"></script>
-    <script>
-        var opts = {
-            dynamicHide: true,
-            height: 800,
-            invertColors: false,
-            lineupNodes: true,
-            showDomains: true,
-            showDomainNames: false,
-            showDomainColors: true,
-            showGraphs: true,
-            showGraphLegend: true,            
-            showLength: false,
-            showNodeNames: true,
-            showNodesType: "leaf",
-            showPhylogram: false,
-            showTaxonomy: true,
-            showFullTaxonomy: true,
-            showTaxonomyColors: true,
-            backgroundColor: "#F5F5F5",
-            foregroundColor: "black",
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script type="text/javascript">
+        Dropzone.options.treeDropzone = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 1024, // MB
+            maxFiles: 2,
+            dictDefaultMessage: "Drop your files here<br />or click to select them<br /><br />You can upload <br /> one file containing tree <br />and one file with additional data",
+            init: function() {
+                this.on("success", function(file, response) {
+                    response = JSON.parse(response);
+                    window.location = response.location;
+                });
+            }
         };
 
-        function load() {
-            $("#familyID").val("HOM03D000802");
-            loadTree();
-        }
-        function loadTree() {            
-            d3.select("#phyd3").text("Loading...");
-            d3.xml("samples/sample.xml", function(xml) {
-                d3.select("#phyd3").text(null);
-                var tree = phyd3.phyloxml.parse(xml);
-                phyd3.phylogram.build("#phyd3", tree, opts);
-            });
-        };
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-61194136-8', 'auto');
+        ga('send', 'pageview');
     </script>
 </head>
-<body onload="load()" class="container">
-    
-    <div class="row form-inline">
-        <h4 class="col-xs-3">Protein domain view</h4>
-        <h4 class="col-xs-9 text-center">
-            Gene family to load:
-            <input id="familyID" type="text" class="form-control" disabled="disabled" />
-            <!--
-                <button class="btn btn-primary" onclick="loadTree()" >Load</button>
-            -->
-        </h4>
-    </div>
+<body class="container">
+    <br />
+    <a href="index.html"><img id="phyd3logo" src="img/logo-name.svg" /></a>
+    <a href="http://www.vib.be"><img id="viblogo" src="img/vib_tagline_pos_rgb.png" /></a>
+    <div class="row well">
+        <div class="row">
+            <div class="col-sm-9">
+                <h2>Welcome to PhyD3!</h2>
+            </div>
+            <div class="col-sm-3 text-right">
+                <a href="index.html"><img src="img/logo-name.svg" height="50" /></a>
+                <a href="http://www.bits.vib.be"><img src="img/BITS.png" height="80" /></a>
+                <a href="http://www.vib.be"><img src="img/vib_tagline_pos_rgb.png" height="50" /></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <br />
+                PhyD3 is a phylogenetic tree viewer based on <a href="http://d3js.org" target="_blank">d3.js</a>.<br />
+                It was developed as an alternative to <a href="https://sites.google.com/site/cmzmasek/home/software/archaeopteryx" target="_blank">Archaeopteryx</a> inspired by <a href="http://bl.ocks.org/kueda/1036776" target="_blank">
+                d3.phylogram.js</a>.<br /><br />
+                You can use it, host it, embed it, extend it. Licensed under GPL v3.<br/ >See more info in the <a href="documentation.html">documentation</a>.<br /><br />
+            </div>
+            <div class="col-sm-3 text-center">
+                <a class="btn btn-primary" href="view.php?id=91162629d258a876ee994e9233b2ad87&f=xml">Show demo</a><br /><a class="btn btn-primary" href="documentation.html">Show documentation</a>
+            </div>
+        </div>
+        <form id="textUpload" name="textUpload" action="fetch.php?type=input" method="post"  enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-9">
+                    Copy and paste your tree below:
+                    <fieldset>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="7" id="textArea" name="tree" required placeholder="((raccoon:19.19959,bear:6.80041):0.84600,((sea_lion:11.99700, seal:12.00300):7.52973,((monkey:100.85930,cat:47.14069):20.59201, weasel:18.87953):2.09460):3.87382,dog:25.46154);"></textarea>
 
-    <div class="row phyd3-controls">
-        <div class="col-xs-3">
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="dynamicHide" type="checkbox" checked="checked"> dynamic node hiding
-                    </label>
+                        </div>
+                    </fieldset>
+                    <span class="small">The following formats are supported: <a href="http://evolution.genetics.washington.edu/phylip/newicktree.html" target='_blank'>Newick</a>, <a href='http://www.phyloxml.org/' target="_blank">phyloXML</a>, <a href="documentation.html#extended+phyloXML" target='_blank'>extended phyloXML</a>.</span> <br />
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="invertColors" type="checkbox"> invert colors
-                    </label>
-                </div>
-            </div>
-            <hr />
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="phylogram" type="checkbox" checked="checked"> show phylogram
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="lineupNodes" type="checkbox" checked="checked"> lineup nodes
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="lengthValues" type="checkbox"> show branch length values
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="supportValues" type="checkbox"> show support values
-                    </label>
-                </div>
-            </div>    
-            <hr />  
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="nodeNames" type="checkbox" checked="checked"> show node names
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="taxonomy" type="checkbox" checked="checked"> show taxonomy
-                    </label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3 text-right left-dropdown middle-padding">for</div>
-                <div class="col-xs-5 no-padding">
-                <select id="nodesType" class="form-control">
-                    <option>all</option>
-                    <option selected="selected">leaf</option>
-                    <option>inner</option>
-                </select>
-                </div>
-                <div class="col-xs-4 text-left right-dropdown middle-padding">
-                nodes
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="taxonomyColors" type="checkbox" checked="checked"> taxonomy colorization
-                    </label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">
-                    node size
-                </div>
-                <div class="col-xs-3 text-right">
-                    <button id="nodeHeightLower" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span></button>
-                </div>
-                <div class="col-xs-3 text-center middle-padding">
-                    <input type="text" id="nodeHeight" disabled="disabled" class="form-control" />
-                </div>
-                <div class="col-xs-3 text-left">
-                    <button id="nodeHeightHigher" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
-                </div>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-xs-4 col-xs-offset-4 text-center">
-                    <button id="zoominY" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> Y</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4 text-center">
-                    <button id="zoomoutX" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span> X</button>
-                </div>
-                <div class="col-xs-4 text-center">
-                    <button id="resetZoom" class="btn btn-link">RESET</button>
-                </div>
-                <div class="col-xs-4 text-center">
-                    <button id="zoominX" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> X</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4 col-xs-offset-4 text-center">
-                    <button id="zoomoutY" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span> Y</button>
-                </div>
-            </div>
-            <hr />
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="domains" type="checkbox" checked="checked"> show domain architecture
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="domainNames" type="checkbox"> show domain names
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="domainColors" type="checkbox" checked="checked"> domain colorization
-                    </label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4 text-right">
-                    <button id="domainWidthLower" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span></button>
-                </div>
-                <div class="col-xs-4 text-center middle-padding">
-                    <input type="text" id="domainWidth" disabled="disabled" class="form-control" />
-                </div>
-                <div class="col-xs-4 text-left">
-                    <button id="domainWidthHigher" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
+                <div class="col-sm-3 text-center">
+                    or upload a tree file:
+                    <div class="form-group">
+                        <label for="inputFile" class="col-md-2 control-label">File</label>
+                        <div class="col-md-10">
+                            <input type="text" readonly="" class="form-control" placeholder="Browse...">
+                            <input type="file" id="inputFile" name="treeFile">
+                         </div>
+                     </div>
+                     <br /><br />
+                     <a class="btn btn-primary" href="samples/tree.newick" download>Sample</a>
                 </div>
             </div>
             <br />
             <div class="row">
-                <div class="col-xs-3 text-right">
-                    <button id="domainLevelLower" class="btn btn-primary">-</button>
+                <div class="col-sm-9">
+                    <span>Copy and paste your chart data below (if any):</span>
+                    <fieldset>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="7" id="textArea" name="annotation" placeholder="raccoon 19 19 959
+bear 6 80 41
+sea_lion 11 99 700
+seal 12 0 300
+monkey 100 85 930
+cat 47 14 69
+weasel 18 87 953
+dog 25 46 154"></textarea>
+                        </div>
+                    </fieldset>
+                    <span class="small">The following formats are supported: TXT, CSV, TSV.</span>
                 </div>
-                <div class="col-xs-6 text-center middle-padding">
-                    <input type="text" id="domainLevel" disabled="disabled" class="form-control" />
-                </div>
-                <div class="col-xs-3 text-left">
-                    <button id="domainLevelHigher" class="btn btn-primary">+</button>
-                </div>
-            </div>
-            <hr />
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="graphs" type="checkbox" checked="checked"> show graphs
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="graphLegend" type="checkbox" checked="checked"> show legend
-                    </label>
+                <div class="col-sm-3 text-center">
+                    or upload an annotation file:
+                    <div class="form-group">
+                    <label for="inputFile" class="col-md-2 control-label">File</label>
+                    <div class="col-md-10">
+                        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+                        <input type="file" id="inputFile" name="annotationFile">
+                    </div>
+                    </div>
+                    <br /><br />
+                    <a class="btn btn-primary" href="samples/annotation.txt" download>Sample</a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-3">
-                    graph scale
-                </div>
-                <div class="col-xs-3 text-right">
-                    <button id="graphWidthLower" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span></button>
-                </div>
-                <div class="col-xs-3 text-center middle-padding">
-                    <input type="text" id="graphWidth" disabled="disabled" class="form-control" />
-                </div>
-                <div class="col-xs-3 text-left">
-                    <button id="graphWidthHigher" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
+                <div class="col-sm-12 text-right">
+                    <button class="btn btn-primary col-sm-12" id="formSend"  onclick="document.forms['textUpload'].submit()">Send</button>
                 </div>
             </div>
-            <br />
-            <div class="row">
-                Download as:
-                <button class="btn btn-primary" id="linkSVG">SVG</button>
-                <button class="btn btn-primary" id="linkPNG">PNG</button>
-            </div>
-        </div>
-        <div id="phyd3" class="col-xs-9"></div>        
-        <div class="col-sm-9 col-sm-offset-3 text-center">
-            Based on <a href="https://gist.github.com/kueda/1036776" target="_blank">d3.phylogram.js</a>. Use your mouse to drag &amp; zoom the tree. <strong>Tip:</strong> CTRL + wheel = scale Y, ALT + wheel = scale X
-        </div>
+        </form>
     </div>
+    <script type="text/javascript">
+        $.material.init();
+    </script>
 </body>
 </html>

@@ -1,27 +1,30 @@
 /**
- * phyphyd3.phyloxml.js
- * XML format parser in JavaScript.
+ * phyphyd3.phyloXML.js
+ * phyloXML format parser in JavaScript.
  *
  * Copyright (c) Lukasz Kreft, VIB 2016.
- *  
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *  
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *  
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
-*/
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or any later version.
+ * 
+ * Redistribution and use in source and binary forms, 
+ * with or without modification, are permitted provided that the following conditions are met:
+ *   o  Redistributions of source code must retain the above copyright notice, 
+ *      this list of conditions and the following disclaimer.
+ *   o  Redistributions in binary form must reproduce the above copyright notice, 
+ *      this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ *   o  Neither the name of the VIB nor the names of its contributors may be used to 
+ *      endorse or promote products derived from this software without specific prior written permission.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * Full license text can be found in LICENSE.TXT
+ */
 if (!d3) { 
     throw "d3 wasn't included!";
 };
@@ -31,12 +34,110 @@ if (!d3) {
     phyd3.phyloxml = {};
     phyd3.phyloxml.cid = 0;
 
-    phyd3.phyloxml.parseConfidence = function (node) {
-        return confidence = {
-            type: node.getAttribute('type'),
-            stddev: parseFloat(node.getAttribute('stddev')),
-            value: parseFloat(node.textContent)
+    phyd3.phyloxml.parseConfidence = function (c) {
+        return {
+            type: c.getAttribute('type'),
+            stddev: parseFloat(c.getAttribute('stddev')),
+            value: parseFloat(c.textContent)
         };
+    }
+
+    phyd3.phyloxml.parseProperty = function(p) {
+        return {
+            ref: p.getAttribute('ref'),
+            unit: p.getAttribute('unit'),
+            datatype: p.getAttribute('datatype'),
+            appliesTo: p.getAttribute('applies_to'),
+            idRef: p.getAttribute('id_ref'),
+            value: p.textContent
+        };
+    }
+
+    phyd3.phyloxml.parseUri = function (u) {
+        return {
+            desc: u.getAttribute('desc'),
+            type: u.getAttribute('type'),
+            value: u.textContent
+        };
+    }
+
+    phyd3.phyloxml.parseReference = function (r) {
+        return {
+            doi: r.getAttribute('doi'),
+            desc: r.getElementsByTagName('desc')[0] ? r.getElementsByTagName('desc')[0].textContent : ''
+        };
+    }
+
+    phyd3.phyloxml.parseAccession = function (a) {
+        return {
+            source: a.getAttribute('source'),
+            comment: a.getAttribute('comment'),
+            value: a.textContent
+        };
+    }
+
+    phyd3.phyloxml.parseMolSeq = function (ms) {
+        return {
+            isAligned: ms.getAttribute('is_aligned'),
+            value: ms.textContent
+        };
+    }
+
+    phyd3.phyloxml.parseColor = function (node) {
+        var red = node.getElementsByTagName('red')[0];
+        if (red) {
+            red = parseInt(red.textContent);
+        } else {
+            red = 0;
+        }
+        var green = node.getElementsByTagName('greeen')[0];
+        if (green) {
+            green = parseInt(green.textContent);
+        } else {
+            green = 0;
+        }
+        var blue = node.getElementsByTagName('blue')[0];
+        if (blue) {
+            blue = parseInt(blue.textContent);
+        } else {
+            blue = 0;
+        }
+        var alpha = node.getElementsByTagName('alpha')[0];
+        if (alpha) {
+            alpha = parseInt(alpha.textContent);
+        } else {
+            alpha = 255;
+        }
+        return "rgba("+ red + "," + green + "," + blue + ", " + parseFloat(alpha / 255) + ")";
+    }
+
+    phyd3.phyloxml.parseDomainArchitecture = function(domains) {
+        var tree = {
+            sequenceLength: parseInt(domains.getAttribute('length')),
+            domains: []
+        }
+        var domains = domains.getElementsByTagName("domain");
+        for (var i = 0; i< domains.length; i++) {
+            var d = domains[i];
+            tree.domains.push({
+                confidence: parseFloat(d.getAttribute('confidence')),
+                from: parseInt(d.getAttribute('from')),
+                to: parseInt(d.getAttribute('to')),
+                id: d.getAttribute('id'),
+                name: d.textContent
+            });
+        }
+        return tree;
+    }
+
+    phyd3.phyloxml.parseCrossReference = function(crossReferences) {
+        var tree = [];
+        var accessions = crossReferences.getElementsByTagName("accession");
+        for (var i = 0; i< accessions.length; i++) {
+            var a = accessions[i];
+            tree.push(phyd3.phyloxml.parseAccession(a));
+        }
+        return tree;
     }
 
     phyd3.phyloxml.parseEvents = function(events) {
@@ -48,13 +149,9 @@ if (!d3) {
                     event.type = node.textContent;
                     break;
                 case 'duplications':
-                    event.duplications = parseInt(node.textContent);                    
-                    break;
                 case 'speciations':
-                    event.speciations = parseInt(node.textContent);
-                    break;
                 case 'losses':
-                    event.losses = parseInt(node.textContent);
+                    event[node.nodeName] = parseInt(node.textContent);                    
                     break;
                 case 'confidence':
                     event.confidence = phyd3.phyloxml.parseConfidence(node);
@@ -69,67 +166,182 @@ if (!d3) {
         return event;
     }
 
-    phyd3.phyloxml.parseDomains = function(domains) {
-        var tree = {
-            sequenceLength: parseInt(domains.getAttribute('length')),
-            domains: []
-        }
-        var domains = domains.getElementsByTagName("domain");
-        for (var i = 0; i< domains.length; i++) {
-            var d = domains[i];
-            tree.domains.push({
-                confidence: parseFloat(d.getAttribute('confidence')),
-                from: parseInt(d.getAttribute('from')),
-                to: parseInt(d.getAttribute('to')),
-                name: d.textContent
-            });
-        }
-        return tree;
-    }
-
-    phyd3.phyloxml.parseClade = function(clade) {
-        var tree = {
-            branchset: [],
-            property: {}
+    phyd3.phyloxml.parseTaxonomy = function (tax) {
+        var taxonomy = {
+            uris: [],
+            synonyms: []
         };
-        for (var j = 0; j < clade.childNodes.length; j++) {
-            var node = clade.childNodes[j];
+        for (var j = 0; j < tax.childNodes.length; j++) {
+            var node = tax.childNodes[j];
             switch (node.nodeName) {
-                case 'clade' :
-                    tree['branchset'].push(phyd3.phyloxml.parseClade(node));
-                    break;
-                case 'branch_length':
-                    tree['branchLength'] = parseFloat(node.textContent);
-                    break;
                 case 'id':
-                    tree['id'] = node.textContent;
+                case 'code':
+                case 'authority':
+                case 'rank':
+                    taxonomy[node.nodeName] = node.textContent;
                     break;
-                case 'name':
-                    tree['name'] = node.textContent;
+                case 'scientific_name':
+                    taxonomy['scientificName'] = node.textContent;
                     break;
-                case 'confidence':
-                    tree['confidence'] = phyd3.phyloxml.parseConfidence(node);
+                case 'common_name':
+                    taxonomy['commonName'] = node.textContent;
                     break;
-                case 'taxonomy':
-                    tree['taxonomy'] = node.getElementsByTagName("code")[0].textContent;
-                    break;
-                case 'property':
-                    var pname = node.getAttribute("ref");
-                    tree['property'][pname] = node.textContent;
-                    break;
-                case 'events':
-                    tree['events'] = phyd3.phyloxml.parseEvents(node);
-                case 'sequence':
-                    // symbol accession name gene_name location mol_seq uri annotation cross_reference                    
-                    domains = node.getElementsByTagName("domain_architecture")[0];
-                    if (domains) tree['domains'] = phyd3.phyloxml.parseDomains(domains);
+                case 'synonym':
+                    taxonomy['synonyms'].push(node.textContent);
+                case 'uri':
+                    taxonomy['uris'].push(phyd3.phyloxml.parseUri(node));
                     break;
                 case '#text':
                     // skipping empty text nodes
                     break;
                 default:
-                    // width color binary_characters distribution date reference 
-                    console.log("Undefined node: " + node.nodeName + " " + node.textContent + " - skipping...");
+                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");
+                    break;
+            }
+        }
+        return taxonomy;
+    }
+
+    phyd3.phyloxml.parseAnnotation = function (ann) {
+        var annotation = {
+            ref: ann.getAttribute('ref'),
+            source: ann.getAttribute('source'),
+            evidence: ann.getAttribute('evidence'),
+            type: ann.getAttribute('type'),
+            properties: [],
+            uris: []
+        }
+        for (var j = 0; j < ann.childNodes.length; j++) {
+            var node = ann.childNodes[j];
+            switch (node.nodeName) {
+                case 'desc':
+                    annotation['desc'] = node.textContent;
+                    break;
+                case 'confidence':
+                    annotation['confidence'] = phyd3.phyloxml.parseConfidence(node);
+                    break;
+                case 'property':
+                    annotation['properties'].push(phyd3.phyloxml.parseProperty(node));
+                    break;
+                case 'uri':
+                    annotation['uris'].push(phyd3.phyloxml.parseUri(node));
+                    break;
+                case '#text':
+                    // skipping empty text nodes
+                    break;
+                default:
+                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");
+                    break;
+            }
+        }
+        return annotation;
+    }
+
+    phyd3.phyloxml.parseSequence = function (seq) {
+        var sequence = {
+            type: seq.getAttribute('type'),
+            idSource: seq.getAttribute('id_source'),
+            idRef: seq.getAttribute('id_ref'),
+            uris: [],
+            annotations: []
+        };
+        for (var j = 0; j < seq.childNodes.length; j++) {
+            var node = seq.childNodes[j];
+            switch (node.nodeName) {
+                case 'symbol':
+                case 'name':
+                case 'location':
+                    sequence[node.nodeName] = node.textContent;
+                    break;
+                case 'gene_name':
+                    sequence['geneName'] = node.textContent;
+                    break;
+                case 'accession':
+                    sequence['accession'] = phyd3.phyloxml.parseAccession(node);
+                    break;
+                case 'cross_reference':
+                    sequence['crossReference'] = phyd3.phyloxml.parseCrossReference(node);
+                    break;
+                case 'mol_seq':
+                    sequence['molSeq'] = phyd3.phyloxml.parseMolSeq(node);
+                    break;
+                case 'annotation': 
+                    sequence['annotations'].push(phyd3.phyloxml.parseAnnotation(node));
+                    break;
+                case 'uri':
+                    sequence['uris'].push(phyd3.phyloxml.parseUri(node));
+                    break;
+                case 'domain_architecture':
+                    sequence['domainArchitecture'] = phyd3.phyloxml.parseDomainArchitecture(node);
+                    break;
+                case '#text':
+                    // skipping empty text nodes
+                    break;
+                default:
+                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");
+                    break;
+            }
+        }
+        return sequence;
+    }
+
+    phyd3.phyloxml.parseClade = function(clade) {
+        var tree = {
+            branchset: [],
+            properties: [],
+            taxonomies: [],
+            sequences: [],
+            confidences: [],
+            references: [],
+            branchLength: parseFloat(clade.getAttribute('branch_length'))
+        };
+        // other attributes: id_source, collapse
+        for (var j = 0; j < clade.childNodes.length; j++) {
+            var node = clade.childNodes[j];
+            switch (node.nodeName) {
+                case 'branch_length':
+                    tree['branchLength'] = parseFloat(node.textContent);
+                    break;
+                case 'width':
+                    tree['width'] = parseFloat(node.textContent);
+                    break;
+                case 'clade' :
+                    tree['branchset'].push(phyd3.phyloxml.parseClade(node));
+                    break;
+                case 'property':
+                    tree['properties'].push(phyd3.phyloxml.parseProperty(node));
+                    break;
+                case 'taxonomy':
+                    tree['taxonomies'].push(phyd3.phyloxml.parseTaxonomy(node));
+                    break;
+                case 'reference':
+                    tree['references'].push(phyd3.phyloxml.parseReference(node));
+                    break;
+                case 'confidence':
+                    tree['confidences'].push(phyd3.phyloxml.parseConfidence(node));
+                    break;
+                case 'sequence':
+                    tree['sequences'].push(phyd3.phyloxml.parseSequence(node));
+                    break;
+                case 'color' :
+                    tree['color'] = phyd3.phyloxml.parseColor(node);
+                    break;
+                case 'events':
+                    tree['events'] = phyd3.phyloxml.parseEvents(node);
+                    break;
+                case 'id':
+                case 'name':
+                    tree[node.nodeName] = node.textContent;
+                    break;
+                case '#text':
+                    // skipping empty text nodes
+                    break;
+                default:
+                    // binary_characters
+                    // distribution
+                    // date
+                    // reference
+                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");
                     break;
             }
         }
@@ -237,16 +449,49 @@ if (!d3) {
     phyd3.phyloxml.parse = function(xml) {
         var phylotree = {
             branchset: [],
-            property: {}
+            properties: [],
+            confidence: [],
         };
 
         var root = xml.getElementsByTagName("phylogeny");
         root = root[0];
-        if (root && root.childNodes) {
+        phylotree.rooted = root.getAttribute('rooted');
+        phylotree.rerootable = root.getAttribute('rerootable');
+        phylotree.branch_length_unit = root.getAttribute('branch_length_unit');
+        phylotree.type = root.getAttribute('type');
+        if (root && root.childNodes) {            
             for (var i = 0; i < root.childNodes.length; i++) {
                 var clade = root.childNodes[i];
-                if (clade.nodeName == 'clade') {
-                    phylotree.branchset.push(phyd3.phyloxml.parseClade(clade));
+                switch (clade.nodeName) {
+                    case 'clade':
+                        phylotree.branchset.push(phyd3.phyloxml.parseClade(clade));
+                        break; 
+                    case 'confidence':
+                        phylotree.confidence.push(phyd3.phyloxml.parseConfidence(clade));
+                        break;
+                    case 'date':
+                        phylotree.date = clade.textContent;
+                        break; 
+                    case 'description':
+                        phylotree.description = clade.textContent;
+                        break;
+                    case 'id':
+                        phylotree.id = clade.textContent;
+                        break;
+                    case 'name':
+                        phylotree.name = clade.textContent;
+                        break; 
+                    case 'property':
+                        phylotree.properties.push(phyd3.phyloxml.parseProperty(clade));
+                        break;
+                    case '#text':
+                        // skipping empty text nodes
+                        break;
+                    default:
+                        // clade_relation
+                        // sequence_relation
+                        console.log("Undefined node: " + clade.nodeName + " " + clade.textContent + " - skipping...");
+                        break;
                 }
             }
         }
