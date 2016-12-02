@@ -110,6 +110,9 @@ h1, h2, h3, h4, h5, h6 {
     width: 15px;
     height: 15px;
 }
+.phyd3-documentation {
+    font-size: 0.7em;
+}
 .phyd3-controls .checkbox {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -131,6 +134,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 .phyd3-controls .hover-visible:hover {
     opacity: 0.5
+}
+hr {
+    border-top: 1px solid #aaa;
+}
+.red {
+    color: red;
+}
+.btn-primary {
+    font-size: 1.0em;
 }
 .phyd3-controls .btn {
     padding: 0px;

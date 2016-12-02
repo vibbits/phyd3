@@ -79,7 +79,6 @@ $delimiter = isset($_POST['delimiter']) ? $_POST['delimiter'] : ' ';
 $enclosure = isset($_POST['enclosure']) ? $_POST['enclosure'] : '';
 $escape = isset($_POST['escape']) ? $_POST['escape'] : '';
 $headers = isset($_POST['headers']) ? ($_POST['headers'] == 'on' ? true : false) : false;
-
 if ($type == 'input')  {
     if (strlen($_FILES['treeFile']['name'])) {
         if (@move_uploaded_file($_FILES['treeFile']['tmp_name'], "submissions/$id.orig")) {
@@ -87,7 +86,8 @@ if ($type == 'input')  {
             $accepted = checkFormat($tree, $format);
         } else {
             header("HTTP/1.1 301 Moved Permanently"); 
-            header("Location: index.html?m=Error+uploading+files"); 
+            header("Location: submit.php?m=Error+uploading+files"); 
+            exit(); 
         }    
     }  else {
         $tree = trim($_POST['tree']);
@@ -96,18 +96,21 @@ if ($type == 'input')  {
     }
     if (!$accepted) {
         header("HTTP/1.1 301 Moved Permanently"); 
-        header("Location: index.html?m=Invalid+format"); 
-    }    
-    if (strlen($_FILES['annotationFile']['name'])) {
-        if (@move_uploaded_file($_FILES['annotationFile']['tmp_name'], "submissions/$id.txt")) {
-            $annotation = trim(file_get_contents("submissions/$id.txt"));
-        } else {
-            header("HTTP/1.1 301 Moved Permanently"); 
-            header("Location: index.html?m=Error+uploading+files"); 
-        }    
-    }  else {
-        $annotation = trim($_POST['annotation']);
-        file_put_contents("submissions/$id.txt", $annotation);
+        header("Location: submit.php?m=Invalid+tree+format");
+        exit(); 
+    } else {   
+        if (strlen($_FILES['annotationFile']['name'])) {
+            if (@move_uploaded_file($_FILES['annotationFile']['tmp_name'], "submissions/$id.txt")) {
+                $annotation = trim(file_get_contents("submissions/$id.txt"));
+            } else {
+                header("HTTP/1.1 301 Moved Permanently"); 
+                header("Location: submit.php?m=Error+uploading+files"); 
+                exit(); 
+            }    
+        }  else {
+            $annotation = trim($_POST['annotation']);
+            file_put_contents("submissions/$id.txt", $annotation);
+        }
     }
 }
 if (($type == 'parse')||($type == 'convert')) {
@@ -132,6 +135,7 @@ if (($type == 'input')||($type=='parse')||($type == 'convert')) {
         file_put_contents("submissions/$id.xml", $tree);
         header("HTTP/1.1 301 Moved Permanently"); 
         header("Location: view.php?id=$id.xml&f=xml"); 
+        exit();
     }
 }
 if ($type == 'convert') {
@@ -197,10 +201,12 @@ if ($type == 'convert') {
     file_put_contents("submissions/$id.xml", $out);
     header("HTTP/1.1 301 Moved Permanently"); 
     header("Location: view.php?id=$id.xml&f=xml"); 
+    exit();
 }
 if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
     header("HTTP/1.1 301 Moved Permanently"); 
-    header("Location: index.html"); 
+    header("Location: submit.php?m=Empty+submission"); 
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -342,12 +348,14 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
 </head>
 <body class="container">
     <br />
-    <a href="index.html"><img id="phyd3logo" src="img/logo-name.svg" /></a>
+    <a href="submit.php"><img id="phyd3logo" src="img/logo-name.svg" /></a>
     <a href="http://www.vib.be"><img id="viblogo" src="img/vib_tagline_pos_rgb.png" /></a>
     <div class="row well annotation">
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-9 phyd3-documentation">
                 <h2>Parse annotation data</h2>
+                You can use this wizard to parse the additional numerical data you have provided.<br />
+                The data should be split in columns. You can modify the parser parameters if needed. <br /><br />                
             </div>
         </div>
         <div class="row">
@@ -411,6 +419,12 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
         <input type="hidden" name="headers" value="<?php echo $headers; ?>" />
         <input type="hidden" name="id" value="<?php echo $id; ?>" />
         <div class="row columns">        
+            <div class="col-md-12 phyd3-documentation">
+                Please review the contents of the columns.
+                The column containing the clade names should be marked as such.<br />
+                The other columns containing numerical data, can be used to draw various graphs.
+                You can choose the graph type, color, shape, etc. by using the controls below.<br /><br />
+            </div>
             <table>
             <tr>
             <?php for ($i=0; $i<$cols; $i++) { ?>
@@ -512,10 +526,17 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
             </table>
         </div>
         <div class="row">
-            <div class="col-md-12 text-right">
+            <div class="col-md-12 text-center">
                 <button class="btn btn-primary col-sm-12" type="submit">Send</button>
             </div>
-        </div>
+            <div class="col-md-12 phyd3-documentation">
+                <b> Note: </b><br />
+                For multibar graphs you can choose the color of the bar to be drawn. <br />
+                For binary graphs you can choose the shape and the shape color to be drawn. <br />
+                For pie graphs you can choose the pie color and graph number. One pie graph will contain all the pies with the same  graph number.<br />
+                For heatmap color you can choose the graph number, scale color and classes. One heatmap graph will be scaled over all the values with the same graph number using the specified colors and number of classes.
+            </div>
+         </div>
         </form>
     </div>
     <script type="text/javascript">

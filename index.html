@@ -50,79 +50,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <br />
                 PhyD3 is a phylogenetic tree viewer based on <a href="http://d3js.org" target="_blank">d3.js</a>.<br />
                 It was developed as an alternative to <a href="https://sites.google.com/site/cmzmasek/home/software/archaeopteryx" target="_blank">Archaeopteryx</a> inspired by <a href="http://bl.ocks.org/kueda/1036776" target="_blank">
                 d3.phylogram.js</a>.<br /><br />
                 You can use it, host it, embed it, extend it. Licensed under GPL v3.<br/ >See more info in the <a href="documentation.html">documentation</a>.<br /><br />
             </div>
-            <div class="col-sm-3 text-center">
-                <a class="btn btn-primary" href="view.php?id=91162629d258a876ee994e9233b2ad87&f=xml">Show demo</a><br /><a class="btn btn-primary" href="documentation.html">Show documentation</a>
+            <div class="col-sm-4 text-center">
+                <a class="btn btn-primary" href="submit.php">Submit</a>
+            </div>
+            <div class="col-sm-4 text-center">
+                <a class="btn btn-primary" href="view.php?id=91162629d258a876ee994e9233b2ad87&f=xml">Demo</a>
+            </div>
+            <div class="col-sm-4 text-center">
+                <a class="btn btn-primary" href="documentation.html">Documentation</a>
             </div>
         </div>
-        <form id="textUpload" name="textUpload" action="fetch.php?type=input" method="post"  enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-sm-9">
-                    Copy and paste your tree below:
-                    <fieldset>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="7" id="textArea" name="tree" required placeholder="((raccoon:19.19959,bear:6.80041):0.84600,((sea_lion:11.99700, seal:12.00300):7.52973,((monkey:100.85930,cat:47.14069):20.59201, weasel:18.87953):2.09460):3.87382,dog:25.46154);"></textarea>
-
-                        </div>
-                    </fieldset>
-                    <span class="small">The following formats are supported: <a href="http://evolution.genetics.washington.edu/phylip/newicktree.html" target='_blank'>Newick</a>, <a href='http://www.phyloxml.org/' target="_blank">phyloXML</a>, <a href="documentation.html#extended+phyloXML" target='_blank'>extended phyloXML</a>.</span> <br />
-                </div>
-                <div class="col-sm-3 text-center">
-                    or upload a tree file:
-                    <div class="form-group">
-                        <label for="inputFile" class="col-md-2 control-label">File</label>
-                        <div class="col-md-10">
-                            <input type="text" readonly="" class="form-control" placeholder="Browse...">
-                            <input type="file" id="inputFile" name="treeFile">
-                         </div>
-                     </div>
-                     <br /><br />
-                     <a class="btn btn-primary" href="samples/tree.newick" download>Sample</a>
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-sm-9">
-                    <span>Copy and paste your chart data below (if any):</span>
-                    <fieldset>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="7" id="textArea" name="annotation" placeholder="raccoon 19 19 959
-bear 6 80 41
-sea_lion 11 99 700
-seal 12 0 300
-monkey 100 85 930
-cat 47 14 69
-weasel 18 87 953
-dog 25 46 154"></textarea>
-                        </div>
-                    </fieldset>
-                    <span class="small">The following formats are supported: TXT, CSV, TSV.</span>
-                </div>
-                <div class="col-sm-3 text-center">
-                    or upload an annotation file:
-                    <div class="form-group">
-                    <label for="inputFile" class="col-md-2 control-label">File</label>
-                    <div class="col-md-10">
-                        <input type="text" readonly="" class="form-control" placeholder="Browse...">
-                        <input type="file" id="inputFile" name="annotationFile">
-                    </div>
-                    </div>
-                    <br /><br />
-                    <a class="btn btn-primary" href="samples/annotation.txt" download>Sample</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 text-right">
-                    <button class="btn btn-primary col-sm-12" id="formSend"  onclick="document.forms['textUpload'].submit()">Send</button>
-                </div>
-            </div>
-        </form>
     </div>
     <script type="text/javascript">
         $.material.init();
