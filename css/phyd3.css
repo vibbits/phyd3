@@ -62,7 +62,7 @@ body {
     color: black;    
 }
 
- html, body, .container {
+.fill-container {
     height: 100%;
 }
 
@@ -71,7 +71,7 @@ body {
     text-decoration: none;
 }
 
-.container {
+.center-container {
     display: table;
     vertical-align: middle;
 }
