@@ -62,29 +62,27 @@
     var ancestors = [];
     var tree = {};
     var tokens = s.split(/\s*(;|\(|\)|,|:)\s*/);
-    console.log(tokens);
+    var cid = 0;
     for (var i=0; i<tokens.length; i++) {
       var token = tokens[i];
       switch (token) {
         case '(': // new branchset
           var subtree = {};
+          tree.id = cid;
+          cid++;
           tree.branchset = [subtree];
           ancestors.push(tree);
           tree = subtree;
-          console.log(subtree);
           break;
         case ',': // another branch
           var subtree = {};
           ancestors[ancestors.length-1].branchset.push(subtree);
           tree = subtree;
-          console.log(subtree);
           break;
         case ')': // optional name next
           tree = ancestors.pop();
-          console.log(subtree);
           break;
         case ':': // optional length next
-          console.log(subtree);
           break;
         default:
           var x = tokens[i-1];
@@ -93,7 +91,8 @@
           } else if (x == ':') {
             tree.branchLength = parseFloat(token);
           }
-          console.log(subtree);
+          tree.id = cid;
+          cid++;
       }
     }
     return tree;
