@@ -227,12 +227,14 @@ window.requestAnimFrame = (function(){
             .on("zoom", zoomed);
 
         // svg container
+        d3.select(selector)
+          .select("svg")
+          .remove();
         var vis = d3.select(selector)
             .insert("svg")
             .attr("width", selectorWidth + "px")
             .attr("height", options.height + "px")
             .attr("overflow", "hidden")
-            .attr("position", "absolute")
             .attr("version", "1.1")
             .attr("font-family","Open Sans")
             .attr("xmlns", "http://www.w3.org/2000/svg")
@@ -1561,7 +1563,6 @@ window.requestAnimFrame = (function(){
                 else 
                     innernodes[i].show = false;
             }
-
             if (!redraw)  {
                 // layout the nodes
                 node = node.data(nodes);
@@ -1579,7 +1580,7 @@ window.requestAnimFrame = (function(){
                         }
                     })
                     .style("cursor", "pointer")
-                    .on("click", renderPopup)
+                    .on("click",  (options.popupAction === undefined) ? renderPopup : options.popupAction)
                     .append("rect")
                     .attr("class", "pointer")
                     .attr("fill", "red")
