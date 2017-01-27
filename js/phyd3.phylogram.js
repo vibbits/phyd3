@@ -2,7 +2,7 @@
  * phyd3.phylogram.js
  * phyD3, phylogentic tree viewer based on D3.js
  *
- * Copyright (c) Lukasz Kreft, VIB 2016.
+ * Copyright (c) Lukasz Kreft, VIB 2017.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -190,10 +190,11 @@ window.requestAnimFrame = (function(){
         options.popupWidth = options.popupWidth || 500;
         options.showNodesType = options.showNodesType || 'only leaf';
         options.showFullTaxonomy = options.showFullTaxonomy || false;
+        options.showLabels = options.showLabels || true;
         options.treeWidth = options.treeWidth || 'auto';
 
         // nodes object, domain scale, last drawn leaf, leaves padding for displaying graphs and text
-        var nodes, domainScale, lastLabel, multibarScaling = [], textPadding = 100, graphPadding = 0, legendPadding = 100, longestNode = 0;
+        var nodes, domainScale, lastLabel, multibarScaling = [], labelPadding = 100, textPadding = 100, graphPadding = 0, legendPadding = 100, longestNode = 0;
 
         // margins
         var showLegend = false;
@@ -239,21 +240,22 @@ window.requestAnimFrame = (function(){
             .attr("font-family","Open Sans")
             .attr("xmlns", "http://www.w3.org/2000/svg")
             .call(zoom);
+
         // background colored rect
         vis.append("svg:rect")
             .attr("class","canvas")
             .attr("width", "100%")
             .attr("height","100%")
-            .attr("fill", options.invertColors ? options.foregroundColor : options.backgroundColor);
+            .attr("fill", getBackgroundColor());
         vis.append("svg:text")
             .attr("dy", "20px")
-            .attr("stroke", options.invertColors ? options.backgroundColor : options.foregroundColor)
+            .attr("stroke", getForegroundColor())
             .attr("stroke-width", "1px")
             .attr("font-size", "15px")
             .text(onodes.name ? onodes.name : '');
         vis.append("svg:text")
             .attr("dy", "40px")
-            .attr("stroke", options.invertColors ? options.backgroundColor : options.foregroundColor)
+            .attr("stroke", getForegroundColor())
             .attr("stroke-width", "0.5px")
             .attr("font-size", "10px")
             .text(onodes.description ? onodes.description : '');
@@ -285,6 +287,7 @@ window.requestAnimFrame = (function(){
         toggleDomainNames();
         toggleGraphs();
         toggleSupportLines();
+        toggleLabels();
 
         // appending leaf node text - tax & name
         node.append("svg:text")
@@ -310,13 +313,17 @@ window.requestAnimFrame = (function(){
         d3.select("#invertColors").on("click", function(){
             // change color theme
             options.invertColors = !options.invertColors;
-            d3.selectAll(".canvas").attr("fill", options.invertColors ? options.foregroundColor : options.backgroundColor);
-            var lc = options.invertColors ? options.backgroundColor : options.foregroundColor
-            vis.selectAll("path.link").attr("stroke", lc);
-            vis.selectAll("text.legend").attr("fill", lc);
-            leaves.selectAll("path.support").attr("stroke", lc);
-            leaves.selectAll("path.domain").attr('stroke', lc);
+            d3.selectAll(".canvas").attr("fill", getBackgroundColor());
+            var fc = getForegroundColor();
+            vis.selectAll("path.link").attr("stroke", fc);
+            vis.selectAll("text.legend").attr("fill", fc);
+            leaves.selectAll("path.support").attr("stroke", fc);
+            leaves.selectAll("path.domain").attr('stroke', fc);
+            leaves.selectAll("text.nodelabel")
+                .attr("stroke", fc)
+                .attr("fill", fc);
             changeLeafColors();
+            changeDomainColors();
         })
 
         d3.select("#phylogram").on("click", function(){
@@ -356,6 +363,12 @@ window.requestAnimFrame = (function(){
             applyLeafTransform();
         })
 
+        d3.select("#nodeLabels").on("click", function(){
+            // show node names in leaves
+            options.showLabels = !options.showLabels;
+            toggleLabels();
+        })
+
         d3.select("#taxonomy").on("click", function(){
             // show taxonomy in leaves
             options.showTaxonomy = !options.showTaxonomy;
@@ -375,7 +388,6 @@ window.requestAnimFrame = (function(){
             options.showNodesType = $(this).val();
             redrawTree();
             changeLeafText();
-
         })
 
         d3.select("#taxonomyColors").on("click", function(){
@@ -565,6 +577,16 @@ window.requestAnimFrame = (function(){
             });
         });
 
+        // general functions
+         
+        function getForegroundColor() {
+            return options.invertColors ? options.backgroundColor : options.foregroundColor;
+        }
+
+        function getBackgroundColor() {
+            return options.invertColors ? options.foregroundColor : options.backgroundColor;   
+        }      
+
         // action handlers for SVG
 
         function getSVGData() {
@@ -608,7 +630,7 @@ window.requestAnimFrame = (function(){
 
                 leaves.append("svg:path")
                     .attr("class", "domain")
-                    .attr('stroke',  options.invertColors ? options.backgroundColor :options.foregroundColor)
+                    .attr('stroke',  getForegroundColor())
                     .attr('visibility', function(d, i) {
                         return d.show ? "visibile" : "hidden";
                     });
@@ -654,7 +676,7 @@ window.requestAnimFrame = (function(){
                 domains.append("svg:text")
                     .attr("class", "domain")
                     .attr("dy", -3)
-                    .attr("fill", options.invertColors ? options.backgroundColor : options.foregroundColor)
+                    .attr("fill", getForegroundColor())
                     .attr("font-size", "10px")
                     .text(function(d) {
                         return d.name
@@ -681,14 +703,14 @@ window.requestAnimFrame = (function(){
         function changeDomainColors() {
             domains.selectAll("rect.domain")
                 .attr('fill', function(d) {
-                    return options.showDomainColors && onodes.domcolors[d.name] ? onodes.domcolors[d.name].color.replace(/0x/,"#") : (options.invertColors ? options.backgroundColor : options.foregroundColor);
+                    return options.showDomainColors && onodes.domcolors[d.name] ? onodes.domcolors[d.name].color.replace(/0x/,"#") : getForegroundColor();
                 });
         }
 
         function applyDomainTransform() {
             // TODO: support for multiple domain graphs
             var nds = leaves.data();
-            var margin = textPadding  + (options.showGraphs ? graphPadding : 5);
+            var margin = textPadding  + (options.showLabels ? labelPadding : 0) + (options.showGraphs ? graphPadding : 0);
             domainScale = phyd3.phylogram.scaledomainWidths(nodes, options.domainWidth);
             leaves.selectAll("path.domain")
                 .attr("d", function(d, i, j) {
@@ -722,7 +744,6 @@ window.requestAnimFrame = (function(){
                     .append("svg:text")
                     .attr("class", "supportValue")
                     .attr("dx", -2)
-                    .attr("dy", -2)
                     .attr("text-anchor", 'end')
                     .attr('fill', options.supportValuesColor)
                     .text(function(d) {
@@ -746,7 +767,6 @@ window.requestAnimFrame = (function(){
                     .append("svg:text")
                     .attr("class", "branchLength")
                     .attr("dx", -2)
-                    .attr("dy", 10)
                     .attr("text-anchor", 'end')
                     .attr('fill', options.branchLengthColor)
                     .text(function(d) {
@@ -885,7 +905,6 @@ window.requestAnimFrame = (function(){
                 row.append("td").text(name);
                 row.append("td").html(p);
             }
-
             if (n.sequences) {
                 for (var sid in n.sequences) {
                     if (n.sequences[sid].domainArchitecture && n.sequences[sid].domainArchitecture.domains) {
@@ -905,13 +924,15 @@ window.requestAnimFrame = (function(){
                         for (var i = 0; i < n.sequences[sid].domainArchitecture.domains.length; i++) {
                             var d = n.sequences[sid].domainArchitecture.domains[i];
                             var row = body.append("tr");
-                            row.append("td").style("background", onodes.domcolors[d.name].color.replace("0x", "#")).text(" ");
+                            row.append("td")
+                                .style("background", (onodes.domcolors[d.name] && onodes.domcolors[d.name].color) ? onodes.domcolors[d.name].color.replace("0x", "#") : '')
+                                .text(" ");
                             var name = row.append("td");
-                            if (onodes.domcolors[d.name].url) {
+                            if (onodes.domcolors[d.name] && onodes.domcolors[d.name].url) {
                                 name = name.append("a").attr("href", onodes.domcolors[d.name].url);
                             }
                             name.text(d.name);
-                            row.append("td").text(onodes.domcolors[d.name].description);
+                            row.append("td").text(onodes.domcolors[d.name] ? onodes.domcolors[d.name].description : '');
                             row.append("td").text(d.from);
                             row.append("td").text(d.to);
                             row.append("td").text(d.confidence);
@@ -935,24 +956,24 @@ window.requestAnimFrame = (function(){
                     }
                 }
             }
-            if (onodes.graphs)
-            for ( var g = 0; g < onodes.graphs.length; g++) {
-                var graph = onodes.graphs[g];
-                if (graph.data && graph.data[n.id] && graph.data[n.id].length) {
-                    var expanded = evt.target.parentNode.classList.contains(graph.type) ? true : false;
-                    var table = addPanel(accordion, graph.name, expanded).append("table").attr("class", tableClass).append("tbody");
-                    for (var i = 0; i<graph.legend.fields.length; i++) {
-                        var row = table.append("tr");
-                        var name = row.append("td");
-                        if (graph.legend.fields[i].url) {
-                            name = name.append("a").attr("href", graph.legend.fields[i].url);
+            if (onodes.graphs) {
+                for ( var g = 0; g < onodes.graphs.length; g++) {
+                    var graph = onodes.graphs[g];
+                    if (graph.data && graph.data[n.id] && graph.data[n.id].length) {
+                        var expanded = evt.target.parentNode.classList.contains(graph.type) ? true : false;
+                        var table = addPanel(accordion, graph.name, expanded).append("table").attr("class", tableClass).append("tbody");
+                        for (var i = 0; i<graph.legend.fields.length; i++) {
+                            var row = table.append("tr");
+                            var name = row.append("td");
+                            if (graph.legend.fields[i].url) {
+                                name = name.append("a").attr("href", graph.legend.fields[i].url);
+                            }
+                            name.text(graph.legend.fields[i].name);
+                            row.append("td").text(graph.data[n.id][i]);
                         }
-                        name.text(graph.legend.fields[i].name);
-                        row.append("td").text(graph.data[n.id][i]);
                     }
                 }
             }
-
             vis.selectAll("g.node.cid_"+n.id)
                 .selectAll("rect.pointer")
                 .style("opacity", "1");
@@ -964,7 +985,7 @@ window.requestAnimFrame = (function(){
                 vis.selectAll("g.leaf")
                    .append("path")
                    .attr("class","support")
-                   .attr("stroke", options.invertColors ? options.backgroundColor : options.foregroundColor)
+                   .attr("stroke", getForegroundColor())
                    .attr("stroke-dasharray", "2,3")
                    .attr("stroke-width", "0.5px");
             } else {
@@ -1032,33 +1053,37 @@ window.requestAnimFrame = (function(){
                     }
                     return t;
                });
-            vis.selectAll("g.node.inner").selectAll('text.name')
-               .text(getNodeText);
+            vis.selectAll("g.node.inner")
+                .selectAll('text.name')
+                .text(getNodeText);
             if (options.showGraphs) applyGraphTransform();
             if (options.showDomains) applyDomainTransform();
         }
 
         function changeLeafVisibility() {
-            vis.selectAll('text.name')
+            // show or hide leaf node names
+            leaves.selectAll('text.name')
                 .attr("visibility", function(d) {
                     return d.show ? 'visible' : 'hidden';
                 });
-            // bind the support value visibility to the node visibility
-            // vis.selectAll('text.supportValue')
-            //    .attr("visibility", function(d) {
-            //        return d.show ? 'visible' : 'hidden';
-            //    });
-            leaves.selectAll("path.support")
-                .attr("visibility", function(d) {
-                    return d.show ? 'visible' : 'hidden';
-                });
+            // show or hide support lines (when nodes are lined up)
+            if (options.lineupNodes) {
+                leaves.selectAll("path.support")
+                    .attr("visibility", function(d) {
+                        return d.show ? 'visible' : 'hidden';
+                    });
+            }
+            // show or hide leaf node labels (when labels are displayed)
+            if (options.showLabels) changeLabelVisibility();
+            // show or hide graphs (when graphs are displayed)
             if (options.showGraphs) changeGraphVisibility();
+            // show or hide domains (when domains are displayed)
             if (options.showDomains) changeDomainVisibility();
         }
 
         function changeLeafColors() {
             vis.selectAll("text.name")
-               .attr("stroke", options.invertColors ? options.backgroundColor : options.foregroundColor)
+               .attr("stroke", getForegroundColor())
                .attr("stroke-width", options.outline+"px")
                .attr("fill", function(d) {
                     var color = null;
@@ -1070,8 +1095,8 @@ window.requestAnimFrame = (function(){
                             }
                         }
                     } 
-                    return color ? color : (options.invertColors ? options.backgroundColor : options.foregroundColor);
-               });
+                    return color ? color : getForegroundColor();
+            });
         }
 
         function zoomLeafTransform() {
@@ -1083,6 +1108,7 @@ window.requestAnimFrame = (function(){
                 .attr("d", function(d) {
                     return "M0,0 L" + parseInt(phyd3.phylogram.dx - d.y) + ",0";
                 });
+            if (options.showLabels) applyLabelTransform();
             if (options.showGraphs) applyGraphTransform();
             if (options.showDomains) applyDomainTransform();
         }
@@ -1090,34 +1116,161 @@ window.requestAnimFrame = (function(){
         function applyLeafTransform() {
             var margin = 0;
             
-            leaves.selectAll('text.name')
-                .attr("dy", options.nodeHeight / 2);
-            vis.selectAll("g.node")
-                .selectAll("text")
+            vis.selectAll('text.name')
+                .attr("dy", options.nodeHeight / 2)
                 .attr('font-size', (options.nodeHeight*1.5)+'px');
             
+            vis.selectAll('text.branchLength')
+                .attr("dy", -options.nodeHeight / 2 )
+                .attr('font-size', (options.nodeHeight*1.5)+'px');
+
+            vis.selectAll('text.supportValue')
+                .attr("dy", options.nodeHeight / 2 + 5)
+                .attr('font-size', (options.nodeHeight*1.5)+'px');
+
+
             // primary method : check the longest Bounding box
+            /*
             vis.selectAll("g.leaf.cid_"+longestNode).selectAll("text.name")
                 .each(function() {
                     // this call is forcing reflow and layout (~10ms)
                     var box = this.getBBox();
                     if (box.width > margin) margin = box.width;
                 });        
+            */
             // alternative method : fixed width relative to node size
-            // margin = 100*options.nodeHeight/6;
+            margin = 100*options.nodeHeight/6;
             margin += 10;
             textPadding = margin;
             d3.select("#nodeHeight")            
                 .attr("value", options.nodeHeight);
             zoomLeafTransform();
+            if (options.showLabels) applyLabelTransform();
             if (options.showGraphs) applyGraphTransform();
             if (options.showDomains) applyDomainTransform();
         }
 
-        // action hanlders for graphs
+        // action handlers for labels
+
+        function toggleLabels() {            
+            if (options.showLabels && onodes.labels) {
+                for ( var l = 0; l < onodes.labels.length; l++) {
+                    var label = onodes.labels[l];
+                    if (!label.id) label.id = parseInt(Date.now() * Math.random() * 1000);
+                    if (label.data.tag) {
+                        var clade = vis.selectAll("g.node")
+                            .each(function(d) {
+                                var tag = d[label.data.tag];
+                                var ref = label.data.ref;
+                                ref = ref ? ref : "value";
+                                var value = (typeof tag == 'object') ? tag[ref] : tag;
+                                if (label.data.tag == 'property') {
+                                    for (pid in d.properties) {
+                                        var p = d.properties[pid];
+                                        if (p.ref == ref) {
+                                            value = p.value;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if (!value) return;
+                                label.data[d.id] = value;
+                            });
+                    }
+                    switch (label.type) {
+                        case "text":
+                            for (cid in label.data) {
+                                if (!label.data[cid] || !parseInt(cid)) continue;
+                                vis.selectAll(".cid_"+cid)
+                                    .append("text")
+                                    .attr("class", "nodelabel text lid"+label.id)
+                                    .attr("dy", 3)
+                                    .attr("text-anchor", "start")
+                                    .attr("stroke-width", "0.3px")
+                                    .attr("stroke", getForegroundColor())
+                                    .attr("fill", getForegroundColor())
+                                    .attr('font-size', (options.nodeHeight*1.5)+'px')
+                                    .attr("visibility", "visible")
+                                    .text(label.data[cid])
+                                    .append("title")
+                                    .text(label.name + ": "+label.data[cid]);
+                                }
+                            break;
+                        case "color":
+                            for (cid in label.data) {
+                                if (!label.data[cid] || !parseInt(cid)) continue;
+                                var h = options.nodeHeight;
+                                var c = label.data[cid].replace(/0x/,"#");
+                                vis.selectAll(".cid_"+cid)
+                                    .append("rect")
+                                    .attr("height", h * 2)
+                                    .attr("width", h * 2)
+                                    .attr("class", "nodelabel color lid"+label.id)
+                                    .attr('style', "fill: " + c + "; stroke: " +  c)
+                                    .append("title")
+                                    .text(label.name);
+                            }
+                            break;
+                    }
+                }
+                changeLabelVisibility();
+                applyLabelTransform();
+                applyGraphTransform();
+                applyDomainTransform();                
+            } else {
+                vis.selectAll(".nodelabel").remove();
+                labelPadding = 0;
+                applyGraphTransform();
+                applyDomainTransform();
+            }
+        }
+
+        function applyLabelTransform() {
+            var h = options.nodeHeight;
+            labelPadding = 0;
+            if (onodes.labels) {
+                for ( var l = 0; l < onodes.labels.length; l++) {
+                    var label = onodes.labels[l];
+                    var maxWidth = 0;
+                    leaves.selectAll(".nodelabel.lid"+label.id)
+                        .attr("transform", function(d) {
+                            var dx = 0, dy = 0;
+                            if (label.type == 'color') {
+                                dx = dy = -h;
+                            }
+                            var labelWidth = 0;
+                            if (this.nodeName == 'text' && this.firstChild) {                                
+                                labelWidth = this.firstChild.length * h / 1.5;
+                            } else if (this.nodeName == 'rect') {
+                                labelWidth = h * 2;
+                            }
+                            if (labelWidth > maxWidth) maxWidth = labelWidth;
+                            return "translate(" + parseInt(dx + h + labelPadding + (options.lineupNodes ? (phyd3.phylogram.dx - d.y + textPadding) : textPadding)) + "," + dy + ")";
+                        });
+                    labelPadding += maxWidth + h*2;
+                }
+                var labels = leaves.selectAll('.nodelabel')
+                labels.selectAll("text")
+                    .attr("dy", options.nodeHeight / 2)
+                    .attr('font-size', (options.nodeHeight*1.5)+'px');
+                labels.selectAll("rect")
+                    .attr("width", options.nodeHeight * 2)
+                    .attr("height", options.nodeHeight * 2);
+            }
+        }
+
+        function changeLabelVisibility() {
+            leaves.selectAll('.nodelabel')
+                .attr("visibility", function(d) {
+                    return d.show ? 'visible' : 'hidden';
+                });
+        }
+
+
+        // action handlers for graphs         
 
         function toggleGraphs() {
-            if (options.showGraphs && onodes.graphs) {
+            if (options.showGraphs && onodes.graphs.length) {
                 // additional graphs
                 var arc = d3.svg.arc()
                     .innerRadius(0)
@@ -1129,6 +1282,7 @@ window.requestAnimFrame = (function(){
                     })
                     .sort(null);
                 graphPadding = 0;
+
                 for ( var g = 0; g < onodes.graphs.length; g++) {
                     var graph = onodes.graphs[g];
                     if (!graph.id) graph.id = parseInt(Date.now() * Math.random() * 1000);
@@ -1187,7 +1341,7 @@ window.requestAnimFrame = (function(){
                                     .enter()
                                     .append('path')
                                     .attr('class', 'pie hover-visible gid'+graph.id)
-                                    .attr('stroke', options.invertColors ? options.backgroundColor : options.foregroundColor)
+                                    .attr('stroke', getForegroundColor())
                                     .attr('stroke-width', options.outline+'px')
                                     .attr('fill', function(d, i) {
                                         if (graph.legend.fields) {
@@ -1242,7 +1396,7 @@ window.requestAnimFrame = (function(){
                                     })
                                     .append("title").text(function(d, i){
                                         return (graph.legend.fields[i] ? graph.legend.fields[i].name + ": " : "" )+d.value;
-                                    });;
+                                    });
                             }
                             break;
                         case "multibar":
@@ -1286,7 +1440,7 @@ window.requestAnimFrame = (function(){
                             var min = d3.min(d3.values(graph.data), function(d) {
                                 if (d) return d3.min(d);
                             });
-                            var heatmapColour = d3.scale.quantize()
+                            var heatmapColor = d3.scale.quantize()
                                 .domain([min, max])
                                 .range(colorbrewer[graph.legend.gradient.name][graph.legend.gradient.classes]);
                             for (cid in graph.data) {
@@ -1307,7 +1461,7 @@ window.requestAnimFrame = (function(){
                                     .append('rect')
                                     .attr("class","heatmap hover-visible gid"+graph.id)
                                     .attr('fill', function(d, i) {
-                                        return heatmapColour(d.value);
+                                        return heatmapColor(d.value);
                                     })
                                     .attr("stroke", options.foregroundColor)
                                     .attr("stroke-width", options.outline + "px")
@@ -1326,6 +1480,7 @@ window.requestAnimFrame = (function(){
                 applyGraphTransform();
                 applyDomainTransform();
             } else {
+                graphPadding = 0;
                 vis.selectAll("g.graph").remove();
                 vis.selectAll("text.legend").remove();
                 applyDomainTransform();
@@ -1334,107 +1489,109 @@ window.requestAnimFrame = (function(){
 
         function applyGraphTransform() {
             var h = options.nodeHeight;
-            leaves.selectAll("g.graph")
+            var padding = textPadding + labelPadding;
+            var graphs = leaves.selectAll("g.graph")
                 .attr("transform", function(d) {
-                    return "translate(" + (options.lineupNodes ? (phyd3.phylogram.dx - d.y + textPadding) : textPadding) + "," + 0 + ")";
-                })
+                    return "translate(" + (options.lineupNodes ? (phyd3.phylogram.dx - d.y + padding) : padding) + "," + 0 + ")";
+                });
             d3.select("#graphWidth").attr("value", options.graphWidth);
             vis.selectAll("text.legend").remove();
             graphPadding = 0;
-            if (onodes.graphs)
-            for ( var g = 0; g < onodes.graphs.length; g++) {
-                var graph = onodes.graphs[g];
-                switch (graph.type) {
-                    case "pie":
-                        vis.selectAll("path.pie.gid"+graph.id)
-                            .attr('d', function(d) {
-                                var a = d3.svg.arc()
-                                    .innerRadius(0)
-                                    .outerRadius(h);
-                                return a(d);
-                                }
-                            )
-                            .attr("transform", function(d) {
-                                var x = d.data.leaf ? h + graphPadding : 0;
-                                return " translate(" + parseInt(x) + ",0)";
-                            });
-                        if (options.showGraphLegend) {
-                            vis.append("text")
-                               .attr("class", "legend")
-                               .text((graph.legend.show != 0) ? graph.name : '')
-                               .attr("transform", "translate("+ parseInt(phyd3.phylogram.dx + textPadding + graphPadding + h*2) +",-10) rotate(-90)");
-                        }
-                        graphPadding += h*2 + 5;
-                        break;
+            if (onodes.graphs) {
+                for ( var g = 0; g < onodes.graphs.length; g++) {
+                    var graph = onodes.graphs[g];
+                    switch (graph.type) {
+                        case "pie":
+                            graphs.selectAll("path.pie.gid"+graph.id)
+                                .attr('d', function(d) {
+                                    var a = d3.svg.arc()
+                                        .innerRadius(0)
+                                        .outerRadius(h);
+                                    return a(d);
+                                    }
+                                )
+                                .attr("transform", function(d) {
+                                    var x = d.data.leaf ? h + graphPadding : 0;
+                                    return " translate(" + parseInt(x) + ",0)";
+                                });
+                            if (options.showGraphLegend) {
+                                vis.append("text")
+                                   .attr("class", "legend")
+                                   .text((graph.legend.show != 0) ? graph.name : '')
+                                   .attr("transform", "translate("+ parseInt(phyd3.phylogram.dx + padding + graphPadding + h*2) +",-10) rotate(-90)");
+                            }
+                            graphPadding += h*2 + 5;
+                            break;
 
-                    case "binary":
-                        vis.selectAll("path.binary.gid"+graph.id)
-                            .attr('d', function(d) {
-                                //if (!d.value) return "";
-                                var symbol = d3.svg.symbol().size(4 * (h - 2) * (h - 2));
-                                symbol.type(graph.legend.fields[d.i].shape);
-                                return symbol(d);
-                            })
-                            .attr("transform", function(d) {
-                                var x = d.leaf ? (graphPadding + 10 + (d.i) * (h*2 + 5)) : 0;
-                                return " translate(" + x + " ,0)";
-                            });
-                        if (options.showGraphLegend) {
-                            for (var i=0; i<graph.legend.fields.length; i++) {
-                                vis.append("text")
-                                   .attr("class", "legend")
-                                   .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
-                                   .attr("transform", "translate("+ (phyd3.phylogram.dx + textPadding + graphPadding + i*(h*2 + 5) + h*2) +", -10) rotate(-90)");
+                        case "binary":
+                            graphs.selectAll("path.binary.gid"+graph.id)
+                                .attr('d', function(d) {
+                                    //if (!d.value) return "";
+                                    var symbol = d3.svg.symbol().size(4 * (h - 2) * (h - 2));
+                                    symbol.type(graph.legend.fields[d.i].shape);
+                                    return symbol(d);
+                                })
+                                .attr("transform", function(d) {
+                                    var x = d.leaf ? (graphPadding + 10 + (d.i) * (h*2 + 5)) : 0;
+                                    return " translate(" + x + " ,0)";
+                                });
+                            if (options.showGraphLegend) {
+                                for (var i=0; i<graph.legend.fields.length; i++) {
+                                    vis.append("text")
+                                       .attr("class", "legend")
+                                       .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
+                                       .attr("transform", "translate("+ (phyd3.phylogram.dx + padding + graphPadding + i*(h*2 + 5) + h*2) +", -10) rotate(-90)");
+                                }
                             }
-                        }
-                        graphPadding += (graph.legend.fields.length + 1)*(h*2 + 5) + 5;
-                        break;
-                    case "multibar":
-                        for (var i = 0; i < graph.legend.fields.length; i++) {
-                            multibarScaling[graph.id][i] = multibarScaling[graph.id][i].range([0, options.graphWidth]);
-                        }
-                        vis.selectAll("rect.multibar.gid"+graph.id)
-                            .attr('height', parseInt(h * 2))
-                            .attr('width', function(d, i) {
-                                return parseInt(multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](d.value) : 0);
-                            })
-                            .attr("transform", function(d, i) {
-                                var x = graphPadding + d.i*(options.graphWidth + 5);
-                                return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
-                            });
-                        if (options.showGraphLegend) {
-                            for (var i=0; i<graph.legend.fields.length; i++) {
-                                vis.append("text")
-                                   .attr("class", "legend")
-                                   .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
-                                   .attr("transform", "translate("+ (phyd3.phylogram.dx + textPadding + graphPadding + i*(options.graphWidth + 5) + options.graphWidth/2) +",-10) rotate(-90)");
+                            graphPadding += (graph.legend.fields.length + 1)*(h*2 + 5) + 5;
+                            break;
+                        case "multibar":
+                            for (var i = 0; i < graph.legend.fields.length; i++) {
+                                multibarScaling[graph.id][i] = multibarScaling[graph.id][i].range([0, options.graphWidth]);
                             }
-                        }
-                        graphPadding += (graph.legend.fields.length) * (options.graphWidth + 5);
-                        break;
-                    case "heatmap":
-                        vis.selectAll("rect.heatmap.gid"+graph.id)
-                            .attr("width", h * 2)
-                            .attr("height", h * 2)
-                            .attr("transform", function(d, i) {
-                                var x = graphPadding + d.i*(h * 2);
-                                return " translate(" + x + ",-" + (h) +")";
-                            });
-                        if (options.showGraphLegend) {
-                            for (var i=0; i<graph.legend.fields.length; i++) {
-                                vis.append("text")
-                                   .attr("class", "legend")
-                                   .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
-                                   .attr("transform", "translate("+ parseInt(phyd3.phylogram.dx + textPadding + graphPadding + (i+1)*h*2)+",-10) rotate(-90)");
+                            graphs.selectAll("rect.multibar.gid"+graph.id)
+                                .attr('height', parseInt(h * 2))
+                                .attr('width', function(d, i) {
+                                    return parseInt(multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](d.value) : 0);
+                                })
+                                .attr("transform", function(d, i) {
+                                    var x = graphPadding + d.i*(options.graphWidth + 5);
+                                    return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
+                                });
+                            if (options.showGraphLegend) {
+                                for (var i=0; i<graph.legend.fields.length; i++) {
+                                    vis.append("text")
+                                       .attr("class", "legend")
+                                       .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
+                                       .attr("transform", "translate("+ (phyd3.phylogram.dx + padding + graphPadding + i*(options.graphWidth + 5) + options.graphWidth/2) +",-10) rotate(-90)");
+                                }
                             }
-                        }
-                        graphPadding += (graph.legend.fields.length) * (h*2) + 5;
-                        break;
+                            graphPadding += (graph.legend.fields.length) * (options.graphWidth + 5);
+                            break;
+                        case "heatmap":
+                            graphs.selectAll("rect.heatmap.gid"+graph.id)
+                                .attr("width", h * 2)
+                                .attr("height", h * 2)
+                                .attr("transform", function(d, i) {
+                                    var x = graphPadding + d.i*(h * 2);
+                                    return " translate(" + x + ",-" + (h) +")";
+                                });
+                            if (options.showGraphLegend) {
+                                for (var i=0; i<graph.legend.fields.length; i++) {
+                                    vis.append("text")
+                                       .attr("class", "legend")
+                                       .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
+                                       .attr("transform", "translate("+ parseInt(phyd3.phylogram.dx + padding + graphPadding + (i+1)*h*2)+",-10) rotate(-90)");
+                                }
+                            }
+                            graphPadding += (graph.legend.fields.length) * (h*2) + 5;
+                            break;
+                    }
                 }
+                vis.selectAll("text.legend")
+                    .attr("fill", getForegroundColor())
+                    .attr("font-size", options.nodeHeight * 2)
             }
-            vis.selectAll("text.legend")
-                .attr("fill", options.invertColors ? options.backgroundColor : options.foregroundColor)
-                .attr("font-size", options.nodeHeight * 2)
         }
 
         function initialHeightMargin() {
@@ -1537,7 +1694,7 @@ window.requestAnimFrame = (function(){
                     .append("svg:path")
                     .attr("class", "link")
                     .attr("fill", "none")
-                    .attr("stroke", options.invertColors ? options.backgroundColor : options.foregroundColor)
+                    .attr("stroke", getForegroundColor())
             }
 
             // redraw the links
@@ -1701,7 +1858,6 @@ window.requestAnimFrame = (function(){
                 y = t[1] + options.marginY - options.translateY;
             vis.attr("transform", function(d) { return "translate(" + parseInt(x) + "," + parseInt(y) + ") scale(1)"});
             if (options.lastScale != 0) {
-                //applyLeafTransform();
                 zoomLeafTransform();
                 if (options.dynamicHide) {
                     changeLeafVisibility();

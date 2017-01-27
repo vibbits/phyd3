@@ -353,7 +353,7 @@ if (!d3) {
     }
 
 
-    phyd3.phyloxml.parseGraphLegend = function(l) {
+    phyd3.phyloxml.parseLegend = function(l) {
         var legend = {
             show: parseInt(l.getAttribute('show')),
             fields: [],
@@ -395,7 +395,7 @@ if (!d3) {
         return legend;
     }
 
-    phyd3.phyloxml.parseGraphData = function(d) {
+    phyd3.phyloxml.parseData = function(d) {
         var data = {
             tag: d.getAttribute('tag'),
             ref: d.getAttribute('ref')
@@ -430,10 +430,10 @@ if (!d3) {
                     graph.name = node.textContent;
                     break;
                 case 'legend':
-                    graph.legend = phyd3.phyloxml.parseGraphLegend(node);
+                    graph.legend = phyd3.phyloxml.parseLegend(node);
                     break;
                 case 'data':
-                    graph.data = phyd3.phyloxml.parseGraphData(node);
+                    graph.data = phyd3.phyloxml.parseData(node);
                     break;
                 case '#text':
                     // skipping empty text nodes
@@ -445,6 +445,33 @@ if (!d3) {
         }
         return graph;
     }
+
+    phyd3.phyloxml.parseLabel = function(g) {
+        var label = {
+            name: '',
+            data: {},
+            type: g.getAttribute('type')
+        };        
+        for (var j = 0; j < g.childNodes.length; j++) {
+            var node = g.childNodes[j];
+            switch (node.nodeName) {
+                case 'name' :
+                    label.name = node.textContent;
+                    break;
+                case 'data':
+                    label.data = phyd3.phyloxml.parseData(node);
+                    break;
+                case '#text':
+                    // skipping empty text nodes
+                    break;
+                default:
+                    console.log("Undefined node: " + node.nodeName + " " + node.textContent + " - skipping...");
+                    break;
+            }
+        }
+        return label;
+    }
+
 
     phyd3.phyloxml.parse = function(xml) {
         var phylotree = {
@@ -570,6 +597,19 @@ if (!d3) {
             }
         }
         phylotree.graphs = graphs;
+
+        root = xml.getElementsByTagName("labels");
+        root = root[0];
+        var labels = [];
+        if (root && root.childNodes) {
+            for (var i = 0; i < root.childNodes.length; i++) {
+                var label = root.childNodes[i];
+                if (label.nodeName == 'label') {
+                    labels.push(phyd3.phyloxml.parseLabel(label));
+                }
+            }
+        }
+        phylotree.labels = labels;
 
         return phylotree;
     };

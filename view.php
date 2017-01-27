@@ -133,6 +133,13 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
+                      <input id="nodeLabels" type="checkbox" checked="checked"> show node labels
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
                       <input id="sequences" type="checkbox" checked="checked"> show sequences
                     </label>
                 </div>
