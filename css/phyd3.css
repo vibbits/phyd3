@@ -22,111 +22,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
 */
-@font-face
-{
-    font-family: Dense;
-
-    src: url(../fonts/Dense-Regular.ttf);
-}
-
-@font-face
-{
-    font-family: Open Sans;
-
-    src: url(../fonts/OpenSans.woff);
-}
-
-@font-face
-{
-    font-family: Material Icons;
-    font-weight: 400;
-    font-style: normal;
-
-    src: url(../fonts/MaterialIcons.woff) format('woff');
-}
-
-
-body {
-    background-image: url('../img/geometric_shapes.jpg');
-    font-family: "Open Sans", Helvetica, sans-serif; 
-    color: #1b2944 !important;
-    font-weight: 400;
-    font-size: 18px;
-}
-
-.form-group textarea.form-control {
-    background-color: white;
-}
-
-.no-decoration {
-    color: black;    
-}
-
-.fill-container {
-    height: 100%;
-}
-
-.no-decoration:hover {
-    color: black;
-    text-decoration: none;
-}
-
-.center-container {
-    display: table;
-    vertical-align: middle;
-}
-
-.vertical-center-row {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans';
-    font-weight: 600;
-    color: #1b2944;
-}
-#phyd3 {
-    padding: 0px;
-    margin: 0px;
-    text-align: center;
-}
-
-#phyd3logo {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 300px;
-    z-index: -100;
-}
-#viblogo {
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    width: 200px;
-    z-index: -100;
-}
-#bitslogo {
-    position: fixed;
-    top: 45%;
-    left: 80px;
-    width: 150px;
-    z-index: -100;
-}
 .phyd3-controls { 
     font-size: 12px;
 }
+
 .phyd3-controls hr {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.checkbox .checkbox-material {
-    width: 15px;
-    height: 15px;
-}
-.phyd3-documentation {
-    font-size: 0.7em;
-}
+
 .phyd3-controls .checkbox {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -140,29 +44,25 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0px;
 
 }
+
 .phyd3-controls .form-group label {
     color: #1b2944 !important;
 }
+
 .phyd3-controls .form-group label:hover {
     color: #ff681e !important;
 }
+
 .phyd3-controls .hover-visible:hover {
     opacity: 0.5
 }
-hr {
-    border-top: 1px solid #aaa;
-}
-.red {
-    color: red;
-}
-.btn-primary {
-    font-size: 1.0em;
-}
+
 .phyd3-controls .btn {
     padding: 0px;
     padding-left: 15px;
     padding-right: 15px;
 }
+
 .phyd3-controls .popup {
     padding: 10px;
     border-radius: 5px;    
@@ -171,65 +71,37 @@ hr {
     width: 400px;
     z-index: 1000;            
 }
+
 .phyd3-controls .panel-title {
     font-size: 12px;
 }
+
 .phyd3-controls .panel-body .table {
     margin-bottom: 0px;
 }
+
 .phyd3-controls .panel-group {
     margin-bottom: 0px;
 }
+
 .phyd3-controls .form-control{
     font-size: 12px;
     padding: 0px 10px;
     height: 25px;
 }
+
 .phyd3-controls .left-dropdown {
     padding-right: 0px;
 }
+
 .phyd3-controls .right-dropdown {
     padding-left: 0px;
 }
+
 .phyd3-controls .no-padding {
     padding:0px 5px;
 }
+
 .phyd3-controls .middle-padding {
     padding-top: 3px;
-}
-.dropzone {
-    min-height: 425px;
-    margin-top: 25px;
-}
-textarea.col {
-    min-height: 400px;
-    overflow-x: hidden;
-}
-
-.radio {
-    display: inline-block;
-}
-
-.annotation .form-group {
-    margin: 0px;
-}
-
-.hidden {
-    display: none;
-}
-
-td {
-    vertical-align: top;
-}
-
-.row .columns {
-    overflow-x: scroll;
-}
-
-.graphColor {
-    padding-right: 10px !important;
-}
-
-.form-group {
-    margin-top: 0px;
 }

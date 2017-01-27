@@ -214,16 +214,17 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
 <head>
     <meta content="text/html;charset=UTF-8" http-equiv="content-type">
     <title>PhyD3</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-material-design.min.css" />
-    <link rel="stylesheet" href="css/phyd3.css" />
-    <link rel="stylesheet" href="css/bootstrap-colorpicker.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="js/d3.v3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/material.min.js"></script>
-    <script src="js/bootstrap-colorpicker.min.js"></script>
-    <script src="js/phyd3.phylogram.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="libs/css/bootstrap-material-design.min.css" />
+    <link rel="stylesheet" href="libs/css/vib.css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="libs/js/material.min.js"></script>
+    <link rel="stylesheet" href="libs/css/vib.css" />
+    <link rel="stylesheet" href="libs/css/bootstrap-colorpicker.min.css" />
+    <script src="libs/js/bootstrap-colorpicker.min.js"></script>
     <script type="text/javascript">
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -262,7 +263,6 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
         var h = Math.random();
         h += golden_ratio_conjugate;
         h %= 1;
-        console.log(hslToRgb(h, 0.5, 0.60));
         return hslToRgb(h, 0.5, 0.60);
     };
 

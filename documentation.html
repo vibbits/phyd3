@@ -3,12 +3,14 @@
 <head>
     <meta content="text/html;charset=UTF-8" http-equiv="content-type">
     <title>PhyD3</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-material-design.min.css" />
-    <link rel="stylesheet" href="css/phyd3.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/material.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="libs/css/bootstrap-material-design.min.css" />
+    <link rel="stylesheet" href="libs/css/vib.css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="libs/js/material.min.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -56,11 +58,14 @@
         <li>phyloXML - <a href="http://www.phyloxml.org/" target="_blank">http://www.phyloxml.org</a>
         <li>extended phyloXML - <a href="#extended+phyloXML">see below</a>, our extension to support annotation graphs and colours in the phyloXML
     </ul>
-    <h3><a class="no-decoration" name="extended+phyloXML">extended phyloXML</a></h3>
-        The current phyloXML XSD permits inserting other (non-standard) tags, which are used here to describe taxonomy colors, domain colors as well as node graphs.<br />
-        You can specify taxonomy and domain colors, descriptions and links using the &lt;taxonomies&gt; and &lt;domains&gt; tags respectively.<br />
-        The taxonomy & domain codes must match ones used in phylogeny. Use HEX values for colors (0xRRGGBB).<br />
-        See the example below.
+    <h3><a class="no-decoration" name="extended+phyloXML">Extended phyloXML</a></h3>
+        The current phyloXML XSD permits inserting other (non-standard) tags, which are used here to describe taxonomy colors, domain colors as well as node label and node graphs.<br />
+        <ol>
+        <li><h4>Taxonomy information</h4>
+            You can specify the taxonomy name, color and URL in the &lt;taxonomies&gt; section of extended phyloXML.<br />
+            These information will be displayed on the tree, in node infobox as well as used for taxonomy colorization.<br />
+            The taxonomy codes must match ones used in phylogeny. Use HEX values for colors (0xRRGGBB). Use full URL for links (starting with http://).<br />
+            See the example below.
         <pre>
 &lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" 
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
@@ -69,6 +74,31 @@
             &lt;taxonomy&gt;
                 &lt;code&gt;<b>mdo</b>&lt;/code&gt;
             &lt;/taxonomy&gt;
+            ...
+        &lt;/clade&gt;
+        ...
+    &lt;/phylogeny&gt;
+    &lt;taxonomies&gt;
+      &lt;taxonomy code="<b>mdo</b>"&gt;
+         &lt;color&gt;0x40FF00&lt;/color&gt;
+         &lt;name&gt;Malus domestica&lt;/name&gt;
+         &lt;url&gt;https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=3750&lt;/url&gt;
+      &lt;/taxonomy&gt;
+      ...
+    &lt;/taxonomies&gt;    
+    ...
+&lt;/phyloxml&gt;</pre>
+        </li>
+        <li><h4>Domain information</h4>
+            You can specify domain description, color and URL in the &lt;domains&gt; section of extended phyloXML.<br />
+            These information will be displayed on the tree, in node infobox as well as used for domain colorization.<br />
+            The domain codes must match ones used in phylogeny. Use HEX values for colors (0xRRGGBB). Use full URL for links (starting with http://).<br />
+            See the example below.
+        <pre>
+&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" 
+          xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
+    &lt;phylogeny rooted="true"&gt;
+        &lt;clade&gt;
             &lt;sequence&gt;
                 &lt;domain_architecture length="402"&gt;
                     &lt;domain confidence="3.7E-6" from="135" to="212"&gt;<b>IPR011992</b>&lt;/domain&gt;
@@ -80,14 +110,6 @@
         &lt;/clade&gt;
         ...
     &lt;/phylogeny&gt;
-    &lt;taxonomies&gt;
-      &lt;taxonomy code="<b>mdo</b>"&gt;
-         &lt;color&gt;0x40FF00&lt;/color&gt;
-         &lt;name&gt;Malus domestica&lt;/name&gt;
-         &lt;url&gt;http://www.example.com&lt;/url&gt;
-      &lt;/taxonomy&gt;
-      ...
-    &lt;/taxonomies&gt;    
     &lt;domains&gt;    
         &lt;domain name="<b>IPR011992</b>"&gt;
             &lt;color&gt;0x12C6D7&lt;/color&gt;
@@ -103,16 +125,49 @@
     &lt;/domains&gt;
     ...
 &lt;/phyloxml&gt;</pre>
-        
-        <br />
-        You can also include the graphs specifications and the graph data, that should be displayed next to the node (clade).<br />
-        You can choose between 4 graph types: <b>multibar, pie, binary, heatmap</b>. Each referenced clade needs to have an <b>id</b> tag defined in the phylogeny.<br />
+        </li>
+        <li><h4>Node labels</h4>
+            It is possible to display on the tree additional node labels. Those labels can be created from existing node properties or other tags. <br />
+            There are two kinds of labels: text labels and color labels.<br />
+            To specify which properties to show use &lt;labels&gt; section in extended phyloXML. Type can be either text or color. Data tag and ref must match the intended clade property to be displayed. Use HEX values for colors (0xRRGGBB).<br />
+            See the example below.
+        <pre>
+&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" 
+          xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
+    &lt;phylogeny rooted="true"&gt;
+        &lt;clade&gt;
+            &lt;<b>events</b>&gt;
+                &lt;<b>duplications</b>&gt;1&lt;/<b>duplications</b>&gt;
+            &lt;/<b>events</b>&gt;
+            &lt;<b>property</b> applies_to="clade" datatype="xksd:string" ref="<b>Resistance score</b>"&gt;0xA3B523&lt;/property&gt;
+            ...
+        &lt;/clade&gt;
+        ...
+    &lt;/phylogeny&gt;
+    &lt;labels&gt;
+      &lt;label type="text"&gt;
+         &lt;name&gt;Duplications&lt;/name&gt;
+         &lt;data tag="<b>events</b>" ref="<b>duplications</b>"&gt;&lt;/data&gt;
+      &lt;/label&gt;
+      &lt;label type="color"&gt;
+         &lt;name&gt;Resistance&lt;/name&gt;
+         &lt;data tag="<b>property</b>" ref="<b>Resistance score</b>"&gt;&lt;/data&gt;
+      &lt;/label&gt;
+      ...
+    &lt;/labels&gt;    
+    ...
+&lt;/phyloxml&gt;</pre>
+        </li>
+        <li><h4>Node graphs</h4>
+        You can also include the graphs specifications and the graph data, that should be displayed next to the node (clade).<br /> On the internal nodes <b>pie</b> or <b>binary</b> graphs can be drawn.
+        For leaf nodes you can choose between 4 graph types: <b>multibar, pie, binary, heatmap</b>. Each referenced clade needs to have an <b>id</b> tag defined in the phylogeny.<br />
         For complete graph specification you need three things:
         <ol>
             <li><b>name</b> - graph name, that will be displayed in detailed node information popup
-            <li><b>legend</b> - for each value series of your data, you need to specify the legend field; for each field you need to put field name (which will be displayed to the user in legend and info popup), color that will be used to draw this series (for all graph types besides heatmap) and for binary graph also a symbol shape (one of circle); additionally for heatmap you need to specify which gradient spec to use (name &amp; classes following the <a href="http://colorbrewer2.org/" target="_blank">ColorBrewer2</a>)
-            <li><b>data</b> - for each clade id you wish to display the graph for, you need to include data values, ordered in series defined in legend; you can also use existing tags or properties from phylogeny tree, referencing them by tag and ref attributes of data tag
+            <li><b>legend</b> - for each value series of your data, you need to specify the legend field; for each field you need to put field name (which will be displayed to the user in legend and infobox popup), color that will be used to draw this series (for all graph types besides heatmap) and for binary graph also a symbol shape (one of circle); additionally for heatmap you need to specify which gradient spec to use (name &amp; classes following the <a href="http://colorbrewer2.org/" target="_blank">ColorBrewer2</a>)
+            <li><b>data</b> - for each clade id you wish to display the graph for, you need to include data values, ordered in series defined in legend; you can also use existing tags or properties from phylogeny tree, referencing them by tag and ref attributes of data tag; to turn single values into pie charts use <b>min</b> and <b>max</b> tags inside <b>data</b> tag.
         </ol>
+        See the example below.
         <pre>
 &lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" 
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
@@ -259,6 +314,7 @@
                     &lt;value&gt;37&lt;/value&gt;
                     &lt;value&gt;12&lt;/value&gt;
                 &lt;/values&gt;
+                ...
             &lt;/data&gt;
         &lt;/graph&gt;
         &lt;graph type="pie"&gt;
@@ -286,9 +342,16 @@
             &lt;data tag="events" ref="duplications"&gt;
             &lt;/data&gt;
         &lt;/graph&gt;
+        ...
     &lt;/graphs&gt;
 &lt;/phyloxml&gt;</pre>
-    You can find full working phyloXML example <a href="samples/sample.xml">here</a> and view it as a <a href="view.php?id=91162629d258a876ee994e9233b2ad87&f=xml">demo</a>.
+        </li>
+    </ol>
+    <h3>Usage</h3>
+    <ol>
+        <li><h4>Embedding the widget</h4></li>
+        <li><h4>Widget configuration</h4></li>
+    </ol>
     <h3>License</h3>
         <b>phyD3, phylogenetic tree viewer based on D3.js</b><br />
         Copyright (c) BITS VIB 2016<br /><br />

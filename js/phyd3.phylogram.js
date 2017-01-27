@@ -1270,7 +1270,7 @@ window.requestAnimFrame = (function(){
         // action handlers for graphs         
 
         function toggleGraphs() {
-            if (options.showGraphs && onodes.graphs.length) {
+            if (options.showGraphs && onodes.graphs && onodes.graphs.length) {
                 // additional graphs
                 var arc = d3.svg.arc()
                     .innerRadius(0)

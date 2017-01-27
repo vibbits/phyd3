@@ -1,0 +1,34 @@
+{
+  "name": "phyd3",
+  "version": "1.0.0",
+  "description": "PhyD3 phylogenetic tree viewer",
+  "main": "phyd3.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "finalhandler": "^0.5.1",
+    "node-minify": "^2.0.2",
+    "serve-static": "^1.11.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vibbits/phyd3.git"
+  },
+  "keywords": [
+    "phylogeny",
+    "tree",
+    "d3",
+    "js"
+  ],
+  "author": "Lukasz Kreft",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/vibbits/phyd3/issues"
+  },
+  "homepage": "https://github.com/vibbits/phyd3#readme"
+}

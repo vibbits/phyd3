@@ -25,10 +25,6 @@
  * 
  * Full license text can be found in LICENSE.TXT
  */
-if (!d3) { 
-    throw "d3 wasn't included!";
-};
-
 (function() {
     if (typeof phyd3 == "undefined") phyd3 = {};
     phyd3.phyloxml = {};
@@ -157,10 +153,11 @@ if (!d3) {
                     event.confidence = phyd3.phyloxml.parseConfidence(node);
                     break;
                 case '#text':
+                case '#comment':
                     // skipping empty text nodes
                     break;
                 default:
-                    console.log("Undefined node: " + node.nodeName + " " + node.textContent + " - skipping...");                    
+                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");                    
             }
         }
         return event;
@@ -192,6 +189,7 @@ if (!d3) {
                     taxonomy['uris'].push(phyd3.phyloxml.parseUri(node));
                     break;
                 case '#text':
+                case '#comment':
                     // skipping empty text nodes
                     break;
                 default:
@@ -227,6 +225,7 @@ if (!d3) {
                     annotation['uris'].push(phyd3.phyloxml.parseUri(node));
                     break;
                 case '#text':
+                case '#comment':
                     // skipping empty text nodes
                     break;
                 default:
@@ -275,6 +274,7 @@ if (!d3) {
                     sequence['domainArchitecture'] = phyd3.phyloxml.parseDomainArchitecture(node);
                     break;
                 case '#text':
+                case '#comment':
                     // skipping empty text nodes
                     break;
                 default:
@@ -334,6 +334,7 @@ if (!d3) {
                     tree[node.nodeName] = node.textContent;
                     break;
                 case '#text':
+                case '#comment':
                     // skipping empty text nodes
                     break;
                 default:
@@ -436,10 +437,11 @@ if (!d3) {
                     graph.data = phyd3.phyloxml.parseData(node);
                     break;
                 case '#text':
+                case '#comment':
                     // skipping empty text nodes
                     break;
                 default:
-                    console.log("Undefined node: " + node.nodeName + " " + node.textContent + " - skipping...");
+                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");
                     break;
             }
         }
@@ -462,10 +464,11 @@ if (!d3) {
                     label.data = phyd3.phyloxml.parseData(node);
                     break;
                 case '#text':
+                case '#comment':
                     // skipping empty text nodes
                     break;
                 default:
-                    console.log("Undefined node: " + node.nodeName + " " + node.textContent + " - skipping...");
+                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");
                     break;
             }
         }
@@ -512,12 +515,13 @@ if (!d3) {
                         phylotree.properties.push(phyd3.phyloxml.parseProperty(clade));
                         break;
                     case '#text':
+                    case '#comment':
                         // skipping empty text nodes
                         break;
                     default:
                         // clade_relation
                         // sequence_relation
-                        console.log("Undefined node: " + clade.nodeName + " " + clade.textContent + " - skipping...");
+                        console.log("Undefined tag: " + clade.nodeName + " " + clade.textContent + " - skipping...");
                         break;
                 }
             }
