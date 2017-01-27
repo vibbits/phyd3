@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="libs/css/bootstrap-material-design.min.css" />
     <link rel="stylesheet" href="libs/css/vib.css" />
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>    
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="libs/js/material.min.js"></script>
@@ -20,14 +20,14 @@
         ga('send', 'pageview');
     </script>
 </head>
-<body class="container">    
+<body class="container">
     <br />
     <a href="index.html"><img id="phyd3logo" src="img/logo-name.svg" /></a>
     <a href="http://www.vib.be"><img id="viblogo" src="img/vib_tagline_pos_rgb.png" /></a>
     <div class="row phyd3-documentation well">
     <h3>Idea</h3>
         When Chrome dropped the NPAPI support in 2015, integration of Java applets with Chrome browser becomes a hurdle (only as a web start software).<br />
-        This results in lesser integration of a widely used <a href="https://sites.google.com/site/cmzmasek/home/software/archaeopteryx" target="_blank">Archaeopteryx Java applet</a> for around 70% of the users.<br /> 
+        This results in lesser integration of a widely used <a href="https://sites.google.com/site/cmzmasek/home/software/archaeopteryx" target="_blank">Archaeopteryx Java applet</a> for around 70% of the users.<br />
         This project was about to bring the similar functionalities using the latest web technologies.<br />
         Using <a href="https://d3js.org/" target="_blank">D3.js</a> to creating a phylogram is quite simple as we saw in <a href="http://bl.ocks.org/kueda/1036776" target="_blank">d3.phylogram.js</a>.<br />
         But we found currently existing web-applications for visualization of phylogenetic trees not up to the task.<br />
@@ -38,7 +38,7 @@
         <li>alternating colors - tree colors can be inverted for higher readability
         <li>aligning nodes - nodes can be lined up to match furthest node, in order to present annotation data more clearly
         <li>displaying branch length &amp; support values - if those values are present, they can be displayed directly next to the nodes
-        <li>displaying node &amp; taxonomy names - if those values are present, they can be displayed directly next to the nodes, 
+        <li>displaying node &amp; taxonomy names - if those values are present, they can be displayed directly next to the nodes,
         <li>displaying all, internal or external node annotations - users can choose what information to display
         <li>taxonomy coloring - node text can be coloured according to node taxonomy, if the colors are provided
         <li>node resizing - node text can be scaled, to support better readability
@@ -67,7 +67,7 @@
             The taxonomy codes must match ones used in phylogeny. Use HEX values for colors (0xRRGGBB). Use full URL for links (starting with http://).<br />
             See the example below.
         <pre>
-&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" 
+&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org"
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
     &lt;phylogeny rooted="true"&gt;
         &lt;clade&gt;
@@ -85,7 +85,7 @@
          &lt;url&gt;https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=3750&lt;/url&gt;
       &lt;/taxonomy&gt;
       ...
-    &lt;/taxonomies&gt;    
+    &lt;/taxonomies&gt;
     ...
 &lt;/phyloxml&gt;</pre>
         </li>
@@ -95,7 +95,7 @@
             The domain codes must match ones used in phylogeny. Use HEX values for colors (0xRRGGBB). Use full URL for links (starting with http://).<br />
             See the example below.
         <pre>
-&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" 
+&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org"
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
     &lt;phylogeny rooted="true"&gt;
         &lt;clade&gt;
@@ -110,7 +110,7 @@
         &lt;/clade&gt;
         ...
     &lt;/phylogeny&gt;
-    &lt;domains&gt;    
+    &lt;domains&gt;
         &lt;domain name="<b>IPR011992</b>"&gt;
             &lt;color&gt;0x12C6D7&lt;/color&gt;
             &lt;description&gt;Pyruvate dehydrogenase&lt;/description&gt;
@@ -132,7 +132,7 @@
             To specify which properties to show use &lt;labels&gt; section in extended phyloXML. Type can be either text or color. Data tag and ref must match the intended clade property to be displayed. Use HEX values for colors (0xRRGGBB).<br />
             See the example below.
         <pre>
-&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" 
+&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org"
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
     &lt;phylogeny rooted="true"&gt;
         &lt;clade&gt;
@@ -154,7 +154,7 @@
          &lt;data tag="<b>property</b>" ref="<b>Resistance score</b>"&gt;&lt;/data&gt;
       &lt;/label&gt;
       ...
-    &lt;/labels&gt;    
+    &lt;/labels&gt;
     ...
 &lt;/phyloxml&gt;</pre>
         </li>
@@ -169,7 +169,7 @@
         </ol>
         See the example below.
         <pre>
-&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" 
+&lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org"
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
     &lt;phylogeny rooted="true"&gt;
         &lt;clade&gt;
@@ -323,7 +323,7 @@
                 &lt;field&gt;
                     &lt;name&gt;Consistency score&lt;/name&gt;
                     &lt;color&gt;0xFF0000&lt;/color&gt;
-                &lt;/field&gt;         
+                &lt;/field&gt;
             &lt;/legend&gt;
             &lt;data tag="property" ref="duplication consistency score:"&gt;
                 &lt;min&gt;0&lt;/min&gt;
@@ -337,7 +337,7 @@
                     &lt;name&gt;Speciations&lt;/name&gt;
                     &lt;color&gt;0x00FF00&lt;/color&gt;
                     &lt;shape&gt;circle&lt;/shape&gt;
-                &lt;/field&gt;         
+                &lt;/field&gt;
             &lt;/legend&gt;
             &lt;data tag="events" ref="duplications"&gt;
             &lt;/data&gt;
@@ -348,18 +348,435 @@
         </li>
     </ol>
     <h3>Usage</h3>
+
     <ol>
-        <li><h4>Embedding the widget</h4></li>
-        <li><h4>Widget configuration</h4></li>
+        <li><h4>Running the example with Node.js</h4>
+        Download the PhyD3 source code from: <a href="https://github.com/vibbits/phyd3/" target="_blank">https://github.com/vibbits/phyd3/</a>.<br />
+        In the PhyD3 folder issue the following commands:<br />
+        <pre>
+# npm install
+...
+# node phyd3.js
+Listening on 127.0.0.1:8080...</pre>
+        Open your browser and point to your local PhyD3 copy under <a href="http://127.0.0.1:8080/" target='_blank'>http://127.0.0.1:8080/</a>.
+        </li>
+        <li><h4>Embedding the widget</h4>
+        In the dist/ folder you will find minified js &amp; css files. The required jQuery, Bootstrap and D3 libraries are not included. You will need to link all the libraries and phyD3 on your website.<br >
+        There are two parsers of tree formats available: Newick <i>phyd3.newick.parse()</i> and phyloXML <i>phyd3.phyloxml.parse()</i>. Once you have parsed your tree you can use <i>phyd3.phylogram.build(id, tree, opts)</i> function to display the PhyD3 viewer. <br /> See the example below.
+<pre>
+&lt;html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+    &lt;script src="https://code.jquery.com/jquery-2.2.4.min.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"&gt;
+    &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://d3js.org/d3.v3.min.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="css/phyd3.min.css" /&gt;
+    &lt;script src="js/phyd3.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        function load() {
+            d3.xml("sample.xml", function(xml) {
+                var tree = phyd3.phyloxml.parse(xml);
+                phyd3.phylogram.build("#phyd3", tree, {});
+            });
+        };
+    &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body onload="load()"&gt;
+        &lt;div id="phyd3"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+        In dist/ folder there are also index.html and sample.xml files to help you get started.
+        </li>
+        <li><h4>Widget configuration</h4>
+            The third parameter of the build function is a options object. It helps you customise the viewer look and behaviour. Available options are listed below.
+        <table class="table">
+        <tr>
+            <th>Property name</th>
+            <th>Default value</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>backgroundColor</td>
+            <td>white</td>
+            <td>color used to paint SVG background and node infobox popup background</td>
+        </tr>
+        <tr>
+            <td>branchLengthColor</td>
+            <td>red</td>
+            <td>font color when displaying branch length values</td>
+        </tr>
+        <tr>
+            <td>domainLevel</td>
+            <td>1</td>
+            <td>only domains which confidence is lower than specified value will be shown on domain architecture graph</td>
+        </tr>
+        <tr>
+            <td>domainLevelStep</td>
+            <td>10</td>
+            <td>multiplied factor in the domain level when changing the threshold</td>
+        </tr>
+        <tr>
+            <td>domainWidth</td>
+            <td>100</td>
+            <td>width of the domain architecture graph</td>
+        </tr>
+        <tr>
+            <td>domainWidthStep</td>
+            <td>100</td>
+            <td>added factor in the domain architecture graph when zooming</td>
+        </tr>
+        <tr>
+            <td>dynamicHide</td>
+            <td>false</td>
+            <td>when true, hides all the overlapping node names, graphs and domain architecture and support lines</td>
+        </tr>
+        <tr>
+            <td>foregroundColor</td>
+            <td>black</td>
+            <td>color used to pain fonts, lines, outlines &amp; borders</td>
+        </tr>
+        <tr>
+            <td>graphWidth</td>
+            <td>20</td>
+            <td>width of the multibar graph</td>
+        </tr>
+        <tr>
+            <td>graphWidthStep</td>
+            <td>10</td>
+            <td>added factor in the multibar graph width when zooming</td>
+        </tr>
+        <tr>
+            <td>height</td>
+            <td>800</td>
+            <td>height of the viewer SVG area</td>
+        </tr>
+        <tr>
+            <td>invertColors</td>
+            <td>false</td>
+            <td>when true, uses the foreground color as background and vice versa</td>
+        </tr>
+        <tr>
+            <td>lineupNodes</td>
+            <td>true</td>
+            <td>when true, nodes are lined up to the furtherst node and support lines are drawn</td>
+        </tr>
+        <tr>
+            <td>margin</td>
+            <td>20</td>
+            <td>margin in the viewer SVG area</td>
+        </tr>
+        <tr>
+            <td>nodeHeight</td>
+            <td>6</td>
+            <td>height of the node (node size, text font-size, radius of pie &amp; binary graphs, height of multibar &amp; domain graphs)</td>
+        </tr>
+        <tr>
+            <td>nodeHeightStep</td>
+            <td>1</td>
+            <td>added factor in the node height when changing the node size</td>
+        </tr>
+        <tr>
+            <td>outline</td>
+            <td>0.3</td>
+            <td>font stroke outline for displaying node names</td>
+        </tr>
+        <tr>
+            <td>popupAction</td>
+            <td>renderPopup</td>
+            <td>callback function to handle click event on a node, by default displays the node infobox</td>
+        </tr>
+        <tr>
+            <td>popupWidth</td>
+            <td>500</td>
+            <td>width of the node infobox popup</td>
+        </tr>
+        <tr>
+            <td>scaleStep</td>
+            <td>0.3</td>
+            <td>multiplied factor in the tree height and width when zooming</td>
+        </tr>
+        <tr>
+            <td>scaleX</td>
+            <td>1</td>
+            <td>SVG scale on X axis</td>
+        </tr>
+        <tr>
+            <td>scaleY</td>
+            <td>1</td>
+            <td>SVG scale on Y axis</td>
+        </tr>
+        <tr>
+            <td>showDomains</td>
+            <td>true</td>
+            <td>when true, shows the domain architecture graph</td>
+        </tr>
+        <tr>
+            <td>showDomainNames</td>
+            <td>false</td>
+            <td>when true, shows the domain names on the domain architecture graph</td>
+        </tr>
+        <tr>
+            <td>showDomainColors</td>
+            <td>true</td>
+            <td>when true, sets the colors of the domains on the domain architecture graph accordingly to xml</td>
+        </tr>
+        <tr>
+            <td>showFullTaxonomy</td>
+            <td>false</td>
+            <td>when true, shows the full taxonomy names instead of taxonomy codes on the tree</td>
+        </tr>
+        <tr>
+            <td>showGraphs</td>
+            <td>true</td>
+            <td>when true, shows the graphs next to nodes</td>
+        </tr>
+        <tr>
+            <td>showGraphLegend</td>
+            <td>true</td>
+            <td>when true, shows the legend on top of the graphs</td>
+        </tr>
+        <tr>
+            <td>showLabels</td>
+            <td>true</td>
+            <td>when true, shows the labels next to nodes</td>
+        </tr>
+        <tr>
+            <td>showLengthValues</td>
+            <td>false</td>
+            <td>when true, shows the branch length values next to nodes</td>
+        </tr>
+        <tr>
+            <td>showNodeNames</td>
+            <td>true</td>
+            <td>when true, shows the node names next to nodes</td>
+        </tr>
+        <tr>
+            <td>showNodesType</td>
+            <td>only leaf</td>
+            <td>shows the names and taxonomy only for specified subset of nodes, available options are: 'all', 'only leaf', 'only inner'</td>
+        </tr>
+        <tr>
+            <td>showPhylogram</td>
+            <td>false</td>
+            <td>when true, shows phylogram instead of dendrogram</td>
+        </tr>
+        <tr>
+            <td>showSupportValues</td>
+            <td>false</td>
+            <td>when true, shows the clade support values next to nodes</td>
+        </tr>
+        <tr>
+            <td>showTaxonomy</td>
+            <td>true</td>
+            <td>when true, shows the taxonomy codes next to nodes</td>
+        </tr>
+        <tr>
+            <td>showTaxonomyColors</td>
+            <td>true</td>
+            <td>when true, sets the colors of node names and taxonomy names to the taxonomy color specified in xml</td>
+        </tr>
+        <tr>
+            <td>supportValuesColor</td>
+            <td>blue</td>
+            <td>font color when displaying clade support values</td>
+        </tr>
+        <tr>
+            <td>textLength</td>
+            <td>100</td>
+            <td>width in pixels reserved for node text</td>
+        </tr>
+        <tr>
+            <td>translateX</td>
+            <td>0</td>
+            <td>initial SVG translation on X axis</td>
+        </tr>
+        <tr>
+            <td>translateY</td>
+            <td>0</td>
+            <td>initial SVG translation on Y axis</td>
+        </tr>
+        <tr>
+            <td>treeWidth</td>
+            <td>auto</td>
+            <td>override default tree width calculations; useful with large number of node graphs</td>
+        </tr>
+        </table>
+        </li>
+        <li><h4>Widget controls</h4>
+
+            You can allow the users to control the display of the tree by providing them with form controls with the appropriate id. The full list of controls can be found below.
+        <table class="table">
+        <tr>
+            <th>Control ID</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>graphWidth</td>
+            <td>text</td>
+            <td>displays the current multibar graph width</td>
+        </tr>
+        <tr>
+            <td>graphWidthLower</td>
+            <td>button</td>
+            <td>decreases the multibar graph width by graphWidthStep</td>
+        </tr>
+        <tr>
+            <td>graphWidthHigher</td>
+            <td>button</td>
+            <td>increases the multibar graph width by graphWidthStep</td>
+        </tr>
+        <tr>
+            <td>domainWidth</td>
+            <td>text</td>
+            <td>displays the current domain architecture graph width</td>
+        </tr>
+        <tr>
+            <td>domainWidthLower</td>
+            <td>button</td>
+            <td>decreases the domain architecture graph width by domainWidthStep</td>
+        </tr>
+        <tr>
+            <td>domainWidthHigher</td>
+            <td>button</td>
+            <td>increases the domain architecture graph width by domainWidthStep</td>
+        </tr>
+        <tr>
+            <td>nodeHeight</td>
+            <td>text</td>
+            <td>displays the current node height</td>
+        </tr>
+        <tr>
+            <td>nodeHeightLower</td>
+            <td>button</td>
+            <td>decreases the node height by nodeHeightStep</td>
+        </tr>
+        <tr>
+            <td>nodeHeightHigher</td>
+            <td>button</td>
+            <td>increases the node height by nodeHeightStep</td>
+        </tr>
+        <tr>
+            <td>dynamicHide</td>
+            <td>checkbox</td>
+            <td>toggles the dynamic hide mechanism on and off</td>
+        </tr>
+        <tr>
+            <td>invertColors</td>
+            <td>checkbox</td>
+            <td>toggles the inversion of colors on and off</td>
+        </tr>
+        <tr>
+            <td>lineupNodes</td>
+            <td>checkbox</td>
+            <td>toggles the line up of the nodes on and off</td>
+        </tr>
+        <tr>
+            <td>phylogram</td>
+            <td>checkbox</td>
+            <td>toggles between dendrogram and phylogram tree</td>
+        </tr>
+        <tr>
+            <td>lengthValues</td>
+            <td>checkbox</td>
+            <td>toggles the display of branch length values on and off</td>
+        </tr>
+        <tr>
+            <td>supportValues</td>
+            <td>checkbox</td>
+            <td>toggles the display of clade support vlaues on and off</td>
+        </tr>
+        <tr>
+            <td>nodeNames</td>
+            <td>checkbox</td>
+            <td>toggles the display of node names on and off</td>
+        </tr>
+        <tr>
+            <td>taxonomy</td>
+            <td>checkbox</td>
+            <td>toggles the display of taxonomy names on and off</td>
+        </tr>
+        <tr>
+            <td>taxonomyColors</td>
+            <td>checkbox</td>
+            <td>toggles the colorization of nodes according to their taxonomy on and off</td>
+        </tr>
+        <tr>
+            <td>domains</td>
+            <td>checkbox</td>
+            <td>toggles the display of the domain architecture graph on and off</td>
+        </tr>
+        <tr>
+            <td>domainNames</td>
+            <td>checkbox</td>
+            <td>toggles the display of the domain names on and off</td>
+        </tr>
+        <tr>
+            <td>domainColors</td>
+            <td>checkbox</td>
+            <td>toggles the colors of the domains on and off</td>
+        </tr>
+        <tr>
+            <td>graphs</td>
+            <td>checkbox</td>
+            <td>toggles the display of graphs on and off</td>
+        </tr>
+        <tr>
+            <td>graphLegend</td>
+            <td>checkbox</td>
+            <td>toggles the display of graph legend on and off</td>
+        </tr>
+        <tr>
+            <td>nodesType</td>
+            <td>select</td>
+            <td>changes the displayed node types, possible options are 'all', 'only leaf', 'only inner'</td>
+        </tr>
+        <tr>
+            <td>zoominY</td>
+            <td>button</td>
+            <td>zooms in the tree on Y axis</td>
+        </tr>
+        <tr>
+            <td>zoomoutY</td>
+            <td>button</td>
+            <td>zooms out the tree on Y axix</td>
+        </tr>
+        <tr>
+            <td>zoominX</td>
+            <td>button</td>
+            <td>zooms in the tree on X axis</td>
+        </tr>
+        <tr>
+            <td>zoomoutX</td>
+            <td>button</td>
+            <td>zooms out the tree on X axis</td>
+        </tr>
+        <tr>
+            <td>resetZoom</td>
+            <td>button</td>
+            <td>resets the zoom to the defaul level on both X and Y axes</td>
+        </tr>
+        <tr>
+            <td>linkSVG</td>
+            <td>button</td>
+            <td>downloads the current tree as SVG file</td>
+        </tr>
+        <tr>
+            <td>linkPNG</td>
+            <td>button</td>
+            <td>downloads the current tree as PNG file</td>
+        </tr>
+        </table>
+        </li>
     </ol>
     <h3>License</h3>
         <b>phyD3, phylogenetic tree viewer based on D3.js</b><br />
         Copyright (c) BITS VIB 2016<br /><br />
-        
-        This program is free software; you can redistribute it and/or modify it 
-        under the terms of the GNU General Public License as published by the Free Software Foundation; 
+
+        This program is free software; you can redistribute it and/or modify it
+        under the terms of the GNU General Public License as published by the Free Software Foundation;
         either version 3 of the License, or any later version.<br /><br />
-        
+
         Redistribution and use in source and binary forms,
         with or without modification, are permitted provided that the following conditions are met:<br />
         <ul>
@@ -370,12 +787,12 @@
           <li>Neither the name of the VIB nor the names of its contributors may be used to
              endorse or promote products derived from this software without specific prior written permission.
         </ul>
-        
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.<br /><br />
-        
+
         Full license text can be found <a href="https://www.gnu.org/licenses/gpl-3.0.txt">here</a><br /><br />
 
         You can obtain the source code from:<br />

@@ -180,18 +180,32 @@ window.requestAnimFrame = (function(){
         options.domainWidthStep = options.domainWidthStep || 100;
         options.graphWidth = options.graphWidth || 20;
         options.graphWidthStep = options.graphWidthStep || 10;
-        options.foregroundColor = options.foregroundColor || "#000";
-        options.backgroundColor = options.backgroundColor || "#fff";
         options.domainLevel = options.domainLevel || 1;
         options.domainLevelStep = options.domainLevelStep || 10;
         options.outline = options.outline || 0.3;
+        options.popupWidth = options.popupWidth || 500;
+        options.foregroundColor = options.foregroundColor || "#000";
+        options.backgroundColor = options.backgroundColor || "#fff";
         options.branchLengthColor = options.branchLengthColor || "red";
         options.supportValuesColor = options.supportValuesColor || "blue";
-        options.popupWidth = options.popupWidth || 500;
         options.showNodesType = options.showNodesType || 'only leaf';
+        options.treeWidth = options.treeWidth || 'auto';
         options.showFullTaxonomy = options.showFullTaxonomy || false;
         options.showLabels = options.showLabels || true;
-        options.treeWidth = options.treeWidth || 'auto';
+        options.showDomains = options.showDomains || true;        
+        options.dynamicHide = options.dynamicHide || false;
+        options.invertColors = options.invertColors || false;
+        options.lineupNodes = options.lineupNodes || true;
+        options.showSupportValues = options.showSupportValues || false;
+        options.showLengthValues = options.showLengthValues || false;
+        options.showTaxonomy = options.showTaxonomy || true;
+        options.showTaxonomyColors = options.showTaxonomyColors || true;
+        options.showDomainNames = options.showDomainNames || false;
+        options.showDomainColors = options.showDomainColors || true;
+        options.showGraphs = options.showGraphs || true;
+        options.showGraphLegend = options.showGraphLegend || true;
+        options.showNodeNames = options.showNodeNames || true;
+        options.showPhylogram = options.showPhylogram || false;
 
         // nodes object, domain scale, last drawn leaf, leaves padding for displaying graphs and text
         var nodes, domainScale, lastLabel, multibarScaling = [], labelPadding = 100, textPadding = 100, graphPadding = 0, legendPadding = 100, longestNode = 0;
@@ -1186,7 +1200,7 @@ window.requestAnimFrame = (function(){
                                     .attr("class", "nodelabel text lid"+label.id)
                                     .attr("dy", 3)
                                     .attr("text-anchor", "start")
-                                    .attr("stroke-width", "0.3px")
+                                    .attr("stroke-width", options.outline+"px")
                                     .attr("stroke", getForegroundColor())
                                     .attr("fill", getForegroundColor())
                                     .attr('font-size', (options.nodeHeight*1.5)+'px')
