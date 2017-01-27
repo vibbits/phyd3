@@ -14,6 +14,7 @@
     <script src="libs/js/material.min.js"></script>
 
     <script src="dist/js/phyd3.min.js" type="text/javascript"></script>
+    <script src="js/phyd3.phylogram.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,14 +51,28 @@
         }
         function loadTree() {            
             d3.select("#phyd3").text("Loading...");
+            var fid = "<?php echo $_GET['id']?>".trim();
             <?php if ($_GET['f'] == 'xml') { ?>
-                d3.xml("submissions/<?php echo $_GET['id']?>", function(xml) {
-                    d3.select("#phyd3").text(null);
+                if (fid == 'taxonomy.xml') {
+                    opts.showDomains = false;
+                }
+                if (fid == 'outergraphs.xml') {
+                    opts.showDomains = false;
+                }
+                if (fid == 'innergraphs.xml') {
+                    opts.nodeHeight = 10;
+                }
+                if (fid == 'domains.xml') {
+                    opts.showFullTaxonomy = false;
+                    opts.showTaxonomyColors = false;
+                }
+                d3.xml("submissions/"+fid, function(xml) {
+                    d3.select("#phyd3").text(null);                    
                     var tree = phyd3.phyloxml.parse(xml);
                     phyd3.phylogram.build("#phyd3", tree, opts);
                 });
             <?php } else if ($_GET['f'] == 'newick') { ?>
-                d3.text("submissions/<?php echo $_GET['id']?>", function(xml) {
+                d3.text("submissions/"+fid, function(xml) {
                     d3.select("#phyd3").text(null);
                     var tree = phyd3.newick.parse(xml);
                     phyd3.phylogram.build("#phyd3", tree, opts);

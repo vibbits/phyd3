@@ -190,33 +190,34 @@ window.requestAnimFrame = (function(){
         options.supportValuesColor = options.supportValuesColor || "blue";
         options.showNodesType = options.showNodesType || 'only leaf';
         options.treeWidth = options.treeWidth || 'auto';
-        options.showFullTaxonomy = options.showFullTaxonomy || false;
-        options.showLabels = options.showLabels || true;
-        options.showDomains = options.showDomains || true;        
-        options.dynamicHide = options.dynamicHide || false;
-        options.invertColors = options.invertColors || false;
-        options.lineupNodes = options.lineupNodes || true;
-        options.showSupportValues = options.showSupportValues || false;
-        options.showLengthValues = options.showLengthValues || false;
-        options.showTaxonomy = options.showTaxonomy || true;
-        options.showTaxonomyColors = options.showTaxonomyColors || true;
-        options.showDomainNames = options.showDomainNames || false;
-        options.showDomainColors = options.showDomainColors || true;
-        options.showGraphs = options.showGraphs || true;
-        options.showGraphLegend = options.showGraphLegend || true;
-        options.showNodeNames = options.showNodeNames || true;
-        options.showPhylogram = options.showPhylogram || false;
+        options.showFullTaxonomy = ('showFullTaxonomy' in options) ? options.showFullTaxonomy : false;
+        options.showLabels = ('showLabels' in options) ? options.showLabels : true;
+        options.showDomains = ('showDomains' in options) ? options.showDomains : true;        
+        options.dynamicHide = ('dynamicHide' in options) ? options.dynamicHide : false;
+        options.invertColors = ('invertColors' in options) ? options.invertColors : false;
+        options.lineupNodes = ('lineupNodes' in options) ? options.lineupNodes : true;
+        options.showSupportValues = ('showSupportValues' in options) ? options.showSupportValues : false;
+        options.showLengthValues = ('showLengthValues' in options) ? options.showLengthValues : false;
+        options.showTaxonomy = ('showTaxonomy' in options) ? options.showTaxonomy : true;
+        options.showTaxonomyColors = ('showTaxonomyColors' in options) ? options.showTaxonomyColors : true;
+        options.showDomainNames = ('showDomainNames' in options) ? options.showDomainNames : false;
+        options.showDomainColors = ('showDomainColors' in options) ? options.showDomainColors : true;
+        options.showGraphs = ('showGraps' in options) ? options.showGraphs : true;
+        options.showGraphLegend = ('showGraphLegend' in options) ? options.showGraphLegend : true;
+        options.showNodeNames = ('showNodeNames' in options) ? options.showNodeNames : true;
+        options.showPhylogram = ('showPhylogram' in options) ? options.showPhylogram : false;
 
         // nodes object, domain scale, last drawn leaf, leaves padding for displaying graphs and text
         var nodes, domainScale, lastLabel, multibarScaling = [], labelPadding = 100, textPadding = 100, graphPadding = 0, legendPadding = 100, longestNode = 0;
 
         // margins
         var showLegend = false;
-        if (onodes.graphs)
-        for (var i=0; i < onodes.graphs.length; i++) {
-            if (onodes.graphs[i].legend.show != 0) {
-                showLegend = true;
-                break;
+        if (onodes.graphs) {
+            for (var i=0; i < onodes.graphs.length; i++) {
+                if (onodes.graphs[i].legend.show != 0) {
+                    showLegend = true;
+                    break;
+                }
             }
         }
         legendPadding = showLegend ? legendPadding : 0;
@@ -826,7 +827,6 @@ window.requestAnimFrame = (function(){
 
         function renderPopup(n) {
             var evt = d3.event;
-            if (evt.defaultPrevented) return;
             var x = evt.layerX;
                 y = evt.layerY;
             var popupId = "popup"+parseInt(Date.now() * Math.random() * 1000);
@@ -872,7 +872,7 @@ window.requestAnimFrame = (function(){
                     row.append("td").text("Taxononomy");
                     var tax = row.append("td");
                     if (onodes.taxcolors[t.code] && onodes.taxcolors[t.code].url) {
-                        tax = tax.append("a").attr("href", onodes.taxcolors[t.code].url);
+                        tax = tax.append("a").attr("href", onodes.taxcolors[t.code].url).attr("target", "_blank");
                     }
                     var text = "";
                     text += onodes.taxcolors[t.code] && onodes.taxcolors[t.code].name ? onodes.taxcolors[t.code].name+" " : '';
@@ -943,7 +943,7 @@ window.requestAnimFrame = (function(){
                                 .text(" ");
                             var name = row.append("td");
                             if (onodes.domcolors[d.name] && onodes.domcolors[d.name].url) {
-                                name = name.append("a").attr("href", onodes.domcolors[d.name].url);
+                                name = name.append("a").attr("href", onodes.domcolors[d.name].url).attr("target", "_blank");
                             }
                             name.text(d.name);
                             row.append("td").text(onodes.domcolors[d.name] ? onodes.domcolors[d.name].description : '');
@@ -980,7 +980,7 @@ window.requestAnimFrame = (function(){
                             var row = table.append("tr");
                             var name = row.append("td");
                             if (graph.legend.fields[i].url) {
-                                name = name.append("a").attr("href", graph.legend.fields[i].url);
+                                name = name.append("a").attr("href", graph.legend.fields[i].url).attr("target", "_blank");
                             }
                             name.text(graph.legend.fields[i].name);
                             row.append("td").text(graph.data[n.id][i]);
@@ -1168,6 +1168,7 @@ window.requestAnimFrame = (function(){
 
         function toggleLabels() {            
             if (options.showLabels && onodes.labels) {
+                console.log(onodes.labels);
                 for ( var l = 0; l < onodes.labels.length; l++) {
                     var label = onodes.labels[l];
                     if (!label.id) label.id = parseInt(Date.now() * Math.random() * 1000);
@@ -1194,7 +1195,7 @@ window.requestAnimFrame = (function(){
                     switch (label.type) {
                         case "text":
                             for (cid in label.data) {
-                                if (!label.data[cid] || !parseInt(cid)) continue;
+                                if (!label.data[cid]) continue;
                                 vis.selectAll(".cid_"+cid)
                                     .append("text")
                                     .attr("class", "nodelabel text lid"+label.id)
@@ -1212,7 +1213,7 @@ window.requestAnimFrame = (function(){
                             break;
                         case "color":
                             for (cid in label.data) {
-                                if (!label.data[cid] || !parseInt(cid)) continue;
+                                if (!label.data[cid]) continue;
                                 var h = options.nodeHeight;
                                 var c = label.data[cid].replace(/0x/,"#");
                                 vis.selectAll(".cid_"+cid)
@@ -1504,10 +1505,11 @@ window.requestAnimFrame = (function(){
         function applyGraphTransform() {
             var h = options.nodeHeight;
             var padding = textPadding + labelPadding;
-            var graphs = leaves.selectAll("g.graph")
+            leaves.selectAll("g.graph")
                 .attr("transform", function(d) {
                     return "translate(" + (options.lineupNodes ? (phyd3.phylogram.dx - d.y + padding) : padding) + "," + 0 + ")";
                 });
+            var graphs = vis.selectAll("g.graph");
             d3.select("#graphWidth").attr("value", options.graphWidth);
             vis.selectAll("text.legend").remove();
             graphPadding = 0;

@@ -65,7 +65,7 @@
             You can specify the taxonomy name, color and URL in the &lt;taxonomies&gt; section of extended phyloXML.<br />
             These information will be displayed on the tree, in node infobox as well as used for taxonomy colorization.<br />
             The taxonomy codes must match ones used in phylogeny. Use HEX values for colors (0xRRGGBB). Use full URL for links (starting with http://).<br />
-            See the example below.
+            See the code below and also <a href="http://10.10.10.10/lkreft/phyd3/view.php?id=taxonomy.xml&f=xml">working example</a>.
         <pre>
 &lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org"
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
@@ -93,7 +93,7 @@
             You can specify domain description, color and URL in the &lt;domains&gt; section of extended phyloXML.<br />
             These information will be displayed on the tree, in node infobox as well as used for domain colorization.<br />
             The domain codes must match ones used in phylogeny. Use HEX values for colors (0xRRGGBB). Use full URL for links (starting with http://).<br />
-            See the example below.
+            See the code below and also <a href="http://10.10.10.10/lkreft/phyd3/view.php?id=domains.xml&f=xml">working example</a>.
         <pre>
 &lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org"
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
@@ -130,7 +130,7 @@
             It is possible to display on the tree additional node labels. Those labels can be created from existing node properties or other tags. <br />
             There are two kinds of labels: text labels and color labels.<br />
             To specify which properties to show use &lt;labels&gt; section in extended phyloXML. Type can be either text or color. Data tag and ref must match the intended clade property to be displayed. Use HEX values for colors (0xRRGGBB).<br />
-            See the example below.
+            See the code below and also <a href="http://10.10.10.10/lkreft/phyd3/view.php?id=labels.xml&f=xml">working example</a>.
         <pre>
 &lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org"
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;
@@ -167,7 +167,7 @@
             <li><b>legend</b> - for each value series of your data, you need to specify the legend field; for each field you need to put field name (which will be displayed to the user in legend and infobox popup), color that will be used to draw this series (for all graph types besides heatmap) and for binary graph also a symbol shape (one of circle); additionally for heatmap you need to specify which gradient spec to use (name &amp; classes following the <a href="http://colorbrewer2.org/" target="_blank">ColorBrewer2</a>)
             <li><b>data</b> - for each clade id you wish to display the graph for, you need to include data values, ordered in series defined in legend; you can also use existing tags or properties from phylogeny tree, referencing them by tag and ref attributes of data tag; to turn single values into pie charts use <b>min</b> and <b>max</b> tags inside <b>data</b> tag.
         </ol>
-        See the example below.
+        See the code below and also working examples of <a href="http://10.10.10.10/lkreft/phyd3/view.php?id=outergraphs.xml&f=xml">leaf node graphs</a> or <a href="http://10.10.10.10/lkreft/phyd3/view.php?id=innergraphs.xml&f=xml">inner node graphs</a>.
         <pre>
 &lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org"
           xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd"&gt;

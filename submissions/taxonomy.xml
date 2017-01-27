@@ -1,0 +1,2505 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<phyloxml xmlns="http://www.phyloxml.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.00/phyloxml.xsd">
+<phylogeny rooted="true">
+  <clade>
+    <confidence type="bootstrap">100.0</confidence>
+    <clade>
+      <branch_length>0.8758800000000001</branch_length>
+      <confidence type="bootstrap">100.0</confidence>
+      <clade>
+        <branch_length>0.17287</branch_length>
+        <confidence type="bootstrap">100.0</confidence>
+        <clade>
+          <branch_length>0.03877</branch_length>
+          <confidence type="bootstrap">97.0</confidence>
+          <clade>
+            <branch_length>0.12225</branch_length>
+            <confidence type="bootstrap">100.0</confidence>
+            <clade>
+              <name>PP00079G00800</name>
+              <branch_length>0.03258</branch_length>
+            <taxonomy>
+                  <code>ppa</code>
+                </taxonomy>
+                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PP00079G00800</property>
+                <sequence>
+                  <domain_architecture length="2214">
+                    <domain confidence="2.62E-38" from="1702" to="1860">IPR009051</domain>
+                    <domain confidence="8.2E-106" from="1393" to="1660">IPR002489</domain>
+                    <domain confidence="9.3E-103" from="608" to="938">IPR013785</domain>
+                    <domain confidence="2.9E-64" from="1415" to="1606">IPR002489</domain>
+                    <domain confidence="2.1E-226" from="1705" to="2190">IPR006005</domain>
+                    <domain confidence="7.2E-118" from="612" to="896">IPR006982</domain>
+                    <domain confidence="5.62E-99" from="1386" to="1651">IPR002489</domain>
+                    <domain confidence="1.2E-179" from="964" to="1374">IPR013785</domain>
+                    <domain confidence="24.271" from="135" to="540">IPR017932</domain>
+                    <domain confidence="2.4E-41" from="1853" to="1942">IPR016040</domain>
+                    <domain confidence="2.4E-41" from="2125" to="2198">IPR016040</domain>
+                    <domain confidence="9.8E-6" from="1851" to="1923">IPR001327</domain>
+                    <domain confidence="1.6E-159" from="962" to="1334">IPR002932</domain>
+                    <domain confidence="6.6E-20" from="1851" to="2165">IPR023753</domain>
+                    <domain confidence="1.8E-22" from="1738" to="1838">IPR028261</domain>
+                    <domain confidence="2.6E-142" from="135" to="512">IPR000583</domain>
+                  </domain_architecture>
+                </sequence>
+              </clade>
+            <clade>
+              <name>PP00058G00660</name>
+              <branch_length>0.03389</branch_length>
+            <taxonomy>
+                  <code>ppa</code>
+                </taxonomy>
+                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PP00058G00660</property>
+                <sequence>
+                  <domain_architecture length="2211">
+                    <domain confidence="3.6E-158" from="961" to="1332">IPR002932</domain>
+                    <domain confidence="6.7E-42" from="2120" to="2198">IPR016040</domain>
+                    <domain confidence="2.3E-21" from="1736" to="1835">IPR028261</domain>
+                    <domain confidence="1.5E-20" from="1848" to="2162">IPR023753</domain>
+                    <domain confidence="5.1E-224" from="1702" to="2187">IPR006005</domain>
+                    <domain confidence="1.0E-63" from="1414" to="1605">IPR002489</domain>
+                    <domain confidence="7.85E-38" from="1701" to="1857">IPR009051</domain>
+                    <domain confidence="6.7E-6" from="1848" to="1920">IPR001327</domain>
+                    <domain confidence="6.7E-42" from="1850" to="1939">IPR016040</domain>
+                    <domain confidence="1.0E-179" from="960" to="1373">IPR013785</domain>
+                    <domain confidence="5.8E-117" from="611" to="895">IPR006982</domain>
+                    <domain confidence="24.232" from="134" to="539">IPR017932</domain>
+                    <domain confidence="3.5E-140" from="134" to="511">IPR000583</domain>
+                    <domain confidence="4.1E-104" from="1392" to="1660">IPR002489</domain>
+                    <domain confidence="1.96E-96" from="1385" to="1650">IPR002489</domain>
+                    <domain confidence="1.5E-101" from="603" to="937">IPR013785</domain>
+                  </domain_architecture>
+                </sequence>
+              </clade>
+          </clade>
+          <clade>
+            <branch_length>0.10527</branch_length>
+            <confidence type="bootstrap">100.0</confidence>
+            <clade>
+              <name>PP00081G01010</name>
+              <branch_length>0.10202</branch_length>
+            <taxonomy>
+                  <code>ppa</code>
+                </taxonomy>
+                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PP00081G01010</property>
+                <sequence>
+                  <domain_architecture length="2215">
+                    <domain confidence="22.72" from="106" to="511">IPR017932</domain>
+                    <domain confidence="1.1E-209" from="1685" to="2183">IPR006005</domain>
+                    <domain confidence="2.4E-38" from="2113" to="2195">IPR016040</domain>
+                    <domain confidence="3.9E-104" from="1367" to="1637">IPR002489</domain>
+                    <domain confidence="2.4E-38" from="1832" to="1922">IPR016040</domain>
+                    <domain confidence="1.26E-38" from="1682" to="1839">IPR009051</domain>
+                    <domain confidence="6.9E-22" from="1711" to="1816">IPR028261</domain>
+                    <domain confidence="5.0E-112" from="584" to="872">IPR006982</domain>
+                    <domain confidence="4.32E-98" from="1362" to="1624">IPR002489</domain>
+                    <domain confidence="1.5E-64" from="1391" to="1577">IPR002489</domain>
+                    <domain confidence="2.7E-139" from="106" to="483">IPR000583</domain>
+                    <domain confidence="3.8E-99" from="577" to="914">IPR013785</domain>
+                    <domain confidence="5.2E-19" from="1830" to="2157">IPR023753</domain>
+                    <domain confidence="1.4E-158" from="937" to="1309">IPR002932</domain>
+                    <domain confidence="3.3E-177" from="986" to="1352">IPR013785</domain>
+                  </domain_architecture>
+                </sequence>
+              </clade>
+            <clade>
+              <name>PP00093G00670</name>
+              <branch_length>0.05662</branch_length>
+            <taxonomy>
+                  <code>ppa</code>
+                </taxonomy>
+                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PP00093G00670</property>
+                <sequence>
+                  <domain_architecture length="2252">
+                    <domain confidence="3.6E-157" from="937" to="1310">IPR002932</domain>
+                    <domain confidence="4.9E-21" from="1835" to="2149">IPR023753</domain>
+                    <domain confidence="9.6E-140" from="106" to="483">IPR000583</domain>
+                    <domain confidence="1.2E-106" from="1367" to="1637">IPR002489</domain>
+                    <domain confidence="2.82E-40" from="1688" to="1844">IPR009051</domain>
+                    <domain confidence="9.29E-99" from="1362" to="1626">IPR002489</domain>
+                    <domain confidence="1.6E-40" from="1837" to="1926">IPR016040</domain>
+                    <domain confidence="22.507" from="106" to="511">IPR017932</domain>
+                    <domain confidence="1.1E-225" from="1689" to="2174">IPR006005</domain>
+                    <domain confidence="1.2E-4" from="1835" to="1907">IPR001327</domain>
+                    <domain confidence="1.6E-40" from="2107" to="2186">IPR016040</domain>
+                    <domain confidence="3.0E-102" from="573" to="911">IPR013785</domain>
+                    <domain confidence="5.7E-177" from="986" to="1350">IPR013785</domain>
+                    <domain confidence="1.4E-114" from="584" to="872">IPR006982</domain>
+                    <domain confidence="1.7E-66" from="1391" to="1581">IPR002489</domain>
+                    <domain confidence="1.4E-22" from="1712" to="1821">IPR028261</domain>
+                  </domain_architecture>
+                </sequence>
+              </clade>
+          </clade>
+        </clade>
+        <clade>
+          <branch_length>0.08021</branch_length>
+          <confidence type="bootstrap">56.0</confidence>
+          <clade>
+            <branch_length>0.08656</branch_length>
+            <confidence type="bootstrap">100.0</confidence>
+            <clade>
+              <branch_length>0.04406</branch_length>
+              <confidence type="bootstrap">100.0</confidence>
+              <clade>
+                <branch_length>0.03065</branch_length>
+                <confidence type="bootstrap">100.0</confidence>
+                <clade>
+                  <name>ZM08G25710</name>
+                  <branch_length>0.01433</branch_length>
+                <taxonomy>
+                      <code>zma</code>
+                    </taxonomy>
+                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ZM08G25710</property>
+                    <sequence>
+                      <domain_architecture length="2174">
+                        <domain confidence="2.7E-159" from="936" to="1305">IPR002932</domain>
+                        <domain confidence="2.22E-98" from="1356" to="1622">IPR002489</domain>
+                        <domain confidence="1.8E-17" from="1814" to="2127">IPR023753</domain>
+                        <domain confidence="2.2E-116" from="580" to="869">IPR006982</domain>
+                        <domain confidence="1.5E-222" from="1666" to="2149">IPR006005</domain>
+                        <domain confidence="6.8E-65" from="1386" to="1573">IPR002489</domain>
+                        <domain confidence="1.2E-102" from="565" to="916">IPR013785</domain>
+                        <domain confidence="23.573" from="106" to="510">IPR017932</domain>
+                        <domain confidence="4.8E-107" from="1363" to="1629">IPR002489</domain>
+                        <domain confidence="1.15E-34" from="1665" to="1823">IPR009051</domain>
+                        <domain confidence="1.4E-21" from="1688" to="1800">IPR028261</domain>
+                        <domain confidence="5.2E-180" from="971" to="1345">IPR013785</domain>
+                        <domain confidence="5.7E-144" from="106" to="482">IPR000583</domain>
+                      </domain_architecture>
+                    </sequence>
+                  </clade>
+                <clade>
+                  <name>ZM03G34700</name>
+                  <branch_length>0.01261</branch_length>
+                <taxonomy>
+                      <code>zma</code>
+                    </taxonomy>
+                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ZM03G34700</property>
+                    <sequence>
+                      <domain_architecture length="2188">
+                        <domain confidence="1.4E-107" from="1363" to="1632">IPR002489</domain>
+                        <domain confidence="1.4E-221" from="1678" to="2161">IPR006005</domain>
+                        <domain confidence="5.1E-99" from="1356" to="1622">IPR002489</domain>
+                        <domain confidence="1.2E-144" from="106" to="482">IPR000583</domain>
+                        <domain confidence="1.5E-180" from="971" to="1345">IPR013785</domain>
+                        <domain confidence="8.6E-160" from="936" to="1305">IPR002932</domain>
+                        <domain confidence="1.0E-102" from="573" to="916">IPR013785</domain>
+                        <domain confidence="7.3E-117" from="579" to="869">IPR006982</domain>
+                        <domain confidence="1.9E-65" from="1386" to="1573">IPR002489</domain>
+                        <domain confidence="3.77E-34" from="1674" to="1834">IPR009051</domain>
+                        <domain confidence="23.592" from="106" to="510">IPR017932</domain>
+                        <domain confidence="1.8E-21" from="1700" to="1812">IPR028261</domain>
+                        <domain confidence="1.3E-4" from="1826" to="1860">IPR001327</domain>
+                        <domain confidence="2.9E-16" from="1826" to="2139">IPR023753</domain>
+                      </domain_architecture>
+                    </sequence>
+                  </clade>
+              </clade>
+              <clade>
+                <name>OS01G48960</name>
+                <branch_length>0.04439</branch_length>
+              <taxonomy>
+                    <code>osa</code>
+                  </taxonomy>
+                  <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/OS01G48960</property>
+                  <sequence>
+                    <domain_architecture length="2168">
+                      <domain confidence="6.28E-35" from="1659" to="1817">IPR009051</domain>
+                      <domain confidence="1.7E-107" from="1357" to="1625">IPR002489</domain>
+                      <domain confidence="1.4E-64" from="1380" to="1573">IPR002489</domain>
+                      <domain confidence="23.321" from="100" to="504">IPR017932</domain>
+                      <domain confidence="8.6E-161" from="929" to="1299">IPR002932</domain>
+                      <domain confidence="4.4E-117" from="575" to="863">IPR006982</domain>
+                      <domain confidence="3.5E-21" from="1697" to="1794">IPR028261</domain>
+                      <domain confidence="4.6E-222" from="1660" to="2144">IPR006005</domain>
+                      <domain confidence="2.0E-180" from="965" to="1339">IPR013785</domain>
+                      <domain confidence="3.27E-98" from="1350" to="1616">IPR002489</domain>
+                      <domain confidence="5.8E-19" from="1808" to="2121">IPR023753</domain>
+                      <domain confidence="9.4E-145" from="100" to="476">IPR000583</domain>
+                      <domain confidence="2.9E-105" from="558" to="910">IPR013785</domain>
+                    </domain_architecture>
+                  </sequence>
+                </clade>
+            </clade>
+            <clade>
+              <branch_length>0.04534</branch_length>
+              <confidence type="bootstrap">100.0</confidence>
+              <clade>
+                <name>ZM06G30610</name>
+                <branch_length>0.12664</branch_length>
+              <taxonomy>
+                    <code>zma</code>
+                  </taxonomy>
+                  <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ZM06G30610</property>
+                  <sequence>
+                    <domain_architecture length="2195">
+                      <domain confidence="1.0E-214" from="1685" to="2170">IPR006005</domain>
+                      <domain confidence="1.0E-39" from="2102" to="2176">IPR016040</domain>
+                      <domain confidence="1.2E-101" from="576" to="913">IPR013785</domain>
+                      <domain confidence="1.7E-96" from="1363" to="1629">IPR002489</domain>
+                      <domain confidence="1.3E-114" from="588" to="875">IPR006982</domain>
+                      <domain confidence="1.4E-154" from="941" to="1311">IPR002932</domain>
+                      <domain confidence="7.8E-104" from="1369" to="1640">IPR002489</domain>
+                      <domain confidence="3.2E-65" from="1392" to="1580">IPR002489</domain>
+                      <domain confidence="1.6E-171" from="964" to="1352">IPR013785</domain>
+                      <domain confidence="3.2E-19" from="1834" to="2146">IPR023753</domain>
+                      <domain confidence="23.767" from="114" to="518">IPR017932</domain>
+                      <domain confidence="1.0E-39" from="1835" to="1924">IPR016040</domain>
+                      <domain confidence="3.87E-30" from="1684" to="1842">IPR009051</domain>
+                      <domain confidence="7.3E-142" from="114" to="490">IPR000583</domain>
+                      <domain confidence="4.0E-20" from="1722" to="1819">IPR028261</domain>
+                    </domain_architecture>
+                  </sequence>
+                </clade>
+              <clade>
+                <name>OS05G48200</name>
+                <branch_length>0.0757</branch_length>
+              <taxonomy>
+                    <code>osa</code>
+                  </taxonomy>
+                  <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/OS05G48200</property>
+                  <sequence>
+                    <domain_architecture length="2189">
+                      <domain confidence="4.3E-220" from="1678" to="2162">IPR006005</domain>
+                      <domain confidence="1.8E-156" from="935" to="1305">IPR002932</domain>
+                      <domain confidence="2.5E-66" from="1386" to="1573">IPR002489</domain>
+                      <domain confidence="1.1E-101" from="578" to="916">IPR013785</domain>
+                      <domain confidence="2.5E-40" from="1828" to="1917">IPR016040</domain>
+                      <domain confidence="1.0E-174" from="975" to="1345">IPR013785</domain>
+                      <domain confidence="3.56E-35" from="1676" to="1835">IPR009051</domain>
+                      <domain confidence="2.5E-40" from="2097" to="2170">IPR016040</domain>
+                      <domain confidence="3.4E-107" from="1363" to="1635">IPR002489</domain>
+                      <domain confidence="3.2E-17" from="1826" to="2139">IPR023753</domain>
+                      <domain confidence="2.0E-117" from="581" to="869">IPR006982</domain>
+                      <domain confidence="5.4E-142" from="107" to="483">IPR000583</domain>
+                      <domain confidence="2.62E-98" from="1357" to="1622">IPR002489</domain>
+                      <domain confidence="24.213" from="107" to="511">IPR017932</domain>
+                      <domain confidence="3.7E-21" from="1703" to="1812">IPR028261</domain>
+                      <domain confidence="4.3E-5" from="1826" to="1898">IPR001327</domain>
+                    </domain_architecture>
+                  </sequence>
+                </clade>
+            </clade>
+          </clade>
+          <clade>
+            <branch_length>0.01949</branch_length>
+            <confidence type="bootstrap">100.0</confidence>
+            <clade>
+              <branch_length>0.0217</branch_length>
+              <confidence type="bootstrap">30.0</confidence>
+              <clade>
+                <branch_length>0.00376</branch_length>
+                <confidence type="bootstrap">95.0</confidence>
+                <clade>
+                  <branch_length>0.00877</branch_length>
+                  <confidence type="bootstrap">100.0</confidence>
+                  <clade>
+                    <branch_length>0.00935</branch_length>
+                    <confidence type="bootstrap">92.0</confidence>
+                    <clade>
+                      <branch_length>0.02732</branch_length>
+                      <confidence type="bootstrap">100.0</confidence>
+                      <clade>
+                        <branch_length>0.01312</branch_length>
+                        <confidence type="bootstrap">93.0</confidence>
+                        <clade>
+                          <branch_length>0.02731</branch_length>
+                          <confidence type="bootstrap">100.0</confidence>
+                          <clade>
+                            <name>MD07G019920</name>
+                            <branch_length>0.02041</branch_length>
+                          <taxonomy>
+                                <code>mdo</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/MD07G019920</property>
+                              <sequence>
+                                <domain_architecture length="2192">
+                                  <domain confidence="6.1E-5" from="1819" to="1871">IPR001327</domain>
+                                  <domain confidence="8.6E-23" from="1695" to="1806">IPR028261</domain>
+                                  <domain confidence="7.7E-102" from="560" to="898">IPR013785</domain>
+                                  <domain confidence="3.5E-18" from="1819" to="2133">IPR023753</domain>
+                                  <domain confidence="23.069" from="91" to="499">IPR017932</domain>
+                                  <domain confidence="2.7E-68" from="1377" to="1562">IPR002489</domain>
+                                  <domain confidence="8.8E-227" from="1673" to="2158">IPR006005</domain>
+                                  <domain confidence="3.3E-41" from="1821" to="1911">IPR016040</domain>
+                                  <domain confidence="1.5E-161" from="925" to="1296">IPR002932</domain>
+                                  <domain confidence="1.4E-179" from="964" to="1332">IPR013785</domain>
+                                  <domain confidence="3.3E-41" from="2093" to="2166">IPR016040</domain>
+                                  <domain confidence="2.4E-117" from="572" to="860">IPR006982</domain>
+                                  <domain confidence="1.9E-105" from="1354" to="1623">IPR002489</domain>
+                                  <domain confidence="2.4E-143" from="91" to="471">IPR000583</domain>
+                                  <domain confidence="1.1E-37" from="1671" to="1828">IPR009051</domain>
+                                  <domain confidence="1.23E-95" from="1348" to="1611">IPR002489</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                          <clade>
+                            <name>MD01G021760</name>
+                            <branch_length>0.00982</branch_length>
+                          <taxonomy>
+                                <code>mdo</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/MD01G021760</property>
+                              <sequence>
+                                <domain_architecture length="2229">
+                                  <domain confidence="1.3E-177" from="999" to="1367">IPR013785</domain>
+                                  <domain confidence="2.0E-227" from="1707" to="2192">IPR006005</domain>
+                                  <domain confidence="6.5E-119" from="607" to="895">IPR006982</domain>
+                                  <domain confidence="6.5E-104" from="595" to="933">IPR013785</domain>
+                                  <domain confidence="9.0E-23" from="1729" to="1840">IPR028261</domain>
+                                  <domain confidence="1.7E-40" from="1855" to="1945">IPR016040</domain>
+                                  <domain confidence="2.6E-69" from="1412" to="1597">IPR002489</domain>
+                                  <domain confidence="7.85E-37" from="1705" to="1862">IPR009051</domain>
+                                  <domain confidence="5.4E-5" from="1853" to="1918">IPR001327</domain>
+                                  <domain confidence="6.0E-160" from="961" to="1331">IPR002932</domain>
+                                  <domain confidence="3.3E-18" from="1853" to="2167">IPR023753</domain>
+                                  <domain confidence="22.1" from="110" to="534">IPR017932</domain>
+                                  <domain confidence="1.7E-40" from="2127" to="2215">IPR016040</domain>
+                                  <domain confidence="1.83E-96" from="1383" to="1646">IPR002489</domain>
+                                  <domain confidence="1.3E-106" from="1389" to="1658">IPR002489</domain>
+                                  <domain confidence="5.3E-139" from="138" to="506">IPR000583</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                        </clade>
+                        <clade>
+                          <name>PPE_002G29860</name>
+                          <branch_length>0.02249</branch_length>
+                        <taxonomy>
+                              <code>ppe</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PPE_002G29860</property>
+                            <sequence>
+                              <domain_architecture length="2208">
+                                <domain confidence="4.03E-37" from="1684" to="1841">IPR009051</domain>
+                                <domain confidence="1.2E-39" from="2106" to="2177">IPR016040</domain>
+                                <domain confidence="2.0E-105" from="1364" to="1635">IPR002489</domain>
+                                <domain confidence="9.4E-180" from="974" to="1344">IPR013785</domain>
+                                <domain confidence="3.1E-225" from="1686" to="2169">IPR006005</domain>
+                                <domain confidence="23.534" from="105" to="509">IPR017932</domain>
+                                <domain confidence="5.1E-17" from="1832" to="2146">IPR023753</domain>
+                                <domain confidence="1.2E-39" from="1834" to="1924">IPR016040</domain>
+                                <domain confidence="5.0E-103" from="567" to="908">IPR013785</domain>
+                                <domain confidence="5.8E-5" from="1832" to="1903">IPR001327</domain>
+                                <domain confidence="7.1E-145" from="105" to="481">IPR000583</domain>
+                                <domain confidence="7.72E-96" from="1358" to="1621">IPR002489</domain>
+                                <domain confidence="4.7E-68" from="1387" to="1573">IPR002489</domain>
+                                <domain confidence="1.2E-22" from="1708" to="1819">IPR028261</domain>
+                                <domain confidence="3.2E-161" from="936" to="1306">IPR002932</domain>
+                                <domain confidence="3.4E-117" from="582" to="870">IPR006982</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                      </clade>
+                      <clade>
+                        <name>FV7G36200</name>
+                        <branch_length>0.03934</branch_length>
+                      <taxonomy>
+                            <code>fve</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/FV7G36200</property>
+                          <sequence>
+                            <domain_architecture length="2311">
+                              <domain confidence="3.0E-161" from="938" to="1308">IPR002932</domain>
+                              <domain confidence="5.6E-69" from="1389" to="1578">IPR002489</domain>
+                              <domain confidence="5.0E-40" from="1856" to="1946">IPR016040</domain>
+                              <domain confidence="5.0E-40" from="2124" to="2206">IPR016040</domain>
+                              <domain confidence="1.5E-103" from="570" to="910">IPR013785</domain>
+                              <domain confidence="9.3E-107" from="1366" to="1634">IPR002489</domain>
+                              <domain confidence="2.6E-118" from="584" to="872">IPR006982</domain>
+                              <domain confidence="2.46E-36" from="1706" to="1863">IPR009051</domain>
+                              <domain confidence="2.4E-225" from="1708" to="2193">IPR006005</domain>
+                              <domain confidence="23.321" from="107" to="511">IPR017932</domain>
+                              <domain confidence="9.0E-145" from="107" to="483">IPR000583</domain>
+                              <domain confidence="1.57E-98" from="1360" to="1624">IPR002489</domain>
+                              <domain confidence="3.3E-22" from="1731" to="1841">IPR028261</domain>
+                              <domain confidence="4.8E-19" from="1854" to="2168">IPR023753</domain>
+                              <domain confidence="1.3E-4" from="1854" to="1891">IPR001327</domain>
+                              <domain confidence="8.5E-180" from="957" to="1348">IPR013785</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                    </clade>
+                    <clade>
+                      <branch_length>0.00931</branch_length>
+                      <confidence type="bootstrap">89.0</confidence>
+                      <clade>
+                        <branch_length>0.05318</branch_length>
+                        <confidence type="bootstrap">100.0</confidence>
+                        <clade>
+                          <name>CL05G10060</name>
+                          <branch_length>0.00918</branch_length>
+                        <taxonomy>
+                              <code>cla</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CL05G10060</property>
+                            <sequence>
+                              <domain_architecture length="2224">
+                                <domain confidence="2.1E-161" from="945" to="1316">IPR002932</domain>
+                                <domain confidence="1.2E-118" from="592" to="880">IPR006982</domain>
+                                <domain confidence="1.6E-19" from="1846" to="2160">IPR023753</domain>
+                                <domain confidence="2.6E-5" from="1846" to="1883">IPR001327</domain>
+                                <domain confidence="1.8E-105" from="588" to="918">IPR013785</domain>
+                                <domain confidence="23.786" from="114" to="521">IPR017932</domain>
+                                <domain confidence="7.2E-181" from="983" to="1353">IPR013785</domain>
+                                <domain confidence="2.9E-108" from="1374" to="1643">IPR002489</domain>
+                                <domain confidence="1.5E-225" from="1700" to="2185">IPR006005</domain>
+                                <domain confidence="1.5E-22" from="1725" to="1833">IPR028261</domain>
+                                <domain confidence="8.63E-99" from="1367" to="1631">IPR002489</domain>
+                                <domain confidence="1.1E-143" from="114" to="493">IPR000583</domain>
+                                <domain confidence="8.37E-36" from="1698" to="1855">IPR009051</domain>
+                                <domain confidence="1.5E-67" from="1397" to="1586">IPR002489</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                        <clade>
+                          <name>CM00008G04360</name>
+                          <branch_length>0.01634</branch_length>
+                        <taxonomy>
+                              <code>cme</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CM00008G04360</property>
+                            <sequence>
+                              <domain_architecture length="2031">
+                                <domain confidence="2.0E-112" from="1" to="301">IPR000583</domain>
+                                <domain confidence="5.6E-228" from="1507" to="1992">IPR006005</domain>
+                                <domain confidence="9.5E-23" from="1529" to="1640">IPR028261</domain>
+                                <domain confidence="1.1E-107" from="1181" to="1448">IPR002489</domain>
+                                <domain confidence="2.1E-104" from="390" to="725">IPR013785</domain>
+                                <domain confidence="1.5E-160" from="752" to="1123">IPR002932</domain>
+                                <domain confidence="14.697" from="1" to="329">IPR017932</domain>
+                                <domain confidence="1.9E-5" from="1653" to="1688">IPR001327</domain>
+                                <domain confidence="5.0E-19" from="1653" to="1967">IPR023753</domain>
+                                <domain confidence="5.8E-180" from="790" to="1160">IPR013785</domain>
+                                <domain confidence="5.7E-118" from="398" to="687">IPR006982</domain>
+                                <domain confidence="9.81E-99" from="1174" to="1438">IPR002489</domain>
+                                <domain confidence="5.75E-36" from="1506" to="1662">IPR009051</domain>
+                                <domain confidence="5.3E-68" from="1204" to="1393">IPR002489</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                      </clade>
+                      <clade>
+                        <branch_length>0.04295</branch_length>
+                        <confidence type="bootstrap">100.0</confidence>
+                        <clade>
+                          <branch_length>0.04096</branch_length>
+                          <confidence type="bootstrap">100.0</confidence>
+                          <clade>
+                            <name>GM06G13280</name>
+                            <branch_length>0.01261</branch_length>
+                          <taxonomy>
+                                <code>gma</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/GM06G13280</property>
+                              <sequence>
+                                <domain_architecture length="2189">
+                                  <domain confidence="1.1E-106" from="1354" to="1623">IPR002489</domain>
+                                  <domain confidence="6.3E-226" from="1679" to="2164">IPR006005</domain>
+                                  <domain confidence="1.8E-22" from="1701" to="1812">IPR028261</domain>
+                                  <domain confidence="2.8E-162" from="925" to="1296">IPR002932</domain>
+                                  <domain confidence="2.1E-39" from="1827" to="1916">IPR016040</domain>
+                                  <domain confidence="5.75E-36" from="1678" to="1833">IPR009051</domain>
+                                  <domain confidence="7.8E-68" from="1377" to="1570">IPR002489</domain>
+                                  <domain confidence="4.45E-99" from="1348" to="1611">IPR002489</domain>
+                                  <domain confidence="23.224" from="97" to="499">IPR017932</domain>
+                                  <domain confidence="1.3E-15" from="1825" to="2139">IPR023753</domain>
+                                  <domain confidence="2.1E-39" from="2097" to="2171">IPR016040</domain>
+                                  <domain confidence="9.4E-180" from="962" to="1333">IPR013785</domain>
+                                  <domain confidence="7.9E-118" from="572" to="860">IPR006982</domain>
+                                  <domain confidence="2.6E-143" from="97" to="471">IPR000583</domain>
+                                  <domain confidence="3.5E-5" from="1825" to="1859">IPR001327</domain>
+                                  <domain confidence="9.7E-104" from="569" to="908">IPR013785</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                          <clade>
+                            <name>GM04G41540</name>
+                            <branch_length>0.00785</branch_length>
+                          <taxonomy>
+                                <code>gma</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/GM04G41540</property>
+                              <sequence>
+                                <domain_architecture length="2192">
+                                  <domain confidence="1.1E-22" from="1698" to="1809">IPR028261</domain>
+                                  <domain confidence="3.6E-68" from="1376" to="1569">IPR002489</domain>
+                                  <domain confidence="2.8E-118" from="571" to="859">IPR006982</domain>
+                                  <domain confidence="1.57E-99" from="1347" to="1611">IPR002489</domain>
+                                  <domain confidence="6.8E-36" from="1675" to="1830">IPR009051</domain>
+                                  <domain confidence="4.7E-103" from="566" to="909">IPR013785</domain>
+                                  <domain confidence="6.1E-162" from="924" to="1295">IPR002932</domain>
+                                  <domain confidence="2.0E-180" from="963" to="1335">IPR013785</domain>
+                                  <domain confidence="5.4E-226" from="1676" to="2161">IPR006005</domain>
+                                  <domain confidence="3.4E-142" from="97" to="470">IPR000583</domain>
+                                  <domain confidence="3.7E-39" from="2094" to="2168">IPR016040</domain>
+                                  <domain confidence="3.7E-39" from="1824" to="1914">IPR016040</domain>
+                                  <domain confidence="23.496" from="97" to="498">IPR017932</domain>
+                                  <domain confidence="3.1E-107" from="1353" to="1623">IPR002489</domain>
+                                  <domain confidence="2.4E-15" from="1822" to="2136">IPR023753</domain>
+                                  <domain confidence="3.1E-5" from="1822" to="1859">IPR001327</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                        </clade>
+                        <clade>
+                          <branch_length>0.01435</branch_length>
+                          <confidence type="bootstrap">98.0</confidence>
+                          <clade>
+                            <branch_length>0.01562</branch_length>
+                            <confidence type="bootstrap">100.0</confidence>
+                            <clade>
+                              <name>GM19G16486</name>
+                              <branch_length>0.01946</branch_length>
+                            <taxonomy>
+                                  <code>gma</code>
+                                </taxonomy>
+                                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/GM19G16486</property>
+                                <sequence>
+                                  <domain_architecture length="1896">
+                                    <domain confidence="3.4E-69" from="1075" to="1265">IPR002489</domain>
+                                    <domain confidence="8.3E-69" from="4" to="169">IPR000583</domain>
+                                    <domain confidence="6.1E-223" from="1374" to="1859">IPR006005</domain>
+                                    <domain confidence="4.97E-100" from="1046" to="1310">IPR002489</domain>
+                                    <domain confidence="14.193" from="1" to="197">IPR017932</domain>
+                                    <domain confidence="2.5E-100" from="265" to="595">IPR013785</domain>
+                                    <domain confidence="9.8E-118" from="270" to="558">IPR006982</domain>
+                                    <domain confidence="8.1E-16" from="1520" to="1834">IPR023753</domain>
+                                    <domain confidence="9.8E-179" from="661" to="1034">IPR013785</domain>
+                                    <domain confidence="2.0E-39" from="1792" to="1888">IPR016040</domain>
+                                    <domain confidence="6.0E-161" from="624" to="994">IPR002932</domain>
+                                    <domain confidence="5.3E-5" from="1520" to="1554">IPR001327</domain>
+                                    <domain confidence="1.0E-22" from="1396" to="1507">IPR028261</domain>
+                                    <domain confidence="3.61E-36" from="1372" to="1528">IPR009051</domain>
+                                    <domain confidence="3.7E-108" from="1052" to="1319">IPR002489</domain>
+                                    <domain confidence="2.0E-39" from="1522" to="1611">IPR016040</domain>
+                                  </domain_architecture>
+                                </sequence>
+                              </clade>
+                            <clade>
+                              <name>GM14G32500</name>
+                              <branch_length>0.01671</branch_length>
+                            <taxonomy>
+                                  <code>gma</code>
+                                </taxonomy>
+                                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/GM14G32500</property>
+                                <sequence>
+                                  <domain_architecture length="2124">
+                                    <domain confidence="3.3E-24" from="1665" to="1761">IPR009051</domain>
+                                    <domain confidence="3.5E-5" from="1753" to="1790">IPR001327</domain>
+                                    <domain confidence="1.8E-107" from="1354" to="1621">IPR002489</domain>
+                                    <domain confidence="2.5E-142" from="98" to="471">IPR000583</domain>
+                                    <domain confidence="9.5E-206" from="1661" to="2092">IPR006005</domain>
+                                    <domain confidence="7.9E-161" from="926" to="1296">IPR002932</domain>
+                                    <domain confidence="2.1E-178" from="963" to="1336">IPR013785</domain>
+                                    <domain confidence="2.9E-16" from="1753" to="2067">IPR023753</domain>
+                                    <domain confidence="4.9E-68" from="1377" to="1566">IPR002489</domain>
+                                    <domain confidence="4.6E-18" from="1660" to="1740">IPR028261</domain>
+                                    <domain confidence="5.4E-118" from="572" to="860">IPR006982</domain>
+                                    <domain confidence="2.75E-99" from="1348" to="1612">IPR002489</domain>
+                                    <domain confidence="1.3E-102" from="561" to="897">IPR013785</domain>
+                                    <domain confidence="23.399" from="98" to="499">IPR017932</domain>
+                                  </domain_architecture>
+                                </sequence>
+                              </clade>
+                          </clade>
+                          <clade>
+                            <name>MT1G027020</name>
+                            <branch_length>0.05076</branch_length>
+                          <taxonomy>
+                                <code>mtr</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/MT1G027020</property>
+                              <sequence>
+                                <domain_architecture length="2195">
+                                  <domain confidence="23.476" from="102" to="503">IPR017932</domain>
+                                  <domain confidence="5.18E-36" from="1678" to="1834">IPR009051</domain>
+                                  <domain confidence="1.1E-106" from="1358" to="1627">IPR002489</domain>
+                                  <domain confidence="2.7E-143" from="102" to="475">IPR000583</domain>
+                                  <domain confidence="1.1E-22" from="1705" to="1813">IPR028261</domain>
+                                  <domain confidence="2.0E-17" from="1826" to="2140">IPR023753</domain>
+                                  <domain confidence="2.6E-177" from="968" to="1338">IPR013785</domain>
+                                  <domain confidence="5.0E-69" from="1381" to="1570">IPR002489</domain>
+                                  <domain confidence="1.1E-160" from="929" to="1300">IPR002932</domain>
+                                  <domain confidence="1.3E-39" from="2098" to="2171">IPR016040</domain>
+                                  <domain confidence="5.2E-119" from="576" to="864">IPR006982</domain>
+                                  <domain confidence="8.3E-5" from="1826" to="1860">IPR001327</domain>
+                                  <domain confidence="1.3E-39" from="1828" to="1917">IPR016040</domain>
+                                  <domain confidence="4.6E-226" from="1680" to="2165">IPR006005</domain>
+                                  <domain confidence="4.5E-105" from="565" to="902">IPR013785</domain>
+                                  <domain confidence="6.54E-99" from="1352" to="1616">IPR002489</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                        </clade>
+                      </clade>
+                    </clade>
+                  </clade>
+                  <clade>
+                    <name>EG0001G12000</name>
+                    <branch_length>0.0581</branch_length>
+                  <taxonomy>
+                        <code>egr</code>
+                      </taxonomy>
+                      <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/EG0001G12000</property>
+                      <sequence>
+                        <domain_architecture length="2219">
+                          <domain confidence="3.4E-160" from="944" to="1314">IPR002932</domain>
+                          <domain confidence="2.88E-36" from="1696" to="1853">IPR009051</domain>
+                          <domain confidence="23.496" from="113" to="517">IPR017932</domain>
+                          <domain confidence="1.02E-97" from="1366" to="1629">IPR002489</domain>
+                          <domain confidence="5.6E-179" from="987" to="1354">IPR013785</domain>
+                          <domain confidence="9.6E-119" from="590" to="878">IPR006982</domain>
+                          <domain confidence="2.8E-104" from="581" to="916">IPR013785</domain>
+                          <domain confidence="5.3E-145" from="113" to="489">IPR000583</domain>
+                          <domain confidence="1.0E-106" from="1372" to="1643">IPR002489</domain>
+                          <domain confidence="4.8E-226" from="1698" to="2182">IPR006005</domain>
+                          <domain confidence="2.5E-67" from="1395" to="1587">IPR002489</domain>
+                          <domain confidence="1.6E-17" from="1844" to="2158">IPR023753</domain>
+                          <domain confidence="1.2E-22" from="1720" to="1831">IPR028261</domain>
+                        </domain_architecture>
+                      </sequence>
+                    </clade>
+                </clade>
+                <clade>
+                  <branch_length>0.00578</branch_length>
+                  <confidence type="bootstrap">42.0</confidence>
+                  <clade>
+                    <branch_length>0.01143</branch_length>
+                    <confidence type="bootstrap">53.0</confidence>
+                    <clade>
+                      <branch_length>0.05501</branch_length>
+                      <confidence type="bootstrap">100.0</confidence>
+                      <clade>
+                        <name>ST03G013400</name>
+                        <branch_length>0.00453</branch_length>
+                      <taxonomy>
+                            <code>stu</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ST03G013400</property>
+                          <sequence>
+                            <domain_architecture length="2211">
+                              <domain confidence="2.0E-143" from="118" to="494">IPR000583</domain>
+                              <domain confidence="6.2E-228" from="1702" to="2187">IPR006005</domain>
+                              <domain confidence="5.2E-103" from="588" to="922">IPR013785</domain>
+                              <domain confidence="6.28E-36" from="1700" to="1856">IPR009051</domain>
+                              <domain confidence="2.1E-18" from="1848" to="2162">IPR023753</domain>
+                              <domain confidence="1.57E-98" from="1371" to="1635">IPR002489</domain>
+                              <domain confidence="4.8E-108" from="1378" to="1647">IPR002489</domain>
+                              <domain confidence="8.7E-6" from="1848" to="1919">IPR001327</domain>
+                              <domain confidence="4.3E-118" from="595" to="883">IPR006982</domain>
+                              <domain confidence="1.2E-41" from="1850" to="1939">IPR016040</domain>
+                              <domain confidence="1.8E-22" from="1724" to="1835">IPR028261</domain>
+                              <domain confidence="1.2E-41" from="2120" to="2200">IPR016040</domain>
+                              <domain confidence="1.9E-160" from="949" to="1319">IPR002932</domain>
+                              <domain confidence="23.496" from="118" to="522">IPR017932</domain>
+                              <domain confidence="1.7E-178" from="986" to="1359">IPR013785</domain>
+                              <domain confidence="5.2E-68" from="1400" to="1592">IPR002489</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                      <clade>
+                        <name>SL03G083440</name>
+                        <branch_length>0.00744</branch_length>
+                      <taxonomy>
+                            <code>sly</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/SL03G083440</property>
+                          <sequence>
+                            <domain_architecture length="2227">
+                              <domain confidence="1.9E-18" from="1864" to="2178">IPR023753</domain>
+                              <domain confidence="1.2E-142" from="134" to="510">IPR000583</domain>
+                              <domain confidence="1.0E-160" from="965" to="1335">IPR002932</domain>
+                              <domain confidence="1.0E-178" from="1002" to="1375">IPR013785</domain>
+                              <domain confidence="6.0E-68" from="1416" to="1609">IPR002489</domain>
+                              <domain confidence="8.8E-6" from="1864" to="1935">IPR001327</domain>
+                              <domain confidence="1.8E-103" from="604" to="938">IPR013785</domain>
+                              <domain confidence="2.3E-22" from="1741" to="1851">IPR028261</domain>
+                              <domain confidence="1.26E-35" from="1716" to="1872">IPR009051</domain>
+                              <domain confidence="1.2E-41" from="2136" to="2216">IPR016040</domain>
+                              <domain confidence="23.437" from="134" to="538">IPR017932</domain>
+                              <domain confidence="1.2E-41" from="1866" to="1955">IPR016040</domain>
+                              <domain confidence="6.28E-99" from="1387" to="1651">IPR002489</domain>
+                              <domain confidence="4.6E-227" from="1718" to="2203">IPR006005</domain>
+                              <domain confidence="1.9E-118" from="611" to="899">IPR006982</domain>
+                              <domain confidence="8.3E-108" from="1393" to="1663">IPR002489</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                    </clade>
+                    <clade>
+                      <branch_length>0.06267</branch_length>
+                      <confidence type="bootstrap">100.0</confidence>
+                      <clade>
+                        <branch_length>0.00973</branch_length>
+                        <confidence type="bootstrap">98.0</confidence>
+                        <clade>
+                          <name>BR03G13520</name>
+                          <branch_length>0.01725</branch_length>
+                        <taxonomy>
+                              <code>bra</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/BR03G13520</property>
+                            <sequence>
+                              <domain_architecture length="2200">
+                                <domain confidence="3.2E-107" from="1366" to="1635">IPR002489</domain>
+                                <domain confidence="23.224" from="107" to="511">IPR017932</domain>
+                                <domain confidence="5.6E-120" from="583" to="872">IPR006982</domain>
+                                <domain confidence="4.4E-144" from="107" to="483">IPR000583</domain>
+                                <domain confidence="2.1E-68" from="1389" to="1582">IPR002489</domain>
+                                <domain confidence="5.9E-224" from="1694" to="2178">IPR006005</domain>
+                                <domain confidence="1.6E-22" from="1717" to="1827">IPR028261</domain>
+                                <domain confidence="3.7E-5" from="1840" to="1910">IPR001327</domain>
+                                <domain confidence="6.5E-159" from="937" to="1308">IPR002932</domain>
+                                <domain confidence="1.1E-36" from="1692" to="1849">IPR009051</domain>
+                                <domain confidence="1.9E-178" from="956" to="1348">IPR013785</domain>
+                                <domain confidence="1.1E-105" from="574" to="913">IPR013785</domain>
+                                <domain confidence="1.1E-18" from="1840" to="2154">IPR023753</domain>
+                                <domain confidence="1.02E-98" from="1360" to="1625">IPR002489</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                        <clade>
+                          <name>TP6G15590</name>
+                          <branch_length>0.00924</branch_length>
+                        <taxonomy>
+                              <code>tpa</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/TP6G15590</property>
+                            <sequence>
+                              <domain_architecture length="2210">
+                                <domain confidence="3.3E-22" from="1726" to="1834">IPR028261</domain>
+                                <domain confidence="5.7E-105" from="586" to="925">IPR013785</domain>
+                                <domain confidence="1.31E-98" from="1369" to="1635">IPR002489</domain>
+                                <domain confidence="1.5E-224" from="1702" to="2186">IPR006005</domain>
+                                <domain confidence="2.4E-178" from="965" to="1357">IPR013785</domain>
+                                <domain confidence="2.46E-36" from="1700" to="1857">IPR009051</domain>
+                                <domain confidence="23.224" from="116" to="520">IPR017932</domain>
+                                <domain confidence="5.8E-19" from="1848" to="2162">IPR023753</domain>
+                                <domain confidence="5.9E-108" from="1375" to="1644">IPR002489</domain>
+                                <domain confidence="5.3E-120" from="592" to="881">IPR006982</domain>
+                                <domain confidence="1.2E-143" from="116" to="492">IPR000583</domain>
+                                <domain confidence="6.9E-68" from="1398" to="1590">IPR002489</domain>
+                                <domain confidence="4.7E-159" from="946" to="1317">IPR002932</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                      </clade>
+                      <clade>
+                        <branch_length>0.01019</branch_length>
+                        <confidence type="bootstrap">98.0</confidence>
+                        <clade>
+                          <branch_length>0.01008</branch_length>
+                          <confidence type="bootstrap">100.0</confidence>
+                          <clade>
+                            <name>AL8G18120</name>
+                            <branch_length>0.00209</branch_length>
+                          <taxonomy>
+                                <code>aly</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AL8G18120</property>
+                              <sequence>
+                                <domain_architecture length="2208">
+                                  <domain confidence="23.205" from="117" to="521">IPR017932</domain>
+                                  <domain confidence="1.2E-223" from="1700" to="2184">IPR006005</domain>
+                                  <domain confidence="3.4E-5" from="1846" to="1883">IPR001327</domain>
+                                  <domain confidence="8.6E-20" from="1846" to="2160">IPR023753</domain>
+                                  <domain confidence="3.71E-36" from="1698" to="1855">IPR009051</domain>
+                                  <domain confidence="2.3E-107" from="1376" to="1645">IPR002489</domain>
+                                  <domain confidence="3.6E-144" from="117" to="493">IPR000583</domain>
+                                  <domain confidence="1.9E-177" from="966" to="1358">IPR013785</domain>
+                                  <domain confidence="3.6E-104" from="583" to="921">IPR013785</domain>
+                                  <domain confidence="2.88E-98" from="1370" to="1636">IPR002489</domain>
+                                  <domain confidence="2.6E-120" from="593" to="882">IPR006982</domain>
+                                  <domain confidence="1.1E-159" from="947" to="1318">IPR002932</domain>
+                                  <domain confidence="1.8E-22" from="1724" to="1833">IPR028261</domain>
+                                  <domain confidence="6.6E-68" from="1399" to="1592">IPR002489</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                          <clade>
+                            <name>AT5G53460</name>
+                            <branch_length>0.0056</branch_length>
+                          <taxonomy>
+                                <code>ath</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G53460</property>
+                              <sequence>
+                                <domain_architecture length="2209">
+                                  <domain confidence="2.6E-120" from="593" to="882">IPR006982</domain>
+                                  <domain confidence="5.75E-36" from="1700" to="1856">IPR009051</domain>
+                                  <domain confidence="6.2E-67" from="1399" to="1592">IPR002489</domain>
+                                  <domain confidence="23.147" from="117" to="521">IPR017932</domain>
+                                  <domain confidence="4.5E-178" from="966" to="1358">IPR013785</domain>
+                                  <domain confidence="2.7E-39" from="1849" to="1938">IPR016040</domain>
+                                  <domain confidence="2.7E-39" from="2119" to="2194">IPR016040</domain>
+                                  <domain confidence="7.2E-144" from="117" to="493">IPR000583</domain>
+                                  <domain confidence="4.5E-104" from="583" to="924">IPR013785</domain>
+                                  <domain confidence="1.2E-159" from="947" to="1318">IPR002932</domain>
+                                  <domain confidence="2.9E-223" from="1701" to="2185">IPR006005</domain>
+                                  <domain confidence="7.1E-19" from="1847" to="2161">IPR023753</domain>
+                                  <domain confidence="6.93E-98" from="1370" to="1636">IPR002489</domain>
+                                  <domain confidence="3.4E-107" from="1376" to="1645">IPR002489</domain>
+                                  <domain confidence="1.8E-22" from="1725" to="1834">IPR028261</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                        </clade>
+                        <clade>
+                          <name>CRU_008G13300</name>
+                          <branch_length>0.00714</branch_length>
+                        <taxonomy>
+                              <code>cru</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CRU_008G13300</property>
+                            <sequence>
+                              <domain_architecture length="2209">
+                                <domain confidence="6.4E-224" from="1702" to="2186">IPR006005</domain>
+                                <domain confidence="2.41E-36" from="1700" to="1857">IPR009051</domain>
+                                <domain confidence="23.108" from="116" to="520">IPR017932</domain>
+                                <domain confidence="3.1E-159" from="946" to="1317">IPR002932</domain>
+                                <domain confidence="1.2E-120" from="592" to="881">IPR006982</domain>
+                                <domain confidence="2.3E-178" from="965" to="1357">IPR013785</domain>
+                                <domain confidence="1.7E-22" from="1726" to="1835">IPR028261</domain>
+                                <domain confidence="1.7E-98" from="1369" to="1635">IPR002489</domain>
+                                <domain confidence="1.2E-107" from="1375" to="1644">IPR002489</domain>
+                                <domain confidence="5.2E-68" from="1398" to="1591">IPR002489</domain>
+                                <domain confidence="3.7E-18" from="1848" to="2162">IPR023753</domain>
+                                <domain confidence="4.3E-145" from="116" to="492">IPR000583</domain>
+                                <domain confidence="3.2E-105" from="582" to="919">IPR013785</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                      </clade>
+                    </clade>
+                  </clade>
+                  <clade>
+                    <branch_length>0.01215</branch_length>
+                    <confidence type="bootstrap">94.0</confidence>
+                    <clade>
+                      <name>VV16G10380</name>
+                      <branch_length>0.03509</branch_length>
+                    <taxonomy>
+                          <code>vvi</code>
+                        </taxonomy>
+                        <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/VV16G10380</property>
+                        <sequence>
+                          <domain_architecture length="2217">
+                            <domain confidence="2.2E-105" from="591" to="922">IPR013785</domain>
+                            <domain confidence="6.8E-18" from="1851" to="2165">IPR023753</domain>
+                            <domain confidence="1.6E-40" from="2125" to="2198">IPR016040</domain>
+                            <domain confidence="3.1E-145" from="119" to="495">IPR000583</domain>
+                            <domain confidence="2.0E-22" from="1729" to="1838">IPR028261</domain>
+                            <domain confidence="7.2E-162" from="949" to="1320">IPR002932</domain>
+                            <domain confidence="3.7E-67" from="1401" to="1593">IPR002489</domain>
+                            <domain confidence="1.6E-40" from="1853" to="1942">IPR016040</domain>
+                            <domain confidence="6.5E-109" from="1378" to="1647">IPR002489</domain>
+                            <domain confidence="23.651" from="119" to="523">IPR017932</domain>
+                            <domain confidence="5.0E-226" from="1705" to="2190">IPR006005</domain>
+                            <domain confidence="1.5E-180" from="987" to="1360">IPR013785</domain>
+                            <domain confidence="1.3E-119" from="596" to="884">IPR006982</domain>
+                            <domain confidence="2.75E-98" from="1372" to="1637">IPR002489</domain>
+                            <domain confidence="9.42E-36" from="1703" to="1860">IPR009051</domain>
+                          </domain_architecture>
+                        </sequence>
+                      </clade>
+                    <clade>
+                      <name>BV3G02260</name>
+                      <branch_length>0.08047</branch_length>
+                    <taxonomy>
+                          <code>bvu</code>
+                        </taxonomy>
+                        <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/BV3G02260</property>
+                        <sequence>
+                          <domain_architecture length="2210">
+                            <domain confidence="6.2E-103" from="576" to="917">IPR013785</domain>
+                            <domain confidence="2.75E-99" from="1366" to="1630">IPR002489</domain>
+                            <domain confidence="7.3E-5" from="1843" to="1877">IPR001327</domain>
+                            <domain confidence="3.4E-22" from="1720" to="1830">IPR028261</domain>
+                            <domain confidence="2.6E-67" from="1395" to="1588">IPR002489</domain>
+                            <domain confidence="5.6E-117" from="590" to="878">IPR006982</domain>
+                            <domain confidence="5.02E-36" from="1696" to="1851">IPR009051</domain>
+                            <domain confidence="23.767" from="113" to="517">IPR017932</domain>
+                            <domain confidence="6.2E-231" from="1697" to="2183">IPR006005</domain>
+                            <domain confidence="1.3E-144" from="113" to="489">IPR000583</domain>
+                            <domain confidence="4.4E-41" from="1845" to="1934">IPR016040</domain>
+                            <domain confidence="1.1E-157" from="943" to="1314">IPR002932</domain>
+                            <domain confidence="7.4E-16" from="1843" to="2157">IPR023753</domain>
+                            <domain confidence="4.4E-41" from="2115" to="2190">IPR016040</domain>
+                            <domain confidence="1.5E-107" from="1372" to="1636">IPR002489</domain>
+                            <domain confidence="1.1E-179" from="976" to="1354">IPR013785</domain>
+                          </domain_architecture>
+                        </sequence>
+                      </clade>
+                  </clade>
+                </clade>
+              </clade>
+              <clade>
+                <branch_length>0.00374</branch_length>
+                <confidence type="bootstrap">40.0</confidence>
+                <clade>
+                  <branch_length>0.00348</branch_length>
+                  <confidence type="bootstrap">18.0</confidence>
+                  <clade>
+                    <branch_length>0.01535</branch_length>
+                    <confidence type="bootstrap">100.0</confidence>
+                    <clade>
+                      <name>TC0003G19640</name>
+                      <branch_length>0.01664</branch_length>
+                    <taxonomy>
+                          <code>tca</code>
+                        </taxonomy>
+                        <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/TC0003G19640</property>
+                        <sequence>
+                          <domain_architecture length="2118">
+                            <domain confidence="4.7E-5" from="1847" to="1884">IPR001327</domain>
+                            <domain confidence="8.4E-120" from="593" to="881">IPR006982</domain>
+                            <domain confidence="6.9E-180" from="984" to="1358">IPR013785</domain>
+                            <domain confidence="1.1E-20" from="1849" to="1945">IPR016040</domain>
+                            <domain confidence="3.53E-99" from="1369" to="1633">IPR002489</domain>
+                            <domain confidence="1.2E-35" from="1699" to="1855">IPR009051</domain>
+                            <domain confidence="2.0E-22" from="1723" to="1834">IPR028261</domain>
+                            <domain confidence="1.0E-143" from="116" to="492">IPR000583</domain>
+                            <domain confidence="2.1E-109" from="1375" to="1644">IPR002489</domain>
+                            <domain confidence="5.9E-193" from="1701" to="2117">IPR006005</domain>
+                            <domain confidence="2.6E-160" from="946" to="1317">IPR002932</domain>
+                            <domain confidence="6.5E-105" from="580" to="920">IPR013785</domain>
+                            <domain confidence="23.147" from="116" to="520">IPR017932</domain>
+                            <domain confidence="8.8E-68" from="1398" to="1591">IPR002489</domain>
+                            <domain confidence="3.3E-11" from="1848" to="2053">IPR023753</domain>
+                          </domain_architecture>
+                        </sequence>
+                      </clade>
+                    <clade>
+                      <name>GR08G26960</name>
+                      <branch_length>0.01978</branch_length>
+                    <taxonomy>
+                          <code>gra</code>
+                        </taxonomy>
+                        <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/GR08G26960</property>
+                        <sequence>
+                          <domain_architecture length="2210">
+                            <domain confidence="4.2E-119" from="591" to="879">IPR006982</domain>
+                            <domain confidence="2.8E-227" from="1695" to="2180">IPR006005</domain>
+                            <domain confidence="2.09E-35" from="1693" to="1849">IPR009051</domain>
+                            <domain confidence="1.6E-108" from="1373" to="1646">IPR002489</domain>
+                            <domain confidence="23.418" from="114" to="518">IPR017932</domain>
+                            <domain confidence="2.22E-98" from="1367" to="1632">IPR002489</domain>
+                            <domain confidence="6.2E-105" from="585" to="917">IPR013785</domain>
+                            <domain confidence="4.3E-180" from="981" to="1356">IPR013785</domain>
+                            <domain confidence="3.8E-41" from="1843" to="1932">IPR016040</domain>
+                            <domain confidence="3.6E-160" from="944" to="1315">IPR002932</domain>
+                            <domain confidence="7.7E-22" from="1718" to="1827">IPR028261</domain>
+                            <domain confidence="8.9E-145" from="114" to="490">IPR000583</domain>
+                            <domain confidence="6.3E-5" from="1841" to="1875">IPR001327</domain>
+                            <domain confidence="1.8E-67" from="1396" to="1587">IPR002489</domain>
+                            <domain confidence="6.6E-18" from="1842" to="2155">IPR023753</domain>
+                            <domain confidence="3.8E-41" from="2113" to="2202">IPR016040</domain>
+                          </domain_architecture>
+                        </sequence>
+                      </clade>
+                  </clade>
+                  <clade>
+                    <name>CP00003G00680</name>
+                    <branch_length>0.10482</branch_length>
+                  <taxonomy>
+                        <code>cpa</code>
+                      </taxonomy>
+                      <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CP00003G00680</property>
+                      <sequence>
+                        <domain_architecture length="2013">
+                          <domain confidence="1.9E-22" from="1519" to="1629">IPR028261</domain>
+                          <domain confidence="3.5E-41" from="1914" to="2002">IPR016040</domain>
+                          <domain confidence="13.748" from="113" to="340">IPR017932</domain>
+                          <domain confidence="5.3E-17" from="1642" to="1956">IPR023753</domain>
+                          <domain confidence="4.39E-36" from="1494" to="1650">IPR009051</domain>
+                          <domain confidence="1.83E-97" from="1167" to="1431">IPR002489</domain>
+                          <domain confidence="2.4E-106" from="398" to="739">IPR013785</domain>
+                          <domain confidence="1.5E-110" from="767" to="1041">IPR002932</domain>
+                          <domain confidence="2.6E-6" from="1102" to="1155">IPR013785</domain>
+                          <domain confidence="8.5E-227" from="1496" to="1980">IPR006005</domain>
+                          <domain confidence="9.5E-5" from="1642" to="1679">IPR001327</domain>
+                          <domain confidence="2.6E-44" from="182" to="312">IPR000583</domain>
+                          <domain confidence="1.0E-15" from="113" to="173">IPR000583</domain>
+                          <domain confidence="3.5E-41" from="1644" to="1733">IPR016040</domain>
+                          <domain confidence="3.0E-113" from="789" to="1041">IPR013785</domain>
+                          <domain confidence="2.2E-66" from="1196" to="1388">IPR002489</domain>
+                          <domain confidence="6.5E-119" from="413" to="701">IPR006982</domain>
+                          <domain confidence="3.6E-105" from="1174" to="1440">IPR002489</domain>
+                        </domain_architecture>
+                      </sequence>
+                    </clade>
+                </clade>
+                <clade>
+                  <branch_length>0.00744</branch_length>
+                  <confidence type="bootstrap">89.0</confidence>
+                  <clade>
+                    <branch_length>0.03076</branch_length>
+                    <confidence type="bootstrap">100.0</confidence>
+                    <clade>
+                      <name>PT12G01170</name>
+                      <branch_length>0.0336</branch_length>
+                    <taxonomy>
+                          <code>ptr</code>
+                        </taxonomy>
+                        <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PT12G01170</property>
+                        <sequence>
+                          <domain_architecture length="2231">
+                            <domain confidence="2.4E-160" from="953" to="1324">IPR002932</domain>
+                            <domain confidence="5.6E-144" from="123" to="499">IPR000583</domain>
+                            <domain confidence="6.02E-99" from="1376" to="1641">IPR002489</domain>
+                            <domain confidence="2.8E-108" from="1382" to="1651">IPR002489</domain>
+                            <domain confidence="22.255" from="123" to="527">IPR017932</domain>
+                            <domain confidence="1.1E-4" from="1856" to="1926">IPR001327</domain>
+                            <domain confidence="5.7E-17" from="1856" to="2170">IPR023753</domain>
+                            <domain confidence="1.5E-102" from="595" to="926">IPR013785</domain>
+                            <domain confidence="8.8E-225" from="1708" to="2196">IPR006005</domain>
+                            <domain confidence="1.1E-66" from="1405" to="1598">IPR002489</domain>
+                            <domain confidence="1.6E-40" from="2130" to="2215">IPR016040</domain>
+                            <domain confidence="1.7E-117" from="600" to="888">IPR006982</domain>
+                            <domain confidence="5.23E-35" from="1706" to="1864">IPR009051</domain>
+                            <domain confidence="9.2E-179" from="991" to="1364">IPR013785</domain>
+                            <domain confidence="6.3E-22" from="1731" to="1843">IPR028261</domain>
+                            <domain confidence="1.6E-40" from="1858" to="1947">IPR016040</domain>
+                          </domain_architecture>
+                        </sequence>
+                      </clade>
+                    <clade>
+                      <name>PT15G01750</name>
+                      <branch_length>0.0181</branch_length>
+                    <taxonomy>
+                          <code>ptr</code>
+                        </taxonomy>
+                        <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PT15G01750</property>
+                        <sequence>
+                          <domain_architecture length="2222">
+                            <domain confidence="6.9E-179" from="989" to="1363">IPR013785</domain>
+                            <domain confidence="5.6E-66" from="1403" to="1596">IPR002489</domain>
+                            <domain confidence="1.31E-98" from="1374" to="1639">IPR002489</domain>
+                            <domain confidence="3.4E-39" from="1856" to="1946">IPR016040</domain>
+                            <domain confidence="2.7E-103" from="583" to="924">IPR013785</domain>
+                            <domain confidence="2.2E-117" from="598" to="886">IPR006982</domain>
+                            <domain confidence="3.4E-39" from="2117" to="2209">IPR016040</domain>
+                            <domain confidence="3.71E-35" from="1707" to="1862">IPR009051</domain>
+                            <domain confidence="8.3E-5" from="1854" to="1901">IPR001327</domain>
+                            <domain confidence="8.1E-14" from="1854" to="2161">IPR023753</domain>
+                            <domain confidence="9.6E-23" from="1730" to="1841">IPR028261</domain>
+                            <domain confidence="23.496" from="121" to="525">IPR017932</domain>
+                            <domain confidence="6.6E-108" from="1380" to="1649">IPR002489</domain>
+                            <domain confidence="1.1E-216" from="1708" to="2187">IPR006005</domain>
+                            <domain confidence="2.0E-144" from="121" to="497">IPR000583</domain>
+                            <domain confidence="5.0E-161" from="951" to="1322">IPR002932</domain>
+                          </domain_architecture>
+                        </sequence>
+                      </clade>
+                  </clade>
+                  <clade>
+                    <branch_length>0.00484</branch_length>
+                    <confidence type="bootstrap">40.0</confidence>
+                    <clade>
+                      <branch_length>0.00517</branch_length>
+                      <confidence type="bootstrap">87.0</confidence>
+                      <clade>
+                        <branch_length>0.0099</branch_length>
+                        <confidence type="bootstrap">98.0</confidence>
+                        <clade>
+                          <name>ME06089G00070</name>
+                          <branch_length>0.02234</branch_length>
+                        <taxonomy>
+                              <code>mes</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ME06089G00070</property>
+                            <sequence>
+                              <domain_architecture length="2224">
+                                <domain confidence="2.1E-106" from="1380" to="1645">IPR002489</domain>
+                                <domain confidence="1.2E-66" from="1403" to="1595">IPR002489</domain>
+                                <domain confidence="3.6E-160" from="945" to="1316">IPR002932</domain>
+                                <domain confidence="1.5E-17" from="1850" to="2163">IPR023753</domain>
+                                <domain confidence="5.8E-22" from="1727" to="1835">IPR028261</domain>
+                                <domain confidence="2.3E-104" from="580" to="918">IPR013785</domain>
+                                <domain confidence="2.62E-98" from="1374" to="1639">IPR002489</domain>
+                                <domain confidence="6.28E-36" from="1701" to="1858">IPR009051</domain>
+                                <domain confidence="1.3E-225" from="1703" to="2188">IPR006005</domain>
+                                <domain confidence="23.03" from="114" to="519">IPR017932</domain>
+                                <domain confidence="4.5E-180" from="983" to="1353">IPR013785</domain>
+                                <domain confidence="3.8E-119" from="592" to="880">IPR006982</domain>
+                                <domain confidence="5.0E-141" from="114" to="491">IPR000583</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                        <clade>
+                          <name>ME06633G00020</name>
+                          <branch_length>0.03547</branch_length>
+                        <taxonomy>
+                              <code>mes</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ME06633G00020</property>
+                            <sequence>
+                              <domain_architecture length="2215">
+                                <domain confidence="2.4E-22" from="1720" to="1831">IPR028261</domain>
+                                <domain confidence="23.011" from="115" to="519">IPR017932</domain>
+                                <domain confidence="5.5E-106" from="1374" to="1640">IPR002489</domain>
+                                <domain confidence="4.3E-144" from="115" to="491">IPR000583</domain>
+                                <domain confidence="1.67E-36" from="1696" to="1853">IPR009051</domain>
+                                <domain confidence="1.6E-103" from="576" to="918">IPR013785</domain>
+                                <domain confidence="1.8E-66" from="1397" to="1590">IPR002489</domain>
+                                <domain confidence="1.6E-17" from="1844" to="2158">IPR023753</domain>
+                                <domain confidence="2.2E-225" from="1698" to="2183">IPR006005</domain>
+                                <domain confidence="4.2E-119" from="592" to="880">IPR006982</domain>
+                                <domain confidence="2.1E-179" from="984" to="1357">IPR013785</domain>
+                                <domain confidence="7.4E-161" from="945" to="1315">IPR002932</domain>
+                                <domain confidence="8.11E-98" from="1367" to="1632">IPR002489</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                      </clade>
+                      <clade>
+                        <name>RC30169G02700</name>
+                        <branch_length>0.02629</branch_length>
+                      <taxonomy>
+                            <code>rco</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/RC30169G02700</property>
+                          <sequence>
+                            <domain_architecture length="2216">
+                              <domain confidence="1.9E-39" from="2116" to="2193">IPR016040</domain>
+                              <domain confidence="3.8E-225" from="1698" to="2184">IPR006005</domain>
+                              <domain confidence="4.6E-159" from="946" to="1317">IPR002932</domain>
+                              <domain confidence="1.1E-178" from="985" to="1358">IPR013785</domain>
+                              <domain confidence="1.1E-119" from="593" to="881">IPR006982</domain>
+                              <domain confidence="3.3E-18" from="1844" to="2158">IPR023753</domain>
+                              <domain confidence="7.2E-107" from="1375" to="1645">IPR002489</domain>
+                              <domain confidence="2.3E-104" from="581" to="919">IPR013785</domain>
+                              <domain confidence="23.263" from="116" to="520">IPR017932</domain>
+                              <domain confidence="1.0E-144" from="116" to="492">IPR000583</domain>
+                              <domain confidence="3.4E-98" from="1368" to="1633">IPR002489</domain>
+                              <domain confidence="1.05E-36" from="1697" to="1853">IPR009051</domain>
+                              <domain confidence="2.7E-22" from="1721" to="1831">IPR028261</domain>
+                              <domain confidence="1.4E-66" from="1398" to="1590">IPR002489</domain>
+                              <domain confidence="1.9E-39" from="1846" to="1935">IPR016040</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                    </clade>
+                    <clade>
+                      <name>CS00328G00100</name>
+                      <branch_length>0.04624</branch_length>
+                    <taxonomy>
+                          <code>csi</code>
+                        </taxonomy>
+                        <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CS00328G00100</property>
+                        <sequence>
+                          <domain_architecture length="1761">
+                            <domain confidence="1.44E-97" from="1367" to="1632">IPR002489</domain>
+                            <domain confidence="1.4E-144" from="115" to="491">IPR000583</domain>
+                            <domain confidence="1.6E-161" from="945" to="1316">IPR002932</domain>
+                            <domain confidence="2.3E-103" from="578" to="918">IPR013785</domain>
+                            <domain confidence="22.914" from="115" to="519">IPR017932</domain>
+                            <domain confidence="1.9E-105" from="1374" to="1645">IPR002489</domain>
+                            <domain confidence="1.1E-8" from="1698" to="1756">IPR009051</domain>
+                            <domain confidence="2.4E-118" from="592" to="880">IPR006982</domain>
+                            <domain confidence="1.6E-64" from="1397" to="1586">IPR002489</domain>
+                            <domain confidence="1.6E-179" from="983" to="1354">IPR013785</domain>
+                          </domain_architecture>
+                        </sequence>
+                      </clade>
+                  </clade>
+                </clade>
+              </clade>
+            </clade>
+            <clade>
+              <name>ATR_00021G02760</name>
+              <branch_length>0.06922</branch_length>
+            <taxonomy>
+                  <code>atr</code>
+                </taxonomy>
+                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ATR_00021G02760</property>
+                <sequence>
+                  <domain_architecture length="2202">
+                    <domain confidence="3.61E-36" from="1688" to="1845">IPR009051</domain>
+                    <domain confidence="5.8E-103" from="573" to="914">IPR013785</domain>
+                    <domain confidence="3.5E-40" from="2108" to="2195">IPR016040</domain>
+                    <domain confidence="3.4E-181" from="978" to="1352">IPR013785</domain>
+                    <domain confidence="3.5E-40" from="1838" to="1928">IPR016040</domain>
+                    <domain confidence="6.2E-142" from="110" to="486">IPR000583</domain>
+                    <domain confidence="5.4E-17" from="1836" to="2150">IPR023753</domain>
+                    <domain confidence="1.3E-67" from="1391" to="1584">IPR002489</domain>
+                    <domain confidence="5.7E-110" from="1370" to="1642">IPR002489</domain>
+                    <domain confidence="9.1E-160" from="940" to="1311">IPR002932</domain>
+                    <domain confidence="22.875" from="110" to="514">IPR017932</domain>
+                    <domain confidence="4.19E-99" from="1362" to="1628">IPR002489</domain>
+                    <domain confidence="2.1E-226" from="1690" to="2174">IPR006005</domain>
+                    <domain confidence="1.2E-22" from="1712" to="1823">IPR028261</domain>
+                    <domain confidence="1.7E-117" from="587" to="875">IPR006982</domain>
+                  </domain_architecture>
+                </sequence>
+              </clade>
+          </clade>
+        </clade>
+      </clade>
+      <clade>
+        <name>CR13G06830</name>
+        <branch_length>0.32429</branch_length>
+      <taxonomy>
+            <code>cre</code>
+          </taxonomy>
+          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CR13G06830</property>
+          <sequence>
+            <domain_architecture length="2252">
+              <domain confidence="1.3E-98" from="562" to="904">IPR013785</domain>
+              <domain confidence="1.9E-156" from="924" to="1295">IPR002932</domain>
+              <domain confidence="9.5E-23" from="1759" to="1856">IPR028261</domain>
+              <domain confidence="3.53E-89" from="1349" to="1619">IPR002489</domain>
+              <domain confidence="2.4E-221" from="1720" to="2206">IPR006005</domain>
+              <domain confidence="3.5E-136" from="60" to="434">IPR000583</domain>
+              <domain confidence="4.97E-34" from="1719" to="1878">IPR009051</domain>
+              <domain confidence="1.7E-105" from="569" to="856">IPR006982</domain>
+              <domain confidence="23.554" from="60" to="462">IPR017932</domain>
+              <domain confidence="4.3E-98" from="1357" to="1629">IPR002489</domain>
+              <domain confidence="2.2E-18" from="1869" to="2182">IPR023753</domain>
+              <domain confidence="4.7E-58" from="1383" to="1563">IPR002489</domain>
+              <domain confidence="8.4E-177" from="970" to="1324">IPR013785</domain>
+            </domain_architecture>
+          </sequence>
+        </clade>
+    </clade>
+    <clade>
+      <branch_length>0.9303199999999999</branch_length>
+      <confidence type="bootstrap">100.0</confidence>
+      <clade>
+        <branch_length>0.08639</branch_length>
+        <confidence type="bootstrap">98.0</confidence>
+        <clade>
+          <branch_length>0.04749</branch_length>
+          <confidence type="bootstrap">96.0</confidence>
+          <clade>
+            <branch_length>0.1075</branch_length>
+            <confidence type="bootstrap">100.0</confidence>
+            <clade>
+              <branch_length>0.08295</branch_length>
+              <confidence type="bootstrap">100.0</confidence>
+              <clade>
+                <name>ZM07G29290</name>
+                <branch_length>0.04665</branch_length>
+              <taxonomy>
+                    <code>zma</code>
+                  </taxonomy>
+                  <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ZM07G29290</property>
+                  <sequence>
+                    <domain_architecture length="1617">
+                      <domain confidence="2.2E-116" from="545" to="840">IPR006982</domain>
+                      <domain confidence="4.4E-101" from="536" to="887">IPR013785</domain>
+                      <domain confidence="1.3E-161" from="898" to="1282">IPR002932</domain>
+                      <domain confidence="7.1E-94" from="1348" to="1602">IPR002489</domain>
+                      <domain confidence="20.821" from="98" to="497">IPR017932</domain>
+                      <domain confidence="1.1E-65" from="1363" to="1555">IPR002489</domain>
+                      <domain confidence="1.44E-86" from="1336" to="1594">IPR002489</domain>
+                      <domain confidence="3.7E-166" from="926" to="1305">IPR013785</domain>
+                      <domain confidence="9.1E-133" from="98" to="469">IPR000583</domain>
+                    </domain_architecture>
+                  </sequence>
+                </clade>
+              <clade>
+                <name>OS07G46460</name>
+                <branch_length>0.03368</branch_length>
+              <taxonomy>
+                    <code>osa</code>
+                  </taxonomy>
+                  <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/OS07G46460</property>
+                  <sequence>
+                    <domain_architecture length="1616">
+                      <domain confidence="5.7E-134" from="97" to="468">IPR000583</domain>
+                      <domain confidence="1.44E-86" from="1334" to="1593">IPR002489</domain>
+                      <domain confidence="3.7E-167" from="924" to="1319">IPR013785</domain>
+                      <domain confidence="1.5E-93" from="1347" to="1601">IPR002489</domain>
+                      <domain confidence="1.5E-162" from="897" to="1281">IPR002932</domain>
+                      <domain confidence="2.2E-101" from="530" to="886">IPR013785</domain>
+                      <domain confidence="2.0E-64" from="1362" to="1554">IPR002489</domain>
+                      <domain confidence="20.22" from="97" to="496">IPR017932</domain>
+                      <domain confidence="2.2E-115" from="544" to="839">IPR006982</domain>
+                    </domain_architecture>
+                  </sequence>
+                </clade>
+            </clade>
+            <clade>
+              <branch_length>0.02626</branch_length>
+              <confidence type="bootstrap">97.0</confidence>
+              <clade>
+                <branch_length>0.01338</branch_length>
+                <confidence type="bootstrap">21.0</confidence>
+                <clade>
+                  <branch_length>0.00818</branch_length>
+                  <confidence type="bootstrap">69.0</confidence>
+                  <clade>
+                    <branch_length>0.02006</branch_length>
+                    <confidence type="bootstrap">99.0</confidence>
+                    <clade>
+                      <branch_length>0.05784</branch_length>
+                      <confidence type="bootstrap">100.0</confidence>
+                      <clade>
+                        <name>CM00011G07020</name>
+                        <branch_length>0.00793</branch_length>
+                      <taxonomy>
+                            <code>cme</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CM00011G07020</property>
+                          <sequence>
+                            <domain_architecture length="1491">
+                              <domain confidence="1.7E-114" from="421" to="716">IPR006982</domain>
+                              <domain confidence="7.5E-65" from="1240" to="1430">IPR002489</domain>
+                              <domain confidence="17.12" from="1" to="373">IPR017932</domain>
+                              <domain confidence="8.4E-122" from="1" to="345">IPR000583</domain>
+                              <domain confidence="8.2E-163" from="774" to="1158">IPR002932</domain>
+                              <domain confidence="1.44E-89" from="1210" to="1471">IPR002489</domain>
+                              <domain confidence="2.0E-100" from="411" to="763">IPR013785</domain>
+                              <domain confidence="6.4E-167" from="800" to="1198">IPR013785</domain>
+                              <domain confidence="1.7E-93" from="1224" to="1476">IPR002489</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                      <clade>
+                        <name>CL10G14240</name>
+                        <branch_length>0.01156</branch_length>
+                      <taxonomy>
+                            <code>cla</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CL10G14240</property>
+                          <sequence>
+                            <domain_architecture length="1614">
+                              <domain confidence="3.1E-100" from="549" to="900">IPR013785</domain>
+                              <domain confidence="1.5E-166" from="937" to="1334">IPR013785</domain>
+                              <domain confidence="3.1E-135" from="111" to="482">IPR000583</domain>
+                              <domain confidence="5.2E-65" from="1376" to="1567">IPR002489</domain>
+                              <domain confidence="1.8E-114" from="558" to="853">IPR006982</domain>
+                              <domain confidence="8.6E-163" from="911" to="1295">IPR002932</domain>
+                              <domain confidence="3.0E-85" from="1360" to="1599">IPR002489</domain>
+                              <domain confidence="2.22E-83" from="1347" to="1594">IPR002489</domain>
+                              <domain confidence="20.259" from="111" to="510">IPR017932</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                    </clade>
+                    <clade>
+                      <branch_length>0.00878</branch_length>
+                      <confidence type="bootstrap">93.0</confidence>
+                      <clade>
+                        <branch_length>0.00734</branch_length>
+                        <confidence type="bootstrap">92.0</confidence>
+                        <clade>
+                          <branch_length>0.03908</branch_length>
+                          <confidence type="bootstrap">100.0</confidence>
+                          <clade>
+                            <branch_length>0.0134</branch_length>
+                            <confidence type="bootstrap">99.0</confidence>
+                            <clade>
+                              <name>PPE_007G05330</name>
+                              <branch_length>0.01585</branch_length>
+                            <taxonomy>
+                                  <code>ppe</code>
+                                </taxonomy>
+                                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PPE_007G05330</property>
+                                <sequence>
+                                  <domain_architecture length="1626">
+                                    <domain confidence="1.6E-63" from="1373" to="1564">IPR002489</domain>
+                                    <domain confidence="6.3E-168" from="928" to="1322">IPR013785</domain>
+                                    <domain confidence="2.3E-133" from="108" to="479">IPR000583</domain>
+                                    <domain confidence="2.5E-116" from="555" to="850">IPR006982</domain>
+                                    <domain confidence="1.8E-92" from="1358" to="1614">IPR002489</domain>
+                                    <domain confidence="2.6E-99" from="549" to="897">IPR013785</domain>
+                                    <domain confidence="5.7E-162" from="908" to="1292">IPR002932</domain>
+                                    <domain confidence="19.658" from="108" to="507">IPR017932</domain>
+                                    <domain confidence="2.62E-87" from="1344" to="1605">IPR002489</domain>
+                                  </domain_architecture>
+                                </sequence>
+                              </clade>
+                            <clade>
+                              <name>MD00G230080</name>
+                              <branch_length>0.01737</branch_length>
+                            <taxonomy>
+                                  <code>mdo</code>
+                                </taxonomy>
+                                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/MD00G230080</property>
+                                <sequence>
+                                  <domain_architecture length="1475">
+                                    <domain confidence="16.538" from="1" to="373">IPR017932</domain>
+                                    <domain confidence="4.7E-122" from="1" to="345">IPR000583</domain>
+                                    <domain confidence="1.2E-98" from="413" to="763">IPR013785</domain>
+                                    <domain confidence="1.2E-166" from="795" to="1187">IPR013785</domain>
+                                    <domain confidence="4.6E-62" from="1239" to="1430">IPR002489</domain>
+                                    <domain confidence="9.68E-86" from="1210" to="1471">IPR002489</domain>
+                                    <domain confidence="2.8E-116" from="421" to="716">IPR006982</domain>
+                                    <domain confidence="1.3E-162" from="774" to="1158">IPR002932</domain>
+                                    <domain confidence="1.8E-90" from="1223" to="1473">IPR002489</domain>
+                                  </domain_architecture>
+                                </sequence>
+                              </clade>
+                          </clade>
+                          <clade>
+                            <name>FV6G33050</name>
+                            <branch_length>0.04808</branch_length>
+                          <taxonomy>
+                                <code>fve</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/FV6G33050</property>
+                              <sequence>
+                                <domain_architecture length="2586">
+                                  <domain confidence="5.6E-115" from="1496" to="1791">IPR006982</domain>
+                                  <domain confidence="1.1E-43" from="642" to="740">IPR027483</domain>
+                                  <domain confidence="1.8E-4" from="211" to="232">IPR003409</domain>
+                                  <domain confidence="1.1E-43" from="783" to="854">IPR027483</domain>
+                                  <domain confidence="1.6E-53" from="500" to="640">IPR027484</domain>
+                                  <domain confidence="2.4E-5" from="121" to="143">IPR003409</domain>
+                                  <domain confidence="3.8E-4" from="213" to="234">IPR003409</domain>
+                                  <domain confidence="5.8E-4" from="188" to="209">IPR003409</domain>
+                                  <domain confidence="2.7E-4" from="98" to="119">IPR003409</domain>
+                                  <domain confidence="8.5E-87" from="2318" to="2566">IPR002489</domain>
+                                  <domain confidence="5.4E-4" from="144" to="165">IPR003409</domain>
+                                  <domain confidence="0.033" from="96" to="117">IPR003409</domain>
+                                  <domain confidence="2.8E-4" from="165" to="186">IPR003409</domain>
+                                  <domain confidence="18.069" from="992" to="1389">IPR017932</domain>
+                                  <domain confidence="2.1E-162" from="1849" to="2233">IPR002932</domain>
+                                  <domain confidence="1.6E-4" from="75" to="97">IPR003409</domain>
+                                  <domain confidence="1.6E-174" from="496" to="857">IPR016034</domain>
+                                  <domain confidence="6.3E-92" from="2319" to="2578">IPR002489</domain>
+                                  <domain confidence="2.9E-4" from="142" to="163">IPR003409</domain>
+                                  <domain confidence="9.0E-5" from="190" to="212">IPR003409</domain>
+                                  <domain confidence="8.0E-134" from="992" to="1363">IPR000583</domain>
+                                  <domain confidence="9.3E-167" from="1870" to="2260">IPR013785</domain>
+                                  <domain confidence="2.3E-100" from="1488" to="1838">IPR013785</domain>
+                                  <domain confidence="1.4E-6" from="167" to="188">IPR003409</domain>
+                                  <domain confidence="1.1E-63" from="2334" to="2525">IPR002489</domain>
+                                  <domain confidence="65.115" from="465" to="856">IPR002498</domain>
+                                  <domain confidence="0.0015" from="73" to="94">IPR003409</domain>
+                                  <domain confidence="6.0E-4" from="119" to="140">IPR003409</domain>
+                                  <domain confidence="1.1E-82" from="553" to="853">IPR002498</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                        </clade>
+                        <clade>
+                          <branch_length>0.00687</branch_length>
+                          <confidence type="bootstrap">88.0</confidence>
+                          <clade>
+                            <branch_length>0.00335</branch_length>
+                            <confidence type="bootstrap">14.0</confidence>
+                            <clade>
+                              <branch_length>0.00852</branch_length>
+                              <confidence type="bootstrap">30.0</confidence>
+                              <clade>
+                                <name>VV08G10190</name>
+                                <branch_length>0.0541</branch_length>
+                              <taxonomy>
+                                    <code>vvi</code>
+                                  </taxonomy>
+                                  <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/VV08G10190</property>
+                                  <sequence>
+                                    <domain_architecture length="1657">
+                                      <domain confidence="4.71E-87" from="1377" to="1637">IPR002489</domain>
+                                      <domain confidence="1.6E-132" from="140" to="511">IPR000583</domain>
+                                      <domain confidence="1.7E-93" from="1391" to="1648">IPR002489</domain>
+                                      <domain confidence="6.4E-114" from="587" to="882">IPR006982</domain>
+                                      <domain confidence="1.9E-161" from="940" to="1324">IPR002932</domain>
+                                      <domain confidence="4.7E-100" from="579" to="929">IPR013785</domain>
+                                      <domain confidence="4.7E-168" from="960" to="1357">IPR013785</domain>
+                                      <domain confidence="1.1E-62" from="1405" to="1596">IPR002489</domain>
+                                      <domain confidence="20.279" from="140" to="539">IPR017932</domain>
+                                    </domain_architecture>
+                                  </sequence>
+                                </clade>
+                              <clade>
+                                <name>EG0001G18800</name>
+                                <branch_length>0.07873</branch_length>
+                              <taxonomy>
+                                    <code>egr</code>
+                                  </taxonomy>
+                                  <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/EG0001G18800</property>
+                                  <sequence>
+                                    <domain_architecture length="1619">
+                                      <domain confidence="2.6E-92" from="1352" to="1608">IPR002489</domain>
+                                      <domain confidence="3.0E-115" from="549" to="844">IPR006982</domain>
+                                      <domain confidence="2.8E-62" from="1367" to="1558">IPR002489</domain>
+                                      <domain confidence="1.1E-160" from="902" to="1286">IPR002932</domain>
+                                      <domain confidence="3.2E-101" from="534" to="891">IPR013785</domain>
+                                      <domain confidence="12.488" from="125" to="501">IPR017932</domain>
+                                      <domain confidence="4.8E-118" from="125" to="468">IPR000583</domain>
+                                      <domain confidence="2.4E-168" from="913" to="1319">IPR013785</domain>
+                                      <domain confidence="6.02E-86" from="1342" to="1599">IPR002489</domain>
+                                    </domain_architecture>
+                                  </sequence>
+                                </clade>
+                            </clade>
+                            <clade>
+                              <name>CP00005G01670</name>
+                              <branch_length>0.0791</branch_length>
+                            <taxonomy>
+                                  <code>cpa</code>
+                                </taxonomy>
+                                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CP00005G01670</property>
+                                <sequence>
+                                  <domain_architecture length="1566">
+                                    <domain confidence="1.7E-87" from="1284" to="1546">IPR002489</domain>
+                                    <domain confidence="2.6E-167" from="870" to="1258">IPR013785</domain>
+                                    <domain confidence="3.2E-92" from="1299" to="1555">IPR002489</domain>
+                                    <domain confidence="4.2E-82" from="553" to="791">IPR006982</domain>
+                                    <domain confidence="20.298" from="104" to="503">IPR017932</domain>
+                                    <domain confidence="9.0E-74" from="552" to="838">IPR013785</domain>
+                                    <domain confidence="2.8E-63" from="1314" to="1505">IPR002489</domain>
+                                    <domain confidence="8.2E-163" from="849" to="1233">IPR002932</domain>
+                                    <domain confidence="3.5E-133" from="104" to="475">IPR000583</domain>
+                                  </domain_architecture>
+                                </sequence>
+                              </clade>
+                          </clade>
+                          <clade>
+                            <branch_length>0.00173</branch_length>
+                            <confidence type="bootstrap">55.0</confidence>
+                            <clade>
+                              <branch_length>0.0096</branch_length>
+                              <confidence type="bootstrap">95.0</confidence>
+                              <clade>
+                                <branch_length>0.02108</branch_length>
+                                <confidence type="bootstrap">100.0</confidence>
+                                <clade>
+                                  <name>TC0005G13670</name>
+                                  <branch_length>0.0295</branch_length>
+                                <taxonomy>
+                                      <code>tca</code>
+                                    </taxonomy>
+                                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/TC0005G13670</property>
+                                    <sequence>
+                                      <domain_architecture length="1625">
+                                        <domain confidence="1.8E-92" from="1358" to="1610">IPR002489</domain>
+                                        <domain confidence="3.8E-62" from="1373" to="1560">IPR002489</domain>
+                                        <domain confidence="2.9E-133" from="108" to="479">IPR000583</domain>
+                                        <domain confidence="1.0E-114" from="555" to="850">IPR006982</domain>
+                                        <domain confidence="1.1E-168" from="933" to="1328">IPR013785</domain>
+                                        <domain confidence="1.3E-99" from="546" to="897">IPR013785</domain>
+                                        <domain confidence="19.91" from="108" to="507">IPR017932</domain>
+                                        <domain confidence="8.0E-163" from="908" to="1292">IPR002932</domain>
+                                        <domain confidence="1.83E-87" from="1344" to="1605">IPR002489</domain>
+                                      </domain_architecture>
+                                    </sequence>
+                                  </clade>
+                                <clade>
+                                  <name>GR02G22660</name>
+                                  <branch_length>0.0439</branch_length>
+                                <taxonomy>
+                                      <code>gra</code>
+                                    </taxonomy>
+                                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/GR02G22660</property>
+                                    <sequence>
+                                      <domain_architecture length="1690">
+                                        <domain confidence="3.0E-114" from="620" to="915">IPR006982</domain>
+                                        <domain confidence="5.89E-88" from="1409" to="1670">IPR002489</domain>
+                                        <domain confidence="2.1E-162" from="973" to="1357">IPR002932</domain>
+                                        <domain confidence="2.1E-168" from="993" to="1386">IPR013785</domain>
+                                        <domain confidence="1.3E-93" from="1423" to="1680">IPR002489</domain>
+                                        <domain confidence="4.1E-99" from="612" to="962">IPR013785</domain>
+                                        <domain confidence="4.7E-132" from="173" to="544">IPR000583</domain>
+                                        <domain confidence="3.7E-63" from="1438" to="1629">IPR002489</domain>
+                                        <domain confidence="18.767" from="173" to="572">IPR017932</domain>
+                                      </domain_architecture>
+                                    </sequence>
+                                  </clade>
+                              </clade>
+                              <clade>
+                                <name>CS00537G00010</name>
+                                <branch_length>0.05842</branch_length>
+                              <taxonomy>
+                                    <code>csi</code>
+                                  </taxonomy>
+                                  <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CS00537G00010</property>
+                                  <sequence>
+                                    <domain_architecture length="1483">
+                                      <domain confidence="7.8E-38" from="1353" to="1482">IPR002489</domain>
+                                      <domain confidence="2.7E-131" from="104" to="475">IPR000583</domain>
+                                      <domain confidence="1.3E-141" from="904" to="1271">IPR002932</domain>
+                                      <domain confidence="4.71E-48" from="1324" to="1482">IPR002489</domain>
+                                      <domain confidence="8.7E-115" from="551" to="846">IPR006982</domain>
+                                      <domain confidence="8.8E-99" from="542" to="893">IPR013785</domain>
+                                      <domain confidence="20.453" from="104" to="503">IPR017932</domain>
+                                      <domain confidence="5.9E-50" from="1336" to="1482">IPR002489</domain>
+                                      <domain confidence="1.6E-148" from="921" to="1304">IPR013785</domain>
+                                    </domain_architecture>
+                                  </sequence>
+                                </clade>
+                            </clade>
+                            <clade>
+                              <branch_length>0.01558</branch_length>
+                              <confidence type="bootstrap">99.0</confidence>
+                              <clade>
+                                <branch_length>0.02832</branch_length>
+                                <confidence type="bootstrap">100.0</confidence>
+                                <clade>
+                                  <name>PT16G03690</name>
+                                  <branch_length>0.02457</branch_length>
+                                <taxonomy>
+                                      <code>ptr</code>
+                                    </taxonomy>
+                                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PT16G03690</property>
+                                    <sequence>
+                                      <domain_architecture length="1621">
+                                        <domain confidence="5.2E-93" from="1353" to="1610">IPR002489</domain>
+                                        <domain confidence="1.9E-114" from="551" to="845">IPR006982</domain>
+                                        <domain confidence="8.0E-134" from="103" to="474">IPR000583</domain>
+                                        <domain confidence="2.2E-162" from="903" to="1287">IPR002932</domain>
+                                        <domain confidence="19.697" from="103" to="502">IPR017932</domain>
+                                        <domain confidence="4.0E-168" from="919" to="1320">IPR013785</domain>
+                                        <domain confidence="1.5E-98" from="541" to="892">IPR013785</domain>
+                                        <domain confidence="5.5E-64" from="1368" to="1559">IPR002489</domain>
+                                        <domain confidence="2.22E-87" from="1343" to="1600">IPR002489</domain>
+                                      </domain_architecture>
+                                    </sequence>
+                                  </clade>
+                                <clade>
+                                  <name>PT06G03840</name>
+                                  <branch_length>0.02464</branch_length>
+                                <taxonomy>
+                                      <code>ptr</code>
+                                    </taxonomy>
+                                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PT06G03840</property>
+                                    <sequence>
+                                      <domain_architecture length="1492">
+                                        <domain confidence="8.9E-115" from="422" to="716">IPR006982</domain>
+                                        <domain confidence="3.3E-93" from="1224" to="1480">IPR002489</domain>
+                                        <domain confidence="1.0E-99" from="410" to="763">IPR013785</domain>
+                                        <domain confidence="1.3E-63" from="1239" to="1430">IPR002489</domain>
+                                        <domain confidence="3.7E-168" from="790" to="1190">IPR013785</domain>
+                                        <domain confidence="7.5E-162" from="774" to="1158">IPR002932</domain>
+                                        <domain confidence="1.96E-87" from="1212" to="1471">IPR002489</domain>
+                                        <domain confidence="16.364" from="1" to="373">IPR017932</domain>
+                                        <domain confidence="1.0E-122" from="1" to="345">IPR000583</domain>
+                                      </domain_architecture>
+                                    </sequence>
+                                  </clade>
+                              </clade>
+                              <clade>
+                                <branch_length>0.015</branch_length>
+                                <confidence type="bootstrap">99.0</confidence>
+                                <clade>
+                                  <name>ME08100G00050</name>
+                                  <branch_length>0.03509</branch_length>
+                                <taxonomy>
+                                      <code>mes</code>
+                                    </taxonomy>
+                                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ME08100G00050</property>
+                                    <sequence>
+                                      <domain_architecture length="1491">
+                                        <domain confidence="1.9E-114" from="421" to="716">IPR006982</domain>
+                                        <domain confidence="1.1E-162" from="774" to="1158">IPR002932</domain>
+                                        <domain confidence="8.3E-93" from="1224" to="1480">IPR002489</domain>
+                                        <domain confidence="3.8E-101" from="408" to="763">IPR013785</domain>
+                                        <domain confidence="2.3E-166" from="799" to="1194">IPR013785</domain>
+                                        <domain confidence="1.0E-122" from="1" to="345">IPR000583</domain>
+                                        <domain confidence="2.5E-63" from="1239" to="1430">IPR002489</domain>
+                                        <domain confidence="1.57E-88" from="1209" to="1471">IPR002489</domain>
+                                        <domain confidence="17.275" from="1" to="373">IPR017932</domain>
+                                      </domain_architecture>
+                                    </sequence>
+                                  </clade>
+                                <clade>
+                                  <name>RC29612G00060</name>
+                                  <branch_length>0.04136</branch_length>
+                                <taxonomy>
+                                      <code>rco</code>
+                                    </taxonomy>
+                                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/RC29612G00060</property>
+                                    <sequence>
+                                      <domain_architecture length="1633">
+                                        <domain confidence="4.5E-168" from="937" to="1334">IPR013785</domain>
+                                        <domain confidence="8.6E-103" from="551" to="906">IPR013785</domain>
+                                        <domain confidence="5.62E-88" from="1353" to="1614">IPR002489</domain>
+                                        <domain confidence="4.7E-116" from="564" to="859">IPR006982</domain>
+                                        <domain confidence="1.2E-92" from="1367" to="1622">IPR002489</domain>
+                                        <domain confidence="20.065" from="117" to="516">IPR017932</domain>
+                                        <domain confidence="6.3E-162" from="917" to="1301">IPR002932</domain>
+                                        <domain confidence="2.2E-135" from="117" to="488">IPR000583</domain>
+                                        <domain confidence="4.3E-63" from="1382" to="1573">IPR002489</domain>
+                                      </domain_architecture>
+                                    </sequence>
+                                  </clade>
+                              </clade>
+                            </clade>
+                          </clade>
+                        </clade>
+                      </clade>
+                      <clade>
+                        <branch_length>0.00713</branch_length>
+                        <confidence type="bootstrap">78.0</confidence>
+                        <clade>
+                          <branch_length>0.01216</branch_length>
+                          <confidence type="bootstrap">80.0</confidence>
+                          <clade>
+                            <branch_length>0.0772</branch_length>
+                            <confidence type="bootstrap">100.0</confidence>
+                            <clade>
+                              <name>SL03G063560</name>
+                              <branch_length>0.00595</branch_length>
+                            <taxonomy>
+                                  <code>sly</code>
+                                </taxonomy>
+                                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/SL03G063560</property>
+                                <sequence>
+                                  <domain_architecture length="1622">
+                                    <domain confidence="2.5E-114" from="546" to="841">IPR006982</domain>
+                                    <domain confidence="19.717" from="99" to="498">IPR017932</domain>
+                                    <domain confidence="1.12E-88" from="1334" to="1596">IPR002489</domain>
+                                    <domain confidence="8.9E-95" from="1349" to="1604">IPR002489</domain>
+                                    <domain confidence="5.0E-135" from="99" to="470">IPR000583</domain>
+                                    <domain confidence="4.1E-163" from="899" to="1283">IPR002932</domain>
+                                    <domain confidence="3.1E-169" from="924" to="1316">IPR013785</domain>
+                                    <domain confidence="8.0E-65" from="1364" to="1556">IPR002489</domain>
+                                    <domain confidence="8.0E-102" from="536" to="889">IPR013785</domain>
+                                  </domain_architecture>
+                                </sequence>
+                              </clade>
+                            <clade>
+                              <name>ST03G019370</name>
+                              <branch_length>0.0061</branch_length>
+                            <taxonomy>
+                                  <code>stu</code>
+                                </taxonomy>
+                                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ST03G019370</property>
+                                <sequence>
+                                  <domain_architecture length="1622">
+                                    <domain confidence="8.0E-65" from="1364" to="1556">IPR002489</domain>
+                                    <domain confidence="19.639" from="99" to="498">IPR017932</domain>
+                                    <domain confidence="1.12E-88" from="1334" to="1596">IPR002489</domain>
+                                    <domain confidence="4.5E-169" from="924" to="1316">IPR013785</domain>
+                                    <domain confidence="2.9E-163" from="899" to="1283">IPR002932</domain>
+                                    <domain confidence="3.4E-100" from="537" to="889">IPR013785</domain>
+                                    <domain confidence="8.9E-95" from="1349" to="1604">IPR002489</domain>
+                                    <domain confidence="1.1E-114" from="546" to="841">IPR006982</domain>
+                                    <domain confidence="6.3E-135" from="99" to="470">IPR000583</domain>
+                                  </domain_architecture>
+                                </sequence>
+                              </clade>
+                          </clade>
+                          <clade>
+                            <name>ATR_00063G00700</name>
+                            <branch_length>0.10731</branch_length>
+                          <taxonomy>
+                                <code>atr</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/ATR_00063G00700</property>
+                              <sequence>
+                                <domain_architecture length="1631">
+                                  <domain confidence="1.4E-161" from="914" to="1298">IPR002932</domain>
+                                  <domain confidence="3.0E-167" from="934" to="1331">IPR013785</domain>
+                                  <domain confidence="6.3E-112" from="561" to="856">IPR006982</domain>
+                                  <domain confidence="8.1E-99" from="553" to="903">IPR013785</domain>
+                                  <domain confidence="1.5E-92" from="1364" to="1618">IPR002489</domain>
+                                  <domain confidence="9.0E-133" from="114" to="485">IPR000583</domain>
+                                  <domain confidence="3.27E-87" from="1350" to="1611">IPR002489</domain>
+                                  <domain confidence="8.9E-65" from="1379" to="1571">IPR002489</domain>
+                                  <domain confidence="20.24" from="114" to="513">IPR017932</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                        </clade>
+                        <clade>
+                          <branch_length>0.04502</branch_length>
+                          <confidence type="bootstrap">100.0</confidence>
+                          <clade>
+                            <branch_length>0.0206</branch_length>
+                            <confidence type="bootstrap">100.0</confidence>
+                            <clade>
+                              <name>GM03G28410</name>
+                              <branch_length>0.00733</branch_length>
+                            <taxonomy>
+                                  <code>gma</code>
+                                </taxonomy>
+                                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/GM03G28410</property>
+                                <sequence>
+                                  <domain_architecture length="1627">
+                                    <domain confidence="5.0E-135" from="105" to="476">IPR000583</domain>
+                                    <domain confidence="20.724" from="105" to="504">IPR017932</domain>
+                                    <domain confidence="1.7E-102" from="544" to="894">IPR013785</domain>
+                                    <domain confidence="1.0E-114" from="552" to="847">IPR006982</domain>
+                                    <domain confidence="1.12E-88" from="1339" to="1602">IPR002489</domain>
+                                    <domain confidence="1.8E-64" from="1370" to="1561">IPR002489</domain>
+                                    <domain confidence="4.3E-94" from="1355" to="1614">IPR002489</domain>
+                                    <domain confidence="8.2E-168" from="921" to="1327">IPR013785</domain>
+                                    <domain confidence="1.1E-162" from="905" to="1289">IPR002932</domain>
+                                  </domain_architecture>
+                                </sequence>
+                              </clade>
+                            <clade>
+                              <name>GM19G31120</name>
+                              <branch_length>0.01655</branch_length>
+                            <taxonomy>
+                                  <code>gma</code>
+                                </taxonomy>
+                                <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/GM19G31120</property>
+                                <sequence>
+                                  <domain_architecture length="1582">
+                                    <domain confidence="1.6E-167" from="923" to="1327">IPR013785</domain>
+                                    <domain confidence="7.9E-63" from="1372" to="1563">IPR002489</domain>
+                                    <domain confidence="20.608" from="107" to="506">IPR017932</domain>
+                                    <domain confidence="1.2E-162" from="907" to="1291">IPR002932</domain>
+                                    <domain confidence="1.1E-134" from="107" to="478">IPR000583</domain>
+                                    <domain confidence="8.11E-78" from="1341" to="1578">IPR002489</domain>
+                                    <domain confidence="1.0E-80" from="1357" to="1577">IPR002489</domain>
+                                    <domain confidence="5.3E-116" from="554" to="849">IPR006982</domain>
+                                    <domain confidence="3.7E-103" from="547" to="896">IPR013785</domain>
+                                  </domain_architecture>
+                                </sequence>
+                              </clade>
+                          </clade>
+                          <clade>
+                            <name>MT7G089970</name>
+                            <branch_length>0.04336</branch_length>
+                          <taxonomy>
+                                <code>mtr</code>
+                              </taxonomy>
+                              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/MT7G089970</property>
+                              <sequence>
+                                <domain_architecture length="1613">
+                                  <domain confidence="3.4E-161" from="896" to="1280">IPR002932</domain>
+                                  <domain confidence="8.0E-62" from="1361" to="1553">IPR002489</domain>
+                                  <domain confidence="9.94E-88" from="1330" to="1593">IPR002489</domain>
+                                  <domain confidence="7.2E-168" from="912" to="1313">IPR013785</domain>
+                                  <domain confidence="2.3E-115" from="543" to="838">IPR006982</domain>
+                                  <domain confidence="1.1E-133" from="96" to="467">IPR000583</domain>
+                                  <domain confidence="9.2E-93" from="1346" to="1599">IPR002489</domain>
+                                  <domain confidence="20.53" from="96" to="495">IPR017932</domain>
+                                  <domain confidence="3.6E-102" from="530" to="885">IPR013785</domain>
+                                </domain_architecture>
+                              </sequence>
+                            </clade>
+                        </clade>
+                      </clade>
+                    </clade>
+                  </clade>
+                  <clade>
+                    <branch_length>0.11417</branch_length>
+                    <confidence type="bootstrap">100.0</confidence>
+                    <clade>
+                      <branch_length>0.0133</branch_length>
+                      <confidence type="bootstrap">97.0</confidence>
+                      <clade>
+                        <branch_length>0.00236</branch_length>
+                        <confidence type="bootstrap">90.0</confidence>
+                        <clade>
+                          <name>AT2G41220</name>
+                          <branch_length>0.00955</branch_length>
+                        <taxonomy>
+                              <code>ath</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G41220</property>
+                            <sequence>
+                              <domain_architecture length="1630">
+                                <domain confidence="20.472" from="108" to="507">IPR017932</domain>
+                                <domain confidence="6.3E-100" from="545" to="897">IPR013785</domain>
+                                <domain confidence="1.8E-167" from="935" to="1329">IPR013785</domain>
+                                <domain confidence="1.8E-93" from="1357" to="1608">IPR002489</domain>
+                                <domain confidence="5.5E-114" from="555" to="850">IPR006982</domain>
+                                <domain confidence="8.3E-63" from="1371" to="1564">IPR002489</domain>
+                                <domain confidence="1.5E-161" from="908" to="1292">IPR002932</domain>
+                                <domain confidence="4.5E-135" from="108" to="479">IPR000583</domain>
+                                <domain confidence="1.57E-88" from="1342" to="1604">IPR002489</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                        <clade>
+                          <name>AL4G28170</name>
+                          <branch_length>0.00563</branch_length>
+                        <taxonomy>
+                              <code>aly</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AL4G28170</property>
+                            <sequence>
+                              <domain_architecture length="1630">
+                                <domain confidence="1.05E-88" from="1342" to="1604">IPR002489</domain>
+                                <domain confidence="1.2E-161" from="908" to="1292">IPR002932</domain>
+                                <domain confidence="3.6E-115" from="555" to="850">IPR006982</domain>
+                                <domain confidence="1.2E-93" from="1357" to="1608">IPR002489</domain>
+                                <domain confidence="20.55" from="108" to="507">IPR017932</domain>
+                                <domain confidence="1.2E-135" from="108" to="479">IPR000583</domain>
+                                <domain confidence="4.8E-63" from="1371" to="1564">IPR002489</domain>
+                                <domain confidence="1.5E-167" from="935" to="1329">IPR013785</domain>
+                                <domain confidence="6.9E-101" from="545" to="897">IPR013785</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                      </clade>
+                      <clade>
+                        <name>CRU_004G22730</name>
+                        <branch_length>0.01323</branch_length>
+                      <taxonomy>
+                            <code>cru</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CRU_004G22730</property>
+                          <sequence>
+                            <domain_architecture length="1630">
+                              <domain confidence="9.3E-162" from="908" to="1292">IPR002932</domain>
+                              <domain confidence="1.3E-116" from="556" to="850">IPR006982</domain>
+                              <domain confidence="3.4E-102" from="545" to="897">IPR013785</domain>
+                              <domain confidence="1.11E-87" from="1342" to="1604">IPR002489</domain>
+                              <domain confidence="1.8E-135" from="108" to="479">IPR000583</domain>
+                              <domain confidence="5.0E-64" from="1372" to="1564">IPR002489</domain>
+                              <domain confidence="5.8E-92" from="1357" to="1608">IPR002489</domain>
+                              <domain confidence="8.2E-168" from="935" to="1329">IPR013785</domain>
+                              <domain confidence="20.666" from="108" to="507">IPR017932</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                    </clade>
+                    <clade>
+                      <branch_length>0.00815</branch_length>
+                      <confidence type="bootstrap">85.0</confidence>
+                      <clade>
+                        <branch_length>0.00334</branch_length>
+                        <confidence type="bootstrap">84.0</confidence>
+                        <clade>
+                          <name>BR03G20680</name>
+                          <branch_length>0.01831</branch_length>
+                        <taxonomy>
+                              <code>bra</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/BR03G20680</property>
+                            <sequence>
+                              <domain_architecture length="1587">
+                                <domain confidence="8.89E-89" from="1300" to="1562">IPR002489</domain>
+                                <domain confidence="2.7E-167" from="893" to="1287">IPR013785</domain>
+                                <domain confidence="8.6E-113" from="96" to="464">IPR000583</domain>
+                                <domain confidence="2.8E-161" from="866" to="1250">IPR002932</domain>
+                                <domain confidence="1.8E-93" from="555" to="808">IPR006982</domain>
+                                <domain confidence="5.0E-63" from="1329" to="1522">IPR002489</domain>
+                                <domain confidence="2.6E-87" from="528" to="855">IPR013785</domain>
+                                <domain confidence="19.717" from="96" to="492">IPR017932</domain>
+                                <domain confidence="2.1E-93" from="1315" to="1569">IPR002489</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                        <clade>
+                          <name>BR04G24660</name>
+                          <branch_length>0.01718</branch_length>
+                        <taxonomy>
+                              <code>bra</code>
+                            </taxonomy>
+                            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/BR04G24660</property>
+                            <sequence>
+                              <domain_architecture length="1627">
+                                <domain confidence="9.55E-89" from="1340" to="1602">IPR002489</domain>
+                                <domain confidence="9.8E-135" from="106" to="477">IPR000583</domain>
+                                <domain confidence="3.0E-168" from="933" to="1327">IPR013785</domain>
+                                <domain confidence="1.3E-62" from="1369" to="1559">IPR002489</domain>
+                                <domain confidence="1.3E-102" from="543" to="895">IPR013785</domain>
+                                <domain confidence="1.1E-92" from="1355" to="1607">IPR002489</domain>
+                                <domain confidence="20.453" from="106" to="505">IPR017932</domain>
+                                <domain confidence="9.1E-162" from="906" to="1290">IPR002932</domain>
+                                <domain confidence="1.3E-115" from="553" to="848">IPR006982</domain>
+                              </domain_architecture>
+                            </sequence>
+                          </clade>
+                      </clade>
+                      <clade>
+                        <name>TP4G23520</name>
+                        <branch_length>0.01211</branch_length>
+                      <taxonomy>
+                            <code>tpa</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/TP4G23520</property>
+                          <sequence>
+                            <domain_architecture length="1630">
+                              <domain confidence="1.6E-161" from="908" to="1292">IPR002932</domain>
+                              <domain confidence="7.2E-63" from="1371" to="1564">IPR002489</domain>
+                              <domain confidence="4.6E-102" from="545" to="897">IPR013785</domain>
+                              <domain confidence="3.4E-115" from="555" to="850">IPR006982</domain>
+                              <domain confidence="20.453" from="108" to="507">IPR017932</domain>
+                              <domain confidence="3.0E-93" from="1357" to="1609">IPR002489</domain>
+                              <domain confidence="3.8E-135" from="108" to="479">IPR000583</domain>
+                              <domain confidence="1.2E-167" from="935" to="1329">IPR013785</domain>
+                              <domain confidence="1.44E-88" from="1342" to="1604">IPR002489</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                    </clade>
+                  </clade>
+                </clade>
+                <clade>
+                  <name>BV3G12750</name>
+                  <branch_length>0.08576</branch_length>
+                <taxonomy>
+                      <code>bvu</code>
+                    </taxonomy>
+                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/BV3G12750</property>
+                    <sequence>
+                      <domain_architecture length="1616">
+                        <domain confidence="3.4E-90" from="1335" to="1596">IPR002489</domain>
+                        <domain confidence="1.2E-94" from="1350" to="1609">IPR002489</domain>
+                        <domain confidence="1.3E-167" from="926" to="1315">IPR013785</domain>
+                        <domain confidence="5.5E-163" from="899" to="1283">IPR002932</domain>
+                        <domain confidence="3.1E-133" from="99" to="470">IPR000583</domain>
+                        <domain confidence="2.7E-116" from="546" to="841">IPR006982</domain>
+                        <domain confidence="19.755" from="99" to="498">IPR017932</domain>
+                        <domain confidence="3.0E-64" from="1364" to="1555">IPR002489</domain>
+                        <domain confidence="4.4E-100" from="539" to="888">IPR013785</domain>
+                      </domain_architecture>
+                    </sequence>
+                  </clade>
+              </clade>
+              <clade>
+                <branch_length>0.09245</branch_length>
+                <confidence type="bootstrap">100.0</confidence>
+                <clade>
+                  <branch_length>0.00885</branch_length>
+                  <confidence type="bootstrap">58.0</confidence>
+                  <clade>
+                    <branch_length>0.01132</branch_length>
+                    <confidence type="bootstrap">99.0</confidence>
+                    <clade>
+                      <branch_length>0.00272</branch_length>
+                      <confidence type="bootstrap">83.0</confidence>
+                      <clade>
+                        <name>AL6G03480</name>
+                        <branch_length>0.01513</branch_length>
+                      <taxonomy>
+                            <code>aly</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AL6G03480</property>
+                          <sequence>
+                            <domain_architecture length="1607">
+                              <domain confidence="8.0E-63" from="1355" to="1547">IPR002489</domain>
+                              <domain confidence="7.1E-51" from="540" to="741">IPR013785</domain>
+                              <domain confidence="7.59E-87" from="1328" to="1587">IPR002489</domain>
+                              <domain confidence="4.5E-27" from="755" to="879">IPR013785</domain>
+                              <domain confidence="4.2E-92" from="1342" to="1592">IPR002489</domain>
+                              <domain confidence="19.852" from="105" to="504">IPR017932</domain>
+                              <domain confidence="4.9E-167" from="916" to="1308">IPR013785</domain>
+                              <domain confidence="1.8E-134" from="105" to="476">IPR000583</domain>
+                              <domain confidence="5.7E-92" from="553" to="832">IPR006982</domain>
+                              <domain confidence="7.0E-164" from="890" to="1274">IPR002932</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                      <clade>
+                        <name>AT5G04140</name>
+                        <branch_length>0.01881</branch_length>
+                      <taxonomy>
+                            <code>ath</code>
+                          </taxonomy>
+                          <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G04140</property>
+                          <sequence>
+                            <domain_architecture length="1649">
+                              <domain confidence="3.1E-62" from="1397" to="1589">IPR002489</domain>
+                              <domain confidence="1.0E-163" from="932" to="1317">IPR002932</domain>
+                              <domain confidence="3.7E-115" from="580" to="874">IPR006982</domain>
+                              <domain confidence="2.1E-92" from="1384" to="1634">IPR002489</domain>
+                              <domain confidence="1.6E-166" from="958" to="1350">IPR013785</domain>
+                              <domain confidence="9.4E-134" from="132" to="503">IPR000583</domain>
+                              <domain confidence="1.2E-99" from="567" to="921">IPR013785</domain>
+                              <domain confidence="3.79E-87" from="1370" to="1629">IPR002489</domain>
+                              <domain confidence="19.91" from="132" to="531">IPR017932</domain>
+                            </domain_architecture>
+                          </sequence>
+                        </clade>
+                    </clade>
+                    <clade>
+                      <name>CRU_006G03010</name>
+                      <branch_length>0.01351</branch_length>
+                    <taxonomy>
+                          <code>cru</code>
+                        </taxonomy>
+                        <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CRU_006G03010</property>
+                        <sequence>
+                          <domain_architecture length="1722">
+                            <domain confidence="1.8E-167" from="1031" to="1416">IPR013785</domain>
+                            <domain confidence="1.3E-62" from="1470" to="1662">IPR002489</domain>
+                            <domain confidence="5.6E-135" from="205" to="576">IPR000583</domain>
+                            <domain confidence="2.5E-116" from="653" to="947">IPR006982</domain>
+                            <domain confidence="2.4E-164" from="1005" to="1390">IPR002932</domain>
+                            <domain confidence="9.02E-87" from="1443" to="1702">IPR002489</domain>
+                            <domain confidence="19.329" from="205" to="604">IPR017932</domain>
+                            <domain confidence="2.6E-92" from="1457" to="1707">IPR002489</domain>
+                            <domain confidence="4.7E-101" from="640" to="994">IPR013785</domain>
+                          </domain_architecture>
+                        </sequence>
+                      </clade>
+                  </clade>
+                  <clade>
+                    <name>TP6G38610</name>
+                    <branch_length>0.01709</branch_length>
+                  <taxonomy>
+                        <code>tpa</code>
+                      </taxonomy>
+                      <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/TP6G38610</property>
+                      <sequence>
+                        <domain_architecture length="1624">
+                          <domain confidence="5.7E-62" from="1372" to="1563">IPR002489</domain>
+                          <domain confidence="19.697" from="107" to="506">IPR017932</domain>
+                          <domain confidence="4.5E-99" from="542" to="896">IPR013785</domain>
+                          <domain confidence="1.7E-113" from="555" to="849">IPR006982</domain>
+                          <domain confidence="8.6E-164" from="907" to="1292">IPR002932</domain>
+                          <domain confidence="1.44E-87" from="1343" to="1604">IPR002489</domain>
+                          <domain confidence="9.1E-135" from="107" to="478">IPR000583</domain>
+                          <domain confidence="2.8E-93" from="1358" to="1609">IPR002489</domain>
+                          <domain confidence="1.3E-166" from="933" to="1323">IPR013785</domain>
+                        </domain_architecture>
+                      </sequence>
+                    </clade>
+                </clade>
+                <clade>
+                  <name>BR10G27480</name>
+                  <branch_length>0.01108</branch_length>
+                <taxonomy>
+                      <code>bra</code>
+                    </taxonomy>
+                    <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/BR10G27480</property>
+                    <sequence>
+                      <domain_architecture length="1621">
+                        <domain confidence="9.3E-100" from="539" to="893">IPR013785</domain>
+                        <domain confidence="5.7E-135" from="104" to="475">IPR000583</domain>
+                        <domain confidence="6.7E-167" from="930" to="1318">IPR013785</domain>
+                        <domain confidence="3.1E-93" from="1354" to="1606">IPR002489</domain>
+                        <domain confidence="1.4E-61" from="1369" to="1561">IPR002489</domain>
+                        <domain confidence="9.7E-164" from="904" to="1288">IPR002932</domain>
+                        <domain confidence="5.6E-114" from="552" to="846">IPR006982</domain>
+                        <domain confidence="1.57E-86" from="1341" to="1601">IPR002489</domain>
+                        <domain confidence="19.31" from="104" to="503">IPR017932</domain>
+                      </domain_architecture>
+                    </sequence>
+                  </clade>
+              </clade>
+            </clade>
+          </clade>
+          <clade>
+            <name>PP00042G01290</name>
+            <branch_length>0.19366</branch_length>
+          <taxonomy>
+                <code>ppa</code>
+              </taxonomy>
+              <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PP00042G01290</property>
+              <sequence>
+                <domain_architecture length="1634">
+                  <domain confidence="2.7E-136" from="117" to="488">IPR000583</domain>
+                  <domain confidence="20.317" from="117" to="516">IPR017932</domain>
+                  <domain confidence="8.9E-114" from="564" to="859">IPR006982</domain>
+                  <domain confidence="5.49E-85" from="1353" to="1612">IPR002489</domain>
+                  <domain confidence="1.8E-97" from="554" to="906">IPR013785</domain>
+                  <domain confidence="4.4E-164" from="947" to="1335">IPR013785</domain>
+                  <domain confidence="3.7E-159" from="917" to="1301">IPR002932</domain>
+                  <domain confidence="4.9E-59" from="1382" to="1572">IPR002489</domain>
+                  <domain confidence="5.1E-90" from="1367" to="1620">IPR002489</domain>
+                </domain_architecture>
+              </sequence>
+            </clade>
+        </clade>
+        <clade>
+          <name>PP00212G00220</name>
+          <branch_length>0.12216</branch_length>
+        <taxonomy>
+              <code>ppa</code>
+            </taxonomy>
+            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/PP00212G00220</property>
+            <sequence>
+              <domain_architecture length="1627">
+                <domain confidence="2.7E-93" from="1361" to="1617">IPR002489</domain>
+                <domain confidence="4.9E-158" from="910" to="1294">IPR002932</domain>
+                <domain confidence="1.6E-115" from="557" to="852">IPR006982</domain>
+                <domain confidence="6.5E-162" from="937" to="1340">IPR013785</domain>
+                <domain confidence="3.14E-87" from="1348" to="1607">IPR002489</domain>
+                <domain confidence="21.325" from="110" to="509">IPR017932</domain>
+                <domain confidence="7.3E-63" from="1375" to="1567">IPR002489</domain>
+                <domain confidence="1.3E-133" from="110" to="481">IPR000583</domain>
+                <domain confidence="1.1E-100" from="543" to="900">IPR013785</domain>
+              </domain_architecture>
+            </sequence>
+          </clade>
+      </clade>
+      <clade>
+        <branch_length>0.11596</branch_length>
+        <confidence type="bootstrap">100.0</confidence>
+        <clade>
+          <name>OL20G02060</name>
+          <branch_length>0.34122</branch_length>
+        <taxonomy>
+              <code>olu</code>
+            </taxonomy>
+            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/OL20G02060</property>
+            <sequence>
+              <domain_architecture length="1563">
+                <domain confidence="1.1E-102" from="495" to="787">IPR006982</domain>
+                <domain confidence="4.0E-161" from="874" to="1267">IPR013785</domain>
+                <domain confidence="19.755" from="45" to="447">IPR017932</domain>
+                <domain confidence="7.1E-124" from="45" to="416">IPR000583</domain>
+                <domain confidence="1.7E-88" from="1301" to="1555">IPR002489</domain>
+                <domain confidence="1.57E-83" from="1291" to="1548">IPR002489</domain>
+                <domain confidence="5.4E-93" from="488" to="829">IPR013785</domain>
+                <domain confidence="1.1E-150" from="847" to="1237">IPR002932</domain>
+                <domain confidence="4.5E-59" from="1316" to="1508">IPR002489</domain>
+              </domain_architecture>
+            </sequence>
+          </clade>
+        <clade>
+          <name>CR12G06740</name>
+          <branch_length>0.28998</branch_length>
+        <taxonomy>
+              <code>cre</code>
+            </taxonomy>
+            <property applies_to="clade" datatype="xsd:anyURI" ref="See also">http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/CR12G06740</property>
+            <sequence>
+              <domain_architecture length="1630">
+                <domain confidence="1.0E-126" from="104" to="473">IPR000583</domain>
+                <domain confidence="2.9E-156" from="907" to="1298">IPR002932</domain>
+                <domain confidence="5.1E-93" from="1362" to="1611">IPR002489</domain>
+                <domain confidence="22.197" from="104" to="504">IPR017932</domain>
+                <domain confidence="1.8E-97" from="543" to="896">IPR013785</domain>
+                <domain confidence="4.0E-169" from="912" to="1336">IPR013785</domain>
+                <domain confidence="6.8E-60" from="1377" to="1568">IPR002489</domain>
+                <domain confidence="7.8E-104" from="555" to="849">IPR006982</domain>
+                <domain confidence="6.28E-88" from="1347" to="1609">IPR002489</domain>
+              </domain_architecture>
+            </sequence>
+          </clade>
+      </clade>
+    </clade>
+  </clade>
+</phylogeny>
+<taxonomies>
+    <taxonomy code="gma">
+      <color>0x186EB5</color>
+      <name>Glycine max</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Glycine+max</url>
+    </taxonomy>
+    <taxonomy code="zma">
+      <color>0x5E610B</color>
+      <name>Zea mays</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Zea+mays</url>
+    </taxonomy>
+    <taxonomy code="mtr">
+      <color>0x4980AD</color>
+      <name>Medicago truncatula</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Medicago+truncatula</url>
+    </taxonomy>
+    <taxonomy code="tca">
+      <color>0x37BD42</color>
+      <name>Theobroma cacao</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Theobroma+cacao</url>
+    </taxonomy>
+    <taxonomy code="fve">
+      <color>0x25ACD9</color>
+      <name>Fragaria vesca</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Fragaria+vesca</url>
+    </taxonomy>
+    <taxonomy code="aly">
+      <color>0x40FF00</color>
+      <name>Arabidopsis lyrata</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Arabidopsis+lyrata</url>
+    </taxonomy>
+    <taxonomy code="cre">
+      <color>0x61210B</color>
+      <name>Chlamydomonas reinhardtii</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Chlamydomonas+reinhardtii</url>
+    </taxonomy>
+    <taxonomy code="cla">
+      <color>0x95C0CF</color>
+      <name>Citrullus lanatus</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Citrullus+lanatus</url>
+    </taxonomy>
+    <taxonomy code="osa">
+      <color>0xF7BE81</color>
+      <name>Oryza sativa ssp. japonica</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Oryza+sativa+ssp.+japonica</url>
+    </taxonomy>
+    <taxonomy code="atr">
+      <color>0xFE844E</color>
+      <name>Amborella trichopoda</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Amborella+trichopoda</url>
+    </taxonomy>
+    <taxonomy code="mes">
+      <color>0x6D68C4</color>
+      <name>Manihot esculenta</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Manihot+esculenta</url>
+    </taxonomy>
+    <taxonomy code="cpa">
+      <color>0xC8FE2E</color>
+      <name>Carica papaya</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Carica+papaya</url>
+    </taxonomy>
+    <taxonomy code="egr">
+      <color>0x516B54</color>
+      <name>Eucalyptus grandis</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Eucalyptus+grandis</url>
+    </taxonomy>
+    <taxonomy code="bra">
+      <color>0xD8F6CE</color>
+      <name>Brassica rapa</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Brassica+rapa</url>
+    </taxonomy>
+    <taxonomy code="olu">
+      <color>0x610B0B</color>
+      <name>Ostreococcus lucimarinus</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Ostreococcus+lucimarinus</url>
+    </taxonomy>
+    <taxonomy code="ath">
+      <color>0x82FA58</color>
+      <name>Arabidopsis thaliana</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Arabidopsis+thaliana</url>
+    </taxonomy>
+    <taxonomy code="bvu">
+      <color>0xA3389D</color>
+      <name>Beta vulgaris</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Beta+vulgaris</url>
+    </taxonomy>
+    <taxonomy code="cru">
+      <color>0x80FF00</color>
+      <name>Capsella rubella</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Capsella+rubella</url>
+    </taxonomy>
+    <taxonomy code="gra">
+      <color>0x37BA49</color>
+      <name>Gossypium raimondii</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Gossypium+raimondii</url>
+    </taxonomy>
+    <taxonomy code="tpa">
+      <color>0xBCF5A9</color>
+      <name>Thellungiella parvula</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Thellungiella+parvula</url>
+    </taxonomy>
+    <taxonomy code="stu">
+      <color>0x9D4FB0</color>
+      <name>Solanum tuberosum</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Solanum+tuberosum</url>
+    </taxonomy>
+    <taxonomy code="rco">
+      <color>0x8986BF</color>
+      <name>Ricinus communis</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Ricinus+communis</url>
+    </taxonomy>
+    <taxonomy code="cme">
+      <color>0xA9C5CF</color>
+      <name>Cucumis melo</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Cucumis+melo</url>
+    </taxonomy>
+    <taxonomy code="mdo">
+      <color>0x4DB4D6</color>
+      <name>Malus domestica</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Malus+domestica</url>
+    </taxonomy>
+    <taxonomy code="sly">
+      <color>0xA378AD</color>
+      <name>Solanum lycopersicum</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Solanum+lycopersicum</url>
+    </taxonomy>
+    <taxonomy code="ppa">
+      <color>0xFE642E</color>
+      <name>Physcomitrella patens</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Physcomitrella+patens</url>
+    </taxonomy>
+    <taxonomy code="csi">
+      <color>0x095C10</color>
+      <name>Citrus sinensis</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Citrus+sinensis</url>
+    </taxonomy>
+    <taxonomy code="ppe">
+      <color>0x73BAD1</color>
+      <name>Prunus persica</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Prunus+persica</url>
+    </taxonomy>
+    <taxonomy code="vvi">
+      <color>0xB595CF</color>
+      <name>Vitis vinifera</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Vitis+vinifera</url>
+    </taxonomy>
+    <taxonomy code="ptr">
+      <color>0x443DC4</color>
+      <name>Populus trichocarpa</name>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/organism/view/Populus+trichocarpa</url>
+    </taxonomy>
+  </taxonomies>
+  <domains>
+    <domain name="IPR016034">
+      <color>0x6FC3D2</color>
+      <description>Phosphatidylinositol-4-phosphate 5-kinase, core, subgroup</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR016034</url>
+    </domain>
+    <domain name="IPR000583">
+      <color>0xFCB87B</color>
+      <description>Class II glutamine amidotransferase domain</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR000583</url>
+    </domain>
+    <domain name="IPR013785">
+      <color>0x2DFDD8</color>
+      <description>Aldolase-type TIM barrel</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR013785</url>
+    </domain>
+    <domain name="IPR028261">
+      <color>0x8F7B5E</color>
+      <description>Dihydroprymidine dehydrogenase domain II</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR028261</url>
+    </domain>
+    <domain name="IPR009051">
+      <color>0x2819CC</color>
+      <description>Alpha-helical ferredoxin</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR009051</url>
+    </domain>
+    <domain name="IPR006005">
+      <color>0x8372B6</color>
+      <description>Glutamate synthase, NADH/NADPH, small subunit 1</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR006005</url>
+    </domain>
+    <domain name="IPR027484">
+      <color>0xABB167</color>
+      <description>Phosphatidylinositol-4-phosphate 5-kinase, N-terminal domain</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR027484</url>
+    </domain>
+    <domain name="IPR027483">
+      <color>0xABB267</color>
+      <description>Phosphatidylinositol-4-phosphate 5-kinase, C-terminal</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR027483</url>
+    </domain>
+    <domain name="IPR002932">
+      <color>0xE6FE96</color>
+      <description>Glutamate synthase, central-C</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR002932</url>
+    </domain>
+    <domain name="IPR017932">
+      <color>0xB143C9</color>
+      <description>Glutamine amidotransferase type 2 domain</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR017932</url>
+    </domain>
+    <domain name="IPR023753">
+      <color>0xF8E893</color>
+      <description>Pyridine nucleotide-disulphide oxidoreductase, FAD/NAD(P)-binding domain</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR023753</url>
+    </domain>
+    <domain name="IPR016040">
+      <color>0x6FC3D2</color>
+      <description>NAD(P)-binding domain</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR016040</url>
+    </domain>
+    <domain name="IPR003409">
+      <color>0xD9F79B</color>
+      <description>MORN motif</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR003409</url>
+    </domain>
+    <domain name="IPR006982">
+      <color>0x6136BE</color>
+      <description>Glutamate synthase, central-N</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR006982</url>
+    </domain>
+    <domain name="IPR013027">
+      <color>0x1EFCD8</color>
+      <description>FAD-dependent pyridine nucleotide-disulphide oxidoreductase</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR013027</url>
+    </domain>
+    <domain name="IPR001327">
+      <color>0xF5E584</color>
+      <description>Pyridine nucleotide-disulphide oxidoreductase, NAD-binding domain</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR001327</url>
+    </domain>
+    <domain name="IPR002489">
+      <color>0xF1FC91</color>
+      <description>Glutamate synthase, alpha subunit, C-terminal</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR002489</url>
+    </domain>
+    <domain name="IPR002498">
+      <color>0xF1FC91</color>
+      <description>Phosphatidylinositol-4-phosphate 5-kinase, core</description>
+      <url>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/interpro/view/IPR002498</url>
+    </domain>
+  </domains>
+</phyloxml>
