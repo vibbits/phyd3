@@ -1,3 +1,6 @@
+License
+========
+
 phyD3, phylogenetic tree viewer based on D3.js
 http://phyd3.bits.vib.be
 Copyright (c) BITS VIB 2016
@@ -17,3 +20,15 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY o
 See the GNU General Public License for more details.
 
 Full license text can be found in LICENSE.txt
+
+Usage
+========
+```
+$ cd phyd3/
+$ npm install
+$ node phyd3.js
+```
+
+Docs
+========
+https://phyd3.bits.vib.be/documentation.html
