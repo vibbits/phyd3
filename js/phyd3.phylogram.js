@@ -827,9 +827,11 @@ window.requestAnimFrame = (function(){
 
         function renderPopup(n) {
             var evt = d3.event;
+            if (evt.defaultPrevented) return; 
             var x = evt.layerX;
                 y = evt.layerY;
             var popupId = "popup"+parseInt(Date.now() * Math.random() * 1000);
+            console.log(evt);
             var popup = d3.select(selector)
                 .append("div")
                 .attr("class", "popup")
@@ -1925,6 +1927,7 @@ window.requestAnimFrame = (function(){
             options.lastScale = scale;
             if (options.lastScale != 0) requestAnimFrame(redrawTree);
             else requestAnimFrame(applyZoomTransform);
+            mouseEvent.preventDefault();
         }
 
     }
