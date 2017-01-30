@@ -12,8 +12,8 @@
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="libs/js/material.min.js"></script>
     <script type="text/javascript">
-        var sampleTree = "<?php echo file_get_contents('samples/tree.newick'); ?>";
-        var sampleData = "<?php echo str_replace("\r\n","\\n\\\n", file_get_contents('samples/annotation.txt')); ?>";
+        var sampleTree = "<?php echo file_get_contents('submissions/tree.newick'); ?>";
+        var sampleData = "<?php echo str_replace("\r\n","\\n\\\n", file_get_contents('submissions/annotation.txt')); ?>";
 
         function loadSampleTree() {
             $("#treeArea").val(sampleTree);
