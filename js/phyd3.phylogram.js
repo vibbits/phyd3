@@ -618,8 +618,8 @@ window.requestAnimFrame = (function(){
                 oHeight = height.value;
 
             transform.value = "translate("+options.marginX+", "+options.marginY+")";
-            width.value = bbox.width + options.marginX;
-            height.value = bbox.height + options.marginY;
+            width.value = (Math.max(+width.value.replace('px', ''), bbox.width) + options.marginX).toString();
+            height.value = (Math.max(+height.value.replace('px', ''), bbox.height) + options.marginY).toString();
 
             if (typeof window.XMLSerializer != "undefined") {
                 var svgData = (new XMLSerializer()).serializeToString(svg);
