@@ -13,7 +13,7 @@
     <script src="libs/js/material.min.js"></script>
     <script type="text/javascript">
         var sampleTree = "<?php echo file_get_contents('submissions/tree.newick'); ?>";
-        var sampleData = "<?php echo str_replace("\r\n","\\n\\\n", file_get_contents('submissions/annotation.txt')); ?>";
+        var sampleData = "<?php echo str_replace("\n","\\n\\\n", file_get_contents('submissions/annotation.txt')); ?>";
 
         function loadSampleTree() {
             $("#treeArea").val(sampleTree);

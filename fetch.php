@@ -13,6 +13,23 @@ function checkFormat($tree, &$format) {
     return $accepted;
 }
 
+$NewickTokerNr = 1;
+$NewickTokens = array();
+function replaceCallback($matches) {
+    global $NewickTokerNr;
+    global $NewickTokens;
+    $NewickTokens['#'.$NewickTokerNr."#"] = $matches[0];
+    $replacement = '#'.$NewickTokerNr."#:";
+    $NewickTokerNr++;
+    return $replacement;
+}
+
+function replaceBackCallback($matches) {
+    global $NewickTokerNr;
+    global $NewickTokens;
+    return $NewickTokens[$matches[0]];
+}
+
 function parseNewick($s) {
     $ancestors = array();
     $tree = '
@@ -20,6 +37,10 @@ function parseNewick($s) {
         <phyloxml xmlns="http://www.phyloxml.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.00/phyloxml.xsd">
         <phylogeny rooted="true">
     ';
+    // match first the '' or "" tokens and replace them by $i tokens    
+     
+    
+    $s = preg_replace_callback("/'.*':/U", 'replaceCallback', $s);
     $tokens = preg_split("/\s*(;|\(|\)|,|:)\s*/", $s, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
     for ($i=0; $i<count($tokens); $i++) {
         $token = $tokens[$i];
@@ -48,6 +69,7 @@ function parseNewick($s) {
         }
     }
     $tree .=  '</phylogeny></phyloxml>';
+    $tree = preg_replace_callback("/#\d+#/", 'replaceBackCallback', $tree);
     return $tree;    
 }
 
@@ -65,7 +87,6 @@ function traverseClade($clade, &$id, &$names) {
     }
     return $clade;
 }
-
 $rows = 0;
 $cols = 0;
 $type = isset($_GET['type']) ? $_GET['type'] : '';
