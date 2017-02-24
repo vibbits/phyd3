@@ -160,7 +160,7 @@
         </li>
         <li><h4>Node graphs</h4>
         You can also include the graphs specifications and the graph data, that should be displayed next to the node (clade).<br /> On the internal nodes <b>pie</b> or <b>binary</b> graphs can be drawn.
-        For leaf nodes you can choose between 4 graph types: <b>multibar, pie, binary, heatmap</b>. Each referenced clade needs to have an <b>id</b> tag defined in the phylogeny.<br />
+        For leaf nodes you can choose between 5 graph types: <b>multibar, pie, binary, heatmap, boxplot</b>. Each referenced clade needs to have an <b>id</b> tag defined in the phylogeny.<br />
         For complete graph specification you need three things:
         <ol>
             <li><b>name</b> - graph name, that will be displayed in detailed node information popup
@@ -226,7 +226,7 @@
                     &lt;value&gt;37&lt;/value&gt;
                     &lt;value&gt;8&lt;/value&gt;
                 &lt;/values&gt;
-                &lt;values for="11"&gt;
+                &lt;values for="12"&gt;
                     &lt;value&gt;23&lt;/value&gt;
                     &lt;value&gt;27&lt;/value&gt;
                     &lt;value&gt;14&lt;/value&gt;
@@ -235,6 +235,40 @@
                     &lt;value&gt;23&lt;/value&gt;
                     &lt;value&gt;27&lt;/value&gt;
                     &lt;value&gt;14&lt;/value&gt;
+                &lt;/values&gt;
+                ...
+            &lt;/data&gt;
+        &lt;/graph&gt;
+        &lt;graph type="boxplot"&gt;
+            &lt;name&gt;Boxplot test graph&lt;/name&gt;
+            &lt;legend&gt;
+                &lt;field&gt;
+                    &lt;color&gt;0x8986BF&lt;/color&gt;
+                &lt;/field&gt;
+                &lt;field&gt;
+                    &lt;color&gt;0x9D4FB0&lt;/color&gt;
+                &lt;/field&gt;
+            &lt;/legend&gt;
+                &lt;values for="10"&gt;
+                    &lt;value&gt;12&lt;/value&gt;
+                    &lt;value&gt;21&lt;/value&gt;
+                    &lt;value&gt;34&lt;/value&gt;
+                    &lt;value&gt;49&lt;/value&gt;
+                    &lt;value&gt;58&lt;/value&gt;
+                &lt;/values&gt;
+                &lt;values for="11"&gt;
+                    &lt;value&gt;17&lt;/value&gt;
+                    &lt;value&gt;27&lt;/value&gt;
+                    &lt;value&gt;38&lt;/value&gt;
+                    &lt;value&gt;46&lt;/value&gt;
+                    &lt;value&gt;57&lt;/value&gt;
+                &lt;/values&gt;
+                &lt;values for="12"&gt;
+                    &lt;value&gt;13&lt;/value&gt;
+                    &lt;value&gt;27&lt;/value&gt;
+                    &lt;value&gt;34&lt;/value&gt;
+                    &lt;value&gt;43&lt;/value&gt;
+                    &lt;value&gt;56&lt;/value&gt;
                 &lt;/values&gt;
                 ...
             &lt;/data&gt;

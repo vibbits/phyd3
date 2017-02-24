@@ -8,21 +8,21 @@
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 3
  * of the License, or any later version.
- * 
- * Redistribution and use in source and binary forms, 
+ *
+ * Redistribution and use in source and binary forms,
  * with or without modification, are permitted provided that the following conditions are met:
- *   o  Redistributions of source code must retain the above copyright notice, 
+ *   o  Redistributions of source code must retain the above copyright notice,
  *      this list of conditions and the following disclaimer.
- *   o  Redistributions in binary form must reproduce the above copyright notice, 
+ *   o  Redistributions in binary form must reproduce the above copyright notice,
  *      this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
- *   o  Neither the name of the VIB nor the names of its contributors may be used to 
+ *   o  Neither the name of the VIB nor the names of its contributors may be used to
  *      endorse or promote products derived from this software without specific prior written permission.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  */
 if (!d3) {
     throw "d3 wasn't included!";
@@ -61,7 +61,7 @@ window.requestAnimFrame = (function(){
         // reversed projection - horizontal tree instead of vertical
         return [parseInt(d.y), parseInt(d.x)];
     }
-        
+
     phyd3.phylogram.rightAngleDiagonal = function diagonal(diagonalPath, i) {
         // draw the hooked paths between nodes
         var source = diagonalPath.source,
@@ -73,7 +73,7 @@ window.requestAnimFrame = (function(){
         // TODO: its a little slow when turned on for both horizontal and vertical lines
         // phyd3.phylogram.lineAreas.push({start: pathData[0], end:pathData[1]});
         phyd3.phylogram.lineAreas.push({start: pathData[1], end:pathData[2]});
-        
+
         // for leaves save the position of the longest node as the reference for the line-up
         if (!target.children) {
             if (pathData[2][0] > phyd3.phylogram.dx) phyd3.phylogram.dx = pathData[2][0];
@@ -138,7 +138,7 @@ window.requestAnimFrame = (function(){
                 b = hue2rgb(p, q, h - 1/3);
             }
             return '#'+(Math.round(r * 255).toString(16))+(Math.round(g * 255).toString(16))+(Math.round(b * 255).toString(16));
-        };    
+        };
         var golden_ratio_conjugate = 0.618033988749895;
         var h = Math.random();
         h += golden_ratio_conjugate;
@@ -153,7 +153,7 @@ window.requestAnimFrame = (function(){
         var lengths = nodes.map(function(n) {
             return (n.sequences && n.sequences[0] && n.sequences[0].domainArchitecture && n.sequences[0].domainArchitecture.sequenceLength) ? n.sequences[0].domainArchitecture.sequenceLength : 0;
         });
-        
+
         var domainScale = d3.scale
                         .linear()
                         .domain([0, d3.max(lengths)])
@@ -192,7 +192,7 @@ window.requestAnimFrame = (function(){
         options.treeWidth = options.treeWidth || 'auto';
         options.showFullTaxonomy = ('showFullTaxonomy' in options) ? options.showFullTaxonomy : false;
         options.showLabels = ('showLabels' in options) ? options.showLabels : true;
-        options.showDomains = ('showDomains' in options) ? options.showDomains : true;        
+        options.showDomains = ('showDomains' in options) ? options.showDomains : true;
         options.dynamicHide = ('dynamicHide' in options) ? options.dynamicHide : false;
         options.invertColors = ('invertColors' in options) ? options.invertColors : false;
         options.lineupNodes = ('lineupNodes' in options) ? options.lineupNodes : true;
@@ -208,7 +208,7 @@ window.requestAnimFrame = (function(){
         options.showPhylogram = ('showPhylogram' in options) ? options.showPhylogram : false;
 
         // nodes object, domain scale, last drawn leaf, leaves padding for displaying graphs and text
-        var nodes, domainScale, lastLabel, multibarScaling = [], labelPadding = 100, textPadding = 100, graphPadding = 0, legendPadding = 100, longestNode = 0;
+        var nodes, domainScale, lastLabel, boxplotScaling = [], multibarScaling = [], labelPadding = 100, textPadding = 100, graphPadding = 0, legendPadding = 100, longestNode = 0;
 
         // margins
         var showLegend = false;
@@ -274,6 +274,22 @@ window.requestAnimFrame = (function(){
             .attr("stroke-width", "0.5px")
             .attr("font-size", "10px")
             .text(onodes.description ? onodes.description : '');
+
+        // marker defs
+        vis.append("defs")
+            .append("marker")
+            .attr("id", "markerBoxplot")
+            .attr("markerWidth", "1")
+            .attr("markerHeight", "10")
+            .attr("refX", "1")
+            .attr("refY", "5")
+            .append("line")
+            .attr("x1", "0")
+            .attr("x2", "0")
+            .attr("y1", "0")
+            .attr("y2", "10")
+            .attr("stroke", getForegroundColor())
+            .attr("stroke-width", "2px");
 
         // main group
         vis = vis.append("svg:g")
@@ -593,14 +609,14 @@ window.requestAnimFrame = (function(){
         });
 
         // general functions
-         
+
         function getForegroundColor() {
             return options.invertColors ? options.backgroundColor : options.foregroundColor;
         }
 
         function getBackgroundColor() {
-            return options.invertColors ? options.foregroundColor : options.backgroundColor;   
-        }      
+            return options.invertColors ? options.foregroundColor : options.backgroundColor;
+        }
 
         // action handlers for SVG
 
@@ -650,7 +666,7 @@ window.requestAnimFrame = (function(){
                         return d.show ? "visibile" : "hidden";
                     });
 
-                // TODO: support for multiple domain graphs                    
+                // TODO: support for multiple domain graphs
                 domains = domains.data(function(d, i, j) {
                         var dms = (d.sequences && d.sequences[0] && d.sequences[0].domainArchitecture) ? d.sequences[0].domainArchitecture.domains : [];
                         for (var k = 0; k < dms.length; k++) {
@@ -794,7 +810,7 @@ window.requestAnimFrame = (function(){
         }
 
         // action handler for leaves
-        
+
         function addPanel(accordion, title, expand) {
             var aid = accordion.attr("id");
             var id = aid + "_" + accordion.selectAll("div.panel-default").size();
@@ -827,7 +843,7 @@ window.requestAnimFrame = (function(){
 
         function renderPopup(n) {
             var evt = d3.event;
-            if (evt.defaultPrevented) return; 
+            if (evt.defaultPrevented) return;
             var x = evt.layerX;
                 y = evt.layerY;
             var popupId = "popup"+parseInt(Date.now() * Math.random() * 1000);
@@ -967,7 +983,7 @@ window.requestAnimFrame = (function(){
                                 null,
                                 null,
                                 null
-                              ]                    
+                              ]
                         });
                     }
                 }
@@ -1033,7 +1049,7 @@ window.requestAnimFrame = (function(){
                         text += ' ';
                     }
                 }
-            } 
+            }
             text += (options.showNodeNames && d.name ? d.name : "") + " ";
             if (options.showSequences && d.sequences) {
                 for (var sid in d.sequences) {
@@ -1053,7 +1069,7 @@ window.requestAnimFrame = (function(){
                         }
                     }
                 }
-            } 
+            }
             return text;
         }
 
@@ -1110,7 +1126,7 @@ window.requestAnimFrame = (function(){
                                 color = onodes.taxcolors[t.code].color.replace(/0x/,"#");
                             }
                         }
-                    } 
+                    }
                     return color ? color : getForegroundColor();
             });
         }
@@ -1128,14 +1144,14 @@ window.requestAnimFrame = (function(){
             if (options.showGraphs) applyGraphTransform();
             if (options.showDomains) applyDomainTransform();
         }
-        
+
         function applyLeafTransform() {
             var margin = 0;
-            
+
             vis.selectAll('text.name')
                 .attr("dy", options.nodeHeight / 2)
                 .attr('font-size', (options.nodeHeight*1.5)+'px');
-            
+
             vis.selectAll('text.branchLength')
                 .attr("dy", -options.nodeHeight / 2 )
                 .attr('font-size', (options.nodeHeight*1.5)+'px');
@@ -1152,13 +1168,13 @@ window.requestAnimFrame = (function(){
                     // this call is forcing reflow and layout (~10ms)
                     var box = this.getBBox();
                     if (box.width > margin) margin = box.width;
-                });        
+                });
             */
             // alternative method : fixed width relative to node size
             margin = 100*options.nodeHeight/6;
             margin += 10;
             textPadding = margin;
-            d3.select("#nodeHeight")            
+            d3.select("#nodeHeight")
                 .attr("value", options.nodeHeight);
             zoomLeafTransform();
             if (options.showLabels) applyLabelTransform();
@@ -1168,7 +1184,7 @@ window.requestAnimFrame = (function(){
 
         // action handlers for labels
 
-        function toggleLabels() {            
+        function toggleLabels() {
             if (options.showLabels && onodes.labels) {
                 console.log(onodes.labels);
                 for ( var l = 0; l < onodes.labels.length; l++) {
@@ -1233,7 +1249,7 @@ window.requestAnimFrame = (function(){
                 changeLabelVisibility();
                 applyLabelTransform();
                 applyGraphTransform();
-                applyDomainTransform();                
+                applyDomainTransform();
             } else {
                 vis.selectAll(".nodelabel").remove();
                 labelPadding = 0;
@@ -1256,7 +1272,7 @@ window.requestAnimFrame = (function(){
                                 dx = dy = -h;
                             }
                             var labelWidth = 0;
-                            if (this.nodeName == 'text' && this.firstChild) {                                
+                            if (this.nodeName == 'text' && this.firstChild) {
                                 labelWidth = this.firstChild.length * h / 1.5;
                             } else if (this.nodeName == 'rect') {
                                 labelWidth = h * 2;
@@ -1284,7 +1300,7 @@ window.requestAnimFrame = (function(){
         }
 
 
-        // action handlers for graphs         
+        // action handlers for graphs
 
         function toggleGraphs() {
             if (options.showGraphs && onodes.graphs && onodes.graphs.length) {
@@ -1328,7 +1344,7 @@ window.requestAnimFrame = (function(){
                                         name: graph.legend.fields[0].name,
                                         color: graph.legend.fields[0].background ? graph.legend.fields[0].background : phyd3.phylogram.randomColor(),
                                         invert: true
-                                    };                                    
+                                    };
                                 }
                             });
                     }
@@ -1369,13 +1385,13 @@ window.requestAnimFrame = (function(){
                                             }
                                             var c = graph.legend.fields[i].color.replace(/0x/,"#");
                                             return c;
-                                        } 
+                                        }
                                         return '';
                                     })
                                     .append("title").text(function(d, i){
                                         if (graph.legend.fields) {
                                             return (graph.legend.fields[i] && graph.legend.fields[i].name ? graph.legend.fields[i].name + ": " : "" )+(graph.legend.fields[i].invert ? graph.data.max - d.data.value : d.data.value);
-                                        } 
+                                        }
                                         return '';
                                     });
                             }
@@ -1450,6 +1466,63 @@ window.requestAnimFrame = (function(){
                                     });
                             }
                             break;
+                        case "boxplot":
+                            boxplotScaling[graph.id] = null;
+                            var boxMax = 0;
+                            var boxMin = Number.MAX_SAFE_INTEGER;
+                            console.log(boxMin);
+                            for (var i = 0; i < 5; i++) {
+                                var max = d3.max(d3.values(graph.data), function(d) {
+                                    if (d) return d[i];
+                                });
+                                var min = d3.max(d3.values(graph.data), function(d) {
+                                    if (d) return d[i];
+                                });
+                                if (max > boxMax) boxMax = max;
+                                if (min < boxMin) boxMin = min;
+                            }
+                            boxplotScaling[graph.id] = d3.scale.linear().domain([boxMin, boxMax]);
+                            console.log(graph.data);
+                            for (cid in graph.data) {
+                                if (!graph.data[cid]) continue;
+                                var clade = vis.select(".cid_"+cid).append("svg:g").attr("class", "graph boxplot gid"+graph.id);
+                                var data = [];
+                                data.push({
+                                    min: graph.data[cid][0],
+                                    q1: graph.data[cid][1],
+                                    median: graph.data[cid][2],
+                                    q3: graph.data[cid][3],
+                                    max: graph.data[cid][4]
+                                });
+                                var path = clade.selectAll("rect.boxplot.gid"+graph.id)
+                                    .data(data)
+                                    .enter();
+                                path.append('line')
+                                    .attr("class","boxplot baseline hover-visible gid"+graph.id)
+                                    .attr('style', 'marker-start: url(#markerBoxplot); marker-end: url(#markerBoxplot);')
+                                    .attr('stroke', getForegroundColor());
+                                path.append('rect')
+                                    .attr("class","boxplot q1 hover-visible gid"+graph.id)
+                                    .attr('fill', (graph.legend.fields[0] ? graph.legend.fields[0].color : '').replace(/0x/,"#"))
+                                    .attr("stroke", options.foregroundColor)
+                                    .attr("stroke-width", options.outline)
+                                    .append("title").text(function(d) {
+                                        return "Min: "+d.min+", Q1: "+d.q1+", Median: "+d.median;
+                                    });
+                                path.append('rect')
+                                    .attr("class","boxplot q3 hover-visible gid"+graph.id)
+                                    .attr('fill', (graph.legend.fields[1] ? graph.legend.fields[1].color : '').replace(/0x/,"#"))
+                                    .attr('stroke', getForegroundColor())
+                                    .attr("stroke-width", options.outline)
+                                    .append("title").text(function(d) {
+                                        return "Median: "+d.median+", Q3: "+d.q3+", Max: "+d.max;
+                                    });
+                                path.append('line')
+                                    .attr("class","boxplot median hover-visible gid"+graph.id)
+                                    .attr('stroke', getForegroundColor())
+                                    .attr("stroke-width", "2px");
+                            }
+                            break;
                         case "heatmap":
                             var max = d3.max(d3.values(graph.data), function(d) {
                                 if (d) return d3.max(d);
@@ -1522,10 +1595,12 @@ window.requestAnimFrame = (function(){
                         case "pie":
                             graphs.selectAll("path.pie.gid"+graph.id)
                                 .attr('d', function(d) {
-                                    var a = d3.svg.arc()
-                                        .innerRadius(0)
-                                        .outerRadius(h);
-                                    return a(d);
+                                    if (d.value > 0) {
+                                        var a = d3.svg.arc()
+                                            .innerRadius(0)
+                                            .outerRadius(h);
+                                        return a(d);
+                                        }
                                     }
                                 )
                                 .attr("transform", function(d) {
@@ -1585,6 +1660,63 @@ window.requestAnimFrame = (function(){
                                 }
                             }
                             graphPadding += (graph.legend.fields.length) * (options.graphWidth + 5);
+                            break;
+                        case "boxplot":
+                            boxplotScaling[graph.id] = boxplotScaling[graph.id].range([0, options.graphWidth]);
+                            graphs.selectAll("rect.q1.boxplot.gid"+graph.id)
+                                .attr('height', parseInt(h * 2))
+                                .attr('width', function(d) {
+                                    return parseInt(boxplotScaling[graph.id](d.median) - boxplotScaling[graph.id](d.q1));
+                                })
+                                .attr("transform", function(d, i) {
+                                    var x = graphPadding + boxplotScaling[graph.id](d.q1);
+                                    return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
+                                });
+                            graphs.selectAll("rect.q3.boxplot.gid"+graph.id)
+                                .attr('height', parseInt(h * 2))
+                                .attr('width', function(d) {
+                                    return parseInt(boxplotScaling[graph.id](d.q3) - boxplotScaling[graph.id](d.median));
+                                })
+                                .attr("transform", function(d, i) {
+                                    var x = graphPadding + boxplotScaling[graph.id](d.median);
+                                    return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
+                                });
+                            graphs.selectAll("line.baseline.boxplot.gid"+graph.id)
+                                .attr('y1', parseInt(h))
+                                .attr('y2', parseInt(h))
+                                .attr('x1', function(d) {
+                                    return boxplotScaling[graph.id](d.min);
+                                })
+                                .attr('x2', function(d) {
+                                    return boxplotScaling[graph.id](d.max);
+                                })
+                                .attr("transform", function(d, i) {
+                                    var x = graphPadding;
+                                    return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
+                                });
+                            graphs.selectAll("line.median.boxplot.gid"+graph.id)
+                                .attr('y1', 0)
+                                .attr('y2', parseInt(h*2))
+                                .attr('x1', function(d) {
+                                    return boxplotScaling[graph.id](d.median);
+                                })
+                                .attr('x2', function(d) {
+                                    return boxplotScaling[graph.id](d.median);
+                                })
+                                .attr("transform", function(d, i) {
+                                    var x = graphPadding;
+                                    return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
+                                });
+                                /*
+                            if (options.showGraphLegend) {
+                                for (var i=0; i<graph.legend.fields.length; i++) {
+                                    vis.append("text")
+                                       .attr("class", "legend")
+                                       .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
+                                       .attr("transform", "translate("+ (phyd3.phylogram.dx + padding + graphPadding + i*(options.graphWidth + 5) + options.graphWidth/2) +",-10) rotate(-90)");
+                                }
+                            }*/
+                            graphPadding += (options.graphWidth + 5);
                             break;
                         case "heatmap":
                             graphs.selectAll("rect.heatmap.gid"+graph.id)
@@ -1735,7 +1867,7 @@ window.requestAnimFrame = (function(){
             for (var i = 0; i<innernodes.length; i++)  {
                 if (getNodeText(innernodes[i]).trim().length > 0)
                     innernodes[i].show = options.dynamicHide ? checkLabelPositioning(innernodes[i], true) : true;
-                else 
+                else
                     innernodes[i].show = false;
             }
             if (!redraw)  {
@@ -1856,7 +1988,7 @@ window.requestAnimFrame = (function(){
                     }
                 }
             }
-            
+
             if (show) {
                 // add displayed label area info
                 // phyd3.phylogram.labelAreas.push({x: d.y, y: d.x});
