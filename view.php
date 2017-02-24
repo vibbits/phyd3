@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="libs/css/bootstrap-material-design.min.css" />
     <link rel="stylesheet" href="libs/css/vib.css" />
     <link rel="stylesheet" href="css/phyd3.css" />
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>    
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="libs/js/material.min.js"></script>
@@ -31,7 +31,7 @@
             showDomainNames: false,
             showDomainColors: true,
             showGraphs: true,
-            showGraphLegend: true,            
+            showGraphLegend: true,
             showLength: false,
             showNodeNames: true,
             showNodesType: "only leaf",
@@ -48,7 +48,7 @@
             $("#familyID").val("HOM03D000802");
             loadTree();
         }
-        function loadTree() {            
+        function loadTree() {
             d3.select("#phyd3").text("Loading...");
             var fid = "<?php echo $_GET['id']?>".trim();
             <?php if ($_GET['f'] == 'xml') { ?>
@@ -66,7 +66,7 @@
                     opts.showTaxonomyColors = false;
                 }
                 d3.xml("submissions/"+fid, function(xml) {
-                    d3.select("#phyd3").text(null);                    
+                    d3.select("#phyd3").text(null);
                     var tree = phyd3.phyloxml.parse(xml);
                     phyd3.phylogram.build("#phyd3", tree, opts);
                 });
@@ -80,7 +80,7 @@
         };
     </script>
 </head>
-<body onload="load()" class="container">    
+<body onload="load()" class="container">
     <br />
     <a href="index.html"><img id="phyd3logo" src="img/logo-name.svg" /></a>
     <a href="http://www.vib.be"><img id="viblogo" src="img/vib_tagline_pos_rgb.png" /></a>
@@ -127,7 +127,7 @@
                       <input id="supportValues" type="checkbox"> show support values
                     </label>
                 </div>
-            </div>    
+            </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
@@ -297,7 +297,7 @@
                 <a href="submissions/<?php echo $_GET['id']?>" class="btn btn-primary" id="linkXML" download >XML</a>
             </div>
         </div>
-        <div id="phyd3" class="col-xs-9"></div>        
+        <div id="phyd3" class="col-xs-9"></div>
         <div class="col-sm-9 col-sm-offset-3 text-center">
             Use your mouse to drag &amp; zoom the tree. <strong>Tip:</strong> CTRL + wheel = scale Y, ALT + wheel = scale X<br />
             You can use the URL of this page as permalink.

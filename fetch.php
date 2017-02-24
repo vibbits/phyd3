@@ -13,6 +13,23 @@ function checkFormat($tree, &$format) {
     return $accepted;
 }
 
+$NewickTokerNr = 1;
+$NewickTokens = array();
+function replaceCallback($matches) {
+    global $NewickTokerNr;
+    global $NewickTokens;
+    $NewickTokens['#'.$NewickTokerNr."#"] = $matches[0];
+    $replacement = '#'.$NewickTokerNr."#:";
+    $NewickTokerNr++;
+    return $replacement;
+}
+
+function replaceBackCallback($matches) {
+    global $NewickTokerNr;
+    global $NewickTokens;
+    return $NewickTokens[$matches[0]];
+}
+
 function parseNewick($s) {
     $ancestors = array();
     $tree = '
@@ -20,6 +37,10 @@ function parseNewick($s) {
         <phyloxml xmlns="http://www.phyloxml.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.00/phyloxml.xsd">
         <phylogeny rooted="true">
     ';
+    // match first the '' or "" tokens and replace them by $i tokens
+
+
+    $s = preg_replace_callback("/'.*':/U", 'replaceCallback', $s);
     $tokens = preg_split("/\s*(;|\(|\)|,|:)\s*/", $s, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
     for ($i=0; $i<count($tokens); $i++) {
         $token = $tokens[$i];
@@ -48,7 +69,8 @@ function parseNewick($s) {
         }
     }
     $tree .=  '</phylogeny></phyloxml>';
-    return $tree;    
+    $tree = preg_replace_callback("/#\d+#/", 'replaceBackCallback', $tree);
+    return $tree;
 }
 
 function traverseClade($clade, &$id, &$names) {
@@ -65,7 +87,6 @@ function traverseClade($clade, &$id, &$names) {
     }
     return $clade;
 }
-
 $rows = 0;
 $cols = 0;
 $type = isset($_GET['type']) ? $_GET['type'] : '';
@@ -85,28 +106,28 @@ if ($type == 'input')  {
             $tree = trim(file_get_contents("submissions/$id.orig"));
             $accepted = checkFormat($tree, $format);
         } else {
-            header("HTTP/1.1 301 Moved Permanently"); 
-            header("Location: submit.php?m=Error+uploading+files"); 
-            exit(); 
-        }    
+            header("HTTP/1.1 301 Moved Permanently");
+            header("Location: submit.php?m=Error+uploading+files");
+            exit();
+        }
     }  else {
         $tree = trim($_POST['tree']);
         file_put_contents("submissions/$id.orig", $tree);
         $accepted = checkFormat($tree, $format);
     }
     if (!$accepted) {
-        header("HTTP/1.1 301 Moved Permanently"); 
+        header("HTTP/1.1 301 Moved Permanently");
         header("Location: submit.php?m=Invalid+tree+format");
-        exit(); 
-    } else {   
+        exit();
+    } else {
         if (strlen($_FILES['annotationFile']['name'])) {
             if (@move_uploaded_file($_FILES['annotationFile']['tmp_name'], "submissions/$id.txt")) {
                 $annotation = trim(file_get_contents("submissions/$id.txt"));
             } else {
-                header("HTTP/1.1 301 Moved Permanently"); 
-                header("Location: submit.php?m=Error+uploading+files"); 
-                exit(); 
-            }    
+                header("HTTP/1.1 301 Moved Permanently");
+                header("Location: submit.php?m=Error+uploading+files");
+                exit();
+            }
         }  else {
             $annotation = trim($_POST['annotation']);
             file_put_contents("submissions/$id.txt", $annotation);
@@ -133,8 +154,8 @@ if (($type == 'input')||($type=='parse')||($type == 'convert')) {
     } else {
         if ($format == 'newick') $tree = trim(parseNewick($tree));
         file_put_contents("submissions/$id.xml", $tree);
-        header("HTTP/1.1 301 Moved Permanently"); 
-        header("Location: view.php?id=$id.xml&f=xml"); 
+        header("HTTP/1.1 301 Moved Permanently");
+        header("Location: view.php?id=$id.xml&f=xml");
         exit();
     }
 }
@@ -163,7 +184,7 @@ if ($type == 'convert') {
             $graph = $graphs->addChild("graph");
             $graph->addAttribute('type', $gtype);
             $graph->addChild("legend");
-            $graph->addChild("data");            
+            $graph->addChild("data");
             if (empty($gid)) {
                 $gid = time().$i;
             }
@@ -174,10 +195,14 @@ if ($type == 'convert') {
                 $grad->addChild('name', $_POST['graphScale-'.$i]);
                 $grad->addChild('classes', $_POST['graphClass-'.$i]);
             }
-        }        
+        }
         $field = $graph->legend->addChild("field");
         $field->name = $_POST['graphHeader-'.$i];
-        $field->color = $_POST['graphColor-'.$i];
+        $field->part = $_POST['graphPart-'.$i];
+        // q3 is not working
+        if (($gtype != 'boxplot')  || ($field->part == 'q1') || ($field->part == 'q3')) {
+            $field->color = $_POST['graphColor-'.$i];
+        }
         if ($gtype == 'binary')
             $field->shape = $_POST['graphShape-'.$i];
         for ($r = 0; $r < $rows; $r++) {
@@ -187,25 +212,25 @@ if ($type == 'convert') {
             if (isset($valueIDs[$gtype.$gid."#".$for])) {
                 $values = $valueIDs[$gtype.$gid."#".$for];
             } else {
-                $values = $graph->data->addChild('values');                
+                $values = $graph->data->addChild('values');
                 $values->addAttribute('for', $for);
                 $valueIDs[$gtype.$gid."#".$for] = $values;
             }
-            $values->addChild('value', $csv[$r][$i]);        
+            $values->addChild('value', $csv[$r][$i]);
         }
-    }   
+    }
     $doc = new DOMDocument();
     $doc->formatOutput = TRUE;
     $doc->loadXML($xml->asXML());
     $out = $doc->saveXML();
     file_put_contents("submissions/$id.xml", $out);
-    header("HTTP/1.1 301 Moved Permanently"); 
-    header("Location: view.php?id=$id.xml&f=xml"); 
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: view.php?id=$id.xml&f=xml");
     exit();
 }
 if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
-    header("HTTP/1.1 301 Moved Permanently"); 
-    header("Location: submit.php?m=Empty+submission"); 
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: submit.php?m=Empty+submission");
     exit();
 }
 ?>
@@ -232,39 +257,39 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-61194136-8', 'auto');
         ga('send', 'pageview');
-        
+
         $(function() {
 
-    randomColor = function(){
-        function hue2rgb(p, q, t){
-            if(t < 0) t += 1;
-            if(t > 1) t -= 1;
-            if(t < 1/6) return p + (q - p) * 6 * t;
-            if(t < 1/2) return q;
-            if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-            return p;
-        }
-        function hslToRgb(h, s, l){
-          var r, g, b;
+            randomColor = function(){
+                function hue2rgb(p, q, t){
+                    if(t < 0) t += 1;
+                    if(t > 1) t -= 1;
+                    if(t < 1/6) return p + (q - p) * 6 * t;
+                    if(t < 1/2) return q;
+                    if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                    return p;
+                }
+                function hslToRgb(h, s, l){
+                  var r, g, b;
 
-            if(s == 0) {
-              r = g = b = l; // achromatic
-            } else {
+                    if(s == 0) {
+                      r = g = b = l; // achromatic
+                    } else {
 
-                var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-                var p = 2 * l - q;
-                r = hue2rgb(p, q, h + 1/3);
-                g = hue2rgb(p, q, h);
-                b = hue2rgb(p, q, h - 1/3);
-            }
-            return '#'+(Math.round(r * 255).toString(16))+(Math.round(g * 255).toString(16))+(Math.round(b * 255).toString(16));
-        };    
-        var golden_ratio_conjugate = 0.618033988749895;
-        var h = Math.random();
-        h += golden_ratio_conjugate;
-        h %= 1;
-        return hslToRgb(h, 0.5, 0.60);
-    };
+                        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+                        var p = 2 * l - q;
+                        r = hue2rgb(p, q, h + 1/3);
+                        g = hue2rgb(p, q, h);
+                        b = hue2rgb(p, q, h - 1/3);
+                    }
+                    return '#'+(Math.round(r * 255).toString(16))+(Math.round(g * 255).toString(16))+(Math.round(b * 255).toString(16));
+                };
+                var golden_ratio_conjugate = 0.618033988749895;
+                var h = Math.random();
+                h += golden_ratio_conjugate;
+                h %= 1;
+                return hslToRgb(h, 0.5, 0.60);
+            };
 
             var showGraphIDs = function(ctrl) {
                 var id = $(this).attr('id').split('-')[1];
@@ -275,30 +300,42 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
                     $("#graphColor-"+id).removeClass('hidden');
                     $("#graphScale-"+id).addClass('hidden');
                     $("#graphClass-"+id).addClass('hidden');
+                    $("#graphPart-"+id).addClass('hidden');
                 } else if (type == 'multibar') {
                     $("#graphID-"+id).addClass('hidden');
                     $("#graphShape-"+id).addClass('hidden');
                     $("#graphColor-"+id).removeClass('hidden');
                     $("#graphScale-"+id).addClass('hidden');
                     $("#graphClass-"+id).addClass('hidden');
+                    $("#graphPart-"+id).addClass('hidden');
                 } else if (type == 'pie') {
                     $("#graphID-"+id).removeClass('hidden');
                     $("#graphShape-"+id).addClass('hidden');
                     $("#graphColor-"+id).removeClass('hidden');
                     $("#graphScale-"+id).addClass('hidden');
                     $("#graphClass-"+id).addClass('hidden');
+                    $("#graphPart-"+id).addClass('hidden');
                 } else if (type == 'heatmap') {
                     $("#graphID-"+id).removeClass('hidden');
                     $("#graphShape-"+id).addClass('hidden');
                     $("#graphColor-"+id).addClass('hidden');
                     $("#graphScale-"+id).removeClass('hidden');
                     $("#graphClass-"+id).removeClass('hidden');
+                    $("#graphPart-"+id).addClass('hidden');
+                } else if (type == 'boxplot') {
+                    $("#graphID-"+id).addClass('hidden');
+                    $("#graphShape-"+id).addClass('hidden');
+                    $("#graphScale-"+id).addClass('hidden');
+                    $("#graphClass-"+id).addClass('hidden');
+                    $("#graphColor-"+id).removeClass('hidden');
+                    $("#graphPart-"+id).removeClass('hidden');
                 } else {
                     $("#graphID-"+id).addClass('hidden');
                     $("#graphShape-"+id).addClass('hidden');
                     $("#graphColor-"+id).addClass('hidden');
                     $("#graphScale-"+id).addClass('hidden');
                     $("#graphClass-"+id).addClass('hidden');
+                    $("#graphPart-"+id).addClass('hidden');
                 }
             }
 
@@ -327,7 +364,17 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
                         }
                     }
                 }
-            }
+                if (type == 'boxplot') {
+                    $("#graphPart-"+id).removeClass('hidden');
+                    var part = $("#graphPart-"+id).val();
+                    if ((part == 'q1')||(part == 'q3')) {
+                        $("#graphColor-"+id).removeClass('hidden');
+                    } else {
+                        $("#graphColor-"+id).addClass('hidden');
+                    }
+                }
+            };
+
             $("#select1").val("<?php echo $delimiter; ?>");
             $("#select2").val("<?php echo $enclosure == '"' ? '\"' : $enclosure; ?>");
             $("#select3").val("<?php echo $escape == "\\" ? "\\\\" : $escape; ?>");
@@ -336,6 +383,7 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
                 $(".graphType").each(checkGraphIDs);
             });
             $(".graphID").on('change', checkGraphIDs);
+            $(".graphPart").on('change', checkGraphIDs);
             $("#graphDetails-0").addClass("hidden");
             $("#nodeIdColChk-0").attr("checked", "checked");
             $('.graphColor').each(function() {
@@ -348,14 +396,14 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
 </head>
 <body class="container">
     <br />
-    <a href="submit.php"><img id="phyd3logo" src="img/logo-name.svg" /></a>
+    <a href="index.html"><img id="phyd3logo" src="img/logo-name.svg" /></a>
     <a href="http://www.vib.be"><img id="viblogo" src="img/vib_tagline_pos_rgb.png" /></a>
     <div class="row well annotation">
         <div class="row">
             <div class="col-sm-9 phyd3-documentation">
                 <h2>Parse annotation data</h2>
                 You can use this wizard to parse the additional numerical data you have provided.<br />
-                The data should be split in columns. You can modify the parser parameters if needed. <br /><br />                
+                The data should be split in columns. You can modify the parser parameters if needed. <br /><br />
             </div>
         </div>
         <div class="row">
@@ -418,7 +466,7 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
         <input type="hidden" name="escape" value="<?php echo $escape; ?>" />
         <input type="hidden" name="headers" value="<?php echo $headers; ?>" />
         <input type="hidden" name="id" value="<?php echo $id; ?>" />
-        <div class="row columns">        
+        <div class="row columns">
             <div class="col-md-12 phyd3-documentation">
                 Please review the contents of the columns.
                 The column containing the clade names should be marked as such.<br />
@@ -431,10 +479,10 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
                 <td>
                 <b> <?php echo isset($header[$i]) ? $header[$i] : ''; ?></b><br />
                 <input type="hidden" name="graphHeader-<?php echo $i;?>" value="<?php echo isset($header[$i]) ? $header[$i] : 'Series '.($i+1); ?>" />
-                <textarea class="col" readonly><?php 
-                    for ($j=0; $j<$rows; $j++) { 
+                <textarea class="col" readonly><?php
+                    for ($j=0; $j<$rows; $j++) {
                         echo $csv[$j][$i]."\n";
-                    } 
+                    }
                 ?></textarea>
                 </td>
             <?php } ?>
@@ -456,6 +504,7 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
                             <option>binary</option>
                             <option>pie</option>
                             <option>heatmap</option>
+                            <option>boxplot</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-3 text-right">
@@ -473,6 +522,13 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
                         </select>
                     </div>
                     <div class="form-group col-sm-9">
+                        <select id="graphPart-<?php echo $i;?>" class="form-control graphPart" name="graphPart-<?php echo $i;?>" title="select a graph value">
+                            <option>min</option>
+                            <option>q1</option>
+                            <option>median</option>
+                            <option>q3</option>
+                            <option>max</option>
+                        </select>
                         <select id="graphShape-<?php echo $i;?>" class="form-control graphShape" name="graphShape-<?php echo $i;?>" title="select a binary shape">
                             <option>circle</option>
                             <option>cross</option>
