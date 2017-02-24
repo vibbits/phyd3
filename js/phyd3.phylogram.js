@@ -1600,9 +1600,8 @@ window.requestAnimFrame = (function(){
                                             .innerRadius(0)
                                             .outerRadius(h);
                                         return a(d);
-                                        }
                                     }
-                                )
+                                })
                                 .attr("transform", function(d) {
                                     var x = d.data.leaf ? h + graphPadding : 0;
                                     return " translate(" + parseInt(x) + ",0)";
