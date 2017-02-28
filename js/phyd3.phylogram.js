@@ -843,11 +843,9 @@ window.requestAnimFrame = (function(){
 
         function renderPopup(n) {
             var evt = d3.event;
-            if (evt.defaultPrevented) return;
             var x = evt.layerX;
                 y = evt.layerY;
             var popupId = "popup"+parseInt(Date.now() * Math.random() * 1000);
-            console.log(evt);
             var popup = d3.select(selector)
                 .append("div")
                 .attr("class", "popup")
@@ -884,7 +882,7 @@ window.requestAnimFrame = (function(){
                 row.append("td").text(n.name);
             }
             if (n.taxonomies) {
-                for (var tid in n.taxonomies) {
+                for (var tid = 0; tid < n.taxonomies.length; tid++) {
                     var t = n.taxonomies[tid];
                     var row = table.append("tr");
                     row.append("td").text("Taxononomy");
@@ -904,7 +902,7 @@ window.requestAnimFrame = (function(){
                 }
             }
             if (n.confidences) {
-                for (var cid in n.confidences) {
+                for (var cid = 0; cid < n.confidences.length; cid++) {
                     var row = table.append("tr");
                     row.append("td").text("Confidence");
                     row.append("td").html(n.confidences[cid].value);
@@ -919,7 +917,7 @@ window.requestAnimFrame = (function(){
             row = table.append("tr");
             row.append("td").text("Distance from root");
             row.append("td").text(n.rootDist);
-            for (var pid in n.properties) {
+            for (var pid = 0; pid < n.properties.length; pid++) {
                 var pr = n.properties[pid];
                 name = pr.ref;
                 p = pr.value;
@@ -938,7 +936,7 @@ window.requestAnimFrame = (function(){
                 row.append("td").html(p);
             }
             if (n.sequences) {
-                for (var sid in n.sequences) {
+                for (var sid = 0; sid < n.sequences.length; sid++) {
                     if (n.sequences[sid].domainArchitecture && n.sequences[sid].domainArchitecture.domains) {
                         var expanded = evt.target.parentNode.classList.contains("domain") ? true : false;
                         var table = addPanel(accordion, "Domains", expanded)
@@ -989,7 +987,7 @@ window.requestAnimFrame = (function(){
                 }
             }
             if (onodes.graphs) {
-                for ( var g = 0; g < onodes.graphs.length; g++) {
+                for (var g = 0; g < onodes.graphs.length; g++) {
                     var graph = onodes.graphs[g];
                     if (graph.data && graph.data[n.id] && graph.data[n.id].length) {
                         var expanded = evt.target.parentNode.classList.contains(graph.type) ? true : false;
@@ -1186,7 +1184,6 @@ window.requestAnimFrame = (function(){
 
         function toggleLabels() {
             if (options.showLabels && onodes.labels) {
-                console.log(onodes.labels);
                 for ( var l = 0; l < onodes.labels.length; l++) {
                     var label = onodes.labels[l];
                     if (!label.id) label.id = parseInt(Date.now() * Math.random() * 1000);
@@ -1470,7 +1467,6 @@ window.requestAnimFrame = (function(){
                             boxplotScaling[graph.id] = null;
                             var boxMax = 0;
                             var boxMin = Number.MAX_SAFE_INTEGER;
-                            console.log(boxMin);
                             for (var i = 0; i < 5; i++) {
                                 var max = d3.max(d3.values(graph.data), function(d) {
                                     if (d) return d[i];
@@ -1482,7 +1478,6 @@ window.requestAnimFrame = (function(){
                                 if (min < boxMin) boxMin = min;
                             }
                             boxplotScaling[graph.id] = d3.scale.linear().domain([boxMin, boxMax]);
-                            console.log(graph.data);
                             for (cid in graph.data) {
                                 if (!graph.data[cid]) continue;
                                 var clade = vis.select(".cid_"+cid).append("svg:g").attr("class", "graph boxplot gid"+graph.id);
@@ -1887,6 +1882,7 @@ window.requestAnimFrame = (function(){
                     })
                     .style("cursor", "pointer")
                     .on("click",  (options.popupAction === undefined) ? renderPopup : options.popupAction)
+                    .style("z-index", 100)
                     .append("rect")
                     .attr("class", "pointer")
                     .attr("fill", "red")
@@ -2058,7 +2054,6 @@ window.requestAnimFrame = (function(){
             options.lastScale = scale;
             if (options.lastScale != 0) requestAnimFrame(redrawTree);
             else requestAnimFrame(applyZoomTransform);
-            mouseEvent.preventDefault();
         }
 
     }
