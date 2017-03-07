@@ -8,21 +8,21 @@
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 3
  * of the License, or any later version.
- * 
- * Redistribution and use in source and binary forms, 
+ *
+ * Redistribution and use in source and binary forms,
  * with or without modification, are permitted provided that the following conditions are met:
- *   o  Redistributions of source code must retain the above copyright notice, 
+ *   o  Redistributions of source code must retain the above copyright notice,
  *      this list of conditions and the following disclaimer.
- *   o  Redistributions in binary form must reproduce the above copyright notice, 
+ *   o  Redistributions in binary form must reproduce the above copyright notice,
  *      this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
- *   o  Neither the name of the VIB nor the names of its contributors may be used to 
+ *   o  Neither the name of the VIB nor the names of its contributors may be used to
  *      endorse or promote products derived from this software without specific prior written permission.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * Full license text can be found in LICENSE.TXT
  */
 (function() {
@@ -147,7 +147,7 @@
                 case 'duplications':
                 case 'speciations':
                 case 'losses':
-                    event[node.nodeName] = parseInt(node.textContent);                    
+                    event[node.nodeName] = parseInt(node.textContent);
                     break;
                 case 'confidence':
                     event.confidence = phyd3.phyloxml.parseConfidence(node);
@@ -157,7 +157,7 @@
                     // skipping empty text nodes
                     break;
                 default:
-                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");                    
+                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");
             }
         }
         return event;
@@ -264,7 +264,7 @@
                 case 'mol_seq':
                     sequence['molSeq'] = phyd3.phyloxml.parseMolSeq(node);
                     break;
-                case 'annotation': 
+                case 'annotation':
                     sequence['annotations'].push(phyd3.phyloxml.parseAnnotation(node));
                     break;
                 case 'uri':
@@ -423,7 +423,7 @@
             legend: {},
             data: {},
             type: g.getAttribute('type')
-        };        
+        };
         for (var j = 0; j < g.childNodes.length; j++) {
             var node = g.childNodes[j];
             switch (node.nodeName) {
@@ -453,7 +453,7 @@
             name: '',
             data: {},
             type: g.getAttribute('type')
-        };        
+        };
         for (var j = 0; j < g.childNodes.length; j++) {
             var node = g.childNodes[j];
             switch (node.nodeName) {
@@ -489,19 +489,19 @@
         phylotree.rerootable = root.getAttribute('rerootable');
         phylotree.branch_length_unit = root.getAttribute('branch_length_unit');
         phylotree.type = root.getAttribute('type');
-        if (root && root.childNodes) {            
+        if (root && root.childNodes) {
             for (var i = 0; i < root.childNodes.length; i++) {
                 var clade = root.childNodes[i];
                 switch (clade.nodeName) {
                     case 'clade':
                         phylotree.branchset.push(phyd3.phyloxml.parseClade(clade));
-                        break; 
+                        break;
                     case 'confidence':
                         phylotree.confidence.push(phyd3.phyloxml.parseConfidence(clade));
                         break;
                     case 'date':
                         phylotree.date = clade.textContent;
-                        break; 
+                        break;
                     case 'description':
                         phylotree.description = clade.textContent;
                         break;
@@ -510,7 +510,7 @@
                         break;
                     case 'name':
                         phylotree.name = clade.textContent;
-                        break; 
+                        break;
                     case 'property':
                         phylotree.properties.push(phyd3.phyloxml.parseProperty(clade));
                         break;
@@ -567,7 +567,7 @@
                 if (color.nodeName == 'color') {
                     var code = color.getElementsByTagName("code")[0].textContent;
                     var value = color.getElementsByTagName("value")[0].textContent;
-                    domains[code] = { 
+                    domains[code] = {
                         color: value
                     };
                 }

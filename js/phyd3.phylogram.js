@@ -226,7 +226,7 @@ window.requestAnimFrame = (function(){
 
 
         // width, height
-        var selectorWidth = $(selector).width(),
+        var selectorWidth = jQuery(selector).width(),
             treeWidth = options.treeWidth == 'auto' ? selectorWidth - initialWidthMargin() : options.treeWidth,
             treeHeight = options.height - initialHeightMargin(),
             treeWidth = parseInt(treeWidth),
@@ -416,7 +416,7 @@ window.requestAnimFrame = (function(){
 
         d3.select("#nodesType").on("change", function(){
             // show node names in leaves, inner nodes or all
-            options.showNodesType = $(this).val();
+            options.showNodesType = jQuery(this).val();
             redrawTree();
             changeLeafText();
         })
@@ -780,13 +780,14 @@ window.requestAnimFrame = (function(){
                     .text(function(d) {
                         var text = "";
                         if (d.confidences) {
-                            for (var cid in d.confidences) {
+                            for (var cid = 0; cid < d.confidences.length; cid++) {
                                 text += parseFloat(d.confidences[cid].value) + " ";
                             }
                         }
                         return text;
                     });
                 applyLeafTransform();
+                changeLeafVisibility();
             } else {
                 vis.selectAll("text.supportValue").remove();
             }
@@ -794,7 +795,7 @@ window.requestAnimFrame = (function(){
 
         function toggleLengthValues() {
             if (options.showLengthValues) {
-                 vis.selectAll('g.node')
+                vis.selectAll('g.node')
                     .append("svg:text")
                     .attr("class", "branchLength")
                     .attr("dx", -2)
@@ -803,7 +804,8 @@ window.requestAnimFrame = (function(){
                     .text(function(d) {
                         return d.branchLength ? parseFloat(d.branchLength).toFixed(5) : "";
                     });
-                    applyLeafTransform();
+                applyLeafTransform();
+                changeLeafVisibility();
             } else {
                 vis.selectAll('text.branchLength').remove();
             }
@@ -967,7 +969,7 @@ window.requestAnimFrame = (function(){
                             row.append("td").text(d.to);
                             row.append("td").text(d.confidence);
                         }
-                        $('#dt'+popupId).dataTable({
+                        jQuery('#dt'+popupId).dataTable({
                             "searching": false,
                             "paging": false,
                             "language": {
@@ -1023,12 +1025,14 @@ window.requestAnimFrame = (function(){
             }
         }
 
-        function getNodeText(d) {
-            if (d.children && options.showNodesType == 'only leaf') return "";
-            if (!d.children && options.showNodesType == 'only inner') return "";
+        function getNodeText(d, skipChecks) {
+            if (!skipChecks) {
+                if (d.children && options.showNodesType == 'only leaf') return "";
+                if (!d.children && options.showNodesType == 'only inner') return "";
+            }
             var text = "";
             if (options.showTaxonomy && d.taxonomies) {
-                for (var tid in d.taxonomies) {
+                for (var tid = 0; tid < d.taxonomies.length; tid++) {
                     // we have id with provider name
                     var t = d.taxonomies[tid];
                     if (options.showFullTaxonomy) {
@@ -1050,7 +1054,7 @@ window.requestAnimFrame = (function(){
             }
             text += (options.showNodeNames && d.name ? d.name : "") + " ";
             if (options.showSequences && d.sequences) {
-                for (var sid in d.sequences) {
+                for (var sid = 0; sid < d.sequences.length; sid++) {
                     var s = d.sequences[sid];
                     text += s.symbol ? s.symbol : '';
                     text += ' ';
@@ -1061,7 +1065,7 @@ window.requestAnimFrame = (function(){
                     text += s.geneName ? s.geneName : '';
                     text += ' ';
                     if (s.annotations) {
-                        for (var aid in s.annotations) {
+                        for (var aid = 0; aid < s.annotations.length; aid++) {
                             text += s.annotations[aid].desc ? s.annotations[aid].desc : '';
                             text += ' ';
                         }
@@ -1091,6 +1095,16 @@ window.requestAnimFrame = (function(){
         }
 
         function changeLeafVisibility() {
+            // show or hide branch lengths
+            vis.selectAll("text.branchLength")
+                .attr("visibility", function(d) {
+                    return d.show ? "visible" : "hidden";
+                });
+            // show or hide support values
+            vis.selectAll("text.supportValues")
+                .attr("visibility", function(d) {
+                    return d.show ? "visible" : "hidden";
+                });
             // show or hide leaf node names
             leaves.selectAll('text.name')
                 .attr("visibility", function(d) {
@@ -1118,7 +1132,7 @@ window.requestAnimFrame = (function(){
                .attr("fill", function(d) {
                     var color = null;
                     if (options.showTaxonomyColors && onodes.taxcolors && d.taxonomies) {
-                        for (var tid in d.taxonomies) {
+                        for (var tid = 0; tid < d.taxonomies.length; tid++) {
                             var t = d.taxonomies[tid];
                             if (onodes.taxcolors[t.code] && onodes.taxcolors[t.code].color) {
                                 color = onodes.taxcolors[t.code].color.replace(/0x/,"#");
@@ -1184,7 +1198,7 @@ window.requestAnimFrame = (function(){
 
         function toggleLabels() {
             if (options.showLabels && onodes.labels) {
-                for ( var l = 0; l < onodes.labels.length; l++) {
+                for (var l = 0; l < onodes.labels.length; l++) {
                     var label = onodes.labels[l];
                     if (!label.id) label.id = parseInt(Date.now() * Math.random() * 1000);
                     if (label.data.tag) {
@@ -1195,7 +1209,7 @@ window.requestAnimFrame = (function(){
                                 ref = ref ? ref : "value";
                                 var value = (typeof tag == 'object') ? tag[ref] : tag;
                                 if (label.data.tag == 'property') {
-                                    for (pid in d.properties) {
+                                    for (pid = 0; pid < d.properties.length; pid++) {
                                         var p = d.properties[pid];
                                         if (p.ref == ref) {
                                             value = p.value;
@@ -1220,7 +1234,6 @@ window.requestAnimFrame = (function(){
                                     .attr("stroke", getForegroundColor())
                                     .attr("fill", getForegroundColor())
                                     .attr('font-size', (options.nodeHeight*1.5)+'px')
-                                    .attr("visibility", "visible")
                                     .text(label.data[cid])
                                     .append("title")
                                     .text(label.name + ": "+label.data[cid]);
@@ -1279,7 +1292,7 @@ window.requestAnimFrame = (function(){
                         });
                     labelPadding += maxWidth + h*2;
                 }
-                var labels = leaves.selectAll('.nodelabel')
+                var labels = leaves.selectAll('.nodelabel');
                 labels.selectAll("text")
                     .attr("dy", options.nodeHeight / 2)
                     .attr('font-size', (options.nodeHeight*1.5)+'px');
@@ -1290,8 +1303,10 @@ window.requestAnimFrame = (function(){
         }
 
         function changeLabelVisibility() {
-            leaves.selectAll('.nodelabel')
+            vis.selectAll('.nodelabel')
                 .attr("visibility", function(d) {
+                    if (d.branchset.length && options.showNodesType=="only leaf") return "hidden";
+                    if (!d.branchset.length && options.showNodesType=="only inner") return "hidden";
                     return d.show ? 'visible' : 'hidden';
                 });
         }
@@ -1324,7 +1339,7 @@ window.requestAnimFrame = (function(){
                                 ref = ref ? ref : "value";
                                 var value = (typeof tag == 'object') ? tag[ref] : tag;
                                 if (graph.data.tag == 'property') {
-                                    for (pid in d.properties) {
+                                    for (var pid = 0; pid < d.properties.length; pid++) {
                                         var p = d.properties[pid];
                                         if (p.ref == ref) {
                                             value = p.value;
@@ -1601,7 +1616,7 @@ window.requestAnimFrame = (function(){
                                     var x = d.data.leaf ? h + graphPadding : 0;
                                     return " translate(" + parseInt(x) + ",0)";
                                 });
-                            if (options.showGraphLegend) {
+                            if (options.showGraphs && options.showGraphLegend) {
                                 vis.append("text")
                                    .attr("class", "legend")
                                    .text((graph.legend.show != 0) ? graph.name : '')
@@ -1622,7 +1637,7 @@ window.requestAnimFrame = (function(){
                                     var x = d.leaf ? (graphPadding + 10 + (d.i) * (h*2 + 5)) : 0;
                                     return " translate(" + x + " ,0)";
                                 });
-                            if (options.showGraphLegend) {
+                            if (options.showGraphs && options.showGraphLegend) {
                                 for (var i=0; i<graph.legend.fields.length; i++) {
                                     vis.append("text")
                                        .attr("class", "legend")
@@ -1645,7 +1660,7 @@ window.requestAnimFrame = (function(){
                                     var x = graphPadding + d.i*(options.graphWidth + 5);
                                     return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
                                 });
-                            if (options.showGraphLegend) {
+                            if (options.showGraphs && options.showGraphLegend) {
                                 for (var i=0; i<graph.legend.fields.length; i++) {
                                     vis.append("text")
                                        .attr("class", "legend")
@@ -1702,7 +1717,7 @@ window.requestAnimFrame = (function(){
                                     return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
                                 });
                                 /*
-                            if (options.showGraphLegend) {
+                            if (options.showGraphs && options.showGraphLegend) {
                                 for (var i=0; i<graph.legend.fields.length; i++) {
                                     vis.append("text")
                                        .attr("class", "legend")
@@ -1720,7 +1735,7 @@ window.requestAnimFrame = (function(){
                                     var x = graphPadding + d.i*(h * 2);
                                     return " translate(" + x + ",-" + (h) +")";
                                 });
-                            if (options.showGraphLegend) {
+                            if (options.showGraphs && options.showGraphLegend) {
                                 for (var i=0; i<graph.legend.fields.length; i++) {
                                     vis.append("text")
                                        .attr("class", "legend")
@@ -1859,10 +1874,7 @@ window.requestAnimFrame = (function(){
                 return n.children;
             });
             for (var i = 0; i<innernodes.length; i++)  {
-                if (getNodeText(innernodes[i]).trim().length > 0)
-                    innernodes[i].show = options.dynamicHide ? checkLabelPositioning(innernodes[i], true) : true;
-                else
-                    innernodes[i].show = false;
+                innernodes[i].show = options.dynamicHide ? checkLabelPositioning(innernodes[i], true) : true;
             }
             if (!redraw)  {
                 // layout the nodes
@@ -1908,7 +1920,7 @@ window.requestAnimFrame = (function(){
         function checkLabelPositioning(d, checkLines) {
             //c++;
             var show = true;
-            var dxtl = d.y+1, dxbr = d.y + getNodeText(d).length*5.5,
+            var dxtl = d.y+1, dxbr = d.y + getNodeText(d, true).length*5.5,
                 dytl = d.x - options.nodeHeight, dybr = d.x + options.nodeHeight;
 
             //if (d.children) return false;
@@ -1933,7 +1945,7 @@ window.requestAnimFrame = (function(){
             // simplified to last drawn label check
             // for (var i = 0; i < phyd3.phylogram.labelAreas.length; i++) {
                 var a = lastLabel; // phyd3.phylogram.labelAreas[i];
-                var axtl = a.y+1, axbr = a.y + getNodeText(a).length*5.5,
+                var axtl = a.y+1, axbr = a.y + getNodeText(a, true).length*5.5,
                     aytl = a.x - options.nodeHeight, aybr = a.x + options.nodeHeight;
                 if (options.lineupNodes && !a.children) {
                     axtl += phyd3.phylogram.dx - a.y;
@@ -1990,7 +2002,7 @@ window.requestAnimFrame = (function(){
                 lastLabel = d;
             } else {
                 // debug:
-                //vis.selectAll("path.positioning.c"+c).remove();
+                // vis.selectAll("path.positioning.c"+c).remove();
             }
             return show;
         }
