@@ -96,6 +96,7 @@ window.requestAnimFrame = (function(){
         }
 
         visitPreOrder(nodes[0], function(node) {
+            if (node.branchLength < 0) node.branchLength = -1 * node.branchLength;
             node.rootDist = (node.parent ? node.parent.rootDist : 0) + (node.branchLength || 0)
         });
 
@@ -344,17 +345,24 @@ window.requestAnimFrame = (function(){
         d3.select("#invertColors").on("click", function(){
             // change color theme
             options.invertColors = !options.invertColors;
-            d3.selectAll(".canvas").attr("fill", getBackgroundColor());
-            var fc = getForegroundColor();
-            vis.selectAll("path.link").attr("stroke", fc);
-            vis.selectAll("text.legend").attr("fill", fc);
-            leaves.selectAll("path.support").attr("stroke", fc);
-            leaves.selectAll("path.domain").attr('stroke', fc);
-            leaves.selectAll("text.nodelabel")
-                .attr("stroke", fc)
-                .attr("fill", fc);
-            changeLeafColors();
-            changeDomainColors();
+            refreshColors();
+        })
+
+        jQuery("#foregroundColorButton").colorpicker().on("changeColor", function(){
+            options.foregroundColor = jQuery("#foregroundColor").val();
+            refreshColors();
+        })
+
+        jQuery("#backgroundColorButton").colorpicker().on("changeColor", function(){
+            options.backgroundColor = jQuery("#backgroundColor").val();
+            refreshColors();
+        })
+
+        d3.select("#nodesType").on("change", function(){
+            // show node names in leaves, inner nodes or all
+            options.showNodesType = jQuery(this).val();
+            redrawTree();
+            changeLeafText();
         })
 
         d3.select("#phylogram").on("click", function(){
@@ -602,6 +610,7 @@ window.requestAnimFrame = (function(){
             // download PNG file
             var svg = getSVGData();
             var canvas = document.createElement("canvas");
+            var box = d3.select("g#main").node().getBBox();
             canvg(canvas, svg);
             canvas.toBlob(function(blob) {
                 saveAs(blob, "phylogram.png");
@@ -616,6 +625,24 @@ window.requestAnimFrame = (function(){
 
         function getBackgroundColor() {
             return options.invertColors ? options.foregroundColor : options.backgroundColor;
+        }
+
+        function refreshColors() {
+            d3.selectAll(".canvas").attr("fill", getBackgroundColor());
+            var fc = getForegroundColor();
+            vis.selectAll("path.link")
+                .attr("stroke", fc);
+            vis.selectAll("text.legend")
+                .attr("fill", fc);
+            vis.selectAll("text.nodelabel")
+                .attr("stroke", fc)
+                .attr("fill", fc);
+            leaves.selectAll("path.support")
+                .attr("stroke", fc);
+            leaves.selectAll("path.domain")
+                .attr('stroke', fc);
+            changeLeafColors();
+            changeDomainColors();
         }
 
         // action handlers for SVG
@@ -745,7 +772,7 @@ window.requestAnimFrame = (function(){
             domainScale = phyd3.phylogram.scaledomainWidths(nodes, options.domainWidth);
             leaves.selectAll("path.domain")
                 .attr("d", function(d, i, j) {
-                    var dx = options.lineupNodes ? phyd3.phylogram.dx - nds[j].y : 0;
+                    var dx = phyd3.phylogram.dx - nds[j].y;
                     var sequenceLength = (d.sequences && d.sequences[0] && d.sequences[0].domainArchitecture) ? d.sequences[0].domainArchitecture.sequenceLength : 0;
                     return "M"+ parseInt(margin + dx) + ",0L" + parseInt(margin  + dx + domainScale(sequenceLength)) + ",0";
                 });
@@ -755,13 +782,13 @@ window.requestAnimFrame = (function(){
                     return parseInt(domainScale(d.to - d.from));
                 })
                 .attr("transform", function(n, i, j) {
-                    var dx = options.lineupNodes ? phyd3.phylogram.dx - nds[n.i].y : 0;
+                    var dx = phyd3.phylogram.dx - nds[n.i].y;
                     return "translate(" + parseInt(margin + dx + domainScale(n.from)) + "," + parseInt(-1 * options.nodeHeight) + ")";
                 })
                 .attr("height", options.nodeHeight * 2 - 2);
             domains.selectAll("text.domain")
                 .attr("transform", function(n) {
-                    var dx = options.lineupNodes ? phyd3.phylogram.dx - nds[n.i].y : 0;
+                    var dx = phyd3.phylogram.dx - nds[n.i].y;
                     return "translate(" + parseInt(margin + dx + domainScale(n.from)) + "," + parseInt(-1 * options.nodeHeight) + ")";
                 });
             d3.select("#domainWidth").attr("value", options.domainWidth);
@@ -939,6 +966,45 @@ window.requestAnimFrame = (function(){
             }
             if (n.sequences) {
                 for (var sid = 0; sid < n.sequences.length; sid++) {
+                    var s = n.sequences[sid];
+                    var seqString = "";
+                    seqString += s.symbol ? s.symbol + " " : "";
+                    seqString += s.name ? s.name + " " : "";
+                    seqString += s.location ? s.location + " " : "";
+                    seqString += s.geneName ? s.geneName : "";
+                    if (seqString.length) {
+                        row = table.append("tr");
+                        row.append("td").text("Sequence");
+                        row.append("td").html(seqString);
+                    }
+                    if (s.accession) {
+                        var accString = "";
+                        accString += s.accession.value ? s.accession.value + " " : "";
+                        accString += s.accession.source ? "[" + s.accession.source + "] " : "";
+                        accString += s.accession.comment ? "(" + s.accession.comment + ")" : "";
+                        if (accString.length) {
+                            row = table.append("tr");
+                            row.append("td").text("Accession");
+                            row.append("td").html(accString);
+                        }
+                    }
+                    if (s.molSeq && s.molSeq.value) {
+                        row = table.append("tr");
+                        row.append("td").text("Molecular Sequence");
+                        row.append("td").html(s.molSeq.value);
+                    }
+                    if (s.uris) {
+                        var uriString = "";
+                        for (var uid = 0; uid < s.uris.length; uid++) {
+                            var uri = s.uris[uid];
+                            uriString = "<a href='"+uri.value+"'>"+(uri.desc ? uri.desc : uri.value)+"</a>"
+                        }
+                        if (uriString.length) {
+                            row = table.append("tr");
+                            row.append("td").text("See also");
+                            row.append("td").html(uriString);
+                        }
+                    }
                     if (n.sequences[sid].domainArchitecture && n.sequences[sid].domainArchitecture.domains) {
                         var expanded = evt.target.parentNode.classList.contains("domain") ? true : false;
                         var table = addPanel(accordion, "Domains", expanded)
@@ -1106,7 +1172,7 @@ window.requestAnimFrame = (function(){
                     return d.show ? "visible" : "hidden";
                 });
             // show or hide leaf node names
-            leaves.selectAll('text.name')
+            vis.selectAll('text.name')
                 .attr("visibility", function(d) {
                     return d.show ? 'visible' : 'hidden';
                 });
@@ -1174,20 +1240,20 @@ window.requestAnimFrame = (function(){
 
 
             // primary method : check the longest Bounding box
-            /*
+
             vis.selectAll("g.leaf.cid_"+longestNode).selectAll("text.name")
                 .each(function() {
                     // this call is forcing reflow and layout (~10ms)
                     var box = this.getBBox();
                     if (box.width > margin) margin = box.width;
                 });
-            */
+
             // alternative method : fixed width relative to node size
-            margin = 100*options.nodeHeight/6;
+            //margin = 100*options.nodeHeight/6;
             margin += 10;
             textPadding = margin;
             d3.select("#nodeHeight")
-                .attr("value", options.nodeHeight);
+                .attr("value", options.nodeHeight*2+"px");
             zoomLeafTransform();
             if (options.showLabels) applyLabelTransform();
             if (options.showGraphs) applyGraphTransform();
@@ -1255,6 +1321,9 @@ window.requestAnimFrame = (function(){
                             }
                             break;
                     }
+                    vis.append("text")
+                       .attr("class", "labellegend lid"+label.id)
+                       .text((label.showLegend != 0) ? label.name : '');
                 }
                 changeLabelVisibility();
                 applyLabelTransform();
@@ -1262,6 +1331,7 @@ window.requestAnimFrame = (function(){
                 applyDomainTransform();
             } else {
                 vis.selectAll(".nodelabel").remove();
+                vis.selectAll(".labellegend").remove();
                 labelPadding = 0;
                 applyGraphTransform();
                 applyDomainTransform();
@@ -1275,7 +1345,7 @@ window.requestAnimFrame = (function(){
                 for ( var l = 0; l < onodes.labels.length; l++) {
                     var label = onodes.labels[l];
                     var maxWidth = 0;
-                    leaves.selectAll(".nodelabel.lid"+label.id)
+                    vis.selectAll(".nodelabel.lid"+label.id)
                         .attr("transform", function(d) {
                             var dx = 0, dy = 0;
                             if (label.type == 'color') {
@@ -1288,8 +1358,16 @@ window.requestAnimFrame = (function(){
                                 labelWidth = h * 2;
                             }
                             if (labelWidth > maxWidth) maxWidth = labelWidth;
-                            return "translate(" + parseInt(dx + h + labelPadding + (options.lineupNodes ? (phyd3.phylogram.dx - d.y + textPadding) : textPadding)) + "," + dy + ")";
+                            if (!d.branchset.length) {
+                                dx += phyd3.phylogram.dx + textPadding;
+                            } else {
+                                dx += d.y;
+                                dx -= h;
+                            }
+                            return "translate(" + parseInt(dx + h + labelPadding - d.y) + "," + dy + ")";
                         });
+                    vis.selectAll("text.labellegend.lid"+label.id)
+                       .attr("transform", "translate("+ parseInt(phyd3.phylogram.dx + labelPadding + textPadding + h*2) +",-10) rotate(-90)");
                     labelPadding += maxWidth + h*2;
                 }
                 var labels = leaves.selectAll('.nodelabel');
@@ -1592,7 +1670,7 @@ window.requestAnimFrame = (function(){
             var padding = textPadding + labelPadding;
             leaves.selectAll("g.graph")
                 .attr("transform", function(d) {
-                    return "translate(" + (options.lineupNodes ? (phyd3.phylogram.dx - d.y + padding) : padding) + "," + 0 + ")";
+                    return "translate(" + (phyd3.phylogram.dx - d.y + padding) + "," + 0 + ")";
                 });
             var graphs = vis.selectAll("g.graph");
             d3.select("#graphWidth").attr("value", options.graphWidth);
@@ -1716,15 +1794,12 @@ window.requestAnimFrame = (function(){
                                     var x = graphPadding;
                                     return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
                                 });
-                                /*
                             if (options.showGraphs && options.showGraphLegend) {
-                                for (var i=0; i<graph.legend.fields.length; i++) {
-                                    vis.append("text")
-                                       .attr("class", "legend")
-                                       .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
-                                       .attr("transform", "translate("+ (phyd3.phylogram.dx + padding + graphPadding + i*(options.graphWidth + 5) + options.graphWidth/2) +",-10) rotate(-90)");
-                                }
-                            }*/
+                                vis.append("text")
+                                   .attr("class", "legend")
+                                   .text((graph.legend.show != 0) ? graph.name : '')
+                                   .attr("transform", "translate("+ (phyd3.phylogram.dx + padding + graphPadding + h*2) +", -10) rotate(-90)");
+                            }
                             graphPadding += (options.graphWidth + 5);
                             break;
                         case "heatmap":

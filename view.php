@@ -6,12 +6,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="libs/css/bootstrap-material-design.min.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="libs/css/vib.css" />
     <link rel="stylesheet" href="css/phyd3.css" />
+    <link rel="stylesheet" href="libs/css/bootstrap-colorpicker.min.css" />
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="libs/js/material.min.js"></script>
+    <script src="libs/js/bootstrap-colorpicker.min.js"></script>
 
     <script src="dist/js/phyd3.min.js" type="text/javascript"></script>
     <script>
@@ -39,14 +42,18 @@
             showPhylogram: false,
             showTaxonomy: true,
             showFullTaxonomy: true,
-            showSequences: true,
+            showSequences: false,
             showTaxonomyColors: true,
             backgroundColor: "#f5f5f5",
-            foregroundColor: "#000",
+            foregroundColor: "#000000",
         };
 
         function load() {
             jQuery("#familyID").val("HOM03D000802");
+            jQuery('#foregroundColor').val(opts.foregroundColor);
+            jQuery('#backgroundColor').val(opts.backgroundColor);
+            jQuery('#foregroundColorButton').colorpicker({color: opts.foregroundColor});
+            jQuery('#backgroundColorButton').colorpicker({color: opts.backgroundColor});
             loadTree();
         }
         function loadTree() {
@@ -95,11 +102,27 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="invertColors" type="checkbox"> invert colors
-                    </label>
-                </div>
+                    <div class="input-group checkbox">
+                        <label class="top-padding">
+                            <input id="invertColors" type="checkbox"> invert colors
+                        </label>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-fab btn-fab-mini" title="Set foreground color">
+                            <div class="input-group colorpicker-component" id="foregroundColorButton">
+                                <input type="text" class="form-control hidden" name="foregroundColor" id="foregroundColor" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            </button>
+                        </span>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-fab btn-fab-mini" title="Set background color" >
+                            <div class="input-group colorpicker-component" id="backgroundColorButton">
+                                <input type="text" class="form-control hidden" name="backgroundColor" id="backgroundColor" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                            </button>
+                        </span>
+                    </div>
             </div>
             <div class="form-group">
                 <div class="checkbox">
@@ -146,7 +169,7 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                      <input id="sequences" type="checkbox" checked="checked"> show sequences
+                      <input id="sequences" type="checkbox"> show sequences
                     </label>
                 </div>
             </div>
@@ -185,7 +208,7 @@
                     <button id="nodeHeightLower" class="btn btn-primary" title="make them smaller"><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span></button>
                 </div>
                 <div class="col-xs-3 text-center middle-padding">
-                    <input type="text" id="nodeHeight" disabled="disabled" class="form-control" />
+                    <input type="text" id="nodeHeight" disabled="disabled" class="form-control no-padding" />
                 </div>
                 <div class="col-xs-3 text-left">
                     <button id="nodeHeightHigher" class="btn btn-primary" title="make them bigger"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
@@ -272,7 +295,7 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                      <input id="graphLegend" type="checkbox" checked="checked"> show legend
+                      <input id="graphLegend" type="checkbox" checked="checked"> show graphs legend
                     </label>
                 </div>
             </div>

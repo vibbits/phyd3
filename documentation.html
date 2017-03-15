@@ -129,7 +129,7 @@
         <li><h4>Node labels</h4>
             It is possible to display on the tree additional node labels. Those labels can be created from existing node properties or other tags. <br />
             There are two kinds of labels: text labels and color labels.<br />
-            To specify which properties to show use &lt;labels&gt; section in extended phyloXML. Type can be either text or color. Data tag and ref must match the intended clade property to be displayed. Use HEX values for colors (0xRRGGBB).<br />
+            To specify which properties to show use &lt;labels&gt; section in extended phyloXML. Type can be either text or color. Data tag and ref must match the intended clade property to be displayed. Use HEX values for colors (0xRRGGBB). Only text labels can be displayed for inner nodes of the tree.<br />
             See the code below and also <a href="view.php?id=labels.xml&f=xml">working example</a>.
         <pre>
 &lt;phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org"
@@ -146,11 +146,11 @@
     &lt;/phylogeny&gt;
     &lt;labels&gt;
       &lt;label type="text"&gt;
-         &lt;name&gt;Duplications&lt;/name&gt;
+         &lt;name show="0"&gt;Duplications&lt;/name&gt;
          &lt;data tag="<b>events</b>" ref="<b>duplications</b>"&gt;&lt;/data&gt;
       &lt;/label&gt;
       &lt;label type="color"&gt;
-         &lt;name&gt;Resistance&lt;/name&gt;
+         &lt;name show="1"&gt;Resistance&lt;/name&gt;
          &lt;data tag="<b>property</b>" ref="<b>Resistance score</b>"&gt;&lt;/data&gt;
       &lt;/label&gt;
       ...
@@ -241,7 +241,7 @@
         &lt;/graph&gt;
         &lt;graph type="boxplot"&gt;
             &lt;name&gt;Boxplot test graph&lt;/name&gt;
-            &lt;legend&gt;
+            &lt;legend show="1"&gt;
                 &lt;field&gt;
                     &lt;color&gt;0x8986BF&lt;/color&gt;
                 &lt;/field&gt;
@@ -249,6 +249,7 @@
                     &lt;color&gt;0x9D4FB0&lt;/color&gt;
                 &lt;/field&gt;
             &lt;/legend&gt;
+            &lt;data&gt;
                 &lt;values for="10"&gt;
                     &lt;value&gt;12&lt;/value&gt;
                     &lt;value&gt;21&lt;/value&gt;
@@ -275,7 +276,7 @@
         &lt;/graph&gt;
         &lt;graph type="binary"&gt;
             &lt;name&gt;Binary test graph1&lt;/name&gt;
-            &lt;legend show="0"&gt;
+            &lt;legend show="1"&gt;
                 &lt;field&gt;
                     &lt;name&gt;binary1&lt;/name&gt;
                     &lt;color&gt;0xf03b20&lt;/color&gt;

@@ -376,17 +376,17 @@ div.FixedHeader_Cloned table {
  * Stylesheet for the phyD3 viewer
  *
  * Copyright (c) Lukasz Kreft, VIB 2016.
- *  
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *  
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *  
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -395,7 +395,7 @@ div.FixedHeader_Cloned table {
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
 */
-.phyd3-controls { 
+.phyd3-controls {
     font-size: 12px;
 }
 
@@ -438,11 +438,11 @@ div.FixedHeader_Cloned table {
 
 .phyd3-controls .popup {
     padding: 10px;
-    border-radius: 5px;    
+    border-radius: 5px;
     border: 2px solid grey;
     text-align: left;
     width: 400px;
-    z-index: 1000;            
+    z-index: 1000;
 }
 
 .phyd3-controls .panel-title {
@@ -477,4 +477,8 @@ div.FixedHeader_Cloned table {
 
 .phyd3-controls .middle-padding {
     padding-top: 3px;
+}
+
+.phyd3-controls .top-padding {
+    padding-top: 5px;
 }

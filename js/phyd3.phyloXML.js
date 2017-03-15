@@ -126,7 +126,7 @@
         return tree;
     }
 
-    phyd3.phyloxml.parseCrossReference = function(crossReferences) {
+    phyd3.phyloxml.parseCrossReferences = function(crossReferences) {
         var tree = [];
         var accessions = crossReferences.getElementsByTagName("accession");
         for (var i = 0; i< accessions.length; i++) {
@@ -259,7 +259,7 @@
                     sequence['accession'] = phyd3.phyloxml.parseAccession(node);
                     break;
                 case 'cross_reference':
-                    sequence['crossReference'] = phyd3.phyloxml.parseCrossReference(node);
+                    sequence['crossReferences'] = phyd3.phyloxml.parseCrossReferences(node);
                     break;
                 case 'mol_seq':
                     sequence['molSeq'] = phyd3.phyloxml.parseMolSeq(node);
@@ -338,11 +338,7 @@
                     // skipping empty text nodes
                     break;
                 default:
-                    // binary_characters
-                    // distribution
-                    // date
-                    // reference
-                    console.log("Undefined tag: " + node.nodeName + " " + node.textContent + " - skipping...");
+                    tree[node.nodeName] = node.textContent;
                     break;
             }
         }
@@ -450,6 +446,7 @@
 
     phyd3.phyloxml.parseLabel = function(g) {
         var label = {
+            showLegend: false,
             name: '',
             data: {},
             type: g.getAttribute('type')
@@ -459,6 +456,7 @@
             switch (node.nodeName) {
                 case 'name' :
                     label.name = node.textContent;
+                    label.showLegend = node.getAttribute('show');
                     break;
                 case 'data':
                     label.data = phyd3.phyloxml.parseData(node);
