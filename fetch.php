@@ -1,4 +1,39 @@
 <?php
+session_start();
+
+// color handling functions
+
+function hue2rgb($p, $q, $t){
+    if($t < 0) $t += 1;
+    if($t > 1) $t -= 1;
+    if($t < 1/6) return $p + ($q - $p) * 6 * $t;
+    if($t < 1/2) return $q;
+    if($t < 2/3) return $p + ($q - $p) * (2/3 - $t) * 6;
+    return $p;
+}
+
+function hslToRgb($h, $s, $l){
+    if($s == 0) {
+        $r = $g = $b = $l; // achromatic
+    } else {
+        $q = ($l < 0.5) ? ($l * (1 + $s)) : ($l + $s - $l * $s);
+        $p = 2 * $l - $q;
+        $r = hue2rgb($p, $q, $h + 1/3);
+        $g = hue2rgb($p, $q, $h);
+        $b = hue2rgb($p, $q, $h - 1/3);
+    }
+    return '#'.dechex(round($r * 255)).dechex(round($g * 255)).dechex(round($b * 255));
+}
+
+function randomColor() {
+    $golden_ratio_conjugate = 0.618033988749895;
+    $h = mt_rand(0, 100000)/100000;
+    $h += $golden_ratio_conjugate;
+    $h = fmod($h, 1.0);
+    return hslToRgb($h, 0.5, 0.60);
+}
+
+// recognize the format of the tree
 
 function checkFormat($tree, &$format) {
     $tree = trim($tree);
@@ -12,6 +47,8 @@ function checkFormat($tree, &$format) {
     }
     return $accepted;
 }
+
+// newick parsing functions
 
 $NewickTokerNr = 1;
 $NewickTokens = array();
@@ -31,16 +68,17 @@ function replaceBackCallback($matches) {
 }
 
 function parseNewick($s) {
-    $ancestors = array();
+    // phyloXML header
     $tree = '
         <?xml version="1.0" encoding="UTF-8"?>
         <phyloxml xmlns="http://www.phyloxml.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.00/phyloxml.xsd">
         <phylogeny rooted="true">
     ';
-    // match first the '' or "" tokens and replace them by $i tokens
 
-
+    // escape node names enclosed in ' '
     $s = preg_replace_callback("/'.*':/U", 'replaceCallback', $s);
+
+    // split and parse tokens
     $tokens = preg_split("/\s*(;|\(|\)|,|:)\s*/", $s, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
     for ($i=0; $i<count($tokens); $i++) {
         $token = $tokens[$i];
@@ -68,189 +106,289 @@ function parseNewick($s) {
                 break;
         }
     }
+
+    // phyloXML footer
     $tree .=  '</phylogeny></phyloxml>';
+
+    // unescape node names
     $tree = preg_replace_callback("/#\d+#/", 'replaceBackCallback', $tree);
+
     return $tree;
 }
 
-function traverseClade($clade, &$id, &$names) {
+// add clade IDs if not supplied
+
+function checkCladeIDs($clade, &$id, &$cladeIDs) {
     if (isset($clade->name)) {
         if (!isset($clade->id)) {
             $clade->id = time().$id;
             $id++;
         }
         $name = (string)$clade->name;
-        $names[$name] = (int)$clade->id;
+        $cladeIDs[$name] = (int)$clade->id;
     }
     foreach ($clade->clade as $c) {
-        traverseClade($c, $id, $names);
+        checkCladeIDs($c, $id, $cladeIDs);
     }
     return $clade;
 }
+
+// fetch script start
+
 $rows = 0;
 $cols = 0;
-$type = isset($_GET['type']) ? $_GET['type'] : '';
 $filenames = "";
+
+// script callback type
+$type       = isset($_GET['type']) ? $_GET['type'] : '';
+
+// file submission info
 $filenames .= isset($_FILES['treeFile']['tmp_name']) ? $_FILES['treeFile']['tmp_name'] : time();
 $filenames .= isset($_FILES['annotationFile']['tmp_name']) ? $_FILES['annotationFile']['tmp_name'] : time();
-$id = isset($_POST['id']) ? $_POST['id'] : md5($filenames.time());
-$format = isset($_POST['format']) ? $_POST['format'] : '';
+$id         = isset($_POST['id']) ? $_POST['id'] : (isset($_GET['id']) ? $_GET['id'] : md5($filenames.time()));
+$format     = isset($_POST['format']) ? $_POST['format'] : '';
 
-$delimiter = isset($_POST['delimiter']) ? $_POST['delimiter'] : ' ';
-$enclosure = isset($_POST['enclosure']) ? $_POST['enclosure'] : '';
-$escape = isset($_POST['escape']) ? $_POST['escape'] : '';
-$headers = isset($_POST['headers']) ? ($_POST['headers'] == 'on' ? true : false) : false;
-if ($type == 'input')  {
+// file parsing info
+$delimiter  = isset($_POST['delimiter']) ? $_POST['delimiter'] : (isset($_SESSION[$id]['delimiter']) ? $_SESSION[$id]['delimiter'] : ' ');
+$enclosure  = isset($_POST['enclosure']) ? $_POST['enclosure'] : (isset($_SESSION[$id]['enclosure']) ? $_SESSION[$id]['enclosure'] : '');
+$escape     = isset($_POST['escape']) ? $_POST['escape'] : (isset($_SESSION[$id]['escape']) ? $_SESSION[$id]['escape'] : '');
+$headers    = isset($_POST['headers']) ?
+                ($_POST['headers'] == 'on' ? true : false) :
+                (isset($_POST['headersOff']) ?
+                    false :
+                    (isset($_SESSION[$id]['headers']) ? $_SESSION[$id]['headers'] : false));
+
+// persist params in session
+$_SESSION[$id]['delimiter'] = $delimiter;
+$_SESSION[$id]['enclosure'] = $enclosure;
+$_SESSION[$id]['escape']    = $escape;
+$_SESSION[$id]['headers']   = $headers;
+
+// for new submission
+if (empty($_GET['id'])) {
     if (strlen($_FILES['treeFile']['name'])) {
-        if (@move_uploaded_file($_FILES['treeFile']['tmp_name'], "submissions/$id.orig")) {
-            $tree = trim(file_get_contents("submissions/$id.orig"));
-            $accepted = checkFormat($tree, $format);
-        } else {
+        // upload the tree file
+        $moved = @move_uploaded_file($_FILES['treeFile']['tmp_name'], "submissions/$id.orig");
+        if ($moved === false) {
             header("HTTP/1.1 301 Moved Permanently");
             header("Location: submit.php?m=Error+uploading+files");
             exit();
         }
+        $tree = trim(file_get_contents("submissions/$id.orig"));
     }  else {
+        // or get the tree from inputbox
         $tree = trim($_POST['tree']);
         file_put_contents("submissions/$id.orig", $tree);
-        $accepted = checkFormat($tree, $format);
     }
+    // check the length
+    if (strlen($tree) == 0) {
+        header("HTTP/1.1 301 Moved Permanently");
+        header("Location: submit.php?m=Empty+submission");
+        exit();
+    }
+    // check the format
+    $accepted = checkFormat($tree, $format);
     if (!$accepted) {
         header("HTTP/1.1 301 Moved Permanently");
         header("Location: submit.php?m=Invalid+tree+format");
         exit();
-    } else {
-        if (strlen($_FILES['annotationFile']['name'])) {
-            if (@move_uploaded_file($_FILES['annotationFile']['tmp_name'], "submissions/$id.txt")) {
-                $annotation = trim(file_get_contents("submissions/$id.txt"));
-            } else {
-                header("HTTP/1.1 301 Moved Permanently");
-                header("Location: submit.php?m=Error+uploading+files");
-                exit();
-            }
-        }  else {
-            $annotation = trim($_POST['annotation']);
-            file_put_contents("submissions/$id.txt", $annotation);
-        }
     }
-}
-if (($type == 'parse')||($type == 'convert')) {
-    $tree = trim(file_get_contents("submissions/$id.orig"));
-    $annotation = @trim(file_get_contents("submissions/$id.txt"));
-}
-if (($type == 'input')||($type=='parse')||($type == 'convert')) {
-    if (strlen($annotation)) {
-        $csv = array();
-        foreach (explode("\n", $annotation) as $line) {
-            $d = $delimiter == 'TAB' ? "\t" : $delimiter;
-            $csv[] = str_getcsv($line, $delimiter, $enclosure, $escape);
+    if (strlen($_FILES['annotationFile']['name'])) {
+        // upload the annotation file
+        $moved = @move_uploaded_file($_FILES['annotationFile']['tmp_name'], "submissions/$id.txt");
+        if ($moved === false) {
+            header("HTTP/1.1 301 Moved Permanently");
+            header("Location: submit.php?m=Error+uploading+files");
+            exit();
         }
-        $header = array();
-        if ($headers) {
-            $header = array_shift($csv);
-        }
-        $cols = count($csv[0]);
-        $rows = count($csv);
-    } else {
-        if ($format == 'newick') $tree = trim(parseNewick($tree));
-        file_put_contents("submissions/$id.xml", $tree);
-        header("HTTP/1.1 301 Moved Permanently");
-        header("Location: view.php?id=$id.xml&f=xml");
-        exit();
+        $annotation = trim(file_get_contents("submissions/$id.txt"));
+    }  else {
+        // or get the annotation from inputbox
+        $annotation = trim($_POST['annotation']);
+        file_put_contents("submissions/$id.txt", $annotation);
     }
+    // redirect to parse annotation page
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: fetch.php?type=parse&id=$id");
+    exit();
 }
-if ($type == 'convert') {
-    checkFormat($tree, $format);
-    if (($_POST['format'] == 'newick') && ($format == 'newick')) {
+
+// get the previously submitted files
+$tree = trim(file_get_contents("submissions/$id.orig"));
+$annotation = @trim(file_get_contents("submissions/$id.txt"));
+
+// if no annotation supplied proceed with display
+if (strlen($annotation) == 0) {
+    // convert Newick to phyloXML if needed
+    if ($format == 'newick') {
         $tree = trim(parseNewick($tree));
-        //file_put_contents("submissions/$id.xml", $tree);
     }
+    file_put_contents("submissions/$id.xml", $tree);
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: view.php?id=$id.xml&f=xml");
+    exit();
+}
+
+// parse annotation data
+$csv = array();
+foreach (explode("\n", $annotation) as $line) {
+    $d = $delimiter == 'TAB' ? "\t" : $delimiter;
+    $csv[] = str_getcsv($line, $delimiter, $enclosure, $escape);
+}
+$header = array();
+if ($headers) {
+    $header = array_shift($csv);
+}
+$cols = count($csv[0]);
+$rows = count($csv);
+
+// add annotation data at convertion step
+if ($type == 'convert') {
+    // get the column nr containing node IDs
+    $colID = isset($_POST['nodeIdCol']) ? $_POST['nodeIdCol'] : $_SESSION[$id]['nodeIdCol'];
+    $_SESSION[$id]['nodeIdCol'] = $colID;
+
+    // convert Newick to phyloXML if needed
+    checkFormat($tree, $format);
+    if ($format == 'newick') {
+        $tree = trim(parseNewick($tree));
+    }
+
+    // load phyloXML
     $xml = simplexml_load_string($tree);
+
+    // add cladeIDs if not present
     $cid = 1;
-    $names = array();
+    $cladeIDs = array();
     foreach ($xml->phylogeny->clade as $c) {
-        traverseClade($c, $cid, $names);
+        checkCladeIDs($c, $cid, $cladeIDs);
     }
-    $graphs = $xml->addChild("graphs");
+
+    // add suitable graph for earch annotation column
     $graphIDs = array();
     $valueIDs = array();
+    $graphs = $xml->addChild("graphs");
     for ($i=0; $i < $cols; $i++) {
-        $gtype = $_POST['graphType-'.$i];
-        $gid = $_POST['graphID-'.$i];
+
+        // get graph details for each column
+        $gtype      = isset($_POST['graphType-'.$i])    ? $_POST['graphType-'.$i]   : $_SESSION[$id]['graphType'][$i];
+        $gid        = isset($_POST['graphID-'.$i])      ? $_POST['graphID-'.$i]     : $_SESSION[$id]['graphID'][$i];
+        $gpart      = isset($_POST['graphPart-'.$i])    ? $_POST['graphPart-'.$i]   : $_SESSION[$id]['graphPart'][$i];
+        $gshape     = isset($_POST['graphShape-'.$i])   ? $_POST['graphShape-'.$i]  : $_SESSION[$id]['graphShape'][$i];
+        $gcolor     = isset($_POST['graphColor-'.$i])   ? $_POST['graphColor-'.$i]  : $_SESSION[$id]['graphColor'][$i];
+        $gscale     = isset($_POST['graphScale-'.$i])   ? $_POST['graphScale-'.$i]  : $_SESSION[$id]['graphScale'][$i];
+        $gclass     = isset($_POST['graphClass-'.$i])   ? $_POST['graphClass-'.$i]  : $_SESSION[$id]['graphClass'][$i];
+        $gheader    = isset($_POST['graphHeader-'.$i])  ? $_POST['graphHeader-'.$i] : $_SESSION[$id]['graphHeader'][$i];
+
+        // persist graph details in session
+        $_SESSION[$id]['graphType'][$i]     = $gtype;
+        $_SESSION[$id]['graphID'][$i]       = $gid;
+        $_SESSION[$id]['graphPart'][$i]     = $gpart;
+        $_SESSION[$id]['graphShape'][$i]    = $gshape;
+        $_SESSION[$id]['graphColor'][$i]    = $gcolor;
+        $_SESSION[$id]['graphScale'][$i]    = $gscale;
+        $_SESSION[$id]['graphClass'][$i]    = $gclass;
+        $_SESSION[$id]['graphHeader'][$i]   = $gheader;
+
+        if ($i == $colID) continue;
+
+        // skip empty graphs
         if (empty($gtype)) continue;
-        if ((!empty($gid))&&(isset($graphIDs[$gtype.$gid]))) {
+
+        if ((!empty($gid)) && (isset($graphIDs[$gtype.$gid]))) {
+            // use existing graph definition
             $graph = $graphIDs[$gtype.$gid];
         } else {
+            // make new graph definition
+            if (empty($gid)) {
+                $gid = time().$i;
+            }
             $graph = $graphs->addChild("graph");
             $graph->addAttribute('type', $gtype);
             $graph->addChild("legend");
             $graph->addChild("data");
-            if (empty($gid)) {
-                $gid = time().$i;
-            }
-            $graphIDs[$gtype.$gid] = $graph;
             $graph->addAttribute('id', $gtype.$gid);
             if ($gtype == 'heatmap') {
                 $grad = $graph->legend->addChild('gradient');
-                $grad->addChild('name', $_POST['graphScale-'.$i]);
-                $grad->addChild('classes', $_POST['graphClass-'.$i]);
+                $grad->addChild('name', $gscale);
+                $grad->addChild('classes', $gclass);
             }
+            $graphIDs[$gtype.$gid] = $graph;
         }
+
+        // add graph legend entries
         $field = $graph->legend->addChild("field");
-        $field->name = $_POST['graphHeader-'.$i];
-        $field->part = $_POST['graphPart-'.$i];
-        // q3 is not working
+        $field->name = $gheader;
+        $field->part = $gpart;
         if (($gtype != 'boxplot')  || ($field->part == 'q1') || ($field->part == 'q3')) {
-            $field->color = $_POST['graphColor-'.$i];
+            $field->color = $gcolor;
         }
-        if ($gtype == 'binary')
-            $field->shape = $_POST['graphShape-'.$i];
+        if ($gtype == 'binary') {
+            $field->shape = $gshape;
+        }
+
+        // add graph data entries for each non ID column
         for ($r = 0; $r < $rows; $r++) {
-            if (!isset($names[$csv[$r][$_POST['nodeIdCol']]])) continue;
-            $for = $names[$csv[$r][$_POST['nodeIdCol']]];
+            // skip IDs not present in the tree
+            if (!isset($cladeIDs[$csv[$r][$colID]])) continue;
+
+            $for = $cladeIDs[$csv[$r][$colID]];
             $values = $graph->data->xpath("values");
             if (isset($valueIDs[$gtype.$gid."#".$for])) {
+                // use existing values tag
                 $values = $valueIDs[$gtype.$gid."#".$for];
             } else {
+                // make new values tag
                 $values = $graph->data->addChild('values');
                 $values->addAttribute('for', $for);
                 $valueIDs[$gtype.$gid."#".$for] = $values;
             }
+
+            // add value entry
             $values->addChild('value', $csv[$r][$i]);
         }
     }
+
+    // format phyloXML
     $doc = new DOMDocument();
     $doc->formatOutput = TRUE;
     $doc->loadXML($xml->asXML());
     $out = $doc->saveXML();
     file_put_contents("submissions/$id.xml", $out);
+
+    // redirect to display page
     header("HTTP/1.1 301 Moved Permanently");
     header("Location: view.php?id=$id.xml&f=xml");
     exit();
 }
-if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
+
+// redirect wrong requests
+if (($type != 'parse') && ($type != 'convert')) {
     header("HTTP/1.1 301 Moved Permanently");
-    header("Location: submit.php?m=Empty+submission");
+    header("Location: submit.php?m=Invalid+action");
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta content="text/html;charset=UTF-8" http-equiv="content-type">
     <title>PhyD3</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="libs/css/bootstrap-material-design.min.css" />
+    <link rel="stylesheet" href="libs/css/bootstrap-colorpicker.min.css" />
     <link rel="stylesheet" href="libs/css/vib.css" />
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/phyd3.css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="libs/js/material.min.js"></script>
-    <link rel="stylesheet" href="libs/css/vib.css" />
-    <link rel="stylesheet" href="libs/css/bootstrap-colorpicker.min.css" />
     <script src="libs/js/bootstrap-colorpicker.min.js"></script>
     <script type="text/javascript">
+
+        // Google Analytics
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -260,75 +398,80 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
 
         $(function() {
 
-            randomColor = function(){
-                function hue2rgb(p, q, t){
-                    if(t < 0) t += 1;
-                    if(t > 1) t -= 1;
-                    if(t < 1/6) return p + (q - p) * 6 * t;
-                    if(t < 1/2) return q;
-                    if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-                    return p;
-                }
-                function hslToRgb(h, s, l){
-                  var r, g, b;
+            // show apropriate form controls according to the graph type
+            var showGraphDetailsForm = function(ctrl) {
+                var id = ctrl.attr('id').split('-')[1];
+                var gtype = $("#graphType-"+id).val();
+                var gid = $("#graphID-"+id).val();
+                var gscale = $("#graphScale-"+id).val();
+                var gclass = $("#graphClass-"+id).val();
 
-                    if(s == 0) {
-                      r = g = b = l; // achromatic
-                    } else {
+                if ($("#nodeIdColChk-"+id).attr("checked") == 'checked') return;
 
-                        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-                        var p = 2 * l - q;
-                        r = hue2rgb(p, q, h + 1/3);
-                        g = hue2rgb(p, q, h);
-                        b = hue2rgb(p, q, h - 1/3);
-                    }
-                    return '#'+(Math.round(r * 255).toString(16))+(Math.round(g * 255).toString(16))+(Math.round(b * 255).toString(16));
-                };
-                var golden_ratio_conjugate = 0.618033988749895;
-                var h = Math.random();
-                h += golden_ratio_conjugate;
-                h %= 1;
-                return hslToRgb(h, 0.5, 0.60);
-            };
-
-            var showGraphIDs = function(ctrl) {
-                var id = $(this).attr('id').split('-')[1];
-                var type = $("#graphType-"+id).val();
-                if (type == 'binary') {
+                if (gtype == 'binary') {
                     $("#graphID-"+id).addClass('hidden');
                     $("#graphShape-"+id).removeClass('hidden');
                     $("#graphColor-"+id).removeClass('hidden');
                     $("#graphScale-"+id).addClass('hidden');
                     $("#graphClass-"+id).addClass('hidden');
                     $("#graphPart-"+id).addClass('hidden');
-                } else if (type == 'multibar') {
+                } else if (gtype == 'multibar') {
                     $("#graphID-"+id).addClass('hidden');
                     $("#graphShape-"+id).addClass('hidden');
                     $("#graphColor-"+id).removeClass('hidden');
                     $("#graphScale-"+id).addClass('hidden');
                     $("#graphClass-"+id).addClass('hidden');
                     $("#graphPart-"+id).addClass('hidden');
-                } else if (type == 'pie') {
+                } else if (gtype == 'pie') {
                     $("#graphID-"+id).removeClass('hidden');
                     $("#graphShape-"+id).addClass('hidden');
                     $("#graphColor-"+id).removeClass('hidden');
                     $("#graphScale-"+id).addClass('hidden');
                     $("#graphClass-"+id).addClass('hidden');
                     $("#graphPart-"+id).addClass('hidden');
-                } else if (type == 'heatmap') {
+                } else if (gtype == 'heatmap') {
                     $("#graphID-"+id).removeClass('hidden');
                     $("#graphShape-"+id).addClass('hidden');
                     $("#graphColor-"+id).addClass('hidden');
                     $("#graphScale-"+id).removeClass('hidden');
                     $("#graphClass-"+id).removeClass('hidden');
                     $("#graphPart-"+id).addClass('hidden');
-                } else if (type == 'boxplot') {
+                    // hide the scale and classes nr for heatmaps with the same graph ID
+                    for (var i = $(".graphType").length - 1; i >= 0 ; i--) {
+                        var gnodes = $("#nodeIdColChk-"+i).attr("checked");
+                        if (gnodes == 'checked') continue;
+                        var gt = $("#graphType-"+i).val();
+                        var gi = $("#graphID-"+i).val();
+                        if ((gt == gtype) && (gi == gid)) {
+                            $("#graphScale-"+i).val(gscale);
+                            $("#graphClass-"+i).val(gclass);
+                            $("#graphScale-"+i).addClass('hidden');
+                            $("#graphClass-"+i).addClass('hidden');
+                            id = ""+i;
+                        }
+                    }
+                    $("#graphScale-"+id).removeClass('hidden');
+                    $("#graphClass-"+id).removeClass('hidden');
+                } else if (gtype == 'boxplot') {
                     $("#graphID-"+id).addClass('hidden');
                     $("#graphShape-"+id).addClass('hidden');
                     $("#graphScale-"+id).addClass('hidden');
                     $("#graphClass-"+id).addClass('hidden');
-                    $("#graphColor-"+id).removeClass('hidden');
                     $("#graphPart-"+id).removeClass('hidden');
+                    // show the color controls only for q1 and q3
+                    var part = $("#graphPart-"+id).val();
+                    if ((part == 'q1')||(part == 'q3')) {
+                        $("#graphColor-"+id).removeClass('hidden');
+                    } else {
+                        $("#graphColor-"+id).addClass('hidden');
+                    }
+                    // set the graph ID to 1 for all boxplot entries
+                    for (var i = $(".graphType").length - 1; i >= 0 ; i--) {
+                        var gt = $("#graphType-"+i).val();
+                        if (gt == gtype) {
+                            $("#graphID-"+i).val(1);
+                        }
+                    }
                 } else {
                     $("#graphID-"+id).addClass('hidden');
                     $("#graphShape-"+id).addClass('hidden');
@@ -337,60 +480,94 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
                     $("#graphClass-"+id).addClass('hidden');
                     $("#graphPart-"+id).addClass('hidden');
                 }
-            }
+            };
 
+            // change the node IDs columns on click
             $("span.nodeIdCol").on('click', function() {
                 var id = $(this).attr('id').split('-')[1];
                 $(".graphDetails").removeClass("hidden");
                 $("#graphDetails-"+id).addClass("hidden");
-                $(".graphID").each(showGraphIDs);
+                $(".graphType").each(function() {
+                    showGraphDetailsForm($(this));
+                });
+            });
+            $("#graphDetails-0").addClass("hidden");
+            $("#nodeIdColChk-0").attr("checked", "checked");
+
+            // change the graph types on global change
+            $("#graphGlobalType").on('change', function() {
+                var type = $(this).val();
+                $(".graphType").each(function() {
+                    $(this).val(type);
+                    showGraphDetailsForm($(this));
+                });
             });
 
+            // do checks on graph details change
+            $(".graphType").on('change', function() {
+                $(".graphType").each(function() {
+                    showGraphDetailsForm($(this));
+                });
+            });
+            $(".graphPart").on('change', function() {
+                $(".graphType").each(function() {
+                    showGraphDetailsForm($(this));
+                });
+            });
+            $(".graphID").on('change', function() {
+                $(".graphType").each(function() {
+                    showGraphDetailsForm($(this));
+                });
+            });
+            $(".graphScale").on('change', function() {
+                showGraphDetailsForm($(this));
+            });
+            $(".graphClass").on('change', function() {
+                showGraphDetailsForm($(this));
+            });
 
-            var checkGraphIDs = function(ctrl) {
-                var id = $(this).attr('id').split('-')[1];
-                var type = $("#graphType-"+id).val();
-                var gid = $("#graphID-"+id).val();
-                if (type == 'heatmap') {
-                    $("#graphScale-"+id).removeClass('hidden');
-                    $("#graphClass-"+id).removeClass('hidden');
-                    for (var i=0; i<id; i++) {
-                        var gt = $("#graphType-"+i).val();
-                        var gi = $("#graphID-"+i).val();
-                        if ((gt == type) && (gi == gid)) {
-                            $("#graphScale-"+id).addClass('hidden');
-                            $("#graphClass-"+id).addClass('hidden');
-                            break;
-                        }
-                    }
-                }
-                if (type == 'boxplot') {
-                    $("#graphPart-"+id).removeClass('hidden');
-                    var part = $("#graphPart-"+id).val();
-                    if ((part == 'q1')||(part == 'q3')) {
-                        $("#graphColor-"+id).removeClass('hidden');
-                    } else {
-                        $("#graphColor-"+id).addClass('hidden');
-                    }
-                }
-            };
-
+            // preselect persisted values
             $("#select1").val("<?php echo $delimiter; ?>");
             $("#select2").val("<?php echo $enclosure == '"' ? '\"' : $enclosure; ?>");
             $("#select3").val("<?php echo $escape == "\\" ? "\\\\" : $escape; ?>");
-            $(".graphType").on('change', showGraphIDs);
-            $(".graphType").on('change', function() {
-                $(".graphType").each(checkGraphIDs);
-            });
-            $(".graphID").on('change', checkGraphIDs);
-            $(".graphPart").on('change', checkGraphIDs);
-            $("#graphDetails-0").addClass("hidden");
-            $("#nodeIdColChk-0").attr("checked", "checked");
-            $('.graphColor').each(function() {
-                $(this).colorpicker({color: randomColor()});
-            });
-            $(".graphID").each(showGraphIDs);
+            <?php
+                for ($i=0; $i<$cols; $i++) {
 
+                    $gtype      = isset($_SESSION[$id]['graphType'][$i]) ? $_SESSION[$id]['graphType'][$i] : '';
+                    $gid        = isset($_SESSION[$id]['graphID'][$i]) ? $_SESSION[$id]['graphID'][$i] : 1;
+                    $gpart      = isset($_SESSION[$id]['graphPart'][$i]) ? $_SESSION[$id]['graphPart'][$i] : 'min';
+                    $gshape     = isset($_SESSION[$id]['graphShape'][$i]) ? $_SESSION[$id]['graphShape'][$i] : 'circle' ;
+                    $gcolor     = isset($_SESSION[$id]['graphColor'][$i]) ? $_SESSION[$id]['graphColor'][$i] : randomColor();
+                    $gscale     = isset($_SESSION[$id]['graphScale'][$i]) ? $_SESSION[$id]['graphScale'][$i] : 'Blues';
+                    $gclass     = isset($_SESSION[$id]['graphClass'][$i]) ? $_SESSION[$id]['graphClass'][$i] : 9;
+
+                    // persist graph details in session
+                    $_SESSION[$id]['graphType'][$i]     = $gtype;
+                    $_SESSION[$id]['graphID'][$i]       = $gid;
+                    $_SESSION[$id]['graphPart'][$i]     = $gpart;
+                    $_SESSION[$id]['graphShape'][$i]    = $gshape;
+                    $_SESSION[$id]['graphColor'][$i]    = $gcolor;
+                    $_SESSION[$id]['graphScale'][$i]    = $gscale;
+                    $_SESSION[$id]['graphClass'][$i]    = $gclass;
+
+            ?>
+                    $("#graphType-<?php echo $i;?>").val("<?php echo $gtype; ?>");
+                    $("#graphID-<?php echo $i;?>").val("<?php echo $gid; ?>");
+                    $("#graphPart-<?php echo $i;?>").val("<?php echo $gpart; ?>");
+                    $("#graphShape-<?php echo $i;?>").val("<?php echo $gshape; ?>");
+                    $("#graphColor-<?php echo $i;?>").each(function() {
+                        $(this).colorpicker({color: '<?php echo $gcolor;?>'});
+                    });
+                    $("#graphScale-<?php echo $i;?>").val("<?php echo $gscale; ?>");
+                    $("#graphClass-<?php echo $i;?>").val("<?php echo $gclass; ?>");
+            <?php
+                }
+            ?>
+
+            // init the form
+            $(".graphType").each(function() {
+                showGraphDetailsForm($(this));
+            });
         });
     </script>
 </head>
@@ -407,9 +584,10 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
             </div>
         </div>
         <div class="row">
-            <form action="fetch.php?type=parse" method="POST">
+            <form action="fetch.php?type=parse&id=<?php echo $id; ?>" method="POST">
             <input type="hidden" name="format" value="<?php echo $format; ?>" />
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
+            <input type="hidden" name="headersOff" value="1" />
             <div class="col-sm-2">
                 <div class="form-group">
                     <label for="select1" class="col-md-6 control-label">Delimiter</label>
@@ -459,13 +637,12 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
             </div>
             </form>
         </div>
-        <form action="fetch.php?type=convert" method="POST">
+        <form action="fetch.php?type=convert&id=<?php echo $id; ?>" class="form-horizontal" method="POST">
         <input type="hidden" name="format" value="<?php echo $format; ?>" />
         <input type="hidden" name="delimiter" value="<?php echo $delimiter; ?>" />
         <input type="hidden" name="enclosure" value="<?php echo $enclosure; ?>" />
         <input type="hidden" name="escape" value="<?php echo $escape; ?>" />
         <input type="hidden" name="headers" value="<?php echo $headers; ?>" />
-        <input type="hidden" name="id" value="<?php echo $id; ?>" />
         <div class="row columns">
             <div class="col-md-12 phyd3-documentation">
                 Please review the contents of the columns.
@@ -580,6 +757,19 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
             <?php } ?>
             </tr>
             </table>
+                    <div class="form-group">
+                        <label class="col-sm-2 top-padding">Set all graph types as</label>
+                        <div class="col-sm-2">
+                        <select id="graphGlobalType" class="form-control" title="select a graph type">
+                            <option value=''>no graph</option>
+                            <option>multibar</option>
+                            <option>binary</option>
+                            <option>pie</option>
+                            <option>heatmap</option>
+                            <option>boxplot</option>
+                        </select>
+                        </div>
+                    </div>
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
@@ -590,7 +780,8 @@ if (($type != 'input') && ($type != 'parse') && ($type != 'convert')) {
                 For multibar graphs you can choose the color of the bar to be drawn. <br />
                 For binary graphs you can choose the shape and the shape color to be drawn. <br />
                 For pie graphs you can choose the pie color and graph number. One pie graph will contain all the pies with the same  graph number.<br />
-                For heatmap color you can choose the graph number, scale color and classes. One heatmap graph will be scaled over all the values with the same graph number using the specified colors and number of classes.
+                For heatmap color you can choose the graph number, scale color and classes. One heatmap graph will be scaled over all the values with the same graph number using the specified colors and number of classes.<br />
+                For boxplot you have to specify 5 columns of this type, each corresponding with one of the boxplot properties (min, q1, median, q3, max). For q1 and q3 you can also choose the colors that will be drawn.
             </div>
          </div>
         </form>

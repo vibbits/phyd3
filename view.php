@@ -38,7 +38,7 @@
             showGraphLegend: true,
             showLength: false,
             showNodeNames: true,
-            showNodesType: "only leaf",
+            showNodesType: "all",
             showPhylogram: false,
             showTaxonomy: true,
             showFullTaxonomy: true,
@@ -57,7 +57,7 @@
             loadTree();
         }
         function loadTree() {
-            d3.select("#phyd3").text("Loading...");
+            d3.select("#phyd3").html("Loading...<br /><br />");
             var fid = "<?php echo $_GET['id']?>".trim();
             <?php if ($_GET['f'] == 'xml') { ?>
                 if (fid == 'taxonomy.xml') {
@@ -184,8 +184,8 @@
                 <div class="col-xs-3 text-right left-dropdown middle-padding">show</div>
                 <div class="col-xs-5 no-padding">
                 <select id="nodesType" class="form-control">
-                    <option>all</option>
-                    <option selected="selected">only leaf</option>
+                    <option selected="selected">all</option>
+                    <option>only leaf</option>
                     <option>only inner</option>
                 </select>
                 </div>
@@ -313,7 +313,10 @@
                     <button id="graphWidthHigher" class="btn btn-primary" title="make them longer"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
                 </div>
             </div>
-            <br />
+            <div class="row">
+                Search (regexp supported):
+                <input type="text" id="searchQuery" class="form-control no-padding" />
+            </div>
             <div class="row">
                 Download as:
                 <button class="btn btn-primary" id="linkSVG">SVG</button>
@@ -321,9 +324,11 @@
                 <a href="submissions/<?php echo $_GET['id']?>" class="btn btn-primary" id="linkXML" download >XML</a>
             </div>
         </div>
-        <div id="phyd3" class="col-xs-9"></div>
-        <div class="col-sm-9 col-sm-offset-3 text-center">
-            Use your mouse to drag &amp; zoom the tree. <strong>Tip:</strong> CTRL + wheel = scale Y, ALT + wheel = scale X<br />
+        <div id="phyd3" class="col-xs-9">
+        </div>
+        <div class="col-sm-9 text-center">
+            Use your mouse to drag, zoom and modify the tree. <br />
+            <strong>Actions:</strong><br />CTRL + wheel = scale Y, ALT + wheel = scale X, <br />mouse click = node info, CTRL + mouse click = swap, ALT + mouse click = subtree<br /><br />
             You can use the URL of this page as permalink.
         </div>
     </div>

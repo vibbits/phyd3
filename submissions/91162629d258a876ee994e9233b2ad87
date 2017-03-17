@@ -64,6 +64,7 @@
                       </clade>
                       <id>9</id>
                       <name>A7WQS8C8XDM</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.177</property>
                     </clade>
                     <clade>
                       <branch_length>0.04435</branch_length>
@@ -104,9 +105,11 @@
                       </clade>
                       <id>12</id>
                       <name>Z9UXTUC217V</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.12</property>
                     </clade>
                     <id>8</id>
                     <name>45B0DIKBH9Y</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.68</property>
                   </clade>
                   <clade>
                     <branch_length>0.05375</branch_length>
@@ -147,9 +150,11 @@
                     </clade>
                     <id>15</id>
                     <name>37ZBG1IEOIB</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.265</property>
                   </clade>
                   <id>7</id>
                   <name>BOB6H9U0OIG</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.047</property>
                 </clade>
                 <clade>
                   <branch_length>0.12961</branch_length>
@@ -199,6 +204,7 @@
                         </clade>
                         <id>21</id>
                         <name>RLGLFTEUTQT</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.17</property>
                       </clade>
                       <clade>
                         <name>MT2G081300</name>
@@ -219,6 +225,7 @@
                       </clade>
                       <id>20</id>
                       <name>CF2HTAIVZ3U</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.599</property>
                     </clade>
                     <clade>
                       <branch_length>0.11099</branch_length>
@@ -259,9 +266,11 @@
                       </clade>
                       <id>25</id>
                       <name>WUJWJ2SYKU4</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.324</property>
                     </clade>
                     <id>19</id>
                     <name>AM0DZ0ZR6OS</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.127</property>
                   </clade>
                   <clade>
                     <name>GM12G21920</name>
@@ -281,9 +290,11 @@
                   </clade>
                   <id>18</id>
                   <name>BZU92SW5M4O</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">1</property>
                 </clade>
                 <id>6</id>
                 <name>9YW39QVKVP1</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.077</property>
               </clade>
               <clade>
                 <branch_length>0.05152</branch_length>
@@ -327,6 +338,7 @@
                   </clade>
                   <id>30</id>
                   <name>ZTKIY53FOZX</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.004</property>
                 </clade>
                 <clade>
                   <branch_length>0.07641</branch_length>
@@ -372,6 +384,7 @@
                       </clade>
                       <id>35</id>
                       <name>A8CFMR6AS6P</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.107</property>
                     </clade>
                     <clade>
                       <name>TC0007G06390</name>
@@ -391,6 +404,7 @@
                     </clade>
                     <id>34</id>
                     <name>64TYL23BLCK</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.388</property>
                   </clade>
                   <clade>
                     <name>GR09G42990</name>
@@ -410,12 +424,15 @@
                   </clade>
                   <id>33</id>
                   <name>A0PSXZDR153</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.633</property>
                 </clade>
                 <id>29</id>
                 <name>B2NBA924SIE</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.269</property>
               </clade>
               <id>5</id>
               <name>3QXGPW6FIGK</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.087</property>
             </clade>
             <clade>
               <branch_length>0.00964</branch_length>
@@ -468,6 +485,7 @@
                       </clade>
                       <id>44</id>
                       <name>8IXTA80Y4MO</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.568</property>
                     </clade>
                     <clade>
                       <name>ME11388G00190</name>
@@ -488,6 +506,7 @@
                     </clade>
                     <id>43</id>
                     <name>T1ESU2NH97H</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.933</property>
                   </clade>
                   <clade>
                     <branch_length>0.09997</branch_length>
@@ -531,6 +550,7 @@
                       </clade>
                       <id>49</id>
                       <name>YB4X8AUGI34</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.817</property>
                     </clade>
                     <clade>
                       <name>PT01G41460</name>
@@ -551,9 +571,11 @@
                     </clade>
                     <id>48</id>
                     <name>HUSWK3FB7XV</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.319</property>
                   </clade>
                   <id>42</id>
                   <name>QY6MZNHEO1J</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.973</property>
                 </clade>
                 <clade>
                   <branch_length>0.17147</branch_length>
@@ -599,9 +621,11 @@
                   </clade>
                   <id>53</id>
                   <name>3M41MSTY72I</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.182</property>
                 </clade>
                 <id>41</id>
                 <name>T09MAKOLKMO</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.892</property>
               </clade>
               <clade>
                 <branch_length>0.15979</branch_length>
@@ -645,6 +669,7 @@
                   </clade>
                   <id>57</id>
                   <name>PFA0LI3FBF9</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.302</property>
                 </clade>
                 <clade>
                   <branch_length>0.28847</branch_length>
@@ -685,15 +710,19 @@
                   </clade>
                   <id>60</id>
                   <name>2RLFOCO4P8B</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.837</property>
                 </clade>
                 <id>56</id>
                 <name>PNTHSUDG3I0</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.858</property>
               </clade>
               <id>40</id>
               <name>ASE0605X5XH</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.113</property>
             </clade>
             <id>4</id>
             <name>XME4P0L537Z</name>
+            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.923</property>
           </clade>
           <clade>
             <branch_length>0.02567</branch_length>
@@ -721,6 +750,9 @@
                       <symbol>AT2G46600</symbol>
                       <name>Calcium-binding EF-hand family protein</name>
                       <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                      <symbol>AT2G46600</symbol>
+                      <name>Calcium-binding EF-hand family protein</name>
+                      <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                     </sequence>
                     <id>67</id>
                     <colortag>0xC51B6C</colortag>
@@ -741,6 +773,9 @@
                       <symbol>AT2G46600</symbol>
                       <name>Calcium-binding EF-hand family protein</name>
                       <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                      <symbol>AT2G46600</symbol>
+                      <name>Calcium-binding EF-hand family protein</name>
+                      <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                     </sequence>
                     <id>68</id>
                     <colortag>0x14C91A</colortag>
@@ -749,6 +784,7 @@
                   </clade>
                   <id>66</id>
                   <name>YQ4BEGV3TRZ</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.291</property>
                 </clade>
                 <clade>
                   <branch_length>0.10414</branch_length>
@@ -789,9 +825,11 @@
                   </clade>
                   <id>69</id>
                   <name>YSX0RN20NY5</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.653</property>
                 </clade>
                 <id>65</id>
                 <name>86DLZTJ1S37</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.76</property>
               </clade>
               <clade>
                 <name>BV0G04900</name>
@@ -812,6 +850,7 @@
               </clade>
               <id>64</id>
               <name>67FA9K0Z2RA</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.576</property>
             </clade>
             <clade>
               <branch_length>0.02961</branch_length>
@@ -840,6 +879,9 @@
                         <symbol>AT2G46600</symbol>
                         <name>Calcium-binding EF-hand family protein</name>
                         <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                        <symbol>AT2G46600</symbol>
+                        <name>Calcium-binding EF-hand family protein</name>
+                        <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                       </sequence>
                       <id>77</id>
                       <colortag>0x0AF0CB</colortag>
@@ -861,6 +903,9 @@
                         <symbol>AT2G46600</symbol>
                         <name>Calcium-binding EF-hand family protein</name>
                         <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                        <symbol>AT2G46600</symbol>
+                        <name>Calcium-binding EF-hand family protein</name>
+                        <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                       </sequence>
                       <id>78</id>
                       <colortag>0x2452B5</colortag>
@@ -869,6 +914,7 @@
                     </clade>
                     <id>76</id>
                     <name>1CGBVJ34LBR</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.928</property>
                   </clade>
                   <clade>
                     <name>EG0004G06210</name>
@@ -891,6 +937,7 @@
                   </clade>
                   <id>75</id>
                   <name>4PLGHLU6GC7</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.831</property>
                 </clade>
                 <clade>
                   <branch_length>0.03318</branch_length>
@@ -937,6 +984,7 @@
                       </clade>
                       <id>82</id>
                       <name>WPX7IQHJ81F</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.055</property>
                     </clade>
                     <clade>
                       <name>GM15G07120</name>
@@ -957,6 +1005,7 @@
                     </clade>
                     <id>81</id>
                     <name>EOYZK52GU5N</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.83</property>
                   </clade>
                   <clade>
                     <branch_length>0.03929</branch_length>
@@ -1003,6 +1052,7 @@
                         </clade>
                         <id>88</id>
                         <name>0NBPVLNLRIN</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.379</property>
                       </clade>
                       <clade>
                         <branch_length>0.02407</branch_length>
@@ -1053,6 +1103,7 @@
                             </clade>
                             <id>93</id>
                             <name>F8TRO26J0CS</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.012</property>
                           </clade>
                           <clade>
                             <name>FV3G07540</name>
@@ -1073,6 +1124,7 @@
                           </clade>
                           <id>92</id>
                           <name>3PY32GV1UWG</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.004</property>
                         </clade>
                         <clade>
                           <name>MD10G025260</name>
@@ -1093,9 +1145,11 @@
                         </clade>
                         <id>91</id>
                         <name>5HJEJBG1R8R</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.105</property>
                       </clade>
                       <id>87</id>
                       <name>Q12KS96MLR3</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">1</property>
                     </clade>
                     <clade>
                       <branch_length>0.03453</branch_length>
@@ -1123,6 +1177,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>102</id>
                               <colortag>0x4A29FD</colortag>
@@ -1140,6 +1197,9 @@
                                   <domain confidence="4.2E-11" from="4" to="92">IPR011992</domain>
                                   <domain confidence="9.883" from="62" to="97">IPR002048</domain>
                                 </domain_architecture>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
@@ -1163,6 +1223,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>104</id>
                               <colortag>0xE0620E</colortag>
@@ -1171,6 +1234,7 @@
                             </clade>
                             <id>101</id>
                             <name>PHNX2HK21TO</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.384</property>
                           </clade>
                           <clade>
                             <name>MD10G025270</name>
@@ -1191,6 +1255,7 @@
                           </clade>
                           <id>100</id>
                           <name>I50AZJA32EL</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.125</property>
                         </clade>
                         <clade>
                           <name>PPE_004G03160</name>
@@ -1211,6 +1276,7 @@
                         </clade>
                         <id>99</id>
                         <name>SP2YASIXZNV</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.112</property>
                       </clade>
                       <clade>
                         <branch_length>0.09038</branch_length>
@@ -1257,6 +1323,7 @@
                             </clade>
                             <id>109</id>
                             <name>R8SIXJ2BA5Y</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.953</property>
                           </clade>
                           <clade>
                             <name>GR09G17500</name>
@@ -1277,6 +1344,7 @@
                           </clade>
                           <id>108</id>
                           <name>UIBNAFSMVZI</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.058</property>
                         </clade>
                         <clade>
                           <branch_length>0.02275</branch_length>
@@ -1332,6 +1400,7 @@
                                     </clade>
                                     <id>118</id>
                                     <name>5ML4G8QPFYC</name>
+                                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.972</property>
                                   </clade>
                                   <clade>
                                     <name>PT04G02720</name>
@@ -1352,6 +1421,7 @@
                                   </clade>
                                   <id>117</id>
                                   <name>ZSXMYJSDT8K</name>
+                                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.177</property>
                                 </clade>
                                 <clade>
                                   <name>RC29933G00790</name>
@@ -1372,6 +1442,7 @@
                                 </clade>
                                 <id>116</id>
                                 <name>HX4LKR49K49</name>
+                                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.261</property>
                               </clade>
                               <clade>
                                 <name>CS00010G02050</name>
@@ -1392,6 +1463,7 @@
                               </clade>
                               <id>115</id>
                               <name>OGKPA05WXIH</name>
+                              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.134</property>
                             </clade>
                             <clade>
                               <name>CP00871G00060</name>
@@ -1412,6 +1484,7 @@
                             </clade>
                             <id>114</id>
                             <name>X40OZWGWFOJ</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.876</property>
                           </clade>
                           <clade>
                             <branch_length>0.0595</branch_length>
@@ -1452,24 +1525,31 @@
                             </clade>
                             <id>125</id>
                             <name>0ANQ4M2XKQF</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.466</property>
                           </clade>
                           <id>113</id>
                           <name>OVYOVTOWEXR</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.404</property>
                         </clade>
                         <id>107</id>
                         <name>2CWO2A0A60A</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.084</property>
                       </clade>
                       <id>98</id>
                       <name>EMTKCBHU5X0</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.493</property>
                     </clade>
                     <id>86</id>
                     <name>6CN04O8B3BQ</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.836</property>
                   </clade>
                   <id>80</id>
                   <name>T68LHD2B8HN</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.237</property>
                 </clade>
                 <id>74</id>
                 <name>BIYI5Q2LGQ4</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.972</property>
               </clade>
               <clade>
                 <name>CL03G05240</name>
@@ -1485,6 +1565,9 @@
                   <symbol>AT2G46600</symbol>
                   <name>Calcium-binding EF-hand family protein</name>
                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                  <symbol>AT2G46600</symbol>
+                  <name>Calcium-binding EF-hand family protein</name>
+                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                 </sequence>
                 <id>128</id>
                 <colortag>0xCD41E0</colortag>
@@ -1493,12 +1576,15 @@
               </clade>
               <id>73</id>
               <name>RAUAKLSCHGT</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.807</property>
             </clade>
             <id>63</id>
             <name>9SFY8NXMTYM</name>
+            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.204</property>
           </clade>
           <id>3</id>
           <name>1WLEZ2NY5KL</name>
+          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.274</property>
         </clade>
         <clade>
           <branch_length>0.05891</branch_length>
@@ -1523,6 +1609,9 @@
                   <symbol>AT2G46600</symbol>
                   <name>Calcium-binding EF-hand family protein</name>
                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                  <symbol>AT2G46600</symbol>
+                  <name>Calcium-binding EF-hand family protein</name>
+                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                 </sequence>
                 <id>132</id>
                 <colortag>0x13FDF8</colortag>
@@ -1543,6 +1632,9 @@
                   <symbol>AT4G27280</symbol>
                   <name>Calcium-binding EF-hand family protein</name>
                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                  <symbol>AT4G27280</symbol>
+                  <name>Calcium-binding EF-hand family protein</name>
+                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                 </sequence>
                 <id>133</id>
                 <colortag>0xD7F02E</colortag>
@@ -1551,6 +1643,7 @@
               </clade>
               <id>131</id>
               <name>WDO95BIKGHD</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.758</property>
             </clade>
             <clade>
               <branch_length>0.05992</branch_length>
@@ -1568,6 +1661,9 @@
                     <domain_architecture length="111">
                       <domain confidence="4.3E-6" from="30" to="87">IPR011992</domain>
                     </domain_architecture>
+                    <symbol>AT2G46600</symbol>
+                    <name>Calcium-binding EF-hand family protein</name>
+                    <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                     <symbol>AT2G46600</symbol>
                     <name>Calcium-binding EF-hand family protein</name>
                     <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
@@ -1592,6 +1688,9 @@
                     <symbol>AT2G46600</symbol>
                     <name>Calcium-binding EF-hand family protein</name>
                     <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                    <symbol>AT2G46600</symbol>
+                    <name>Calcium-binding EF-hand family protein</name>
+                    <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                   </sequence>
                   <id>137</id>
                   <colortag>0xCEB6FC</colortag>
@@ -1600,6 +1699,7 @@
                 </clade>
                 <id>135</id>
                 <name>8LC9WLVH8YV</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.538</property>
               </clade>
               <clade>
                 <branch_length>0.14577</branch_length>
@@ -1618,6 +1718,9 @@
                         <domain confidence="2.2E-11" from="28" to="116">IPR011992</domain>
                         <domain confidence="10.831" from="85" to="120">IPR002048</domain>
                       </domain_architecture>
+                      <symbol>AT2G46600</symbol>
+                      <name>Calcium-binding EF-hand family protein</name>
+                      <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                       <symbol>AT2G46600</symbol>
                       <name>Calcium-binding EF-hand family protein</name>
                       <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
@@ -1641,6 +1744,9 @@
                       <symbol>AT2G46600</symbol>
                       <name>Calcium-binding EF-hand family protein</name>
                       <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                      <symbol>AT2G46600</symbol>
+                      <name>Calcium-binding EF-hand family protein</name>
+                      <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                     </sequence>
                     <id>141</id>
                     <colortag>0xFD7527</colortag>
@@ -1649,6 +1755,7 @@
                   </clade>
                   <id>139</id>
                   <name>89CZE67BG0E</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.237</property>
                 </clade>
                 <clade>
                   <branch_length>0.10041</branch_length>
@@ -1679,6 +1786,9 @@
                               <symbol>AT2G46600</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                              <symbol>AT2G46600</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                             </sequence>
                             <id>147</id>
                             <colortag>0x42EB6C</colortag>
@@ -1699,6 +1809,9 @@
                               <symbol>AT2G46600</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                              <symbol>AT2G46600</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                             </sequence>
                             <id>148</id>
                             <colortag>0xE7D49B</colortag>
@@ -1707,6 +1820,7 @@
                           </clade>
                           <id>146</id>
                           <name>QPO7R7KQRNV</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.802</property>
                         </clade>
                         <clade>
                           <branch_length>0.02642</branch_length>
@@ -1725,6 +1839,9 @@
                                   <domain confidence="2.3E-9" from="17" to="100">IPR011992</domain>
                                   <domain confidence="10.273" from="69" to="104">IPR002048</domain>
                                 </domain_architecture>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
@@ -1749,6 +1866,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>152</id>
                               <colortag>0xAE1DE7</colortag>
@@ -1757,6 +1877,7 @@
                             </clade>
                             <id>150</id>
                             <name>64KI2G0R7Q7</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.9</property>
                           </clade>
                           <clade>
                             <branch_length>0.02852</branch_length>
@@ -1772,6 +1893,9 @@
                                   <domain confidence="9.66" from="69" to="104">IPR002048</domain>
                                   <domain confidence="4.2E-10" from="17" to="100">IPR011992</domain>
                                 </domain_architecture>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
@@ -1795,6 +1919,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>155</id>
                               <colortag>0xCDF102</colortag>
@@ -1803,12 +1930,15 @@
                             </clade>
                             <id>153</id>
                             <name>KMOHW6YAQWN</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.907</property>
                           </clade>
                           <id>149</id>
                           <name>8N2TNBM026P</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.066</property>
                         </clade>
                         <id>145</id>
                         <name>TPD95N861Z1</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.521</property>
                       </clade>
                       <clade>
                         <branch_length>0.01125</branch_length>
@@ -1839,6 +1969,9 @@
                                     <symbol>AT2G46600</symbol>
                                     <name>Calcium-binding EF-hand family protein</name>
                                     <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                    <symbol>AT2G46600</symbol>
+                                    <name>Calcium-binding EF-hand family protein</name>
+                                    <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                   </sequence>
                                   <id>161</id>
                                   <colortag>0xA946A7</colortag>
@@ -1859,6 +1992,9 @@
                                     <symbol>AT2G46600</symbol>
                                     <name>Calcium-binding EF-hand family protein</name>
                                     <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                    <symbol>AT2G46600</symbol>
+                                    <name>Calcium-binding EF-hand family protein</name>
+                                    <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                   </sequence>
                                   <id>162</id>
                                   <colortag>0xD9E792</colortag>
@@ -1867,6 +2003,7 @@
                                 </clade>
                                 <id>160</id>
                                 <name>RXZ7GLI0J04</name>
+                                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.037</property>
                               </clade>
                               <clade>
                                 <name>LJ3G034830</name>
@@ -1884,6 +2021,9 @@
                                   <symbol>AT2G46600</symbol>
                                   <name>Calcium-binding EF-hand family protein</name>
                                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                  <symbol>AT2G46600</symbol>
+                                  <name>Calcium-binding EF-hand family protein</name>
+                                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                 </sequence>
                                 <id>163</id>
                                 <colortag>0xA06FDB</colortag>
@@ -1892,6 +2032,7 @@
                               </clade>
                               <id>159</id>
                               <name>ZS0PSMVPSBU</name>
+                              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.182</property>
                             </clade>
                             <clade>
                               <name>MT8G027180</name>
@@ -1907,6 +2048,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>164</id>
                               <colortag>0x15AF61</colortag>
@@ -1915,6 +2059,7 @@
                             </clade>
                             <id>158</id>
                             <name>1AUVZUCL9JR</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.399</property>
                           </clade>
                           <clade>
                             <branch_length>0.02227</branch_length>
@@ -1930,6 +2075,9 @@
                                   <domain confidence="10.999" from="68" to="103">IPR002048</domain>
                                   <domain confidence="3.4E-11" from="16" to="99">IPR011992</domain>
                                 </domain_architecture>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
@@ -1953,6 +2101,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>167</id>
                               <colortag>0xF29B35</colortag>
@@ -1961,9 +2112,11 @@
                             </clade>
                             <id>165</id>
                             <name>VYOX0M7QBOP</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.784</property>
                           </clade>
                           <id>157</id>
                           <name>QF9WFPSVM48</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.912</property>
                         </clade>
                         <clade>
                           <name>CS00001G04680</name>
@@ -1979,6 +2132,9 @@
                             <symbol>AT2G46600</symbol>
                             <name>Calcium-binding EF-hand family protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                            <symbol>AT2G46600</symbol>
+                            <name>Calcium-binding EF-hand family protein</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                           </sequence>
                           <id>168</id>
                           <colortag>0xE20A01</colortag>
@@ -1987,9 +2143,11 @@
                         </clade>
                         <id>156</id>
                         <name>HF1IR1ANF7G</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.07</property>
                       </clade>
                       <id>144</id>
                       <name>DEPAFW0K3W1</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.066</property>
                     </clade>
                     <clade>
                       <branch_length>0.01801</branch_length>
@@ -2020,6 +2178,9 @@
                                   <symbol>AT2G46600</symbol>
                                   <name>Calcium-binding EF-hand family protein</name>
                                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                  <symbol>AT2G46600</symbol>
+                                  <name>Calcium-binding EF-hand family protein</name>
+                                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                 </sequence>
                                 <id>174</id>
                                 <colortag>0xB7D10E</colortag>
@@ -2040,6 +2201,9 @@
                                   <symbol>AT2G46600</symbol>
                                   <name>Calcium-binding EF-hand family protein</name>
                                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                  <symbol>AT2G46600</symbol>
+                                  <name>Calcium-binding EF-hand family protein</name>
+                                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                 </sequence>
                                 <id>175</id>
                                 <colortag>0x84FCF7</colortag>
@@ -2048,6 +2212,7 @@
                               </clade>
                               <id>173</id>
                               <name>HS6FUN2ASN3</name>
+                              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.972</property>
                             </clade>
                             <clade>
                               <name>SL10G009340</name>
@@ -2063,6 +2228,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>176</id>
                               <colortag>0x4D12B6</colortag>
@@ -2071,6 +2239,7 @@
                             </clade>
                             <id>172</id>
                             <name>2VSYNLMBJK0</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.671</property>
                           </clade>
                           <clade>
                             <name>EG0004G19800</name>
@@ -2086,6 +2255,9 @@
                               <symbol>AT2G46600</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                              <symbol>AT2G46600</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                             </sequence>
                             <id>177</id>
                             <colortag>0x8459C0</colortag>
@@ -2094,6 +2266,7 @@
                           </clade>
                           <id>171</id>
                           <name>W3BD5QSLOKO</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.736</property>
                         </clade>
                         <clade>
                           <branch_length>0.01958</branch_length>
@@ -2109,6 +2282,9 @@
                                 <domain confidence="1.2E-10" from="13" to="97">IPR011992</domain>
                                 <domain confidence="11.054" from="65" to="100">IPR002048</domain>
                               </domain_architecture>
+                              <symbol>AT2G46600</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               <symbol>AT2G46600</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
@@ -2132,6 +2308,9 @@
                               <symbol>AT2G46600</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                              <symbol>AT2G46600</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                             </sequence>
                             <id>180</id>
                             <colortag>0xF707E4</colortag>
@@ -2140,9 +2319,11 @@
                           </clade>
                           <id>178</id>
                           <name>UQXB09PKNG7</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.871</property>
                         </clade>
                         <id>170</id>
                         <name>Y98H78BRWPF</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.096</property>
                       </clade>
                       <clade>
                         <branch_length>0.1988</branch_length>
@@ -2167,6 +2348,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>184</id>
                               <colortag>0x136072</colortag>
@@ -2187,6 +2371,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>185</id>
                               <colortag>0x8301DE</colortag>
@@ -2195,6 +2382,7 @@
                             </clade>
                             <id>183</id>
                             <name>O0DZMKVJF5Q</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.842</property>
                           </clade>
                           <clade>
                             <branch_length>0.00892</branch_length>
@@ -2219,6 +2407,9 @@
                                     <symbol>AT2G46600</symbol>
                                     <name>Calcium-binding EF-hand family protein</name>
                                     <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                    <symbol>AT2G46600</symbol>
+                                    <name>Calcium-binding EF-hand family protein</name>
+                                    <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                   </sequence>
                                   <id>189</id>
                                   <colortag>0x42E96E</colortag>
@@ -2239,6 +2430,9 @@
                                     <symbol>AT2G46600</symbol>
                                     <name>Calcium-binding EF-hand family protein</name>
                                     <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                    <symbol>AT2G46600</symbol>
+                                    <name>Calcium-binding EF-hand family protein</name>
+                                    <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                   </sequence>
                                   <id>190</id>
                                   <colortag>0x6B5890</colortag>
@@ -2247,6 +2441,7 @@
                                 </clade>
                                 <id>188</id>
                                 <name>1U6AFEFAUSG</name>
+                                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.572</property>
                               </clade>
                               <clade>
                                 <name>AT2G46600</name>
@@ -2262,6 +2457,9 @@
                                   <symbol>AT2G46600</symbol>
                                   <name>Calcium-binding EF-hand family protein</name>
                                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                  <symbol>AT2G46600</symbol>
+                                  <name>Calcium-binding EF-hand family protein</name>
+                                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                                 </sequence>
                                 <id>191</id>
                                 <colortag>0x2F3EB9</colortag>
@@ -2270,6 +2468,7 @@
                               </clade>
                               <id>187</id>
                               <name>CDKAR9QSW5S</name>
+                              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.902</property>
                             </clade>
                             <clade>
                               <name>BR04G27710</name>
@@ -2285,6 +2484,9 @@
                                 <symbol>AT2G46600</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                                <symbol>AT2G46600</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                               </sequence>
                               <id>192</id>
                               <colortag>0x4B5130</colortag>
@@ -2293,9 +2495,11 @@
                             </clade>
                             <id>186</id>
                             <name>MG86RW7XQRH</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.398</property>
                           </clade>
                           <id>182</id>
                           <name>5VUVC9OXPBY</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.148</property>
                         </clade>
                         <clade>
                           <name>BR03G22780</name>
@@ -2311,6 +2515,9 @@
                             <symbol>AT2G46600</symbol>
                             <name>Calcium-binding EF-hand family protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                            <symbol>AT2G46600</symbol>
+                            <name>Calcium-binding EF-hand family protein</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                           </sequence>
                           <id>193</id>
                           <colortag>0x9AD475</colortag>
@@ -2319,12 +2526,15 @@
                         </clade>
                         <id>181</id>
                         <name>76JHLRSKYBG</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.933</property>
                       </clade>
                       <id>169</id>
                       <name>R82CMKE823X</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.267</property>
                     </clade>
                     <id>143</id>
                     <name>N35ZYQBSN0U</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.966</property>
                   </clade>
                   <clade>
                     <name>CL06G03020</name>
@@ -2340,6 +2550,9 @@
                       <symbol>AT2G46600</symbol>
                       <name>Calcium-binding EF-hand family protein</name>
                       <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                      <symbol>AT2G46600</symbol>
+                      <name>Calcium-binding EF-hand family protein</name>
+                      <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                     </sequence>
                     <id>194</id>
                     <colortag>0x861C12</colortag>
@@ -2348,15 +2561,19 @@
                   </clade>
                   <id>142</id>
                   <name>FWP14NPOJ9B</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.465</property>
                 </clade>
                 <id>138</id>
                 <name>6TWE4L851L4</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.729</property>
               </clade>
               <id>134</id>
               <name>BPO0GWI3G4H</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.407</property>
             </clade>
             <id>130</id>
             <name>UO1S6FXUIWU</name>
+            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.731</property>
           </clade>
           <clade>
             <branch_length>0.1548</branch_length>
@@ -2372,6 +2589,9 @@
                   <domain confidence="10.05" from="60" to="95">IPR002048</domain>
                   <domain confidence="1.5E-12" from="7" to="91">IPR011992</domain>
                 </domain_architecture>
+                <symbol>AT2G46600</symbol>
+                <name>Calcium-binding EF-hand family protein</name>
+                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                 <symbol>AT2G46600</symbol>
                 <name>Calcium-binding EF-hand family protein</name>
                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
@@ -2395,6 +2615,9 @@
                 <symbol>AT2G46600</symbol>
                 <name>Calcium-binding EF-hand family protein</name>
                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                <symbol>AT2G46600</symbol>
+                <name>Calcium-binding EF-hand family protein</name>
+                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
               </sequence>
               <id>197</id>
               <colortag>0x5B364E</colortag>
@@ -2403,12 +2626,15 @@
             </clade>
             <id>195</id>
             <name>SNXFKLV2TX6</name>
+            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.155</property>
           </clade>
           <id>129</id>
           <name>935IK92HIVU</name>
+          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.754</property>
         </clade>
         <id>2</id>
         <name>6O4V60U9N9Z</name>
+        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.347</property>
       </clade>
       <clade>
         <branch_length>0.01829500000000002</branch_length>
@@ -2460,6 +2686,7 @@
               </clade>
               <id>201</id>
               <name>RCYLRYWI728</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.545</property>
             </clade>
             <clade>
               <branch_length>5.7E-4</branch_length>
@@ -2490,6 +2717,9 @@
                           <symbol>AT4G27280</symbol>
                           <name>Calcium-binding EF-hand family protein</name>
                           <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                          <symbol>AT4G27280</symbol>
+                          <name>Calcium-binding EF-hand family protein</name>
+                          <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                         </sequence>
                         <id>209</id>
                         <colortag>0x1F0510</colortag>
@@ -2512,6 +2742,9 @@
                           <symbol>AT4G27280</symbol>
                           <name>Calcium-binding EF-hand family protein</name>
                           <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                          <symbol>AT4G27280</symbol>
+                          <name>Calcium-binding EF-hand family protein</name>
+                          <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                         </sequence>
                         <id>210</id>
                         <colortag>0x83DFDF</colortag>
@@ -2520,6 +2753,7 @@
                       </clade>
                       <id>208</id>
                       <name>1CKN34DFYKG</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.652</property>
                     </clade>
                     <clade>
                       <branch_length>0.08495</branch_length>
@@ -2538,6 +2772,9 @@
                               <domain confidence="10.05" from="63" to="98">IPR002048</domain>
                               <domain confidence="7.9E-11" from="11" to="95">IPR011992</domain>
                             </domain_architecture>
+                            <symbol>AT4G27280</symbol>
+                            <name>Calcium-binding EF-hand family protein</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             <symbol>AT4G27280</symbol>
                             <name>Calcium-binding EF-hand family protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
@@ -2561,6 +2798,9 @@
                             <symbol>AT4G27280</symbol>
                             <name>Calcium-binding EF-hand family protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                            <symbol>AT4G27280</symbol>
+                            <name>Calcium-binding EF-hand family protein</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                           </sequence>
                           <id>214</id>
                           <colortag>0x680856</colortag>
@@ -2569,6 +2809,7 @@
                         </clade>
                         <id>212</id>
                         <name>5W1JHDWEMHX</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.997</property>
                       </clade>
                       <clade>
                         <branch_length>0.00885</branch_length>
@@ -2584,6 +2825,9 @@
                               <domain confidence="7.2E-12" from="8" to="93">IPR011992</domain>
                               <domain confidence="10.05" from="61" to="96">IPR002048</domain>
                             </domain_architecture>
+                            <symbol>AT4G27280</symbol>
+                            <name>Calcium-binding EF-hand family protein</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             <symbol>AT4G27280</symbol>
                             <name>Calcium-binding EF-hand family protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
@@ -2607,6 +2851,9 @@
                             <symbol>AT4G27280</symbol>
                             <name>Calcium-binding EF-hand family protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                            <symbol>AT4G27280</symbol>
+                            <name>Calcium-binding EF-hand family protein</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                           </sequence>
                           <id>217</id>
                           <colortag>0x580431</colortag>
@@ -2615,12 +2862,15 @@
                         </clade>
                         <id>215</id>
                         <name>10R5FLNJ3CA</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.558</property>
                       </clade>
                       <id>211</id>
                       <name>IEQY1XNPRHA</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.679</property>
                     </clade>
                     <id>207</id>
                     <name>5VMP1PUMN7J</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.096</property>
                   </clade>
                   <clade>
                     <branch_length>0.02231</branch_length>
@@ -2651,6 +2901,9 @@
                                 <symbol>AT4G27280</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                                <symbol>AT4G27280</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                               </sequence>
                               <id>223</id>
                               <colortag>0xA0AE5E</colortag>
@@ -2671,6 +2924,9 @@
                                 <symbol>AT4G27280</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                                <symbol>AT4G27280</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                               </sequence>
                               <id>224</id>
                               <colortag>0x34A5CB</colortag>
@@ -2679,6 +2935,7 @@
                             </clade>
                             <id>222</id>
                             <name>IXPAIO80ZHA</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.947</property>
                           </clade>
                           <clade>
                             <name>PPE_004G18550</name>
@@ -2694,6 +2951,9 @@
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             </sequence>
                             <id>225</id>
                             <colortag>0x980E65</colortag>
@@ -2702,6 +2962,7 @@
                           </clade>
                           <id>221</id>
                           <name>HYCIFM7397W</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.933</property>
                         </clade>
                         <clade>
                           <name>FV3G27430</name>
@@ -2717,6 +2978,9 @@
                             <symbol>AT4G27280</symbol>
                             <name>Calcium-binding EF-hand family protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                            <symbol>AT4G27280</symbol>
+                            <name>Calcium-binding EF-hand family protein</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                           </sequence>
                           <id>226</id>
                           <colortag>0xA978CD</colortag>
@@ -2725,6 +2989,7 @@
                         </clade>
                         <id>220</id>
                         <name>KACNAS3PQO6</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.958</property>
                       </clade>
                       <clade>
                         <branch_length>0.01293</branch_length>
@@ -2752,6 +3017,9 @@
                                   <symbol>AT4G27280</symbol>
                                   <name>Calcium-binding EF-hand family protein</name>
                                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                                  <symbol>AT4G27280</symbol>
+                                  <name>Calcium-binding EF-hand family protein</name>
+                                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                                 </sequence>
                                 <id>231</id>
                                 <colortag>0x37B314</colortag>
@@ -2772,6 +3040,9 @@
                                   <symbol>AT4G27280</symbol>
                                   <name>Calcium-binding EF-hand family protein</name>
                                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                                  <symbol>AT4G27280</symbol>
+                                  <name>Calcium-binding EF-hand family protein</name>
+                                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                                 </sequence>
                                 <id>232</id>
                                 <colortag>0x010A65</colortag>
@@ -2780,6 +3051,7 @@
                               </clade>
                               <id>230</id>
                               <name>WBNO4ZNJEV6</name>
+                              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.478</property>
                             </clade>
                             <clade>
                               <branch_length>0.02649</branch_length>
@@ -2798,6 +3070,9 @@
                                       <domain confidence="10.301" from="65" to="100">IPR002048</domain>
                                       <domain confidence="3.2E-9" from="13" to="97">IPR011992</domain>
                                     </domain_architecture>
+                                    <symbol>AT4G27280</symbol>
+                                    <name>Calcium-binding EF-hand family protein</name>
+                                    <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                                     <symbol>AT4G27280</symbol>
                                     <name>Calcium-binding EF-hand family protein</name>
                                     <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
@@ -2821,6 +3096,9 @@
                                     <symbol>AT4G27280</symbol>
                                     <name>Calcium-binding EF-hand family protein</name>
                                     <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                                    <symbol>AT4G27280</symbol>
+                                    <name>Calcium-binding EF-hand family protein</name>
+                                    <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                                   </sequence>
                                   <id>236</id>
                                   <colortag>0xE0BAB0</colortag>
@@ -2829,6 +3107,7 @@
                                 </clade>
                                 <id>234</id>
                                 <name>SLFCPCOD9BE</name>
+                                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.013</property>
                               </clade>
                               <clade>
                                 <name>MT8G466250</name>
@@ -2844,6 +3123,9 @@
                                   <symbol>AT4G27280</symbol>
                                   <name>Calcium-binding EF-hand family protein</name>
                                   <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                                  <symbol>AT4G27280</symbol>
+                                  <name>Calcium-binding EF-hand family protein</name>
+                                  <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                                 </sequence>
                                 <id>237</id>
                                 <colortag>0x90B29D</colortag>
@@ -2852,9 +3134,11 @@
                               </clade>
                               <id>233</id>
                               <name>5ZJUZISNYQJ</name>
+                              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.871</property>
                             </clade>
                             <id>229</id>
                             <name>97567TD7LY7</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.042</property>
                           </clade>
                           <clade>
                             <name>MT2G081580</name>
@@ -2871,6 +3155,9 @@
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             </sequence>
                             <id>238</id>
                             <colortag>0xB07B87</colortag>
@@ -2879,6 +3166,7 @@
                           </clade>
                           <id>228</id>
                           <name>HV1ENZA09XP</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.199</property>
                         </clade>
                         <clade>
                           <name>VV19G04530</name>
@@ -2894,6 +3182,9 @@
                             <symbol>AT4G27280</symbol>
                             <name>Calcium-binding EF-hand family protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                            <symbol>AT4G27280</symbol>
+                            <name>Calcium-binding EF-hand family protein</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                           </sequence>
                           <id>239</id>
                           <colortag>0xB31F86</colortag>
@@ -2902,9 +3193,11 @@
                         </clade>
                         <id>227</id>
                         <name>3VAKNQ2M0QO</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.742</property>
                       </clade>
                       <id>219</id>
                       <name>WA5K242V981</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.909</property>
                     </clade>
                     <clade>
                       <branch_length>0.0197</branch_length>
@@ -2929,6 +3222,9 @@
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             </sequence>
                             <id>243</id>
                             <colortag>0x47CB40</colortag>
@@ -2949,6 +3245,9 @@
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             </sequence>
                             <id>244</id>
                             <colortag>0x161380</colortag>
@@ -2957,6 +3256,7 @@
                           </clade>
                           <id>242</id>
                           <name>V5LXJPWKT0Z</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.161</property>
                         </clade>
                         <clade>
                           <branch_length>0.04553</branch_length>
@@ -2975,6 +3275,9 @@
                                   <domain confidence="1.0E-11" from="17" to="101">IPR011992</domain>
                                   <domain confidence="10.357" from="69" to="104">IPR002048</domain>
                                 </domain_architecture>
+                                <symbol>AT4G27280</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                                 <symbol>AT4G27280</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
@@ -2999,6 +3302,9 @@
                                 <symbol>AT4G27280</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                                <symbol>AT4G27280</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                               </sequence>
                               <id>248</id>
                               <colortag>0x618325</colortag>
@@ -3007,6 +3313,7 @@
                             </clade>
                             <id>246</id>
                             <name>2X987TNYQ0S</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.2</property>
                           </clade>
                           <clade>
                             <name>GR13G16540</name>
@@ -3022,6 +3329,9 @@
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             </sequence>
                             <id>249</id>
                             <colortag>0xF3E79C</colortag>
@@ -3030,9 +3340,11 @@
                           </clade>
                           <id>245</id>
                           <name>RBSYH72I0C5</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.189</property>
                         </clade>
                         <id>241</id>
                         <name>LV3UEFJUP37</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.803</property>
                       </clade>
                       <clade>
                         <branch_length>0.01173</branch_length>
@@ -3057,6 +3369,9 @@
                                 <symbol>AT4G27280</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                                <symbol>AT4G27280</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                               </sequence>
                               <id>253</id>
                               <colortag>0x23943A</colortag>
@@ -3077,6 +3392,9 @@
                                 <symbol>AT4G27280</symbol>
                                 <name>Calcium-binding EF-hand family protein</name>
                                 <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                                <symbol>AT4G27280</symbol>
+                                <name>Calcium-binding EF-hand family protein</name>
+                                <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                               </sequence>
                               <id>254</id>
                               <colortag>0xBE15C8</colortag>
@@ -3085,6 +3403,7 @@
                             </clade>
                             <id>252</id>
                             <name>U7JEJ8UIQM7</name>
+                            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.355</property>
                           </clade>
                           <clade>
                             <name>RC30014G00080</name>
@@ -3100,6 +3419,9 @@
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             </sequence>
                             <id>255</id>
                             <colortag>0xB0F5F6</colortag>
@@ -3108,6 +3430,7 @@
                           </clade>
                           <id>251</id>
                           <name>L7SHY1G1V9N</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.762</property>
                         </clade>
                         <clade>
                           <branch_length>0.01098</branch_length>
@@ -3123,6 +3446,9 @@
                                 <domain confidence="3.7E-10" from="101" to="185">IPR011992</domain>
                                 <domain confidence="8.879" from="154" to="189">IPR002048</domain>
                               </domain_architecture>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
@@ -3146,6 +3472,9 @@
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             </sequence>
                             <id>258</id>
                             <colortag>0x83B653</colortag>
@@ -3154,18 +3483,23 @@
                           </clade>
                           <id>256</id>
                           <name>JTGLKPESZQP</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.371</property>
                         </clade>
                         <id>250</id>
                         <name>3X3HKC1J3IK</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.063</property>
                       </clade>
                       <id>240</id>
                       <name>MP8C3HGNCBC</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.348</property>
                     </clade>
                     <id>218</id>
                     <name>P8WP2JGARJX</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.75</property>
                   </clade>
                   <id>206</id>
                   <name>5HBT4JQVHY4</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.612</property>
                 </clade>
                 <clade>
                   <branch_length>0.04992</branch_length>
@@ -3196,6 +3530,9 @@
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             </sequence>
                             <id>264</id>
                             <colortag>0xF4D9CD</colortag>
@@ -3216,6 +3553,9 @@
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                             </sequence>
                             <id>265</id>
                             <colortag>0xA15327</colortag>
@@ -3224,6 +3564,7 @@
                           </clade>
                           <id>263</id>
                           <name>9MI6SMAHWRG</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.089</property>
                         </clade>
                         <clade>
                           <name>CRU_007G12800</name>
@@ -3239,6 +3580,9 @@
                             <symbol>AT4G27280</symbol>
                             <name>Calcium-binding EF-hand family protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                            <symbol>AT4G27280</symbol>
+                            <name>Calcium-binding EF-hand family protein</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                           </sequence>
                           <id>266</id>
                           <colortag>0x371839</colortag>
@@ -3247,6 +3591,7 @@
                         </clade>
                         <id>262</id>
                         <name>AVU5FNCKCTB</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.448</property>
                       </clade>
                       <clade>
                         <name>TP7G25200</name>
@@ -3262,6 +3607,9 @@
                           <symbol>AT4G27280</symbol>
                           <name>Calcium-binding EF-hand family protein</name>
                           <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                          <symbol>AT4G27280</symbol>
+                          <name>Calcium-binding EF-hand family protein</name>
+                          <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                         </sequence>
                         <id>267</id>
                         <colortag>0x4C81D6</colortag>
@@ -3270,6 +3618,7 @@
                       </clade>
                       <id>261</id>
                       <name>JR0ZWROC8WZ</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.917</property>
                     </clade>
                     <clade>
                       <branch_length>0.08588</branch_length>
@@ -3294,6 +3643,9 @@
                               <symbol>AT5G54490</symbol>
                               <name>(PID)-binding protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
+                              <symbol>AT5G54490</symbol>
+                              <name>Encodes a PINOID (PID)-binding protein containing putative EF-hand calcium-binding motifs.  The interaction is dependent on the presence of calcium. mRNA expression is up-regulated by auxin. Not a phosphorylation target of PID, likely acts upstream of PID to regulate the activity of this protein in response to changes in calcium levels.</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
                             </sequence>
                             <id>271</id>
                             <colortag>0x0E1586</colortag>
@@ -3314,6 +3666,9 @@
                               <symbol>AT5G54490</symbol>
                               <name>(PID)-binding protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
+                              <symbol>AT5G54490</symbol>
+                              <name>Encodes a PINOID (PID)-binding protein containing putative EF-hand calcium-binding motifs.  The interaction is dependent on the presence of calcium. mRNA expression is up-regulated by auxin. Not a phosphorylation target of PID, likely acts upstream of PID to regulate the activity of this protein in response to changes in calcium levels.</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
                             </sequence>
                             <id>272</id>
                             <colortag>0xEA50D6</colortag>
@@ -3322,6 +3677,7 @@
                           </clade>
                           <id>270</id>
                           <name>G71S8EPEPT4</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.742</property>
                         </clade>
                         <clade>
                           <name>CRU_008G14410</name>
@@ -3337,6 +3693,9 @@
                             <symbol>AT5G54490</symbol>
                             <name>(PID)-binding protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
+                            <symbol>AT5G54490</symbol>
+                            <name>Encodes a PINOID (PID)-binding protein containing putative EF-hand calcium-binding motifs.  The interaction is dependent on the presence of calcium. mRNA expression is up-regulated by auxin. Not a phosphorylation target of PID, likely acts upstream of PID to regulate the activity of this protein in response to changes in calcium levels.</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
                           </sequence>
                           <id>273</id>
                           <colortag>0x7910D9</colortag>
@@ -3345,6 +3704,7 @@
                         </clade>
                         <id>269</id>
                         <name>RC5TN7D78BI</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.544</property>
                       </clade>
                       <clade>
                         <branch_length>5.4E-4</branch_length>
@@ -3363,6 +3723,9 @@
                                 <domain confidence="9.66" from="72" to="107">IPR002048</domain>
                                 <domain confidence="8.1E-9" from="19" to="103">IPR011992</domain>
                               </domain_architecture>
+                              <symbol>AT4G27280</symbol>
+                              <name>Calcium-binding EF-hand family protein</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                               <symbol>AT4G27280</symbol>
                               <name>Calcium-binding EF-hand family protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
@@ -3386,6 +3749,9 @@
                               <symbol>AT5G54490</symbol>
                               <name>(PID)-binding protein</name>
                               <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
+                              <symbol>AT5G54490</symbol>
+                              <name>Encodes a PINOID (PID)-binding protein containing putative EF-hand calcium-binding motifs.  The interaction is dependent on the presence of calcium. mRNA expression is up-regulated by auxin. Not a phosphorylation target of PID, likely acts upstream of PID to regulate the activity of this protein in response to changes in calcium levels.</name>
+                              <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
                             </sequence>
                             <id>277</id>
                             <colortag>0x91F04A</colortag>
@@ -3394,6 +3760,7 @@
                           </clade>
                           <id>275</id>
                           <name>D64G2IA8E1Q</name>
+                          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.541</property>
                         </clade>
                         <clade>
                           <name>BR02G15090</name>
@@ -3409,6 +3776,9 @@
                             <symbol>AT5G54490</symbol>
                             <name>(PID)-binding protein</name>
                             <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
+                            <symbol>AT5G54490</symbol>
+                            <name>Encodes a PINOID (PID)-binding protein containing putative EF-hand calcium-binding motifs.  The interaction is dependent on the presence of calcium. mRNA expression is up-regulated by auxin. Not a phosphorylation target of PID, likely acts upstream of PID to regulate the activity of this protein in response to changes in calcium levels.</name>
+                            <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
                           </sequence>
                           <id>278</id>
                           <colortag>0xF82A5E</colortag>
@@ -3417,12 +3787,15 @@
                         </clade>
                         <id>274</id>
                         <name>FZPRWCPDTS8</name>
+                        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.207</property>
                       </clade>
                       <id>268</id>
                       <name>LEYZGWM7W8Q</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.529</property>
                     </clade>
                     <id>260</id>
                     <name>RI9P4H7FDFZ</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.239</property>
                   </clade>
                   <clade>
                     <branch_length>0.06708</branch_length>
@@ -3441,6 +3814,9 @@
                             <domain confidence="8.6E-11" from="14" to="98">IPR011992</domain>
                             <domain confidence="9.994" from="66" to="101">IPR002048</domain>
                           </domain_architecture>
+                          <symbol>AT4G27280</symbol>
+                          <name>Calcium-binding EF-hand family protein</name>
+                          <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                           <symbol>AT4G27280</symbol>
                           <name>Calcium-binding EF-hand family protein</name>
                           <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
@@ -3465,6 +3841,9 @@
                           <symbol>AT4G27280</symbol>
                           <name>Calcium-binding EF-hand family protein</name>
                           <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                          <symbol>AT4G27280</symbol>
+                          <name>Calcium-binding EF-hand family protein</name>
+                          <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                         </sequence>
                         <id>282</id>
                         <colortag>0x18B8DF</colortag>
@@ -3473,6 +3852,7 @@
                       </clade>
                       <id>280</id>
                       <name>MEDQXVN2QH8</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.958</property>
                     </clade>
                     <clade>
                       <branch_length>0.08928</branch_length>
@@ -3488,6 +3868,9 @@
                             <domain confidence="10.831" from="62" to="97">IPR002048</domain>
                             <domain confidence="1.3E-11" from="10" to="94">IPR011992</domain>
                           </domain_architecture>
+                          <symbol>AT4G27280</symbol>
+                          <name>Calcium-binding EF-hand family protein</name>
+                          <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                           <symbol>AT4G27280</symbol>
                           <name>Calcium-binding EF-hand family protein</name>
                           <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
@@ -3511,6 +3894,9 @@
                           <symbol>AT4G27280</symbol>
                           <name>Calcium-binding EF-hand family protein</name>
                           <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
+                          <symbol>AT4G27280</symbol>
+                          <name>Calcium-binding EF-hand family protein</name>
+                          <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT4G27280</uri>
                         </sequence>
                         <id>285</id>
                         <colortag>0xABA014</colortag>
@@ -3519,15 +3905,19 @@
                       </clade>
                       <id>283</id>
                       <name>I0FI8K9NMX9</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.449</property>
                     </clade>
                     <id>279</id>
                     <name>CYUR3AWF1BX</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.299</property>
                   </clade>
                   <id>259</id>
                   <name>HXD954U3HEZ</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.873</property>
                 </clade>
                 <id>205</id>
                 <name>9L7NGBXZSZN</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.85</property>
               </clade>
               <clade>
                 <branch_length>0.07689</branch_length>
@@ -3567,6 +3957,9 @@
                       <symbol>AT5G54490</symbol>
                       <name>(PID)-binding protein</name>
                       <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
+                      <symbol>AT5G54490</symbol>
+                      <name>Encodes a PINOID (PID)-binding protein containing putative EF-hand calcium-binding motifs.  The interaction is dependent on the presence of calcium. mRNA expression is up-regulated by auxin. Not a phosphorylation target of PID, likely acts upstream of PID to regulate the activity of this protein in response to changes in calcium levels.</name>
+                      <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT5G54490</uri>
                     </sequence>
                     <id>289</id>
                     <colortag>0xB9A686</colortag>
@@ -3575,6 +3968,7 @@
                   </clade>
                   <id>287</id>
                   <name>5O7Q3X80VF9</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.89</property>
                 </clade>
                 <clade>
                   <name>ST02G022730</name>
@@ -3595,12 +3989,15 @@
                 </clade>
                 <id>286</id>
                 <name>5Q95CEVE29I</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.257</property>
               </clade>
               <id>204</id>
               <name>IDWF7SVECFW</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.576</property>
             </clade>
             <id>200</id>
             <name>TUS6GJP5FJT</name>
+            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.885</property>
           </clade>
           <clade>
             <branch_length>0.04379</branch_length>
@@ -3650,6 +4047,7 @@
                   </clade>
                   <id>294</id>
                   <name>X5G7IGDQWIT</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.437</property>
                 </clade>
                 <clade>
                   <name>CS02115G00010</name>
@@ -3671,6 +4069,7 @@
                 </clade>
                 <id>293</id>
                 <name>3N4QK3BP234</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.089</property>
               </clade>
               <clade>
                 <branch_length>0.0405</branch_length>
@@ -3717,6 +4116,7 @@
                     </clade>
                     <id>300</id>
                     <name>U4317IMF3RY</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.45</property>
                   </clade>
                   <clade>
                     <name>CP00034G00500</name>
@@ -3737,6 +4137,7 @@
                   </clade>
                   <id>299</id>
                   <name>Z6ES7UKZN8T</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.96</property>
                 </clade>
                 <clade>
                   <name>EG0011G07390</name>
@@ -3758,9 +4159,11 @@
                 </clade>
                 <id>298</id>
                 <name>ESI2U5XR7P5</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.476</property>
               </clade>
               <id>292</id>
               <name>FDSJYWBW67B</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.999</property>
             </clade>
             <clade>
               <branch_length>0.02603</branch_length>
@@ -3810,6 +4213,9 @@
                           <symbol>AT2G46600</symbol>
                           <name>Calcium-binding EF-hand family protein</name>
                           <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
+                          <symbol>AT2G46600</symbol>
+                          <name>Calcium-binding EF-hand family protein</name>
+                          <uri>http://bioinformatics.psb.ugent.be/plaza/versions/plaza_v3_dicots/genes/view/AT2G46600</uri>
                         </sequence>
                         <id>311</id>
                         <colortag>0x4297A6</colortag>
@@ -3818,6 +4224,7 @@
                       </clade>
                       <id>309</id>
                       <name>JD6WM71L6EW</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.963</property>
                     </clade>
                     <clade>
                       <name>MT2G089210</name>
@@ -3839,6 +4246,7 @@
                     </clade>
                     <id>308</id>
                     <name>35HNMNEMQOX</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.013</property>
                   </clade>
                   <clade>
                     <branch_length>0.01659</branch_length>
@@ -3883,6 +4291,7 @@
                       </clade>
                       <id>314</id>
                       <name>T018DOS1XVW</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.776</property>
                     </clade>
                     <clade>
                       <name>LJ3G041130</name>
@@ -3904,9 +4313,11 @@
                     </clade>
                     <id>313</id>
                     <name>0KO2RP4TMVO</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.675</property>
                   </clade>
                   <id>307</id>
                   <name>9NLDG3GABC7</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.612</property>
                 </clade>
                 <clade>
                   <branch_length>0.02337</branch_length>
@@ -3949,6 +4360,7 @@
                     </clade>
                     <id>319</id>
                     <name>F819RCU6WTV</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.046</property>
                   </clade>
                   <clade>
                     <branch_length>0.04691</branch_length>
@@ -3992,6 +4404,7 @@
                       </clade>
                       <id>323</id>
                       <name>U70B5MRFRO6</name>
+                      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.558</property>
                     </clade>
                     <clade>
                       <name>PPE_003G20430</name>
@@ -4012,12 +4425,15 @@
                     </clade>
                     <id>322</id>
                     <name>TXY8FPV2B6Z</name>
+                    <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.648</property>
                   </clade>
                   <id>318</id>
                   <name>J9TAJOF6NPK</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.318</property>
                 </clade>
                 <id>306</id>
                 <name>ADK3YIMIBE9</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.762</property>
               </clade>
               <clade>
                 <branch_length>0.04458</branch_length>
@@ -4061,6 +4477,7 @@
                   </clade>
                   <id>328</id>
                   <name>RWES5DP4CQX</name>
+                  <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.096</property>
                 </clade>
                 <clade>
                   <name>CL02G11010</name>
@@ -4082,15 +4499,19 @@
                 </clade>
                 <id>327</id>
                 <name>Q68A2TMDHBM</name>
+                <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.963</property>
               </clade>
               <id>305</id>
               <name>AIJ613KVRG1</name>
+              <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.825</property>
             </clade>
             <id>291</id>
             <name>2N6BMIO0HIQ</name>
+            <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.395</property>
           </clade>
           <id>199</id>
           <name>HFZMLZ746PH</name>
+          <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.11</property>
         </clade>
         <clade>
           <name>BV9G08800</name>
@@ -4112,9 +4533,11 @@
         </clade>
         <id>198</id>
         <name>5YM3F5OAMFU</name>
+        <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.308</property>
       </clade>
       <id>1</id>
       <name>C8X4MARGDKF</name>
+      <property applies_to="clade" datatype="xksd:double" ref="Duplication consistency score">0.655</property>
     </clade>
   </phylogeny>
   <graphs>
@@ -9739,6 +10162,20 @@
           <value>60</value>
         </values>
       </data>
+    </graph>
+    <graph type="pie">
+      <name>Duplication</name>
+        <legend show="0">
+          <field>
+             <name>Consistency score</name>
+             <color>0xFF0000</color>
+             <background>0x00FF00</background>
+          </field>
+       </legend>
+       <data tag="property" ref="Duplication consistency score">
+          <min>0</min>
+          <max>1</max>
+       </data>
     </graph>
   </graphs>
   <labels>

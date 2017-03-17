@@ -209,7 +209,8 @@ window.requestAnimFrame = (function(){
         options.showPhylogram = ('showPhylogram' in options) ? options.showPhylogram : false;
 
         // nodes object, domain scale, last drawn leaf, leaves padding for displaying graphs and text
-        var nodes, domainScale, lastLabel, boxplotScaling = [], multibarScaling = [], labelPadding = 100, textPadding = 100, graphPadding = 0, legendPadding = 100, longestNode = 0;
+        var vis, node, leaves, domains, nodes, domainScale, lastLabel, boxplotScaling = [], multibarScaling = [], labelPadding = 100, textPadding = 100, graphPadding = 0, legendPadding = 100, longestNode = 0;
+        var allNodes = jQuery.extend(true, {}, onodes);
 
         // margins
         var showLegend = false;
@@ -243,98 +244,7 @@ window.requestAnimFrame = (function(){
             .scaleExtent([1, 1])
             .on("zoom", zoomed);
 
-        // svg container
-        d3.select(selector)
-          .select("svg")
-          .remove();
-        var vis = d3.select(selector)
-            .insert("svg")
-            .attr("width", selectorWidth + "px")
-            .attr("height", options.height + "px")
-            .attr("overflow", "hidden")
-            .attr("version", "1.1")
-            .attr("font-family","Open Sans")
-            .attr("xmlns", "http://www.w3.org/2000/svg")
-            .call(zoom);
-
-        // background colored rect
-        vis.append("svg:rect")
-            .attr("class","canvas")
-            .attr("width", "100%")
-            .attr("height","100%")
-            .attr("fill", getBackgroundColor());
-        vis.append("svg:text")
-            .attr("dy", "20px")
-            .attr("stroke", getForegroundColor())
-            .attr("stroke-width", "1px")
-            .attr("font-size", "15px")
-            .text(onodes.name ? onodes.name : '');
-        vis.append("svg:text")
-            .attr("dy", "40px")
-            .attr("stroke", getForegroundColor())
-            .attr("stroke-width", "0.5px")
-            .attr("font-size", "10px")
-            .text(onodes.description ? onodes.description : '');
-
-        // marker defs
-        vis.append("defs")
-            .append("marker")
-            .attr("id", "markerBoxplot")
-            .attr("markerWidth", "1")
-            .attr("markerHeight", "10")
-            .attr("refX", "1")
-            .attr("refY", "5")
-            .append("line")
-            .attr("x1", "0")
-            .attr("x2", "0")
-            .attr("y1", "0")
-            .attr("y2", "10")
-            .attr("stroke", getForegroundColor())
-            .attr("stroke-width", "2px");
-
-        // main group
-        vis = vis.append("svg:g")
-            .attr("id","main")
-            .attr("transform", "translate("+options.marginX+", "+options.marginY+")");
-
-        // links and nodes selectors
-        var node = vis.selectAll("g.node");
-
-        // draw the tree
-        drawTree();
-        if (phyd3.phylogram.dx == 0) {
-            d3.select("#phylogram").attr("checked","").attr("disabled", "disabled");
-            options.showPhylogram = true;
-            drawTree();
-        }
-
-        // selectors
-        var leaves = vis.selectAll('g.leaf.node');
-        var domains = leaves.selectAll("g.domain");
-
-        // appending misc items
-        toggleSupportValues();
-        toggleLengthValues();
-        toggleDomains();
-        toggleDomainNames();
-        toggleGraphs();
-        toggleSupportLines();
-        toggleLabels();
-
-        // appending leaf node text - tax & name
-        node.append("svg:text")
-            .attr("class", "name")
-            .attr("dx", options.nodeHeight + 1)
-            .attr("dy", 3)
-            .attr("text-anchor", "start")
-        changeLeafColors();
-        changeLeafText();
-        changeLeafVisibility();
-        applyZoomTransform();
-        applyLeafTransform();
-
         // action toggles
-
         d3.select("#dynamicHide").on("click", function() {
             // dynamically hide the leaves that are overlapping
             options.dynamicHide = !options.dynamicHide;
@@ -453,16 +363,18 @@ window.requestAnimFrame = (function(){
         })
 
         d3.select("#resetZoom").on("click", function(){
+            onodes = jQuery.extend(true, {}, allNodes);
             // reset tree position & zoom level
             options.domainWidth = options.domainWidthStep;
             options.scaleX = 1;
             options.scaleY = 1;
             options.translateX = 0;
             options.translateY = 0;
-            drawTree(true);
+
             zoom.translate([0, 0]);
-            applyZoomTransform();
-            applyLeafTransform();
+            repaint();
+            //applyZoomTransform();
+            //applyLeafTransform();
         })
 
         d3.select("#zoominY").on("click", function(){
@@ -617,7 +529,116 @@ window.requestAnimFrame = (function(){
             });
         });
 
+        d3.select("#searchQuery").on("change", function() {
+            highlightSearch();
+        });
+
+        repaint();
+
         // general functions
+
+        function repaint() {
+            console.log('repaint');
+            // svg container
+            d3.select(selector)
+              .select("svg")
+              .remove();
+
+            vis = d3.select(selector)
+                .insert("svg")
+                .attr("width", selectorWidth + "px")
+                .attr("height", options.height + "px")
+                .attr("overflow", "hidden")
+                .attr("version", "1.1")
+                .attr("font-family","Open Sans")
+                .attr("xmlns", "http://www.w3.org/2000/svg")
+                .call(zoom);
+
+            // background colored rect
+            vis.append("svg:rect")
+                .attr("class","canvas")
+                .attr("width", "100%")
+                .attr("height","100%")
+                .attr("fill", getBackgroundColor());
+            vis.append("svg:text")
+                .attr("dy", "20px")
+                .attr("stroke", getForegroundColor())
+                .attr("stroke-width", "1px")
+                .attr("font-size", "15px")
+                .text(onodes.name ? onodes.name : '');
+            vis.append("svg:text")
+                .attr("dy", "40px")
+                .attr("stroke", getForegroundColor())
+                .attr("stroke-width", "0.5px")
+                .attr("font-size", "10px")
+                .text(onodes.description ? onodes.description : '');
+
+            // marker defs
+            vis.append("defs")
+                .append("marker")
+                .attr("id", "markerBoxplot")
+                .attr("markerWidth", "1")
+                .attr("markerHeight", "10")
+                .attr("refX", "1")
+                .attr("refY", "5")
+                .append("line")
+                .attr("x1", "0")
+                .attr("x2", "0")
+                .attr("y1", "0")
+                .attr("y2", "10")
+                .attr("stroke", getForegroundColor())
+                .attr("stroke-width", "2px");
+
+            // main group
+            vis = vis.append("svg:g")
+                .attr("id","main")
+                .attr("transform", "translate("+options.marginX+", "+options.marginY+")");
+
+            // links and nodes selectors
+            node = vis.selectAll("g.node");
+
+            // draw the tree
+            drawTree();
+            if (phyd3.phylogram.dx == 0) {
+                d3.select("#phylogram").attr("checked","").attr("disabled", "disabled");
+                options.showPhylogram = true;
+                drawTree();
+            }
+
+            // selectors
+            leaves = vis.selectAll('g.leaf.node');
+            domains = leaves.selectAll("g.domain");
+
+            // appending misc items
+            toggleSupportValues();
+            toggleLengthValues();
+            toggleDomains();
+            toggleDomainNames();
+            toggleGraphs();
+            toggleSupportLines();
+            toggleLabels();
+
+            // appending leaf node text - tax & name
+            node.append("svg:text")
+                .attr("class", "name")
+                .attr("dx", options.nodeHeight + 1)
+                .attr("dy", 3)
+                .attr("text-anchor", "start")
+            changeLeafColors();
+            changeLeafText();
+            changeLeafVisibility();
+            applyZoomTransform();
+            applyLeafTransform();
+        }
+
+        function highlightSearch() {
+            vis.selectAll("rect.searchResults").remove();
+            var query = jQuery("#searchQuery").val();
+            var re = new RegExp(query, "i");
+            if (query.length) {
+                searchNode(onodes, re);
+            }
+        }
 
         function getForegroundColor() {
             return options.invertColors ? options.backgroundColor : options.foregroundColor;
@@ -883,8 +904,8 @@ window.requestAnimFrame = (function(){
                 .style("top",  parseInt(y) + "px")
                 .style("left", parseInt(x) + "px")
                 .style("width", parseInt(options.popupWidth) + "px")
-                .style("color", options.foregroundColor)
-                .style("background-color", options.backgroundColor);
+                .style("color", 'black')
+                .style("background-color", 'white');
             var closeBtn = popup.append("button")
                 .attr("class", "btn btn-link")
                 .style("position", "absolute")
@@ -1895,13 +1916,13 @@ window.requestAnimFrame = (function(){
         }
 
 
-        function drawTree(redraw) {
+        function drawTree(redraw, skipLayout) {
+            console.log("draw tree", redraw, skipLayout);
             // reset displayed label areas
             // phyd3.phylogram.labelAreas = [];
             // reset displayed line areas
             phyd3.phylogram.lineAreas = [];
             phyd3.phylogram.dx = 0;
-
             // make new cluster layout
             var tree = d3.layout.cluster()
                 .separation(function(a, b) {
@@ -1911,6 +1932,8 @@ window.requestAnimFrame = (function(){
                     return n.branchset
                 })
                 .size([treeHeight * options.scaleY, treeWidth * options.scaleX]);
+
+            //var xnodes = jQuery.extend(true, {}, onodes);
 
             // layout the tree nodess
             nodes = tree(onodes);
@@ -1968,7 +1991,22 @@ window.requestAnimFrame = (function(){
                         }
                     })
                     .style("cursor", "pointer")
-                    .on("click",  (options.popupAction === undefined) ? renderPopup : options.popupAction)
+                    .on("click",  function(d) {
+                        var mouseEvent = d3.event;
+                        if (mouseEvent.ctrlKey) {
+                            //console.log("swap");
+                            swapNode(onodes, d.id);
+                            drawTree(true);
+                        } else if (mouseEvent.altKey) {
+                            subtree(onodes, d.id);
+                            //d3.selectAll("g#main").selectAll("*").remove();
+                            repaint();
+                        } else if (options.popupAction !== undefined)  {
+                            options.popupAction(d)
+                        } else {
+                            renderPopup(d);
+                        }
+                    })
                     .style("z-index", 100)
                     .append("rect")
                     .attr("class", "pointer")
@@ -1986,6 +2024,54 @@ window.requestAnimFrame = (function(){
             });
             phyd3.phylogram.lineAreas = [];
         }
+
+        function searchNode(d, query) {
+            if (d.name.match(query)) {
+                var dx = (!d.children && options.lineupNodes) ? phyd3.phylogram.dx - d.y: 0;
+                vis.selectAll("g.node.cid_"+d.id)
+                    .append("rect")
+                    .attr("class", "searchResults")
+                    .attr("width", textPadding+"px")
+                    .attr("height", (options.nodeHeight*2 + 2)+"px")
+                    .attr("fill", "yellow")
+                    .style("opacity", "0.3")
+                    .attr("x",  (dx)  + "px")
+                    .attr("y", "-" + (options.nodeHeight + 1) + "px");
+            }
+            if (d.children) {
+                for (var cid = 0; cid < d.children.length; cid++) {
+                    r = searchNode(d.children[cid], query);
+                }
+            }
+            return false;
+        }
+
+        function swapNode(d, id, swap) {
+            if (swap || (d.id == id)) {
+                swap = true;
+                d.branchset = d.branchset.reverse();
+            }
+            if (d.children) {
+                for (var cid = 0; cid < d.children.length; cid++) {
+                    var c = d.children[cid];
+                    swapNode(c, id, swap);
+                }
+            }
+        }
+
+        function subtree(d, id) {
+            if (d.id == id) {
+                onodes.branchset = [d];
+                return;
+            }
+            if (d.children) {
+                for (var cid = 0; cid < d.children.length; cid++) {
+                    var c = d.children[cid];
+                    subtree(c, id);
+                }
+            }
+        }
+
 
         function redrawTree() {
             drawTree(true);
@@ -2095,6 +2181,7 @@ window.requestAnimFrame = (function(){
                     changeLeafVisibility();
                 }
             }
+            highlightSearch();
         }
 
         function zoomed(evt) {
