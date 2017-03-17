@@ -216,6 +216,7 @@ if (empty($_GET['id'])) {
 // get the previously submitted files
 $tree = trim(file_get_contents("submissions/$id.orig"));
 $annotation = @trim(file_get_contents("submissions/$id.txt"));
+$accepted = checkFormat($tree, $format);
 
 // if no annotation supplied proceed with display
 if (strlen($annotation) == 0) {
