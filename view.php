@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="libs/css/bootstrap-material-design.min.css" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="libs/css/vib.css" />
-    <link rel="stylesheet" href="css/phyd3.css" />
-    <link rel="stylesheet" href="libs/css/bootstrap-colorpicker.min.css" />
+    <link rel="stylesheet" href="dist/css/phyd3.css" />
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="libs/js/material.min.js"></script>
-    <script src="libs/js/bootstrap-colorpicker.min.js"></script>
 
     <script src="dist/js/phyd3.min.js" type="text/javascript"></script>
     <script>
@@ -60,19 +58,6 @@
             d3.select("#phyd3").html("Loading...<br /><br />");
             var fid = "<?php echo $_GET['id']?>".trim();
             <?php if ($_GET['f'] == 'xml') { ?>
-                if (fid == 'taxonomy.xml') {
-                    opts.showDomains = false;
-                }
-                if (fid == 'outergraphs.xml') {
-                    opts.showDomains = false;
-                }
-                if (fid == 'innergraphs.xml') {
-                    opts.nodeHeight = 10;
-                }
-                if (fid == 'domains.xml') {
-                    opts.showFullTaxonomy = false;
-                    opts.showTaxonomyColors = false;
-                }
                 d3.xml("submissions/"+fid, function(xml) {
                     d3.select("#phyd3").text(null);
                     var tree = phyd3.phyloxml.parse(xml);
