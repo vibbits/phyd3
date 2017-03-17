@@ -538,7 +538,6 @@ window.requestAnimFrame = (function(){
         // general functions
 
         function repaint() {
-            console.log('repaint');
             // svg container
             d3.select(selector)
               .select("svg")
@@ -1917,7 +1916,6 @@ window.requestAnimFrame = (function(){
 
 
         function drawTree(redraw, skipLayout) {
-            console.log("draw tree", redraw, skipLayout);
             // reset displayed label areas
             // phyd3.phylogram.labelAreas = [];
             // reset displayed line areas
@@ -1994,12 +1992,10 @@ window.requestAnimFrame = (function(){
                     .on("click",  function(d) {
                         var mouseEvent = d3.event;
                         if (mouseEvent.ctrlKey) {
-                            //console.log("swap");
                             swapNode(onodes, d.id);
                             drawTree(true);
                         } else if (mouseEvent.altKey) {
                             subtree(onodes, d.id);
-                            //d3.selectAll("g#main").selectAll("*").remove();
                             repaint();
                         } else if (options.popupAction !== undefined)  {
                             options.popupAction(d)
@@ -2026,7 +2022,7 @@ window.requestAnimFrame = (function(){
         }
 
         function searchNode(d, query) {
-            if (d.name.match(query)) {
+            if (d.name && d.name.match(query)) {
                 var dx = (!d.children && options.lineupNodes) ? phyd3.phylogram.dx - d.y: 0;
                 vis.selectAll("g.node.cid_"+d.id)
                     .append("rect")
