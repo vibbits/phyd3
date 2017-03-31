@@ -1,5 +1,4 @@
-<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
-
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 300">
  <g>
   <title>background</title>
   <rect fill="none" id="canvas_background" height="302" width="402" y="-1" x="-1"/>

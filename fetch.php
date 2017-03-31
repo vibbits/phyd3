@@ -379,14 +379,14 @@ if (($type != 'parse') && ($type != 'convert')) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="libs/css/bootstrap-material-design.min.css" />
-    <link rel="stylesheet" href="libs/css/bootstrap-colorpicker.min.css" />
     <link rel="stylesheet" href="libs/css/vib.css" />
+    <link rel="stylesheet" href="css/bootstrap-colorpicker.min.css" />
     <link rel="stylesheet" href="css/phyd3.css" />
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="libs/js/material.min.js"></script>
-    <script src="libs/js/bootstrap-colorpicker.min.js"></script>
+    <script src="js/bootstrap-colorpicker.min.js"></script>
     <script type="text/javascript">
 
         // Google Analytics
@@ -577,19 +577,23 @@ if (($type != 'parse') && ($type != 'convert')) {
     <a href="index.html"><img id="phyd3logo" src="img/logo-name.svg" /></a>
     <a href="http://www.vib.be"><img id="viblogo" src="img/vib_tagline_pos_rgb.png" /></a>
     <div class="row well annotation">
+        <form action="fetch.php?type=parse&id=<?php echo $id; ?>" method="POST">
         <div class="row">
             <div class="col-sm-9 phyd3-documentation">
                 <h2>Parse annotation data</h2>
                 You can use this wizard to parse the additional numerical data you have provided.<br />
                 The data should be split in columns. You can modify the parser parameters if needed. <br /><br />
             </div>
+            <div class="col-sm-3">
+                <br /><br />
+                <button class="btn btn-primary" type="submit">Parse again</button>
+            </div>
         </div>
         <div class="row">
-            <form action="fetch.php?type=parse&id=<?php echo $id; ?>" method="POST">
             <input type="hidden" name="format" value="<?php echo $format; ?>" />
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
             <input type="hidden" name="headersOff" value="1" />
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label for="select1" class="col-md-6 control-label">Delimiter</label>
                     <div class="col-md-6">
@@ -603,7 +607,7 @@ if (($type != 'parse') && ($type != 'convert')) {
                     </div>
                 </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label for="select2" class="col-md-6 control-label">Enclosure</label>
                     <div class="col-md-6">
@@ -615,7 +619,7 @@ if (($type != 'parse') && ($type != 'convert')) {
                     </div>
                 </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label for="select3" class="col-md-6 control-label">Escape</label>
                     <div class="col-md-6">
@@ -633,11 +637,8 @@ if (($type != 'parse') && ($type != 'convert')) {
                     </label>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <button class="btn btn-primary" type="submit">Parse again</button>
-            </div>
-            </form>
         </div>
+        </form>
         <form action="fetch.php?type=convert&id=<?php echo $id; ?>" class="form-horizontal" method="POST">
         <input type="hidden" name="format" value="<?php echo $format; ?>" />
         <input type="hidden" name="delimiter" value="<?php echo $delimiter; ?>" />
@@ -753,7 +754,6 @@ if (($type != 'parse') && ($type != 'convert')) {
                         </select>
                     </div>
                     </div>
-                </span>
                 </td>
             <?php } ?>
             </tr>

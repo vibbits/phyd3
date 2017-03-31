@@ -117,6 +117,7 @@ window.requestAnimFrame = (function(){
 
 
     phyd3.phylogram.randomColor = function(){
+        // return a random color that is nice to the user
         function hue2rgb(p, q, t){
             if(t < 0) t += 1;
             if(t > 1) t -= 1;
@@ -129,7 +130,7 @@ window.requestAnimFrame = (function(){
           var r, g, b;
 
             if(s == 0) {
-              r = g = b = l; // achromatic
+              r = g = b = l;
             } else {
 
                 var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
@@ -185,6 +186,8 @@ window.requestAnimFrame = (function(){
         options.domainLevelStep = options.domainLevelStep || 10;
         options.outline = options.outline || 0.3;
         options.popupWidth = options.popupWidth || 500;
+        options.maxDecimalsSupportValues = options.maxDecimalsSupportValues || 0;
+        options.maxDecimalsLengthValues = options.maxDecimalsLengthValues || 2;
         options.foregroundColor = options.foregroundColor || "#000";
         options.backgroundColor = options.backgroundColor || "#fff";
         options.branchLengthColor = options.branchLengthColor || "red";
@@ -207,6 +210,7 @@ window.requestAnimFrame = (function(){
         options.showGraphLegend = ('showGraphLegend' in options) ? options.showGraphLegend : true;
         options.showNodeNames = ('showNodeNames' in options) ? options.showNodeNames : true;
         options.showPhylogram = ('showPhylogram' in options) ? options.showPhylogram : false;
+        onodes.groups = onodes.groups ? onodes.groups : {};
 
         // nodes object, domain scale, last drawn leaf, leaves padding for displaying graphs and text
         var vis, node, leaves, domains, nodes, domainScale, lastLabel, boxplotScaling = [], multibarScaling = [], labelPadding = 100, textPadding = 100, graphPadding = 0, legendPadding = 100, longestNode = 0;
@@ -225,7 +229,7 @@ window.requestAnimFrame = (function(){
         legendPadding = showLegend ? legendPadding : 0;
         options.marginX = options.margin;
         options.marginY = options.margin + (options.showGraphs ? legendPadding : 0);
-
+        options.initialGraphWidth = options.graphWidth;
 
         // width, height
         var selectorWidth = jQuery(selector).width(),
@@ -259,11 +263,13 @@ window.requestAnimFrame = (function(){
         })
 
         jQuery("#foregroundColorButton").colorpicker().on("changeColor", function(){
+            // changing the foreground color
             options.foregroundColor = jQuery("#foregroundColor").val();
             refreshColors();
         })
 
         jQuery("#backgroundColorButton").colorpicker().on("changeColor", function(){
+            // changing the background color
             options.backgroundColor = jQuery("#backgroundColor").val();
             refreshColors();
         })
@@ -295,14 +301,35 @@ window.requestAnimFrame = (function(){
         d3.select("#lengthValues").on("click", function(){
             // show branch length values
             options.showLengthValues = !options.showLengthValues;
+            if (!options.showLengthValues) {
+                d3.select("#maxDecimalsLengthValues").attr("disabled", "disabled");
+            } else {
+                d3.select("#maxDecimalsLengthValues").attr("disabled", null);
+            }
+            toggleLengthValues();
+        })
+
+        d3.select("#maxDecimalsLengthValues").on("change", function() {
+            // format branch length values
+            options.maxDecimalsLengthValues = jQuery(this).val();
             toggleLengthValues();
         })
 
         d3.select("#supportValues").on("click", function(){
             // show support values
             options.showSupportValues = !options.showSupportValues;
+            if (!options.showSupportValues) {
+                d3.select("#maxDecimalsSupportValues").attr("disabled", "disabled");
+            } else {
+                d3.select("#maxDecimalsSupportValues").attr("disabled", null);
+            }
             toggleSupportValues();
-            changeLeafVisibility();
+        })
+
+        d3.select("#maxDecimalsSupportValues").on("change", function() {
+            // format support values
+            options.maxDecimalsSupportValues = jQuery(this).val();
+            toggleSupportValues();
         })
 
         d3.select("#nodeNames").on("click", function(){
@@ -337,6 +364,7 @@ window.requestAnimFrame = (function(){
             options.showNodesType = jQuery(this).val();
             redrawTree();
             changeLeafText();
+            applyLeafTransform();
         })
 
         d3.select("#taxonomyColors").on("click", function(){
@@ -352,6 +380,7 @@ window.requestAnimFrame = (function(){
             drawTree(true);
             applyLeafTransform();
             changeLeafVisibility();
+            applyLabelGroupTransform();
         })
 
         d3.select("#nodeHeightHigher").on("click", function() {
@@ -360,21 +389,14 @@ window.requestAnimFrame = (function(){
             drawTree(true);
             applyLeafTransform();
             changeLeafVisibility();
+            applyLabelGroupTransform();
         })
 
         d3.select("#resetZoom").on("click", function(){
+            // reset phylogram
             onodes = jQuery.extend(true, {}, allNodes);
-            // reset tree position & zoom level
-            options.domainWidth = options.domainWidthStep;
-            options.scaleX = 1;
-            options.scaleY = 1;
-            options.translateX = 0;
-            options.translateY = 0;
-
-            zoom.translate([0, 0]);
+            resetZoom();
             repaint();
-            //applyZoomTransform();
-            //applyLeafTransform();
         })
 
         d3.select("#zoominY").on("click", function(){
@@ -530,12 +552,225 @@ window.requestAnimFrame = (function(){
         });
 
         d3.select("#searchQuery").on("change", function() {
+            // search in tree
             highlightSearch();
         });
 
+        d3.select("#applyTaxonomyColors").on("click", function() {
+            // apply new taxonomy colors
+            d3.selectAll('input.taxColor').each(function(d) {
+                onodes.taxcolors[d.taxonomy].color = jQuery(this).val();
+            });
+            jQuery('#taxonomyColorsModal').modal('hide');
+            changeLeafColors();
+        });
+
+        d3.select("#applyGroupLabel").on("click", function() {
+            // add a new tree group label
+            var groupID = jQuery("#groupID").val();
+            var depth = jQuery("#groupDepth").val();
+            var label = jQuery("#groupLabel").val();
+            var backgroundColor = jQuery("#groupLabelBackground").val();
+            var foregroundColor = jQuery("#groupLabelForeground").val();
+            jQuery("#groupLabelModal").modal('hide');
+            onodes.groups[groupID] = {
+                id: groupID,
+                depth: depth,
+                label: label,
+                foregroundColor: foregroundColor,
+                backgroundColor: backgroundColor
+            };
+            groupNodes(onodes, groupID);
+            repaint();
+            applyLabelGroupTransform();
+        })
+
+        d3.select("#clearGroupLabel").on("click", function() {
+            // remove the tree group label
+            var groupID = jQuery("#groupID").val();
+            jQuery("#groupLabelModal").modal('hide');
+            delete onodes.groups[groupID];
+            ungroupNodes(onodes, groupID);
+            repaint();
+        })
+
+        var taxColors = getTaxonomyColorsArray();
+        if (taxColors.length) {
+            var colors = d3.select("#taxonomyColorsList")
+                .selectAll("div.taxColor")
+                .data(taxColors)
+                .enter()
+                .append("div")
+                .attr("class", "form-group col-xs-4 taxColor");
+            colors.append('label')
+                .attr('class', 'col-xs-4 control-label')
+                .text(function(d) {
+                    return d.taxonomy;
+                });
+            var picker = colors.append('div')
+                .attr('class', 'col-xs-8')
+                .append('div')
+                .attr('class', 'input-group colorpicker-component');
+            picker.append('input')
+                .attr('class', 'form-control taxColor')
+                .attr('type', 'text')
+                .attr('value', function(d) {
+                    return d.color.replace("0x", "#");
+                });
+            picker.append('span')
+                .attr('class', 'input-group-btn')
+                .append('span')
+                .attr('class', 'input-group-addon btn btn-fab btn-fab-mini')
+                .append('i');
+
+            jQuery(".colorpicker-component").colorpicker();
+            jQuery("#taxonomyColorsModal").on('hide.bs.modal', function() {
+                jQuery(".colorpicker-component").colorpicker('hide');
+            });
+            jQuery("#groupLabelModal").on('hide.bs.modal', function() {
+                jQuery(".colorpicker-component").colorpicker('hide');
+            });
+        } else {
+            d3.select("#taxonomyColorsList")
+                .append("div")
+                .attr('class', 'col-sm-12 text-center')
+                .text("No taxonomy information available");
+        }
+
         repaint();
 
-        // general functions
+        // group labels action handling functions
+
+        function applyLabelGroupTransform() {
+            vis.selectAll('text.groupLabel').remove();
+            vis.selectAll('rect.groupLabel').remove();
+            var maxdepth = 0;
+            for (gid in onodes.groups) {
+                var group = onodes.groups[gid];
+                group.x1 = Number.MAX_SAFE_INTEGER;
+                group.x2 = 0;
+                group.y1 = Number.MAX_SAFE_INTEGER;
+                group.y2 = 0;
+                if (maxdepth < group.depth) maxdepth = group.depth;
+                groupBounds(onodes, group);
+            }
+            for (var d = maxdepth; d >=0; d--) {
+                for (gid in onodes.groups) {
+                    var group = onodes.groups[gid];
+                    if (group.depth != d) continue;
+                    vis.insert('text', ':first-child')
+                        .attr('class', 'groupLabel')
+                        .attr('y', group.x1)
+                        .attr('x', 0)
+                        .attr('dy', options.nodeHeight*2)
+                        .attr('text-anchor', 'start')
+                        .attr('stroke', group.foregroundColor)
+                        .attr('stroke-width', options.outline + 'px')
+                        .attr('font-size', (options.nodeHeight*1.5) + 'px')
+                        .text(group.label);
+                    vis.insert('rect', ':first-child')
+                        .attr('class', 'groupLabel')
+                        .attr("stroke", group.backgroundColor)
+                        .attr('fill', group.backgroundColor)
+                        .attr('y', group.x1)
+                        .attr('height', group.x2 - group.x1)
+                        .attr('x', 0)
+                        .attr('width', phyd3.phylogram.dx)
+                        .append('title')
+                        .text(group.label);
+                }
+            }
+        }
+
+        function groupNodes(d, id, group) {
+            if (group || (d.id == id)) {
+                group = true;
+                if (!d.groupIDs) d.groupIDs = [];
+                d.groupIDs.push(id);
+                var g = onodes.groups[id];
+                if (d.x < g.x1) {
+                    g.x1 = d.x;
+                }
+                if (d.x > g.x2) {
+                    g.x2 = d.x;
+                }
+                if (d.y < g.y1) {
+                    g.y1 = d.y;
+                }
+                if (d.y > g.y2) {
+                    g.y2 = d.y;
+                }
+            }
+            if (d.children) {
+                for (var cid = 0; cid < d.children.length; cid++) {
+                    var c = d.children[cid];
+                    groupNodes(c, id, group);
+                }
+            }
+        }
+
+        function groupBounds(d, g) {
+            if (d.groupIDs) {
+                for (var i = 0; i < d.groupIDs.length; i++) {
+                    if (d.groupIDs[i] != g.id) continue;
+                    if (d.id == g.id) {
+                        g.depth = d.depth;
+                    }
+                    if (d.x < g.x1) {
+                        g.x1 = d.x;
+                    }
+                    if (d.x > g.x2) {
+                        g.x2 = d.x;
+                    }
+                    if (d.y < g.y1) {
+                        g.y1 = d.y;
+                    }
+                    if (d.y > g.y2) {
+                        g.y2 = d.y;
+                    }
+                }
+            }
+            if (d.children) {
+                for (var cid = 0; cid < d.children.length; cid++) {
+                    var c = d.children[cid];
+                    groupBounds(c, g);
+                }
+            }
+        }
+
+        function ungroupNodes(d, id) {
+            if (d.groupIDs) {
+                var i = d.groupIDs.indexOf(id);
+                if (i != -1) d.groupIDs.splice(i, 1);
+            }
+            if (d.children) {
+                for (var cid = 0; cid < d.children.length; cid++) {
+                    var c = d.children[cid];
+                    ungroupNodes(c, id);
+                }
+            }
+        }
+
+        function getTaxonomyColorsArray() {
+            var colors = [];
+            for (var c in onodes.taxcolors) {
+                var color = onodes.taxcolors[c];
+                color.taxonomy = c;
+                colors.push(color);
+            }
+            return colors;
+        }
+
+        // reset tree position & zoom level
+        function resetZoom() {
+            options.domainWidth = options.domainWidthStep;
+            options.graphWidth = options.initialGraphWidth;
+            options.scaleX = 1;
+            options.scaleY = 1;
+            options.translateX = 0;
+            options.translateY = 0;
+            zoom.translate([0, 0]);
+        }
 
         function repaint() {
             // svg container
@@ -543,9 +778,9 @@ window.requestAnimFrame = (function(){
               .select("svg")
               .remove();
 
-            vis = d3.select(selector)
-                .insert("svg")
-                .attr("width", selectorWidth + "px")
+            svg = d3.select(selector)
+                .insert("svg");
+            svg.attr("width", selectorWidth + "px")
                 .attr("height", options.height + "px")
                 .attr("overflow", "hidden")
                 .attr("version", "1.1")
@@ -554,26 +789,14 @@ window.requestAnimFrame = (function(){
                 .call(zoom);
 
             // background colored rect
-            vis.append("svg:rect")
+            svg.append("svg:rect")
                 .attr("class","canvas")
                 .attr("width", "100%")
                 .attr("height","100%")
                 .attr("fill", getBackgroundColor());
-            vis.append("svg:text")
-                .attr("dy", "20px")
-                .attr("stroke", getForegroundColor())
-                .attr("stroke-width", "1px")
-                .attr("font-size", "15px")
-                .text(onodes.name ? onodes.name : '');
-            vis.append("svg:text")
-                .attr("dy", "40px")
-                .attr("stroke", getForegroundColor())
-                .attr("stroke-width", "0.5px")
-                .attr("font-size", "10px")
-                .text(onodes.description ? onodes.description : '');
 
             // marker defs
-            vis.append("defs")
+            svg.append("defs")
                 .append("marker")
                 .attr("id", "markerBoxplot")
                 .attr("markerWidth", "1")
@@ -589,9 +812,24 @@ window.requestAnimFrame = (function(){
                 .attr("stroke-width", "2px");
 
             // main group
-            vis = vis.append("svg:g")
+            vis = svg.append("svg:g", ":first-child")
                 .attr("id","main")
                 .attr("transform", "translate("+options.marginX+", "+options.marginY+")");
+
+            svg.append("svg:text")
+                .attr("dy", "20px")
+                .attr("class", 'title')
+                .attr("stroke", getForegroundColor())
+                .attr("stroke-width", "1px")
+                .attr("font-size", "15px")
+                .text(onodes.name ? onodes.name : '');
+            svg.append("svg:text")
+                .attr("class", 'title')
+                .attr("dy", "40px")
+                .attr("stroke", getForegroundColor())
+                .attr("stroke-width", "0.5px")
+                .attr("font-size", "10px")
+                .text(onodes.description ? onodes.description : '');
 
             // links and nodes selectors
             node = vis.selectAll("g.node");
@@ -609,11 +847,11 @@ window.requestAnimFrame = (function(){
             domains = leaves.selectAll("g.domain");
 
             // appending misc items
-            toggleSupportValues();
-            toggleLengthValues();
             toggleDomains();
             toggleDomainNames();
             toggleGraphs();
+            toggleSupportValues();
+            toggleLengthValues();
             toggleSupportLines();
             toggleLabels();
 
@@ -652,14 +890,21 @@ window.requestAnimFrame = (function(){
             var fc = getForegroundColor();
             vis.selectAll("path.link")
                 .attr("stroke", fc);
-            vis.selectAll("text.legend")
+            d3.selectAll("text")
                 .attr("fill", fc);
+            d3.selectAll("marker")
+                .selectAll("line")
+                .attr("stroke", fc);
+            d3.selectAll("text.title")
+                .attr("stroke", fc)
             vis.selectAll("text.nodelabel")
                 .attr("stroke", fc)
                 .attr("fill", fc);
-            leaves.selectAll("path.support")
+            leaves.selectAll("path")
                 .attr("stroke", fc);
-            leaves.selectAll("path.domain")
+            leaves.selectAll("line")
+                .attr('stroke', fc);
+            leaves.selectAll("rect")
                 .attr('stroke', fc);
             changeLeafColors();
             changeDomainColors();
@@ -732,7 +977,7 @@ window.requestAnimFrame = (function(){
 
                 domains.append("svg:rect")
                     .attr("class", "domain hover-visible")
-                    .attr("stroke", options.foregroundColor)
+                    .attr("stroke", getForegroundColor())
                     .attr("stroke-width", options.outline + "px")
                     .append("title")
                     .text(function(d) {
@@ -755,7 +1000,7 @@ window.requestAnimFrame = (function(){
                     .attr("class", "domain")
                     .attr("dy", -3)
                     .attr("fill", getForegroundColor())
-                    .attr("font-size", "10px")
+                    .attr("font-size", (options.nodeHeight*1.5) + "px")
                     .text(function(d) {
                         return d.name
                     });
@@ -817,6 +1062,7 @@ window.requestAnimFrame = (function(){
         // action handlers for internal nodes text
 
         function toggleSupportValues() {
+            vis.selectAll("text.supportValue").remove();
             if (options.showSupportValues) {
                 vis.selectAll('g.inner.node')
                     .append("svg:text")
@@ -828,19 +1074,19 @@ window.requestAnimFrame = (function(){
                         var text = "";
                         if (d.confidences) {
                             for (var cid = 0; cid < d.confidences.length; cid++) {
-                                text += parseFloat(d.confidences[cid].value) + " ";
+                                text += parseFloat(d.confidences[cid].value).toFixed(options.maxDecimalsSupportValues) + " ";
                             }
                         }
                         return text;
                     });
+                d3.select("#maxDecimalsSupportValues").attr("value", options.maxDecimalsSupportValues);
                 applyLeafTransform();
                 changeLeafVisibility();
-            } else {
-                vis.selectAll("text.supportValue").remove();
             }
         }
 
         function toggleLengthValues() {
+            vis.selectAll('text.branchLength').remove();
             if (options.showLengthValues) {
                 vis.selectAll('g.node')
                     .append("svg:text")
@@ -849,12 +1095,11 @@ window.requestAnimFrame = (function(){
                     .attr("text-anchor", 'end')
                     .attr('fill', options.branchLengthColor)
                     .text(function(d) {
-                        return d.branchLength ? parseFloat(d.branchLength).toFixed(5) : "";
+                        return d.branchLength ? parseFloat(d.branchLength).toFixed(options.maxDecimalsLengthValues) : "";
                     });
+                d3.select("#maxDecimalsLengthValues").attr("value", options.maxDecimalsLengthValues);
                 applyLeafTransform();
                 changeLeafVisibility();
-            } else {
-                vis.selectAll('text.branchLength').remove();
             }
         }
 
@@ -922,7 +1167,7 @@ window.requestAnimFrame = (function(){
                 .attr("role", "tablist")
                 .attr("aria-multiselectable", "true");
 
-            var expanded = ((evt.target.nodeName == 'text') || (evt.target.classList.contains("pointer"))) ? true : false;
+            var expanded = ((evt.target.nodeName == 'text') || (evt.target.classList && evt.target.classList.contains("pointer"))) ? true : false;
             var tableClass = "table table-condensed table-bordered";
             var table = addPanel(accordion, "Node", expanded).append("table").attr("class", tableClass).append("tbody");
             if (n.name) {
@@ -1026,7 +1271,7 @@ window.requestAnimFrame = (function(){
                         }
                     }
                     if (n.sequences[sid].domainArchitecture && n.sequences[sid].domainArchitecture.domains) {
-                        var expanded = evt.target.parentNode.classList.contains("domain") ? true : false;
+                        var expanded = evt.target.parentNode.classList && evt.target.parentNode.classList.contains("domain") ? true : false;
                         var table = addPanel(accordion, "Domains", expanded)
                             .append("table")
                             .attr("id", "dt"+popupId)
@@ -1078,7 +1323,7 @@ window.requestAnimFrame = (function(){
                 for (var g = 0; g < onodes.graphs.length; g++) {
                     var graph = onodes.graphs[g];
                     if (graph.data && graph.data[n.id] && graph.data[n.id].length) {
-                        var expanded = evt.target.parentNode.classList.contains(graph.type) ? true : false;
+                        var expanded = evt.target.parentNode.classList && evt.target.parentNode.classList.contains(graph.type) ? true : false;
                         var table = addPanel(accordion, graph.name, expanded).append("table").attr("class", tableClass).append("tbody");
                         for (var i = 0; i<graph.legend.fields.length; i++) {
                             var row = table.append("tr");
@@ -1112,44 +1357,40 @@ window.requestAnimFrame = (function(){
         }
 
         function getNodeText(d, skipChecks) {
-            if (!skipChecks) {
-                if (d.children && options.showNodesType == 'only leaf') return "";
-                if (!d.children && options.showNodesType == 'only inner') return "";
-            }
-            var text = "";
+            var textTaxonomy = "";
             if (options.showTaxonomy && d.taxonomies) {
                 for (var tid = 0; tid < d.taxonomies.length; tid++) {
                     // we have id with provider name
                     var t = d.taxonomies[tid];
                     if (options.showFullTaxonomy) {
-                        // text += t.id ? t.id : '';
-                        // text += ' ';
-                        text += onodes.taxcolors[t.code] && onodes.taxcolors[t.code].name ? onodes.taxcolors[t.code].name : '';
-                        text += ' ';
-                        text += t.scientificName ? t.scientificName : '';
-                        text += ' ';
-                        text += t.commonName ? t.commonName : '';
-                        text += ' ';
-                        text += t.code ? t.code : '';
-                        text += ' ';
+                        // textTaxonomy += t.id ? t.id : '';
+                        // textTaxonomy += ' ';
+                        textTaxonomy += onodes.taxcolors[t.code] && onodes.taxcolors[t.code].name ? onodes.taxcolors[t.code].name : '';
+                        textTaxonomy += ' ';
+                        textTaxonomy += t.scientificName ? t.scientificName : '';
+                        textTaxonomy += ' ';
+                        textTaxonomy += t.commonName ? t.commonName : '';
+                        textTaxonomy += ' ';
+                        textTaxonomy += t.code ? t.code : '';
+                        textTaxonomy += ' ';
                     } else {
-                        text += t.code ? t.code : '';
-                        text += ' ';
+                        textTaxonomy += t.code ? t.code : '';
+                        textTaxonomy += ' ';
                     }
                 }
             }
-            text += (options.showNodeNames && d.name ? d.name : "") + " ";
+            var textSequences = "";
             if (options.showSequences && d.sequences) {
                 for (var sid = 0; sid < d.sequences.length; sid++) {
                     var s = d.sequences[sid];
-                    text += s.symbol ? s.symbol : '';
-                    text += ' ';
-                    text += s.accession ? s.accession.value : '';
-                    text += ' ';
-                    text += s.name ? s.name : '';
-                    text += ' ';
-                    text += s.geneName ? s.geneName : '';
-                    text += ' ';
+                    textSequences += s.symbol ? s.symbol : '';
+                    textSequences += ' ';
+                    textSequences += s.accession ? s.accession.value : '';
+                    textSequences += ' ';
+                    textSequences += s.name ? s.name : '';
+                    textSequences += ' ';
+                    textSequences += s.geneName ? s.geneName : '';
+                    textSequences += ' ';
                     if (s.annotations) {
                         for (var aid = 0; aid < s.annotations.length; aid++) {
                             text += s.annotations[aid].desc ? s.annotations[aid].desc : '';
@@ -1158,7 +1399,12 @@ window.requestAnimFrame = (function(){
                     }
                 }
             }
-            return text;
+            var textName = (options.showNodeNames && d.name) ? d.name + " " : " ";
+            if (!skipChecks) {
+                if (d.children && options.showNodesType == 'only leaf') textName =  " ";
+                if (!d.children && options.showNodesType == 'only inner') textName = " ";
+            }
+            return textTaxonomy + textName + textSequences;
         }
 
         function changeLeafText() {
@@ -1343,6 +1589,7 @@ window.requestAnimFrame = (function(){
                     }
                     vis.append("text")
                        .attr("class", "labellegend lid"+label.id)
+                       .attr("fill", getForegroundColor())
                        .text((label.showLegend != 0) ? label.name : '');
                 }
                 changeLabelVisibility();
@@ -1403,8 +1650,8 @@ window.requestAnimFrame = (function(){
         function changeLabelVisibility() {
             vis.selectAll('.nodelabel')
                 .attr("visibility", function(d) {
-                    if (d.branchset.length && options.showNodesType=="only leaf") return "hidden";
-                    if (!d.branchset.length && options.showNodesType=="only inner") return "hidden";
+                    // if (d.branchset.length && options.showNodesType=="only leaf") return "hidden";
+                    // if (!d.branchset.length && options.showNodesType=="only inner") return "hidden";
                     return d.show ? 'visible' : 'hidden';
                 });
         }
@@ -1545,10 +1792,14 @@ window.requestAnimFrame = (function(){
                         case "multibar":
                             multibarScaling[graph.id] = [];
                             for (var i = 0; i < graph.legend.fields.length; i++) {
-                                var m = d3.max(d3.values(graph.data), function(d) {
+                                var max = d3.max(d3.values(graph.data), function(d) {
                                     if (d) return d[i];
                                 });
-                                multibarScaling[graph.id][i] = d3.scale.linear().domain([0, m]);
+                                var min = d3.min(d3.values(graph.data), function(d) {
+                                    if (d) return d[i];
+                                });
+                                if (min > 0) min = 0;
+                                multibarScaling[graph.id][i] = d3.scale.linear().domain([min, max]);
                             }
                             for (cid in graph.data) {
                                 if (!graph.data[cid]) continue;
@@ -1569,7 +1820,7 @@ window.requestAnimFrame = (function(){
                                     .attr('fill', function(d, i) {
                                         return (graph.legend.fields[i] ? graph.legend.fields[i].color : '').replace(/0x/,"#");
                                     })
-                                    .attr("stroke", options.foregroundColor)
+                                    .attr("stroke", getForegroundColor())
                                     .attr("stroke-width", options.outline)
                                     .append("title").text(function(d, i) {
                                         return (graph.legend.fields[i] ? graph.legend.fields[i].name + ": " : "" )+d.value;
@@ -1612,7 +1863,7 @@ window.requestAnimFrame = (function(){
                                 path.append('rect')
                                     .attr("class","boxplot q1 hover-visible gid"+graph.id)
                                     .attr('fill', (graph.legend.fields[0] ? graph.legend.fields[0].color : '').replace(/0x/,"#"))
-                                    .attr("stroke", options.foregroundColor)
+                                    .attr("stroke", getForegroundColor())
                                     .attr("stroke-width", options.outline)
                                     .append("title").text(function(d) {
                                         return "Min: "+d.min+", Q1: "+d.q1+", Median: "+d.median;
@@ -1661,7 +1912,7 @@ window.requestAnimFrame = (function(){
                                     .attr('fill', function(d, i) {
                                         return heatmapColor(d.value);
                                     })
-                                    .attr("stroke", options.foregroundColor)
+                                    .attr("stroke", getForegroundColor())
                                     .attr("stroke-width", options.outline + "px")
                                     .append("title").text(function(d, i) {
                                         return (graph.legend.fields[i] ? graph.legend.fields[i].name + ": " : "" )+d.value;
@@ -1752,11 +2003,18 @@ window.requestAnimFrame = (function(){
                             graphs.selectAll("rect.multibar.gid"+graph.id)
                                 .attr('height', parseInt(h * 2))
                                 .attr('width', function(d, i) {
-                                    return parseInt(multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](d.value) : 0);
+                                    var x2 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](d.value) : 0);
+                                    var x1 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](0) : 0);
+                                    return (x2 > x1) ? (x2 - x1) : (x1 - x2);
                                 })
                                 .attr("transform", function(d, i) {
                                     var x = graphPadding + d.i*(options.graphWidth + 5);
+                                    var x2 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](d.value) : 0);
+                                    var x1 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](0) : 0);
+                                    x += (x1 < x2) ? x1 : x2;
                                     return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
+                                })
+                                .attr("x", function(d, i) {
                                 });
                             if (options.showGraphs && options.showGraphLegend) {
                                 for (var i=0; i<graph.legend.fields.length; i++) {
@@ -1844,7 +2102,7 @@ window.requestAnimFrame = (function(){
                 }
                 vis.selectAll("text.legend")
                     .attr("fill", getForegroundColor())
-                    .attr("font-size", options.nodeHeight * 2)
+                    .attr("font-size", (options.nodeHeight * 2) + 'px')
             }
         }
 
@@ -1949,7 +2207,21 @@ window.requestAnimFrame = (function(){
                     .append("svg:path")
                     .attr("class", "link")
                     .attr("fill", "none")
-                    .attr("stroke", getForegroundColor())
+                    .attr("stroke", function(d) {
+                        if (d.source.groupIDs && d.source.groupIDs.length) {
+                            var gid = {
+                                depth: 0
+                            }
+                            for (var i=0; i<d.source.groupIDs.length; i++) {
+                                var g = onodes.groups[d.source.groupIDs[i]];
+                                if (g && g.depth >= gid.depth) {
+                                    gid = g;
+                                }
+                            }
+                            return gid.foregroundColor;
+                        }
+                        return getForegroundColor();
+                    });
             }
 
             // redraw the links
@@ -1991,16 +2263,33 @@ window.requestAnimFrame = (function(){
                     .style("cursor", "pointer")
                     .on("click",  function(d) {
                         var mouseEvent = d3.event;
-                        if (mouseEvent.ctrlKey) {
+                        if (mouseEvent.ctrlKey && !mouseEvent.altKey && !mouseEvent.shiftKey) {
                             swapNode(onodes, d.id);
-                            drawTree(true);
-                        } else if (mouseEvent.altKey) {
-                            subtree(onodes, d.id);
+                            applyLabelGroupTransform();
                             repaint();
-                        } else if (options.popupAction !== undefined)  {
-                            options.popupAction(d)
-                        } else {
-                            renderPopup(d);
+                        } else if (mouseEvent.altKey && !mouseEvent.ctrlKey && !mouseEvent.shiftKey) {
+                            subtree(onodes, d.id);
+                            resetZoom();
+                            repaint();
+                        } else if (mouseEvent.shiftKey && !mouseEvent.altKey && !mouseEvent.ctrlKey) {
+                            jQuery("#groupID").val(d.id);
+                            jQuery("#groupDepth").val(d.depth);
+                            if (onodes.groups[d.id]) {
+                                jQuery("#groupLabel").val(onodes.groups[d.id].label);
+                                jQuery("#groupLabelForegroundCP").colorpicker('setValue', onodes.groups[d.id].foregroundColor);
+                                jQuery("#groupLabelBackgroundCP").colorpicker('setValue', onodes.groups[d.id].backgroundColor);
+                            } else {
+                                jQuery("#groupLabel").val('');
+                                jQuery("#groupLabelForegroundCP").colorpicker('setValue', getForegroundColor());
+                                jQuery("#groupLabelBackgroundCP").colorpicker('setValue', getBackgroundColor());
+                            }
+                            jQuery("#groupLabelModal").modal('show');
+                        } else if (!mouseEvent.shiftKey && !mouseEvent.altKey && !mouseEvent.ctrlKey) {
+                            if (options.popupAction !== undefined)  {
+                                options.popupAction(d);
+                            } else {
+                                renderPopup(d);
+                            }
                         }
                     })
                     .style("z-index", 100)
@@ -2022,7 +2311,7 @@ window.requestAnimFrame = (function(){
         }
 
         function searchNode(d, query) {
-            if (d.name && d.name.match(query)) {
+            if (getNodeText(d, true).match(query)) {
                 var dx = (!d.children && options.lineupNodes) ? phyd3.phylogram.dx - d.y: 0;
                 vis.selectAll("g.node.cid_"+d.id)
                     .append("rect")
@@ -2178,6 +2467,7 @@ window.requestAnimFrame = (function(){
                 }
             }
             highlightSearch();
+            applyLabelGroupTransform();
         }
 
         function zoomed(evt) {

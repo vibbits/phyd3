@@ -37,9 +37,9 @@
         <li>dynamic node hiding - tree nodes are automatically hidden, when they dont fit in the space between nodes, to prevent overlapping text &amp; graphs
         <li>alternating colors - tree colors can be inverted for higher readability
         <li>aligning nodes - nodes can be lined up to match furthest node, in order to present annotation data more clearly
-        <li>displaying branch length &amp; support values - if those values are present, they can be displayed directly next to the nodes
+        <li>displaying branch length &amp; support values - if those values are present, they can be displayed directly next to the nodes, the number of displayed decimals can also be controlled
         <li>displaying node &amp; taxonomy names - if those values are present, they can be displayed directly next to the nodes,
-        <li>displaying all, internal or external node annotations - users can choose what information to display
+        <li>displaying all, internal or external node names - users can choose what information to display
         <li>taxonomy coloring - node text can be coloured according to node taxonomy, if the colors are provided
         <li>node resizing - node text can be scaled, to support better readability
         <li>dynamic zooming - users can dynamically zoom in and out using mouse or the buttons provided
@@ -436,11 +436,6 @@ Listening on 127.0.0.1:8080...</pre>
             <td>color used to paint SVG background and node infobox popup background</td>
         </tr>
         <tr>
-            <td>branchLengthColor</td>
-            <td>red</td>
-            <td>font color when displaying branch length values</td>
-        </tr>
-        <tr>
             <td>domainLevel</td>
             <td>1</td>
             <td>only domains which confidence is lower than specified value will be shown on domain architecture graph</td>
@@ -581,6 +576,31 @@ Listening on 127.0.0.1:8080...</pre>
             <td>when true, shows the branch length values next to nodes</td>
         </tr>
         <tr>
+            <td>maxDecimalsLengthValues</td>
+            <td>2</td>
+            <td>number of decimals the branch length values will be rounded to</td>
+        </tr>
+        <tr>
+            <td>branchLengthColor</td>
+            <td>red</td>
+            <td>font color when displaying branch length values</td>
+        </tr>
+        <tr>
+            <td>showSupportValues</td>
+            <td>false</td>
+            <td>when true, shows the clade support values next to nodes</td>
+        </tr>
+        <tr>
+            <td>maxDecimalsSupportValues</td>
+            <td>0</td>
+            <td>number of decimals the support values will be rounded to</td>
+        </tr>
+        <tr>
+            <td>supportValuesColor</td>
+            <td>blue</td>
+            <td>font color when displaying clade support values</td>
+        </tr>
+        <tr>
             <td>showNodeNames</td>
             <td>true</td>
             <td>when true, shows the node names next to nodes</td>
@@ -596,11 +616,6 @@ Listening on 127.0.0.1:8080...</pre>
             <td>when true, shows phylogram instead of dendrogram</td>
         </tr>
         <tr>
-            <td>showSupportValues</td>
-            <td>false</td>
-            <td>when true, shows the clade support values next to nodes</td>
-        </tr>
-        <tr>
             <td>showTaxonomy</td>
             <td>true</td>
             <td>when true, shows the taxonomy codes next to nodes</td>
@@ -609,11 +624,6 @@ Listening on 127.0.0.1:8080...</pre>
             <td>showTaxonomyColors</td>
             <td>true</td>
             <td>when true, sets the colors of node names and taxonomy names to the taxonomy color specified in xml</td>
-        </tr>
-        <tr>
-            <td>supportValuesColor</td>
-            <td>blue</td>
-            <td>font color when displaying clade support values</td>
         </tr>
         <tr>
             <td>textLength</td>
@@ -717,9 +727,19 @@ Listening on 127.0.0.1:8080...</pre>
             <td>toggles the display of branch length values on and off</td>
         </tr>
         <tr>
+            <td>maxDecimalsLengthValues</td>
+            <td>input</td>
+            <td>specifies the number of decimals the length values will be rounded to</td>
+        </tr>
+        <tr>
             <td>supportValues</td>
             <td>checkbox</td>
             <td>toggles the display of clade support vlaues on and off</td>
+        </tr>
+        <tr>
+            <td>maxDecimalsSupportValues</td>
+            <td>input</td>
+            <td>specifies the number of decimals the length values will be rounded to</td>
         </tr>
         <tr>
             <td>nodeNames</td>

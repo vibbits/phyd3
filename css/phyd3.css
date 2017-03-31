@@ -42,7 +42,7 @@
 .phyd3-controls .form-group {
     margin-bottom: 0px;
     margin-top: 0px;
-
+    padding-bottom: 0px;
 }
 
 .phyd3-controls .form-group label {
@@ -84,7 +84,7 @@
     margin-bottom: 0px;
 }
 
-.phyd3-controls .form-control{
+.phyd3-controls .form-control {
     font-size: 12px;
     padding: 0px 10px;
     height: 25px;
@@ -106,7 +106,22 @@
     padding-top: 3px;
 }
 
-.top-padding {
+.phyd3-controls .form-control {
+    margin-bottom: 0px;
+}
+
+.phyd3-controls .pointer {
+    cursor: pointer;
+}
+
+.phyd3-controls .top-padding {
     padding-top: 5px;
 }
 
+.phyd3-modal {
+    font-size: 0.8em;
+}
+
+.phyd3-controls .btn-fab i, .phyd3-modal .btn-fab i {
+    vertical-align: baseline;
+}

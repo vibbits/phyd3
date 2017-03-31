@@ -34,6 +34,10 @@
             showDomainColors: true,
             showGraphs: true,
             showGraphLegend: true,
+            showSupportValues: false,
+            maxDecimalsSupportValues: 1,
+            showLengthValues: false,
+            maxDecimalsLengthValues: 3,
             showLength: false,
             showNodeNames: true,
             showNodesType: "all",
@@ -92,20 +96,16 @@
                             <input id="invertColors" type="checkbox"> invert colors
                         </label>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-fab btn-fab-mini" title="Set foreground color">
                             <div class="input-group colorpicker-component" id="foregroundColorButton">
                                 <input type="text" class="form-control hidden" name="foregroundColor" id="foregroundColor" />
-                                <span class="input-group-addon"><i></i></span>
+                                <span class="input-group-addon btn btn-fab btn-fab-mini"><i></i></span>
                             </div>
-                            </button>
                         </span>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-fab btn-fab-mini" title="Set background color" >
                             <div class="input-group colorpicker-component" id="backgroundColorButton">
                                 <input type="text" class="form-control hidden" name="backgroundColor" id="backgroundColor" />
-                                <span class="input-group-addon"><i></i></span>
+                                <span class="input-group-addon btn btn-fab btn-fab-mini"><i></i></span>
                             </div>
-                            </button>
                         </span>
                     </div>
             </div>
@@ -126,8 +126,14 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                      <input id="lengthValues" type="checkbox"> show branch length values
+                        <input id="lengthValues" type="checkbox"> show branch length values
                     </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 text-right left-dropdown middle-padding">decimals</div>
+                <div class="col-xs-3 no-padding">
+                    <input id="maxDecimalsLengthValues" type="number" min="0" id="domainLevel" class="form-control no-padding col-sm-6"  value="3" disabled />
                 </div>
             </div>
             <div class="form-group">
@@ -137,6 +143,12 @@
                     </label>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-4 text-right left-dropdown middle-padding">decimals</div>
+                <div class="col-xs-3 no-padding">
+                    <input id="maxDecimalsSupportValues" type="number" min="0" id="domainLevel" class="form-control no-padding col-sm-6" value="1" disabled />
+                </div>
+            </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
@@ -144,29 +156,8 @@
                     </label>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="nodeLabels" type="checkbox" checked="checked"> show node labels
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="sequences" type="checkbox"> show sequences
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                      <input id="taxonomy" type="checkbox" checked="checked"> show taxonomy
-                    </label>
-                </div>
-            </div>
             <div class="row">
-                <div class="col-xs-3 text-right left-dropdown middle-padding">show</div>
+                <div class="col-xs-3 text-right left-dropdown middle-padding">for</div>
                 <div class="col-xs-5 no-padding">
                 <select id="nodesType" class="form-control">
                     <option selected="selected">all</option>
@@ -181,9 +172,33 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
+                      <input id="nodeLabels" type="checkbox" checked="checked"> show node labels
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                      <input id="sequences" type="checkbox"> show additional node information
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                      <input id="taxonomy" type="checkbox" checked="checked"> show taxonomy
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
                       <input id="taxonomyColors" type="checkbox" checked="checked"> taxonomy colorization
                     </label>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-11 text-right left-dropdown middle-padding"><a class="pointer" data-toggle="modal" data-target="#taxonomyColorsModal">show taxonomy colors table</a></div>
             </div>
             <div class="row">
                 <div class="col-xs-3">
@@ -313,12 +328,84 @@
         </div>
         <div class="col-sm-9 text-center">
             Use your mouse to drag, zoom and modify the tree. <br />
-            <strong>Actions:</strong><br />CTRL + wheel = scale Y, ALT + wheel = scale X, <br />mouse click = node info, CTRL + mouse click = swap, ALT + mouse click = subtree<br /><br />
+            <strong>Actions:</strong><br />
+            CTRL + wheel = scale Y, ALT + wheel = scale X<br />
+            mouse click = node info<br />
+            CTRL + mouse click = swap, ALT + mouse click = view subtree, SHIFT + mouse click = color subtree<br />
+            <br />
             You can use the URL of this page as permalink.
         </div>
     </div>
+    <div class="modal fade" id="taxonomyColorsModal" tabindex="-1" role="dialog" aria-labelledby="taxonomyColorsModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="taxonomyColorsModalLabel">Taxonomy colors</h4>
+          </div>
+          <div class="modal-body phyd3-modal">
+            &nbsp;
+              <form class="row form-horizontal" id="taxonomyColorsList">
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="applyTaxonomyColors">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="groupLabelModal" tabindex="-1" role="dialog" aria-labelledby="groupLabelModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="groupLabelModalLabel">Group label</h4>
+          </div>
+          <div class="modal-body phyd3-modal">
+            <form class="form-horizontal">
+                <input id="groupID" hidden="hidden" type="text" />
+                <input id="groupDepth" hidden="hidden" type="text" />
+                <div class="form-group">
+                    <label class="col-xs-4 control-label"> Label </label>
+                    <div class="col-xs-8">
+                        <input id="groupLabel" class="form-control" type="text" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label"> Foreground color </label>
+                    <div class="col-xs-8">
+                        <div id="groupLabelForegroundCP" class="input-group colorpicker-component">
+                            <input id="groupLabelForeground" type="text" class="form-control" />
+                            <span class="input-group-btn">
+                                <span class="input-group-addon btn btn-fab btn-fab-mini" title="Set foreground color"><i></i></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label"> Background color </label>
+                    <div class="col-xs-8">
+                        <div id="groupLabelBackgroundCP" class="input-group colorpicker-component">
+                            <input id="groupLabelBackground" type="text" class="form-control" />
+                            <span class="input-group-btn">
+                                <span class="input-group-addon btn btn-fab btn-fab-mini" title="Set foreground color"><i></i></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id='clearGroupLabel'>Clear</button>
+            <button type="button" class="btn btn-primary" id='applyGroupLabel'>Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="text/javascript">
         jQuery.material.init();
+        jQuery("#groupLabelBackgroundCP").colorpicker({color: opts.foregroundColor});
+        jQuery("#groupLabelForegroundCP").colorpicker({color: opts.backgroundColor});
     </script>
 </body>
 </html>
