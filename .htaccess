@@ -1,4 +1,13 @@
 Options -Indexes
+FileETag MTime Size
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+    AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript image/svg+xml
+</IfModule>
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpg|jpeg|png|gif|svg|woff)$">
+        Header set Cache-Control "max-age=86400, public"
+    </FilesMatch>
+    <FilesMatch "\.(js|css)$">
+        Header set Cache-Control "max-age=86400, private"
+    </FilesMatch>
 </IfModule>
