@@ -21,6 +21,16 @@ See the GNU General Public License for more details.
 
 Full license text can be found in LICENSE.txt
 
+Citation
+========
+When using PhyD3, please cite:
+
+>Kreft, L; Botzki, A; Coppens, F; Vandepoele, K; Van Bel, M
+>
+>[**"PhyD3: a phylogenetic tree viewer with extended phyloXML support for functional genomics data visualization"**](https://academic.oup.com/bioinformatics/article-abstract/doi/10.1093/bioinformatics/btx324/3835380/PhyD3-a-phylogenetic-tree-viewer-with-extended)
+>
+>Bioinformatics (2017) PMID 28525531 doi:10.1093/bioinformatics/btx324.
+
 Usage
 ========
 ```
