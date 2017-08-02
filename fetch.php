@@ -64,7 +64,7 @@ function replaceCallback($matches) {
 function replaceBackCallback($matches) {
     global $NewickTokerNr;
     global $NewickTokens;
-    return $NewickTokens[$matches[0]];
+    return substr($NewickTokens[$matches[0]], 1, -2);
 }
 
 function parseNewick($s) {
@@ -79,7 +79,8 @@ function parseNewick($s) {
     $s = preg_replace_callback("/'.*':/U", 'replaceCallback', $s);
 
     // split and parse tokens
-    $tokens = preg_split("/\s*(;|\(|\)|,|:)\s*/", $s, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+    $tokens = preg_split("/\s*(;|\(|\)|,|:|\]|\[)\s*/", $s, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+    $nhx = false;
     for ($i=0; $i<count($tokens); $i++) {
         $token = $tokens[$i];
         switch ($token) {
@@ -92,6 +93,12 @@ function parseNewick($s) {
             case ')': // optional name next
                 $tree .= "</clade>";
                 break;
+            case '[':
+                $nhx = true;
+                break;
+            case ']':
+                $nhx = false;
+                break;
             case ':': // optional length next
                 break;
             case ';':
@@ -99,9 +106,43 @@ function parseNewick($s) {
             default:
                 $x = $tokens[$i-1];
                 if ($x == ')' || $x == '(' || $x == ',') {
+                    // TODO: split the #1# token params e.g. OS= SV= etc.
                     $tree .= "<name>" . $token ."</name>";
                 } else if ($x == ':') {
-                    $tree .= "<branch_length>" . $token . "</branch_length>";
+                    if ($nhx) {
+                        $nhx = explode("=", $token);
+                        switch ($nhx[0]) {
+                            case 'B':
+                                $tree .= '<confidence type="bootstrap">' . $nhx[1] . '</confidence>';
+                                break;
+                            case 'E':
+                                $tree .= '<sequence><annotation ref="EC:' . $nhx[1] . '"></annotation></sequence>';
+                                break;
+                            case 'D':
+                                $tree .= '<events>';
+                                $tree .= '<type>speciation_or_duplication</type>';
+                                if ($nhx[1] == 'y' || $nhx[1] == 'Y') {
+                                    $tree .= '<duplications>1</duplications>';
+                                }
+                                if ($nhx[1] == 'n' || $nhx[1] == 'N') {
+                                    $tree .= '<speciations>1</speciations>';
+                                }
+                                $tree .= '</events>';
+                                break;
+                            case 'T':
+                            case 'S':
+                                $tree .= '<taxonomy>';
+                                if ($nhx[0] == 'T') $tree .= '<id provider="ncbi">' . $nhx[1] . '</id>';
+                                if ($nhx[0] == 'S') $tree .= '<scientific_name>' . $nhx[1] . '</scientific_name>';
+                                $tree .= '</taxonomy>';
+                                break;
+                            default:
+                                $tree .= '<property ref="' . $nhx[0] . '" datatype="xsd:string" applies_to="clade">' . $nhx[1] . '</property>';
+                                break;
+                        }
+                    } else {
+                        $tree .= '<branch_length>' . $token . '</branch_length>';
+                    }
                 }
                 break;
         }

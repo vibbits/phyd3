@@ -56,7 +56,7 @@
             <div class="row">
                 <div class="col-sm-9">
                     <span class="phyd3-documentation">
-                        The following tree formats are supported: <a href="http://evolution.genetics.washington.edu/phylip/newicktree.html" target='_blank'>Newick</a>, <a href='http://www.phyloxml.org/' target="_blank">phyloXML</a>, <a href="documentation.html#extended+phyloXML" target='_blank'>extended phyloXML</a>.<br />
+                        The following tree formats are supported: <a href="http://evolution.genetics.washington.edu/phylip/newicktree.html" target='_blank'>Newick (NH)</a>, <a href='https://home.cc.umanitoba.ca/~psgendb/doc/atv/NHX.pdf' target='_blank'>NHX</a>, <a href='http://www.phyloxml.org/' target="_blank">phyloXML</a>, <a href="documentation.html#extended+phyloXML" target='_blank'>extended phyloXML</a>.<br />
                         You can copy and paste your tree below:
                     </span>
                     <fieldset>
