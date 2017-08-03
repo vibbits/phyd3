@@ -1518,7 +1518,6 @@ window.requestAnimFrame = (function(){
             //margin = 100*options.nodeHeight/6;
             margin += 10;
             if (margin < options.textLength) margin = options.textLength;
-            console.log(margin);
             textPadding = margin;
             d3.select("#nodeHeight")
                 .attr("value", options.nodeHeight*2+"px");
