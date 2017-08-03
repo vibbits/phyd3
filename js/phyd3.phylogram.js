@@ -872,7 +872,7 @@ window.requestAnimFrame = (function(){
             vis.selectAll("rect.searchResults").remove();
             var query = jQuery("#searchQuery").val();
             var re = new RegExp(query, "i");
-            if (query.length) {
+            if (query && query.length) {
                 searchNode(onodes, re);
             }
         }
