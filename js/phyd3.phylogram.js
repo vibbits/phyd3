@@ -1709,13 +1709,14 @@ window.requestAnimFrame = (function(){
                     switch (graph.type) {
                         case "pie":
                             for (cid in graph.data) {
+                                var cid_selector = cid.replace(/\./g,"\\.");
                                 if (!graph.data[cid] || !Array.isArray(graph.data[cid])) continue;
                                 var leaf = false;
-                                vis.select(".cid_"+cid)
+                                vis.select(".cid_"+cid_selector)
                                     .each(function(d) {
                                         if (d.branchset.length == 0) leaf = true;
                                     });
-                                var clade = vis.selectAll(".cid_"+cid)
+                                var clade = vis.selectAll(".cid_"+cid_selector)
                                     .append("svg:g")
                                     .attr("class", "graph pie gid"+graph.id);
                                 var data = [];
@@ -1757,10 +1758,11 @@ window.requestAnimFrame = (function(){
                         case "binary":
                             for (cid in graph.data) {
                                 if (!graph.data[cid] || !Array.isArray(graph.data[cid])) continue;
+                                var cid_selector = cid.replace(/\./g,"\\.");
                                 var h = options.nodeHeight - 2;
                                 var data = [];
                                 var leaf = false;
-                                vis.select(".cid_"+cid)
+                                vis.select(".cid_"+cid_selector)
                                     .each(function(d) {
                                         if (d.branchset.length == 0) leaf = true;
                                     });
@@ -1804,7 +1806,8 @@ window.requestAnimFrame = (function(){
                             }
                             for (cid in graph.data) {
                                 if (!graph.data[cid]) continue;
-                                var clade = vis.select(".cid_"+cid).append("svg:g").attr("class", "graph multibar gid"+graph.id);
+                                var cid_selector = cid.replace(/\./g,"\\.");
+                                var clade = vis.select(".cid_"+cid_selector).append("svg:g").attr("class", "graph multibar gid"+graph.id);
                                 var data = [];
                                 for (var i=0; i < graph.data[cid].length; i++){
                                     if (graph.data[cid][i]  != undefined)
@@ -1845,7 +1848,8 @@ window.requestAnimFrame = (function(){
                             boxplotScaling[graph.id] = d3.scale.linear().domain([boxMin, boxMax]);
                             for (cid in graph.data) {
                                 if (!graph.data[cid]) continue;
-                                var clade = vis.select(".cid_"+cid).append("svg:g").attr("class", "graph boxplot gid"+graph.id);
+                                var cid_selector = cid.replace(/\./g,"\\.");
+                                var clade = vis.select(".cid_"+cid_selector).append("svg:g").attr("class", "graph boxplot gid"+graph.id);
                                 var data = [];
                                 data.push({
                                     min: graph.data[cid][0],
@@ -1895,7 +1899,8 @@ window.requestAnimFrame = (function(){
                                 .range(colorbrewer[graph.legend.gradient.name][graph.legend.gradient.classes]);
                             for (cid in graph.data) {
                                 if (!graph.data[cid]) continue;
-                                var clade = vis.select(".cid_"+cid).append("svg:g").attr("class", "graph heatmap gid"+graph.id);
+                                var cid_selector = cid.replace(/\./g,"\\.");
+                                var clade = vis.select(".cid_"+cid_selector).append("svg:g").attr("class", "graph heatmap gid"+graph.id);
                                 var data = [];
                                 if (graph.data[cid])
                                 for (var i=0; i < graph.data[cid].length; i++){
