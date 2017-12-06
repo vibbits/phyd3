@@ -6286,7 +6286,7 @@
       </legend>
       <data>
         <values for="10">
-          <value>64</value>
+          <value></value>
           <value>38</value>
           <value>84</value>
           <value>9</value>
@@ -6297,7 +6297,7 @@
           <value>12</value>
         </values>
         <values for="11">
-          <value>6</value>
+          <value></value>
           <value>0</value>
           <value>95</value>
           <value>74</value>
@@ -6308,7 +6308,7 @@
           <value>53</value>
         </values>
         <values for="13">
-          <value>16</value>
+          <value></value>
           <value>63</value>
           <value>92</value>
           <value>35</value>
@@ -6320,7 +6320,7 @@
         </values>
         <values for="14">
           <value>85</value>
-          <value>56</value>
+          <value></value>
           <value>23</value>
           <value>91</value>
           <value>8</value>
@@ -6331,7 +6331,7 @@
         </values>
         <values for="16">
           <value>53</value>
-          <value>64</value>
+          <value></value>
           <value>30</value>
           <value>39</value>
           <value>10</value>

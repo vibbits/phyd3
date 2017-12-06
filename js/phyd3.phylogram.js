@@ -188,6 +188,7 @@ window.requestAnimFrame = (function(){
         options.popupWidth = options.popupWidth || 500;
         options.maxDecimalsSupportValues = options.maxDecimalsSupportValues || 0;
         options.maxDecimalsLengthValues = options.maxDecimalsLengthValues || 2;
+        options.nanColor = options.nanColor || "#fff";
         options.foregroundColor = options.foregroundColor || "#000";
         options.backgroundColor = options.backgroundColor || "#fff";
         options.branchLengthColor = options.branchLengthColor || "red";
@@ -1916,9 +1917,19 @@ window.requestAnimFrame = (function(){
                                     .append('rect')
                                     .attr("class","heatmap hover-visible gid"+graph.id)
                                     .attr('fill', function(d, i) {
-                                        return heatmapColor(d.value);
+                                        if (! isNaN(d.value)) {
+                                            return heatmapColor(d.value);
+                                        } else {
+                                            return options.nanColor;
+                                        }
                                     })
-                                    .attr("stroke", getForegroundColor())
+                                    .attr("stroke", function(d, i) {
+                                        if (! isNaN(d.value)) {
+                                            return getForegroundColor();
+                                        } else {
+                                            return options.nanColor;
+                                        }
+                                    })
                                     .attr("stroke-width", options.outline + "px")
                                     .append("title").text(function(d, i) {
                                         return (graph.legend.fields[i] ? graph.legend.fields[i].name + ": " : "" )+d.value;
