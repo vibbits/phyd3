@@ -1861,12 +1861,13 @@ window.requestAnimFrame = (function(){
                                 var max = d3.max(d3.values(graph.data), function(d) {
                                     if (d) return d[i];
                                 });
-                                var min = d3.max(d3.values(graph.data), function(d) {
+                                var min = d3.min(d3.values(graph.data), function(d) {
                                     if (d) return d[i];
                                 });
                                 if (max > boxMax) boxMax = max;
                                 if (min < boxMin) boxMin = min;
                             }
+                            console.log(boxMin, boxMax);
                             boxplotScaling[graph.id] = d3.scale.linear().domain([boxMin, boxMax]);
                             for (cid in graph.data) {
                                 if (!graph.data[cid]) continue;
@@ -2032,7 +2033,7 @@ window.requestAnimFrame = (function(){
                                        .attr("transform", "translate("+ (phyd3.phylogram.dx + padding + graphPadding + i*(h*2 + 5) + h*2) +", -10) rotate(-90)");
                                 }
                             }
-                            graphPadding += (graph.legend.fields.length + 1)*(h*2 + 5) + 5;
+                            graphPadding += 10 + (graph.legend.fields.length) * (h*2 + 5);
                             break;
                         case "multibar":
                             for (var i = 0; i < graph.legend.fields.length; i++) {
@@ -2056,10 +2057,7 @@ window.requestAnimFrame = (function(){
                                     var x2 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](d.value) : 0);
                                     var x1 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](0) : 0);
                                     x += (x1 < x2) ? x1 : x2;
-
                                     return " translate(" + parseInt(x) + ", " + parseInt(y) +")";
-                                })
-                                .attr("x", function(d, i) {
                                 });
                             if (options.showGraphs && options.showGraphLegend) {
                                 if (graph.legend.stacked) {
@@ -2102,6 +2100,8 @@ window.requestAnimFrame = (function(){
                                 .attr('y1', parseInt(h))
                                 .attr('y2', parseInt(h))
                                 .attr('x1', function(d) {
+                                    var x1 = boxplotScaling[graph.id](d.min);
+                                    if (x1 < 0) console.log(d.min, x1);
                                     return boxplotScaling[graph.id](d.min);
                                 })
                                 .attr('x2', function(d) {
