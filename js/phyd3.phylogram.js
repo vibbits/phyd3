@@ -211,6 +211,7 @@ window.requestAnimFrame = (function(){
         options.showGraphLegend = ('showGraphLegend' in options) ? options.showGraphLegend : true;
         options.showNodeNames = ('showNodeNames' in options) ? options.showNodeNames : true;
         options.showPhylogram = ('showPhylogram' in options) ? options.showPhylogram : false;
+        options.pinnedNodes = options.pinnedNodes || [];
         onodes.groups = onodes.groups ? onodes.groups : {};
 
         // nodes object, domain scale, last drawn leaf, leaves padding for displaying graphs and text
@@ -1141,6 +1142,10 @@ window.requestAnimFrame = (function(){
             var x = evt.layerX;
                 y = evt.layerY;
             var popupId = "popup"+parseInt(Date.now() * Math.random() * 1000);
+            var closeFunction = function() {
+                d3.select("#"+popupId).remove();
+                vis.selectAll("g.node.cid_"+n.id).selectAll("rect.pointer").style("opacity", "0");
+            }
             var popup = d3.select(selector)
                 .append("div")
                 .attr("class", "popup")
@@ -1158,10 +1163,20 @@ window.requestAnimFrame = (function(){
             closeBtn.append("span")
                 .attr("class", "glyphicon glyphicon-remove")
                 .attr("aria-hidden", "true");
-            closeBtn.on("click", function() {
-                d3.select("#"+popupId).remove();
-                vis.selectAll("g.node.cid_"+n.id).selectAll("rect.pointer").style("opacity", "0");
-            })
+            closeBtn.on("click", closeFunction);
+            var nodeActions = popup.append("span")
+                .append("a")
+                .text(function() {
+                    if (options.pinnedNodes.indexOf(n.id) == -1) return "Pin this node";
+                    return "Unpin this node";
+                })
+                .on("click", function() {
+                    var i = options.pinnedNodes.indexOf(n.id);
+                    if (i == -1) options.pinnedNodes.push(n.id);
+                    else options.pinnedNodes.splice(i, 1);
+                    closeFunction();
+                    changeLeafColors();
+                });
             var accordion = popup.append("div")
                 .attr("class", "panel-group")
                 .attr("id", "accordion_"+parseInt(Date.now() * Math.random() * 1000))
@@ -1461,7 +1476,14 @@ window.requestAnimFrame = (function(){
         function changeLeafColors() {
             vis.selectAll("text.name")
                .attr("stroke", getForegroundColor())
-               .attr("stroke-width", options.outline+"px")
+               .attr("stroke-width", function(d) {
+                    var alwaysVisible = options.pinnedNodes.indexOf(d.id) != -1;
+                    if (alwaysVisible){
+                        console.log("o");
+                        return (2 * options.outline) + "px";
+                    }
+                    return options.outline+"px";
+                })
                .attr("fill", function(d) {
                     var color = null;
                     if (options.showTaxonomyColors && onodes.taxcolors && d.taxonomies) {
@@ -2252,14 +2274,34 @@ window.requestAnimFrame = (function(){
                 return !n.children;
             });
             for (var i = 0; i<leafnodes.length; i++)  {
-                leafnodes[i].show = options.dynamicHide ? checkLabelPositioning(leafnodes[i], !options.lineupNodes) : true;
+                var alwaysVisible = options.pinnedNodes.indexOf(leafnodes[i].id) != -1;
+                if (alwaysVisible) {
+                    leafnodes[i].show = true;
+                    leafnodes[i].pinned = true;
+                    if (!checkLabelPositioning(leafnodes[i], !options.lineupNodes)) {
+                        lastLabel.show = lastLabel.pinned ? true : false;
+                    }
+                    lastLabel = leafnodes[i];
+                } else {
+                    leafnodes[i].show = options.dynamicHide ? checkLabelPositioning(leafnodes[i], !options.lineupNodes) : true;
+                }
             }
             lastLabel = undefined;
             var innernodes = nodes.filter(function (n) {
                 return n.children;
             });
             for (var i = 0; i<innernodes.length; i++)  {
-                innernodes[i].show = options.dynamicHide ? checkLabelPositioning(innernodes[i], true) : true;
+                var alwaysVisible = options.pinnedNodes.indexOf(innernodes[i].id) != -1;
+                if (alwaysVisible) {
+                    innernodes[i].show = true;
+                    innernodes[i].pinned = true;
+                    if (!checkLabelPositioning(innernodes[i], true)) {
+                        lastLabel.show = lastLabel.pinned ? true : false;
+                    }
+                    lastLabel = innernodes[i];
+                } else {
+                    innernodes[i].show = options.dynamicHide ? checkLabelPositioning(innernodes[i], true) : true;
+                }
             }
             if (!redraw)  {
                 // layout the nodes
