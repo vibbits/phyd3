@@ -1162,7 +1162,8 @@ window.requestAnimFrame = (function(){
                 .style("right", "8px");
             closeBtn.append("span")
                 .attr("class", "glyphicon glyphicon-remove")
-                .attr("aria-hidden", "true");
+                .attr("aria-hidden", "true")
+                .style("top", "-15px");
             closeBtn.on("click", closeFunction);
             var nodeActions = popup.append("span")
                 .append("a")
@@ -1660,11 +1661,10 @@ window.requestAnimFrame = (function(){
                        .attr("transform", "translate("+ parseInt(phyd3.phylogram.dx + labelPadding + textPadding + h*2) +",-10) rotate(-90)");
                     labelPadding += maxWidth + h*2;
                 }
-                var labels = leaves.selectAll('.nodelabel');
-                labels.selectAll("text")
+                leaves.selectAll("text.nodelabel")
                     .attr("dy", h / 2)
                     .attr('font-size', (h * 1.5)+'px');
-                labels.selectAll("rect")
+                leaves.selectAll("rect.nodelabel")
                     .attr("width", (2 * h)+'px')
                     .attr("height", (2 * h)+'px');
             }
