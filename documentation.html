@@ -160,7 +160,7 @@
         </li>
         <li><h4>Node graphs</h4>
         You can also include the graphs specifications and the graph data, that should be displayed next to the node (clade).<br /> On the internal nodes <b>pie</b> or <b>binary</b> graphs can be drawn.
-        For leaf nodes you can choose between 5 graph types: <b>multibar, pie, binary, heatmap, boxplot</b>. Each referenced clade needs to have an <b>id</b> tag defined in the phylogeny.<br />
+        For leaf nodes you can choose between 5 graph types: <b>multibar (normal/stacked), pie, binary, heatmap, boxplot</b>. Each referenced clade needs to have an <b>id</b> tag defined in the phylogeny.<br />
         For complete graph specification you need three things:
         <ol>
             <li><b>name</b> - graph name, that will be displayed in detailed node information popup
@@ -235,6 +235,46 @@
                     &lt;value&gt;23&lt;/value&gt;
                     &lt;value&gt;27&lt;/value&gt;
                     &lt;value&gt;14&lt;/value&gt;
+                &lt;/values&gt;
+                ...
+            &lt;/data&gt;
+        &lt;/graph&gt;
+        &lt;graph type="multibar"&gt;
+            &lt;name&gt;Stacked multibar test graph&lt;/name&gt;
+            &lt;legend show="1" stacked="1"&gt;
+                &lt;field&gt;
+                    &lt;name&gt;barA&lt;/name&gt;
+                    &lt;color&gt;0x8986BF&lt;/color&gt;
+                &lt;/field&gt;
+                &lt;field&gt;
+                    &lt;name&gt;barB&lt;/name&gt;
+                    &lt;color&gt;0x9D4FB0&lt;/color&gt;
+                &lt;/field&gt;
+                &lt;field&gt;
+                    &lt;name&gt;barC&lt;/name&gt;
+                    &lt;color&gt;0xF7BE81&lt;/color&gt;
+                &lt;/field&gt;
+            &lt;/legend&gt;
+            &lt;data&gt;
+                &lt;values for="10"&gt;
+                    &lt;value&gt;21&lt;/value&gt;
+                    &lt;value&gt;16&lt;/value&gt;
+                    &lt;value&gt;43&lt;/value&gt;
+                &lt;/values&gt;
+                &lt;values for="11"&gt;
+                    &lt;value&gt;75&lt;/value&gt;
+                    &lt;value&gt;73&lt;/value&gt;
+                    &lt;value&gt;8&lt;/value&gt;
+                &lt;/values&gt;
+                &lt;values for="12"&gt;
+                    &lt;value&gt;32&lt;/value&gt;
+                    &lt;value&gt;72&lt;/value&gt;
+                    &lt;value&gt;41&lt;/value&gt;
+                &lt;/values&gt;
+                &lt;values for="13"&gt;
+                    &lt;value&gt;32&lt;/value&gt;
+                    &lt;value&gt;72&lt;/value&gt;
+                    &lt;value&gt;41&lt;/value&gt;
                 &lt;/values&gt;
                 ...
             &lt;/data&gt;
@@ -459,6 +499,11 @@ Listening on 127.0.0.1:8080...</pre>
             <td>dynamicHide</td>
             <td>false</td>
             <td>when true, hides all the overlapping node names, graphs and domain architecture and support lines</td>
+        </tr>
+        <tr>
+            <td>pinnedNodes</td>
+            <td>[]</td>
+            <td>array of node IDs that should be always visible, independently of dynamic hide setting</td>
         </tr>
         <tr>
             <td>foregroundColor</td>
