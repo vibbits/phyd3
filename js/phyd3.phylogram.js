@@ -1479,7 +1479,6 @@ window.requestAnimFrame = (function(){
                .attr("stroke-width", function(d) {
                     var alwaysVisible = options.pinnedNodes.indexOf(d.id) != -1;
                     if (alwaysVisible){
-                        console.log("o");
                         return (2 * options.outline) + "px";
                     }
                     return options.outline+"px";
@@ -1630,7 +1629,7 @@ window.requestAnimFrame = (function(){
         }
 
         function applyLabelTransform() {
-            var h = options.nodeHeight;
+            var h = parseInt(options.nodeHeight);
             labelPadding = 0;
             if (onodes.labels) {
                 for ( var l = 0; l < onodes.labels.length; l++) {
@@ -1663,11 +1662,11 @@ window.requestAnimFrame = (function(){
                 }
                 var labels = leaves.selectAll('.nodelabel');
                 labels.selectAll("text")
-                    .attr("dy", options.nodeHeight / 2)
-                    .attr('font-size', (options.nodeHeight*1.5)+'px');
+                    .attr("dy", h / 2)
+                    .attr('font-size', (h * 1.5)+'px');
                 labels.selectAll("rect")
-                    .attr("width", options.nodeHeight * 2)
-                    .attr("height", options.nodeHeight * 2);
+                    .attr("width", (2 * h)+'px')
+                    .attr("height", (2 * h)+'px');
             }
         }
 
@@ -2040,30 +2039,44 @@ window.requestAnimFrame = (function(){
                                 multibarScaling[graph.id][i] = multibarScaling[graph.id][i].range([0, options.graphWidth]);
                             }
                             graphs.selectAll("rect.multibar.gid"+graph.id)
-                                .attr('height', parseInt(h * 2))
+                                .attr('height', graph.legend.stacked ? parseInt( 2 * h / graph.legend.fields.length) : parseInt(2 * h))
                                 .attr('width', function(d, i) {
                                     var x2 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](d.value) : 0);
                                     var x1 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](0) : 0);
                                     return (x2 > x1) ? (x2 - x1) : (x1 - x2);
                                 })
                                 .attr("transform", function(d, i) {
-                                    var x = graphPadding + d.i*(options.graphWidth + 5);
+                                    var x = graphPadding;
+                                    var y = -1 * h;
+                                    if (!graph.legend.stacked) {
+                                        x += d.i * (options.graphWidth + 5);
+                                    } else {
+                                        y += d.i * ( 2 * h / graph.legend.fields.length);
+                                    }
                                     var x2 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](d.value) : 0);
                                     var x1 = parseInt(multibarScaling[graph.id] && multibarScaling[graph.id][d.i] ? multibarScaling[graph.id][d.i](0) : 0);
                                     x += (x1 < x2) ? x1 : x2;
-                                    return " translate(" + parseInt(x) + ",-" + parseInt(h) +")";
+
+                                    return " translate(" + parseInt(x) + ", " + parseInt(y) +")";
                                 })
                                 .attr("x", function(d, i) {
                                 });
                             if (options.showGraphs && options.showGraphLegend) {
-                                for (var i=0; i<graph.legend.fields.length; i++) {
+                                if (graph.legend.stacked) {
                                     vis.append("text")
                                        .attr("class", "legend")
-                                       .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
-                                       .attr("transform", "translate("+ (phyd3.phylogram.dx + padding + graphPadding + i*(options.graphWidth + 5) + options.graphWidth/2) +",-10) rotate(-90)");
+                                       .text((graph.legend.show != 0) ? graph.name : '')
+                                       .attr("transform", "translate("+ (phyd3.phylogram.dx + padding + graphPadding + options.graphWidth/2) +",-10) rotate(-90)");
+                                } else {
+                                    for (var i=0; i<graph.legend.fields.length; i++) {
+                                        vis.append("text")
+                                           .attr("class", "legend")
+                                           .text((graph.legend.show != 0) ? graph.legend.fields[i].name : '')
+                                           .attr("transform", "translate("+ (phyd3.phylogram.dx + padding + graphPadding + i*(options.graphWidth + 5) + options.graphWidth/2) +",-10) rotate(-90)");
+                                    }
                                 }
                             }
-                            graphPadding += (graph.legend.fields.length) * (options.graphWidth + 5);
+                            graphPadding += (graph.legend.stacked ? 1 : graph.legend.fields.length) * (options.graphWidth + 5);
                             break;
                         case "boxplot":
                             boxplotScaling[graph.id] = boxplotScaling[graph.id].range([0, options.graphWidth]);

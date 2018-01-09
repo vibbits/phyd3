@@ -353,6 +353,7 @@
     phyd3.phyloxml.parseLegend = function(l) {
         var legend = {
             show: parseInt(l.getAttribute('show')),
+            stacked: parseInt(l.getAttribute('stacked')),
             fields: [],
             gradient: {}
         }
