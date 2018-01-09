@@ -275,7 +275,7 @@ if (strlen($annotation) == 0) {
 $csv = array();
 foreach (explode("\n", $annotation) as $line) {
     $d = $delimiter == 'TAB' ? "\t" : $delimiter;
-    $csv[] = str_getcsv($line, $delimiter, $enclosure, $escape);
+    $csv[] = str_getcsv($line, $d, $enclosure, $escape);
 }
 $header = array();
 if ($headers) {
