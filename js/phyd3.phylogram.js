@@ -1658,7 +1658,8 @@ window.requestAnimFrame = (function(){
                             return "translate(" + parseInt(dx + h + labelPadding - d.y) + "," + dy + ")";
                         });
                     vis.selectAll("text.labellegend.lid"+label.id)
-                       .attr("transform", "translate("+ parseInt(phyd3.phylogram.dx + labelPadding + textPadding + h*2) +",-10) rotate(-90)");
+                       .attr("transform", "translate("+ parseInt(phyd3.phylogram.dx + labelPadding + textPadding + h*2) +",-10) rotate(-90)")
+                       .attr('font-size', (h * 2)+'px');
                     labelPadding += maxWidth + h*2;
                 }
                 leaves.selectAll("text.nodelabel")
