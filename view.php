@@ -60,7 +60,7 @@
         }
         function loadTree() {
             d3.select("#phyd3").html("Loading...<br /><br />");
-            var fid = "<?php echo $_GET['id']?>".trim();
+            var fid = "<?php echo ctype_xdigit($_GET['id']) ? $_GET['id'] : ''?>".trim();
             <?php if ($_GET['f'] == 'xml') { ?>
                 d3.xml("submissions/"+fid, function(xml) {
                     d3.select("#phyd3").text(null);
@@ -321,7 +321,7 @@
                 Download as:
                 <button class="btn btn-primary" id="linkSVG">SVG</button>
                 <button class="btn btn-primary" id="linkPNG">PNG</button>
-                <a href="submissions/<?php echo $_GET['id']?>" class="btn btn-primary" id="linkXML" download >XML</a>
+                <a href="submissions/<?php echo ctype_xdigit($_GET['id']) ? $_GET['id'] : ''?>" class="btn btn-primary" id="linkXML" download >XML</a>
             </div>
         </div>
         <div id="phyd3" class="col-xs-9">

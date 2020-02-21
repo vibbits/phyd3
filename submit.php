@@ -113,7 +113,6 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <button class="btn btn-primary col-sm-12" id="formSend"  onclick="document.forms['textUpload'].submit()">Send</button>
-                    <span class="red"><?php echo isset($_GET['m']) ? $_GET['m'] : ''; ?></span>
                 </div>
             </div>
         </form>
