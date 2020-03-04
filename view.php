@@ -71,7 +71,7 @@
                  phyd3.phylogram.build("#phyd3", tree, opts);
              });
 
-             $("#dl-link").attr("href", filename);
+             jQuery("#dl-link").attr("href", filename);
          }
      }
     </script>
