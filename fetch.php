@@ -423,6 +423,7 @@ if (($type != 'parse') && ($type != 'convert')) {
     <link rel="stylesheet" href="libs/css/vib.css" />
     <link rel="stylesheet" href="css/bootstrap-colorpicker.min.css" />
     <link rel="stylesheet" href="css/phyd3.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
