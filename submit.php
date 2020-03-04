@@ -114,6 +114,19 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <button class="btn btn-primary col-sm-12" id="formSend"  onclick="document.forms['textUpload'].submit()">Send</button>
+                    <span class="red">
+                        <?php
+                        $errors = array(
+                            1 => "Error uploading files",
+                            2 => "Empty submission",
+                            3 => "Invalid tree format",
+                            4 => "Invalid action"
+                        );
+                        if (isset($_GET['error'])) {
+                            echo $errors[$_GET['error']];
+                        }
+                        ?>
+                    </span>
                 </div>
             </div>
         </form>

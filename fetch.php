@@ -212,7 +212,7 @@ if (empty($_GET['id'])) {
         $moved = @move_uploaded_file($_FILES['treeFile']['tmp_name'], "submissions/$id.orig");
         if ($moved === false) {
             header("HTTP/1.1 301 Moved Permanently");
-            header("Location: submit.php?m=Error+uploading+files");
+            header("Location: submit.php?error=1");
             exit();
         }
         $tree = trim(file_get_contents("submissions/$id.orig"));
@@ -224,14 +224,14 @@ if (empty($_GET['id'])) {
     // check the length
     if (strlen($tree) == 0) {
         header("HTTP/1.1 301 Moved Permanently");
-        header("Location: submit.php?m=Empty+submission");
+        header("Location: submit.php?error=2");
         exit();
     }
     // check the format
     $accepted = checkFormat($tree, $format);
     if (!$accepted) {
         header("HTTP/1.1 301 Moved Permanently");
-        header("Location: submit.php?m=Invalid+tree+format");
+        header("Location: submit.php?error=3");
         exit();
     }
     if (strlen($_FILES['annotationFile']['name'])) {
@@ -239,7 +239,7 @@ if (empty($_GET['id'])) {
         $moved = @move_uploaded_file($_FILES['annotationFile']['tmp_name'], "submissions/$id.txt");
         if ($moved === false) {
             header("HTTP/1.1 301 Moved Permanently");
-            header("Location: submit.php?m=Error+uploading+files");
+            header("Location: submit.php?error=1");
             exit();
         }
         $annotation = trim(file_get_contents("submissions/$id.txt"));
@@ -407,7 +407,7 @@ if ($type == 'convert') {
 // redirect wrong requests
 if (($type != 'parse') && ($type != 'convert')) {
     header("HTTP/1.1 301 Moved Permanently");
-    header("Location: submit.php?m=Invalid+action");
+    header("Location: submit.php?error=4");
     exit();
 }
 ?>
