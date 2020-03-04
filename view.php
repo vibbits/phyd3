@@ -16,65 +16,63 @@
 
     <script src="dist/js/phyd3.min.js" type="text/javascript"></script>
     <script>
-        jQuery.noConflict();
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-61194136-8', 'auto');
-        ga('send', 'pageview');
+     jQuery.noConflict();
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+     ga('create', 'UA-61194136-8', 'auto');
+     ga('send', 'pageview');
+    </script>
 
-        var opts = {
-            dynamicHide: true,
-            height: 800,
-            invertColors: false,
-            lineupNodes: true,
-            showDomains: true,
-            showDomainNames: false,
-            showDomainColors: true,
-            showGraphs: true,
-            showGraphLegend: true,
-            showSupportValues: false,
-            maxDecimalsSupportValues: 1,
-            showLengthValues: false,
-            maxDecimalsLengthValues: 3,
-            showLength: false,
-            showNodeNames: true,
-            showNodesType: "all",
-            showPhylogram: false,
-            showTaxonomy: true,
-            showFullTaxonomy: true,
-            showSequences: false,
-            showTaxonomyColors: true,
-            backgroundColor: "#f5f5f5",
-            foregroundColor: "#000000",
-        };
+    <script>
+     var opts = {
+         dynamicHide: true,
+         height: 800,
+         invertColors: false,
+         lineupNodes: true,
+         showDomains: true,
+         showDomainNames: false,
+         showDomainColors: true,
+         showGraphs: true,
+         showGraphLegend: true,
+         showSupportValues: false,
+         maxDecimalsSupportValues: 1,
+         showLengthValues: false,
+         maxDecimalsLengthValues: 3,
+         showLength: false,
+         showNodeNames: true,
+         showNodesType: "all",
+         showPhylogram: false,
+         showTaxonomy: true,
+         showFullTaxonomy: true,
+         showSequences: false,
+         showTaxonomyColors: true,
+         backgroundColor: "#f5f5f5",
+         foregroundColor: "#000000",
+     };
 
-        function load() {
-            jQuery("#familyID").val("HOM03D000802");
-            jQuery('#foregroundColor').val(opts.foregroundColor);
-            jQuery('#backgroundColor').val(opts.backgroundColor);
-            jQuery('#foregroundColorButton').colorpicker({color: opts.foregroundColor});
-            jQuery('#backgroundColorButton').colorpicker({color: opts.backgroundColor});
-            loadTree();
-        }
-        function loadTree() {
-            d3.select("#phyd3").html("Loading...<br /><br />");
-            var fid = "<?php echo ctype_xdigit($_GET['id']) ? $_GET['id'] : ''?>".trim();
-            <?php if ($_GET['f'] == 'xml') { ?>
-                d3.xml("submissions/"+fid, function(xml) {
-                    d3.select("#phyd3").text(null);
-                    var tree = phyd3.phyloxml.parse(xml);
-                    phyd3.phylogram.build("#phyd3", tree, opts);
-                });
-            <?php } else if ($_GET['f'] == 'newick') { ?>
-                d3.text("submissions/"+fid, function(xml) {
-                    d3.select("#phyd3").text(null);
-                    var tree = phyd3.newick.parse(xml);
-                    phyd3.phylogram.build("#phyd3", tree, opts);
-                });
-            <?php } ?>
-        };
+     function load() {
+         jQuery("#familyID").val("HOM03D000802");
+         jQuery('#foregroundColor').val(opts.foregroundColor);
+         jQuery('#backgroundColor').val(opts.backgroundColor);
+         jQuery('#foregroundColorButton').colorpicker({color: opts.foregroundColor});
+         jQuery('#backgroundColorButton').colorpicker({color: opts.backgroundColor});
+         loadTree();
+     }
+     function loadTree() {
+         d3.select("#phyd3").html("Loading...<br /><br />");
+         var fid = "<?php echo ctype_xdigit($_GET['id']) ? $_GET['id'] : ''?>".trim();
+         if (fid !== "") {
+             var filename = "submissions/" + fid + ".xml";
+             d3.xml(filename, function(xml) {
+                 d3.select("#phyd3").text(null);
+                 var tree = phyd3.phyloxml.parse(xml);
+                 phyd3.phylogram.build("#phyd3", tree, opts);
+             });
+
+             $("#dl-link").attr("href", filename);
+         };
     </script>
 </head>
 <body onload="load()" class="container">
@@ -321,7 +319,7 @@
                 Download as:
                 <button class="btn btn-primary" id="linkSVG">SVG</button>
                 <button class="btn btn-primary" id="linkPNG">PNG</button>
-                <a href="submissions/<?php echo ctype_xdigit($_GET['id']) ? $_GET['id'] : ''?>" class="btn btn-primary" id="linkXML" download >XML</a>
+                <a id="dl-link" class="btn btn-primary" id="linkXML" download >XML</a>
             </div>
         </div>
         <div id="phyd3" class="col-xs-9">

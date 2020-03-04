@@ -267,7 +267,7 @@ if (strlen($annotation) == 0) {
     }
     file_put_contents("submissions/$id.xml", $tree);
     header("HTTP/1.1 301 Moved Permanently");
-    header("Location: view.php?id=$id.xml&f=xml");
+    header("Location: view.php?id=$id&f=xml");
     exit();
 }
 
@@ -400,7 +400,7 @@ if ($type == 'convert') {
 
     // redirect to display page
     header("HTTP/1.1 301 Moved Permanently");
-    header("Location: view.php?id=$id.xml&f=xml");
+    header("Location: view.php?id=$id&f=xml");
     exit();
 }
 
