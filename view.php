@@ -72,7 +72,8 @@
              });
 
              $("#dl-link").attr("href", filename);
-         };
+         }
+     }
     </script>
 </head>
 <body onload="load()" class="container">
