@@ -1,0 +1,207 @@
+import { create } from "d3-selection";
+//import { zoom } from "d3-zoom";
+import { hierarchy, stratify, tree } from "d3-hierarchy";
+import { linkHorizontal } from "d3-shape";
+import { linkHorizontal } from "d3-shape";
+
+type Group = {
+  id: number;
+  x1: number;
+  x2: number;
+  y1: number;
+  y2: number;
+  depth: number;
+  foregroundColor: string;
+  backgroundColor: string;
+  label: string;
+};
+
+export interface Options {
+  scaleY: number;
+  scaleX: number;
+  translateX: number;
+  translateY: number;
+  height: number;
+  width: number;
+  margin: number;
+  scaleStep: number;
+  nodeHeight: number;
+  nodeHeightStep: number;
+  textLength: number;
+  domainWidth: number;
+  domainWidthStep: number;
+  graphWidth: number;
+  graphWidthStep: number;
+  domainLevel: number;
+  domainLevelStep: number;
+  outline: number;
+  popupWidth: number;
+  maxDecimalsSupportValues: number;
+  maxDecimalsLengthValues: number;
+  nanColor: string;
+  foregroundColor: string;
+  backgroundColor: string;
+  branchLengthColor: string;
+  supportValuesColor: string;
+  showNodesType: "only leaf" | "only inner";
+  treeWidth: number | "auto";
+  showFullTaxonomy: boolean;
+  showLabels: boolean;
+  showDomains: boolean;
+  dynamicHide: boolean;
+  invertColors: boolean;
+  lineupNodes: boolean;
+  showSupportValues: boolean;
+  showLengthValues: boolean;
+  showTaxonomy: boolean;
+  showTaxonomyColors: boolean;
+  showDomainNames: boolean;
+  showDomainColors: boolean;
+  showGraphs: boolean;
+  showGraphLegend: boolean;
+  showNodeNames: boolean;
+  showPhylogram: boolean;
+  pinnedNodes: number[];
+  groups: Map<number, Group>;
+}
+
+export type Metadata = {
+  name: string | undefined;
+  description: string | undefined;
+  parent: number;
+  rooted: boolean;
+};
+
+type NumericAttr = { tag: "numeric"; value: number };
+type TextAttr = { tag: "text"; value: string };
+type BoolAttr = { tag: "bool"; value: boolean };
+type ListAttr = { tag: "list"; value: Array<Attribute> };
+type MapAttr = { tag: "mapping"; value: Map<string, Attribute> };
+type Attribute = NumericAttr | TextAttr | BoolAttr | ListAttr | MapAttr;
+
+export type Node = {
+  name: string;
+  event: "Clade" | "Taxa" | "Hybrid" | "LateralGeneTransfer" | "Recombination";
+  ref: number; // A unique identifier
+  attributes: Map<string, Attribute>;
+};
+
+export type Edge = {
+  source: number;
+  sink: number;
+  length: number;
+};
+
+export type Phylogeny = {
+  metadata: Array<Metadata>;
+  nodes: Array<Node>;
+  edges: Array<Edge>;
+};
+
+const defaultOptions: Options = {
+  scaleY: 1,
+  scaleX: 1,
+  translateX: 0,
+  translateY: 0,
+  height: 800,
+  width: 800,
+  margin: 20,
+  scaleStep: 0.3,
+  nodeHeight: 6,
+  nodeHeightStep: 1,
+  textLength: 100,
+  domainWidth: 100,
+  domainWidthStep: 100,
+  graphWidth: 20,
+  graphWidthStep: 10,
+  domainLevel: 1,
+  domainLevelStep: 10,
+  outline: 0.3,
+  popupWidth: 500,
+  maxDecimalsSupportValues: 0,
+  maxDecimalsLengthValues: 2,
+  nanColor: "#fff",
+  foregroundColor: "#000",
+  backgroundColor: "#fff",
+  branchLengthColor: "red",
+  supportValuesColor: "blue",
+  showNodesType: "only leaf",
+  treeWidth: "auto",
+  showFullTaxonomy: false,
+  showLabels: true,
+  showDomains: true,
+  dynamicHide: false,
+  invertColors: false,
+  lineupNodes: true,
+  showSupportValues: false,
+  showLengthValues: false,
+  showTaxonomy: true,
+  showTaxonomyColors: true,
+  showDomainNames: false,
+  showDomainColors: true,
+  showGraphs: true,
+  showGraphLegend: true,
+  showNodeNames: true,
+  showPhylogram: false,
+  pinnedNodes: [],
+  groups: new Map(),
+};
+
+export const build = (phylogeny: Phylogeny, opts?: Partial<Options>) => {
+  const options: Readonly<Options> = { ...defaultOptions, ...(opts || {}) };
+  console.log(phylogeny);
+
+  const root = hierarchy(
+    stratify<Node>()
+      .id((node) => node.ref.toString())
+      .parentId(
+        (node) =>
+          phylogeny.edges
+            .filter((edge: Edge) => edge.sink === node.ref)[0]
+            ?.source.toString() || null
+      )(phylogeny.nodes)
+  );
+  // TODO: This needs a type parameter?
+  tree().size([800, 800])(root);
+
+  //const zoomer = zoom().scaleExtent([1, 1]).on("zoom", zoomed);
+
+  // const treeLink = linkHorizontal()
+  //   .x((d) => d.x)
+  //   .y((d) => d.y);
+
+  console.log("root", root);
+
+  const svg = create("svg")
+    .attr("viewBox", [0, 0, options.width, options.height])
+    .attr("width", `${options.width}px`)
+    .attr("height", `${options.height}px`)
+    .attr("overflow", "hidden")
+    .attr("version", "1.1");
+
+  svg
+    .append("g")
+    .selectAll("path")
+    .data(root.links())
+    .join("path")
+    .attr(
+      "d",
+      linkHorizontal()
+        .x((d) => d.y)
+        .y((d) => d.x)
+    )
+    .attr("fill", "none")
+    .attr("stroke", options.foregroundColor);
+
+  svg
+    .append("g")
+    .selectAll("circle")
+    .data(root.descendants())
+    .join("circle")
+    .attr("transform", (d) => `translate(${d.y}, ${d.x})`)
+    .attr("fill", options.foregroundColor)
+    .attr("r", 2.5);
+  return svg;
+};
+
+//const zoomed = (_evt: any) => {};
