@@ -1,5 +1,4 @@
 import { create } from "d3-selection";
-// import { zoom } from "d3-zoom";
 import {
   HierarchyPointLink,
   HierarchyPointNode,
@@ -175,10 +174,6 @@ export const build = (phylogeny: Phylogeny, opts?: Partial<Options>) => {
       )(phylogeny.nodes)
   );
 
-  //const zoomer = zoom().scaleExtent([1, 1]).on("zoom", zoomed);
-
-  console.log("root", root);
-
   const svg = create("svg")
     .attr("viewBox", [0, 0, options.width, options.height])
     .attr("width", `${options.width}px`)
@@ -206,6 +201,17 @@ export const build = (phylogeny: Phylogeny, opts?: Partial<Options>) => {
     .attr("cy", (d) => d.x)
     .attr("fill", options.foregroundColor)
     .attr("r", 2.5);
+
+  svg
+    .append("g")
+    .attr("transform", `translate(${options.margin}, ${options.margin})`)
+    .selectAll("text")
+    .data(root.descendants())
+    .join("text")
+    .attr("x", (d) => d.y)
+    .attr("y", (d) => d.x)
+    .attr("transform", `translate(15, 0)`)
+    .text((d) => d.data.name);
   return svg;
 };
 
