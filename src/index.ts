@@ -1,8 +1,12 @@
 import { create } from "d3-selection";
-//import { zoom } from "d3-zoom";
-import { hierarchy, stratify, tree } from "d3-hierarchy";
-import { linkHorizontal } from "d3-shape";
-import { linkHorizontal } from "d3-shape";
+// import { zoom } from "d3-zoom";
+import {
+  HierarchyPointLink,
+  HierarchyPointNode,
+  stratify,
+  tree,
+} from "d3-hierarchy";
+import { Link, linkHorizontal } from "d3-shape";
 
 type Group = {
   id: number;
@@ -63,6 +67,7 @@ export interface Options {
   showPhylogram: boolean;
   pinnedNodes: number[];
   groups: Map<number, Group>;
+  drawBranch: Link<any, HierarchyPointLink<Node>, HierarchyPointNode<Node>>;
 }
 
 export type Metadata = {
@@ -145,13 +150,21 @@ const defaultOptions: Options = {
   showPhylogram: false,
   pinnedNodes: [],
   groups: new Map(),
+  drawBranch: linkHorizontal<
+    HierarchyPointLink<Node>,
+    HierarchyPointNode<Node>
+  >()
+    .x((d) => d.y)
+    .y((d) => d.x),
 };
 
 export const build = (phylogeny: Phylogeny, opts?: Partial<Options>) => {
   const options: Readonly<Options> = { ...defaultOptions, ...(opts || {}) };
-  console.log(phylogeny);
 
-  const root = hierarchy(
+  const width = options.width - 2 * options.margin;
+  const height = options.height - 2 * options.margin;
+
+  const root: HierarchyPointNode<Node> = tree<Node>().size([height, width])(
     stratify<Node>()
       .id((node) => node.ref.toString())
       .parentId(
@@ -161,14 +174,8 @@ export const build = (phylogeny: Phylogeny, opts?: Partial<Options>) => {
             ?.source.toString() || null
       )(phylogeny.nodes)
   );
-  // TODO: This needs a type parameter?
-  tree().size([800, 800])(root);
 
   //const zoomer = zoom().scaleExtent([1, 1]).on("zoom", zoomed);
-
-  // const treeLink = linkHorizontal()
-  //   .x((d) => d.x)
-  //   .y((d) => d.y);
 
   console.log("root", root);
 
@@ -181,24 +188,22 @@ export const build = (phylogeny: Phylogeny, opts?: Partial<Options>) => {
 
   svg
     .append("g")
+    .attr("transform", `translate(${options.margin}, ${options.margin})`)
     .selectAll("path")
     .data(root.links())
     .join("path")
-    .attr(
-      "d",
-      linkHorizontal()
-        .x((d) => d.y)
-        .y((d) => d.x)
-    )
+    .attr("d", options.drawBranch)
     .attr("fill", "none")
     .attr("stroke", options.foregroundColor);
 
   svg
     .append("g")
+    .attr("transform", `translate(${options.margin}, ${options.margin})`)
     .selectAll("circle")
     .data(root.descendants())
     .join("circle")
-    .attr("transform", (d) => `translate(${d.y}, ${d.x})`)
+    .attr("cx", (d) => d.y)
+    .attr("cy", (d) => d.x)
     .attr("fill", options.foregroundColor)
     .attr("r", 2.5);
   return svg;
