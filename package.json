@@ -40,6 +40,10 @@
     "url": "https://github.com/vibbits/phyd3/issues"
   },
   "homepage": "https://phyd3.bioinformatics-core.sites.vib.be",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
   "dependencies": {
     "d3-hierarchy": "^3.1.2",
     "d3-selection": "^3.0.0",
