@@ -34,8 +34,8 @@ const svg = build(makeCompatTable(phyloxml.parse(doc)));
 
 ### Parsing
 
-PhyD3 does not perform any parsing. You can use a compatible parser such as [Phylio]() or
-[phyd3-compat-parser]() or use any another parser. If you use another parser you will have to
+PhyD3 does not perform any parsing. You can use a compatible parser such as [Phylio](https://github.com/vibbits/phylio) or
+[phyd3-parser-compat](https://github.com/vibbits/phyd3-parser-compat) or use any another parser. If you use another parser you will have to
 transform the result into a structure that PhyD3 expects. This is described below. As an example,
 see [phyd3-parser-compat/makeCompatTable()](https://github.com/vibbits/phyd3-parser-compat/blob/2ef078ae0ba93f7d3a209735fb068a6a9105152b/src/index.js#L47).
 
