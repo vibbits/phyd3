@@ -53,7 +53,7 @@ This is what a metadata structure looks like:
   name: string | undefined,        // The name of this phylogeny
   description: string | undefined, // A description of this phylogeny
   parent: number,                  // The unique numeric identifier of the root node for this phylogeny
-  rooted: boolean                  // Whether this phylogeny is rooted of not
+  rooted: boolean                  // Whether this phylogeny is rooted or not
 }
 ```
 
